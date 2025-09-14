@@ -69,7 +69,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     
     if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
+        // Use both click and touchstart for better mobile support
+        navToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+        
+        navToggle.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
         });
@@ -339,6 +349,8 @@ style.textContent = `
             padding-top: 2rem;
             transition: left 0.3s ease;
             z-index: 999;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
         
         .nav-menu.active {
@@ -348,6 +360,15 @@ style.textContent = `
         .nav-menu .nav-link {
             margin: 1rem 0;
             font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .nav-toggle {
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .nav-toggle.active span:nth-child(1) {
