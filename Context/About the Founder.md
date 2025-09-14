@@ -6,9 +6,11 @@ She is not a distant designer hidden behind polished studios and corporate walls
 
 The Beginning
 
-Svetlana’s journey began in India, where she first encountered the vivid traditions of face adornment, sacred ornaments, and the deep symbolism carried by jewelry in ancient cultures.
+Svetlana's journey began in Saint Petersburg, where her incredible desire to create something truly unique first took root. Long before facechains became reality, the idea lived in her mind — a vision of jewelry that would transform the face into a canvas of self-expression.
 
 What fascinated her was not luxury for its own sake, but the way adornment could transform identity — how a chain, a mark, or a symbol could make someone unforgettable, drawing eyes, attention, and conversations.
+
+Before bringing facechains to life, Svetlana explored the world of jewelry through epoxy creations and other experimental pieces. Each project was a step closer to understanding what she truly wanted to create — something that would make people unforgettable, drawing eyes, attention, and conversations.
 
 The Vision
 
