@@ -13,8 +13,12 @@ function initLanguageSwitcher() {
 }
 
 function toggleLanguage() {
+    console.log('Language toggle clicked, current:', currentLanguage);
+    
     // Toggle between EN and RU
     currentLanguage = currentLanguage === 'en' ? 'ru' : 'en';
+    
+    console.log('New language:', currentLanguage);
     
     // Save preference
     localStorage.setItem('rediant-language', currentLanguage);
@@ -46,15 +50,21 @@ function redirectToLanguage() {
     const currentPath = window.location.pathname;
     const currentFile = currentPath.split('/').pop() || 'index.html';
     
+    console.log('Redirecting - currentPath:', currentPath, 'currentFile:', currentFile, 'targetLang:', currentLanguage);
+    
     if (currentLanguage === 'ru') {
         // Redirect to Russian version
         if (!currentPath.includes('/ru/')) {
-            window.location.href = `ru/${currentFile}`;
+            const newUrl = `ru/${currentFile}`;
+            console.log('Redirecting to:', newUrl);
+            window.location.href = newUrl;
         }
     } else {
         // Redirect to English version
         if (currentPath.includes('/ru/')) {
-            window.location.href = `../${currentFile}`;
+            const newUrl = `../${currentFile}`;
+            console.log('Redirecting to:', newUrl);
+            window.location.href = newUrl;
         }
     }
 }
