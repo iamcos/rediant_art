@@ -30,7 +30,11 @@ function updateLanguageSwitchers() {
     const switchers = document.querySelectorAll('.language-switcher .lang-btn');
     
     switchers.forEach(btn => {
-        if (btn.textContent.trim() === currentLanguage.toUpperCase()) {
+        const btnText = btn.textContent.trim();
+        const isCurrentLang = (currentLanguage === 'en' && btnText.includes('EN')) || 
+                             (currentLanguage === 'ru' && btnText.includes('RU'));
+        
+        if (isCurrentLang) {
             btn.classList.add('active');
         } else {
             btn.classList.remove('active');
