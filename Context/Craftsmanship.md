@@ -1,6 +1,6 @@
 Craftsmanship
 
-At Rediant, jewelry is not mass-produced — it is crafted. Each piece carries the mark of time, intention, and artistry. Whether through ancient methods or modern precision, our creations reflect a deep respect for both tradition and innovation.
+At Rediant, jewelry is not mass-produced — it is crafted. Each piece carries the mark of time, intention, and artistry. Currently, we use traditional lost-wax casting methods, with plans to integrate modern 3D printing technology in the future. Our creations reflect a deep respect for both tradition and innovation.
 
 From Wax to Metal
 
@@ -10,13 +10,15 @@ From there, the wax model is encased in plaster, and molten silver or brass is p
 
 This technique, called lost-wax casting, has been used for thousands of years — from tribal ornaments to Renaissance masterpieces. At Rediant, we carry this lineage forward, shaping modern facechains, bodychains, and earrings with the same reverence for material and fire.
 
-The Art of CNC Laser Cutting
+The Art of Lost-Wax Casting (Current Method)
 
-While we honor the past, we also embrace the tools of today. Many Rediant designs are realized through ultra-precise CNC laser cutting, where thin sheets of silver, steel, or brass are etched with microscopic detail.
+Currently, all Rediant pieces are created using the traditional lost-wax casting method. This ancient technique allows us to create jewelry that is both impossibly delicate and strong — symmetrical filigree nosepieces, feather-like motifs, and sacred geometry patterns that feel as light as lace yet endure like metal.
 
-This allows us to create jewelry that is both impossibly delicate and strong — symmetrical filigree nosepieces, feather-like motifs, and sacred geometry patterns that feel as light as lace yet endure like steel.
+Every curve and detail is intentional, every piece inspired by sketches hand-drawn by the founder. This traditional method is not outdated — it becomes a timeless chisel, an extension of human imagination and ancient wisdom.
 
-Every curve and opening is intentional, every cut inspired by sketches hand-drawn by the founder. Technology here is not cold — it becomes a modern chisel, an extension of human imagination.
+Future: 3D Printing Integration
+
+While we honor the past, we're also developing plans to integrate modern 3D printing technology for future collections. This will allow us to create even more complex geometries while maintaining the soulful quality of handcrafted jewelry.
 
 Metals That Speak
 

@@ -2,6 +2,11 @@ Collections
 
 At Rediant, every collection is a world of its own. Each piece is created with the vision of ancient symbols meeting modern soul, crafted with elegance and a bohemian edge.
 
+**Note: Russian Terminology**
+- Facechains = Фейс-чейны
+- Headchains = Хед-чейны  
+- Bodychains = Боди-чейны
+
 Facechains — The Signature
 
 The facechain is the heart of Rediant. Inspired by tribal face markings and sacred symmetry, it transforms the bridge of the nose into a canvas.

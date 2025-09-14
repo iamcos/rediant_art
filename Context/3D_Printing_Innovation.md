@@ -1,8 +1,12 @@
 # 3D Printing Innovation at Rediant
 
-## The Future of Jewelry Crafting
+## Current Process: Lost-Wax Casting
 
-At Rediant, we're embracing the cutting edge of jewelry creation through 3D printing technology. This isn't just about efficiency—it's about unlocking new realms of artistic possibility that traditional methods could never achieve.
+Right now, every Rediant piece is created using the ancient art of lost-wax casting. We start with hand-carved wax models, encase them in ceramic investment, then pour molten metal into the cavity after the wax is burned away. This traditional method gives our jewelry its soulful, handcrafted quality.
+
+## The Future: 3D Printing Innovation
+
+While we honor traditional craftsmanship, we're also developing cutting-edge 3D printing technology for future collections. This isn't about replacing our current process—it's about expanding what's possible and creating pieces that traditional methods could never achieve.
 
 ## Why 3D Printing?
 
@@ -18,27 +22,27 @@ At Rediant, we're embracing the cutting edge of jewelry creation through 3D prin
 - **Hybrid approaches**: 3D-printed masters for traditional casting
 - **Sustainable options**: Recycled materials and minimal waste
 
-## Rediant's 3D Printing Process
+## Rediant's Future 3D Printing Process
 
 ### 1. Digital Sculpting
-Every design begins in the digital realm, where we can explore forms that would be impossible to carve by hand. Sacred geometry becomes mathematically perfect, curves flow with organic grace, and textures emerge from algorithms inspired by nature.
+Future designs will begin in the digital realm, where we can explore forms that would be impossible to carve by hand. Sacred geometry will become mathematically perfect, curves will flow with organic grace, and textures will emerge from algorithms inspired by nature.
 
 ### 2. Prototype Iteration
-3D printing allows us to rapidly prototype designs, testing fit, comfort, and aesthetic impact. What once took weeks of hand-carving now happens in hours, accelerating our creative process.
+3D printing will allow us to rapidly prototype designs, testing fit, comfort, and aesthetic impact. What currently takes weeks of hand-carving will happen in hours, accelerating our creative process.
 
 ### 3. Production Scaling
-From one-of-a-kind pieces to limited editions, 3D printing enables us to scale production while maintaining the soulful quality that defines Rediant jewelry.
+From one-of-a-kind pieces to limited editions, 3D printing will enable us to scale production while maintaining the soulful quality that defines Rediant jewelry.
 
 ## The Art of Digital Craftsmanship
 
 ### Sacred Geometry Perfected
-Our facechains now feature geometric patterns with mathematical precision—spirals that follow the golden ratio, mandalas with perfect symmetry, and fractals that echo natural forms.
+Our future facechains will feature geometric patterns with mathematical precision—spirals that follow the golden ratio, mandalas with perfect symmetry, and fractals that echo natural forms.
 
 ### Organic Complexity
-3D printing allows us to create structures that mimic natural growth—branching patterns like coral, flowing forms like water, and textures like ancient stone.
+3D printing will allow us to create structures that mimic natural growth—branching patterns like coral, flowing forms like water, and textures like ancient stone.
 
 ### Lightweight Innovation
-Hollow structures and lattice designs create pieces that are both substantial in presence and feather-light in wear.
+Hollow structures and lattice designs will create pieces that are both substantial in presence and feather-light in wear.
 
 ## Sustainability Through Technology
 
