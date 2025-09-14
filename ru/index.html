@@ -6,18 +6,12 @@
     <title>Rediant — Лицевые Цепочки и Украшения, Рожденные Цепями | 3D Печать и Сообщество</title>
     <meta name="description" content="Унисекс лицевые цепочки, головные цепочки, цепочки для тела и серьги. Древние знаки, переосмысленные с современными технологиями 3D-печати. Сообщество-финансируемые художественные украшения, созданные для зажигания разговоров.">
     <meta name="keywords" content="лицевые цепочки, украшения для носа, мост носа украшения, богемные цепочки украшения, головные цепочки, цепочки для тела, лазерная резка украшений, современные племенные украшения, унисекс украшения, 3D печать украшений, крипто краудфандинг украшений, блокчейн финансирование украшений, устойчивые технологии украшений">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Language Switcher -->
-    <div class="language-switcher">
-        <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
-        <button class="lang-btn" onclick="switchLanguage('ru')">RU</button>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -25,13 +19,16 @@
                 <a href="index.html">Rediant</a>
             </div>
             <div class="nav-menu">
-                <a href="index.html" class="nav-link active" data-en="Home" data-ru="Главная">Home</a>
-                <a href="about.html" class="nav-link" data-en="About" data-ru="О нас">About</a>
-                <a href="collections.html" class="nav-link" data-en="Collections" data-ru="Коллекции">Collections</a>
-                <a href="3d-printing.html" class="nav-link" data-en="3D Printing" data-ru="3D Печать">3D Printing</a>
-                <a href="crowdfunding.html" class="nav-link" data-en="Crowdfunding" data-ru="Краудфандинг">Crowdfunding</a>
-                <a href="journal.html" class="nav-link" data-en="Journal" data-ru="Журнал">Journal</a>
-                <a href="contact.html" class="nav-link" data-en="Contact" data-ru="Контакты">Contact</a>
+                <a href="index.html" class="nav-link active">Главная</a>
+                <a href="about.html" class="nav-link">О нас</a>
+                <a href="collections.html" class="nav-link">Коллекции</a>
+                <a href="3d-printing.html" class="nav-link">3D Печать</a>
+                <a href="crowdfunding.html" class="nav-link">Краудфандинг</a>
+                <a href="journal.html" class="nav-link">Журнал</a>
+                <a href="contact.html" class="nav-link">Контакты</a>
+                <div class="language-switcher">
+                    <button class="lang-btn active" onclick="toggleLanguage()">RU</button>
+                </div>
             </div>
             <div class="nav-toggle">
                 <span></span>
@@ -206,7 +203,8 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
+    <script src="../language-switcher.js"></script>
 </body>
 </html>
 

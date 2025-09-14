@@ -12,11 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Language Switcher -->
-    <div class="language-switcher">
-        <a href="../crowdfunding.html" class="lang-btn">EN</a>
-        <button class="lang-btn active">RU</button>
-    </div>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -32,6 +27,10 @@
                 <a href="crowdfunding.html" class="nav-link active">Краудфандинг</a>
                 <a href="journal.html" class="nav-link">Журнал</a>
                 <a href="contact.html" class="nav-link">Контакты</a>
+                <div class="language-switcher">
+                    <a href="../crowdfunding.html" class="lang-btn">EN</a>
+                    <a href="crowdfunding.html" class="lang-btn active">RU</a>
+                </div>
             </div>
             <div class="nav-toggle">
                 <span></span>
@@ -388,6 +387,7 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script src="../language-switcher.js"></script>
     <script>
         function copyAddress() {
             const address = document.getElementById('wallet-address').textContent;

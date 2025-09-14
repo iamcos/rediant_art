@@ -5,41 +5,7 @@
     box-sizing: border-box;
 }
 
-/* Language Switcher */
-.language-switcher {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1001;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 25px;
-    padding: 8px;
-    box-shadow: var(--shadow-medium);
-    display: flex;
-    gap: 4px;
-}
-
-.lang-btn {
-    background: transparent;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    color: var(--charcoal);
-    font-size: 0.9rem;
-}
-
-.lang-btn.active {
-    background: var(--primary-gold);
-    color: white;
-}
-
-.lang-btn:hover:not(.active) {
-    background: var(--warm-neutral);
-}
+/* Language Switcher - Integrated in Navigation Only */
 
 :root {
     /* Brand Colors */
@@ -523,36 +489,40 @@ p {
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* Language Switcher */
-.language-switcher {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1001;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 25px;
-    padding: 8px;
-    box-shadow: var(--shadow-medium);
+/* Language Switcher - Integrated in Navigation */
+.nav-menu .language-switcher {
     display: flex;
-    gap: 4px;
+    gap: 2px;
+    margin-left: 15px;
+    padding-left: 15px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .lang-btn {
-    padding: 8px 16px;
+    padding: 6px 10px;
     border: none;
     background: transparent;
-    color: var(--charcoal);
-    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 500;
     transition: all 0.3s ease;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 32px;
+    text-align: center;
+}
+
+.lang-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
 }
 
 .lang-btn.active {
-    background: var(--primary-gold);
+    background: rgba(255, 255, 255, 0.15);
     color: white;
+    font-weight: 600;
 }
 
 .lang-btn:hover:not(.active) {
@@ -629,10 +599,15 @@ p {
         grid-template-columns: 1fr;
     }
     
-    .language-switcher {
-        top: 15px;
-        right: 15px;
-        padding: 6px;
+    .nav-menu .language-switcher {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding-top: 12px;
+        margin-top: 12px;
+        justify-content: center;
+        gap: 4px;
     }
     
     .lang-btn {
@@ -678,11 +653,6 @@ p {
         height: 240px;
     }
     
-    .language-switcher {
-        top: 10px;
-        right: 10px;
-        padding: 4px;
-    }
     
     .lang-btn {
         padding: 4px 8px;
@@ -2311,10 +2281,6 @@ html {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
     
-    .language-switcher {
-        top: 15px;
-        right: 15px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -2350,11 +2316,6 @@ html {
         max-width: 250px;
     }
     
-    .language-switcher {
-        top: 8px;
-        right: 8px;
-        padding: 4px;
-    }
     
     .lang-btn {
         padding: 4px 8px;

@@ -33,12 +33,6 @@
     </script>
 </head>
 <body>
-    <!-- Language Switcher -->
-    <div class="language-switcher">
-        <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
-        <button class="lang-btn" onclick="switchLanguage('ru')">RU</button>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -46,13 +40,16 @@
                 <a href="index.html">Rediant</a>
             </div>
             <div class="nav-menu">
-                <a href="index.html" class="nav-link active" data-en="Home" data-ru="Главная">Home</a>
-                <a href="about.html" class="nav-link" data-en="About" data-ru="О нас">About</a>
-                <a href="collections.html" class="nav-link" data-en="Collections" data-ru="Коллекции">Collections</a>
-                <a href="3d-printing.html" class="nav-link" data-en="3D Printing" data-ru="3D Печать">3D Printing</a>
-                <a href="crowdfunding.html" class="nav-link" data-en="Crowdfunding" data-ru="Краудфандинг">Crowdfunding</a>
-                <a href="journal.html" class="nav-link" data-en="Journal" data-ru="Журнал">Journal</a>
-                <a href="contact.html" class="nav-link" data-en="Contact" data-ru="Контакты">Contact</a>
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="collections.html" class="nav-link">Collections</a>
+                <a href="3d-printing.html" class="nav-link">3D Printing</a>
+                <a href="crowdfunding.html" class="nav-link">Crowdfunding</a>
+                <a href="journal.html" class="nav-link">Journal</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="language-switcher">
+                    <button class="lang-btn active" onclick="toggleLanguage()">EN</button>
+                </div>
             </div>
             <div class="nav-toggle">
                 <span></span>
@@ -228,6 +225,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="language-switcher.js"></script>
 </body>
 </html>
 
