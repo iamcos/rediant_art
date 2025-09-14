@@ -73,15 +73,19 @@ document.addEventListener('DOMContentLoaded', function() {
         navToggle.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
+            console.log('Menu toggle clicked');
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
+            console.log('Menu active:', navMenu.classList.contains('active'));
         });
         
         navToggle.addEventListener('touchstart', function(e) {
             e.preventDefault();
             e.stopPropagation();
+            console.log('Menu toggle touched');
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
+            console.log('Menu active:', navMenu.classList.contains('active'));
         });
     }
     
@@ -351,10 +355,11 @@ style.textContent = `
             z-index: 999;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            display: flex !important;
         }
         
         .nav-menu.active {
-            left: 0;
+            left: 0 !important;
         }
         
         .nav-menu .nav-link {
