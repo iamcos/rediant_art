@@ -1,0 +1,60 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  lang?: string;
+  heroImage?: string;
+  heroAlt?: string;
+}
+
+const { title, description = "Rediant Art - Contemporary Jewelry & 3D Printing Innovation", lang = "en", heroImage, heroAlt } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    {heroImage && <meta property="og:image" content={new URL(heroImage, Astro.url)} />}
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {heroImage && <meta name="twitter:image" content={new URL(heroImage, Astro.url)} />}
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Rediant Art",
+        "url": "https://iamcos.github.io/rediant_art/",
+        "logo": "https://iamcos.github.io/rediant_art/logo.svg",
+        "description": "Contemporary artistic jewelry featuring facechains, headchains, bodychains, and earrings. 3D printing innovation meets ancient tribal inspiration.",
+        "sameAs": [
+          "https://instagram.com/rediant.art",
+          "https://tiktok.com/@rediant.art"
+        ]
+      }
+    </script>
+    
+    <title>{title}</title>
+  </head>
+  <body class="bg-neutral-50 text-neutral-900 font-sans antialiased">
+    <slot />
+  </body>
+</html>
+
+<style>
+  @import '../styles/global.css';
+</style>
+

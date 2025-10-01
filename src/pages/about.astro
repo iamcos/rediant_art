@@ -1,0 +1,284 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const photos = await getCollection('photos');
+const founderPhotos = photos.filter(photo => photo.data.tags.includes('founder') || photo.data.category === 'portrait').slice(0, 6);
+const processPhotos = photos.filter(photo => photo.data.category === 'detail' || photo.data.tags.includes('craftsmanship')).slice(0, 4);
+---
+
+<Layout 
+  title="About Rediant Art - Our Story & Vision"
+  description="Meet Svetlana, the founder of Rediant Art. Discover our journey from tribal inspiration to 3D printing innovation, and learn about our mission to create conversation-starting jewelry."
+  lang="en"
+  heroImage="/images/photo_2025-09-10 23.56.36.jpg"
+  heroAlt="Portrait of Rediant Art founder"
+>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0">
+          <a href="/" class="text-2xl font-bold text-neutral-900">
+            <span class="text-[var(--color-gold)]">Rediant</span> Art
+          </a>
+        </div>
+        
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="/" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Home</a>
+            <a href="/collections" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Collections</a>
+            <a href="/about" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">About</a>
+            <a href="/3d-printing" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">3D Printing</a>
+            <a href="/crowdfunding" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Crowdfunding</a>
+            <a href="/journal" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Journal</a>
+            <a href="/contact" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Contact</a>
+          </div>
+        </div>
+        
+        <div class="language-switcher">
+          <a href="/" class="active">EN</a>
+          <a href="/ru/">RU</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section 
+    class="bg-image-section min-h-screen flex items-center justify-center"
+    style="background-image: url('/images/photo_2025-09-10 23.56.36.jpg')"
+  >
+    <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
+          Our Story
+        </h1>
+        <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
+          Where Ancient Inspiration Meets Modern Innovation
+        </p>
+        <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
+          Meet Svetlana, the radiant founder whose vision bridges tribal artistry with cutting-edge technology.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder Story -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-8">
+            Meet Svetlana
+          </h2>
+          <div class="space-y-6 text-lg text-neutral-600">
+            <p>
+              Svetlana ("Sveta") is a young woman with red hair and radiant energy who embodies friendship, joy, care, honesty, and creativity. Her journey began with inspiration from facial ornaments and tribal art discovered during travels in India.
+            </p>
+            <p>
+              Her personality is non-corporate, sincere, curious, and artistic. She believes that jewelry is sacred adornment and self-expression, creating conversation and attraction that makes the wearer unforgettable.
+            </p>
+            <p>
+              The name "Rediant" is a wordplay on "radiant" and "red," reflecting both her radiant energy and her distinctive red hair. This personal touch infuses every piece with authentic passion and artistic vision.
+            </p>
+          </div>
+        </div>
+        
+        <div class="photo-gallery grid grid-cols-2 gap-4">
+          {founderPhotos.slice(0, 4).map((photo) => (
+            <div class="photo-item">
+              <img 
+                src={`/images/${photo.data.filename}`} 
+                alt={photo.data.alt}
+                class="w-full h-80 object-cover rounded-lg"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Philosophy -->
+  <section 
+    class="bg-image-section py-20"
+    style="background-image: url('/images/photo_2025-09-10 23.58.18.jpeg')"
+  >
+    <div class="bg-image-content">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+            Our Philosophy
+          </h2>
+          <p class="text-xl text-neutral-200 max-w-3xl mx-auto">
+            We believe jewelry is more than adornment — it's a bridge between ancient wisdom and modern expression.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">🎨</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-4">Artistic Expression</h3>
+            <p class="text-neutral-300">
+              Every piece is designed to create conversation, draw attention, and make the wearer unforgettable through bold, soulful artistry.
+            </p>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">⚡</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-4">Innovation</h3>
+            <p class="text-neutral-300">
+              We pioneer the future of jewelry with 3D printing technology, creating pieces impossible with traditional methods.
+            </p>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">🌍</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-4">Community</h3>
+            <p class="text-neutral-300">
+              Through crypto crowdfunding, we build a global community of supporters who share our vision of artistic innovation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Craftsmanship Process -->
+  <section class="py-20 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Our Craftsmanship
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+          From ancient inspiration to modern innovation, every piece is crafted with precision and passion.
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="photo-gallery grid grid-cols-2 gap-4">
+          {processPhotos.map((photo) => (
+            <div class="photo-item">
+              <img 
+                src={`/images/${photo.data.filename}`} 
+                alt={photo.data.alt}
+                class="w-full h-64 object-cover rounded-lg"
+              />
+            </div>
+          ))}
+        </div>
+        
+        <div>
+          <h3 class="text-2xl font-bold text-neutral-900 mb-6">The Process</h3>
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="bg-[var(--color-gold)] text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">1</div>
+              <div>
+                <h4 class="font-semibold text-neutral-900 mb-2">Inspiration</h4>
+                <p class="text-neutral-600">Drawing from tribal art, sacred geometry, and contemporary artistic expression to create unique designs.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-[var(--color-gold)] text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">2</div>
+              <div>
+                <h4 class="font-semibold text-neutral-900 mb-2">Design</h4>
+                <p class="text-neutral-600">Using modern design tools and 3D modeling to create mathematically precise sacred geometry patterns.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-[var(--color-gold)] text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">3</div>
+              <div>
+                <h4 class="font-semibold text-neutral-900 mb-2">3D Printing</h4>
+                <p class="text-neutral-600">Advanced metal 3D printing creates intricate details impossible with traditional jewelry making techniques.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-[var(--color-gold)] text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">4</div>
+              <div>
+                <h4 class="font-semibold text-neutral-900 mb-2">Finishing</h4>
+                <p class="text-neutral-600">Hand-finishing and quality control ensure each piece meets our high standards for beauty and durability.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision & Goals -->
+  <section 
+    class="bg-image-section py-20"
+    style="background-image: url('/images/photo_2025-09-11 00.03.32.jpeg')"
+  >
+    <div class="bg-image-content">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+            Our Vision
+          </h2>
+          <p class="text-xl text-neutral-200 max-w-3xl mx-auto">
+            Building the most engaged artistic jewelry community worldwide through innovation and authentic connection.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="text-4xl font-bold text-[var(--color-gold)] mb-2">1,000+</div>
+            <div class="text-neutral-300">Community Members</div>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-4xl font-bold text-[var(--color-gold)] mb-2">$1M+</div>
+            <div class="text-neutral-300">Annual Revenue Goal</div>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-4xl font-bold text-[var(--color-gold)] mb-2">50+</div>
+            <div class="text-neutral-300">Countries</div>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-4xl font-bold text-[var(--color-gold)] mb-2">100%</div>
+            <div class="text-neutral-300">Community Driven</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+        Join Our Journey
+      </h2>
+      <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
+        Be part of a community that's redefining what jewelry can be. 
+        From ancient inspiration to cutting-edge innovation, your story matters.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+          Get in Touch
+        </a>
+        <a href="/crowdfunding" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
+          Support Our Vision
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+
+
+

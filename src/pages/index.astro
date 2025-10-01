@@ -1,16 +1,112 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
+// Get featured photos for the gallery
+const photos = await getCollection('photos');
+const featuredPhotos = photos.filter(photo => photo.data.featured).slice(0, 12);
+const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && photo.data.featured);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout 
+  title="Rediant Art - Contemporary Jewelry & 3D Printing Innovation"
+  description="Discover Rediant's artistic jewelry collection featuring facechains, headchains, bodychains, and earrings. Where ancient tribal inspiration meets modern 3D printing technology."
+  lang="en"
+  heroImage={heroPhoto ? `/images/${heroPhoto.data.filename}` : undefined}
+  heroAlt={heroPhoto?.data.alt}
+>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0">
+          <a href="/" class="text-2xl font-bold text-neutral-900">
+            <span class="text-[var(--color-gold)]">Rediant</span> Art
+          </a>
+        </div>
+        
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="/" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Home</a>
+            <a href="/collections" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Collections</a>
+            <a href="/about" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">About</a>
+            <a href="/3d-printing" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">3D Printing</a>
+            <a href="/crowdfunding" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Crowdfunding</a>
+            <a href="/journal" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Journal</a>
+            <a href="/contact" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Contact</a>
+          </div>
+        </div>
+        
+        <div class="language-switcher">
+          <a href="/" class="active">EN</a>
+          <a href="/ru/">RU</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Background Image -->
+  <section 
+    class="bg-image-section min-h-screen flex items-center justify-center"
+    style={`background-image: url('${heroPhoto ? `/images/${heroPhoto.data.filename}` : '/images/photo_2025-09-10 23.56.36.jpg'}')`}
+  >
+    <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
+          <span class="text-[var(--color-gold)]">Rediant</span> Art
+        </h1>
+        <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
+          Contemporary Jewelry & 3D Printing Innovation
+        </p>
+        <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
+          Where ancient tribal inspiration meets modern technology. Discover facechains, headchains, bodychains, and earrings that transform your presence into living art.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
+          <a href="/collections" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            Explore Collections
+          </a>
+          <a href="/about" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
+            Our Story
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery Section -->
+  <section class="py-20 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Art in Motion
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+          Each piece tells a story of ancient wisdom meeting modern innovation. 
+          Our jewelry transforms the body into a canvas for self-expression.
+        </p>
+      </div>
+      
+      <div class="photo-gallery">
+        {featuredPhotos.map((photo, index) => (
+          <div class="photo-item group">
+            <img 
+              src={`/images/${photo.data.filename}`} 
+              alt={photo.data.alt}
+              loading="lazy"
+              class="w-full h-full object-cover"
+            />
+            <div class="photo-overlay">
+              <h3 class="text-lg font-semibold mb-2">{photo.data.title}</h3>
+              <p class="text-sm opacity-90">{photo.data.description}</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                {photo.data.tags.map(tag => (
+                  <span class="text-xs bg-white/20 px-2 py-1 rounded">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
