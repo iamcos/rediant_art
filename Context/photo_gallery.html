@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rediant Photo Gallery - Facechain Collection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #D4AF37, #B8941F);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .filters {
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: #2c2c2c;
+        }
+        
+        .filter-group select {
+            padding: 0.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            background: white;
+            color: #2c2c2c;
+            font-size: 0.9rem;
+        }
+        
+        .filter-group select:focus {
+            outline: none;
+            border-color: #D4AF37;
+        }
+        
+        .search-box {
+            padding: 0.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            width: 200px;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: #D4AF37;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 3px solid #D4AF37;
+        }
+        
+        .photo-info {
+            padding: 1.5rem;
+        }
+        
+        .photo-info h3 {
+            font-family: 'Playfair Display', serif;
+            color: #D4AF37;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .photo-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tag {
+            background: #f0f0f0;
+            color: #2c2c2c;
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .tag.primary {
+            background: #D4AF37;
+            color: white;
+        }
+        
+        .stats {
+            background: white;
+            padding: 1rem 2rem;
+            margin: 2rem auto;
+            max-width: 1400px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stats h3 {
+            color: #D4AF37;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #D4AF37;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            
+            .filter-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Rediant Photo Gallery</h1>
+        <p>Facechain Collection - September 2025</p>
+    </div>
+    
+    <div class="filters">
+        <div class="filter-group">
+            <label for="categoryFilter">Category:</label>
+            <select id="categoryFilter">
+                <option value="">All Categories</option>
+                <option value="portrait_shots">Portrait Shots</option>
+                <option value="lifestyle_shots">Lifestyle Shots</option>
+                <option value="detail_shots">Detail Shots</option>
+                <option value="group_shots">Group Shots</option>
+            </select>
+            
+            <label for="styleFilter">Style:</label>
+            <select id="styleFilter">
+                <option value="">All Styles</option>
+                <option value="geometric">Geometric</option>
+                <option value="bohemian">Bohemian</option>
+                <option value="minimalist">Minimalist</option>
+                <option value="tribal">Tribal</option>
+                <option value="luxury">Luxury</option>
+                <option value="organic">Organic</option>
+                <option value="contemporary">Contemporary</option>
+                <option value="dramatic">Dramatic</option>
+                <option value="elegant">Elegant</option>
+            </select>
+            
+            <label for="usageFilter">Usage:</label>
+            <select id="usageFilter">
+                <option value="">All Usage</option>
+                <option value="hero">Hero Image</option>
+                <option value="product showcase">Product Showcase</option>
+                <option value="social media">Social Media</option>
+                <option value="lifestyle marketing">Lifestyle Marketing</option>
+                <option value="craftsmanship">Craftsmanship</option>
+            </select>
+            
+            <input type="text" id="searchBox" class="search-box" placeholder="Search photos...">
+        </div>
+    </div>
+    
+    <div class="stats">
+        <h3>Collection Statistics</h3>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">47</span>
+                <span class="stat-label">Total Photos</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">4</span>
+                <span class="stat-label">Categories</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">10</span>
+                <span class="stat-label">Styles</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">2</span>
+                <span class="stat-label">Sessions</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="gallery" id="photoGallery">
+        <!-- Photos will be loaded here by JavaScript -->
+    </div>
+    
+    <div class="no-results" id="noResults" style="display: none;">
+        <h3>No photos found</h3>
+        <p>Try adjusting your filters or search terms</p>
+    </div>
+
+    <script>
+        // Photo data (simplified version for demo)
+        const photoData = [
+            {
+                filename: "2025-09-10 23.56.36.jpg",
+                category: "portrait_shots",
+                style: "geometric",
+                description: "Close-up portrait of model wearing delicate silver facechain with geometric patterns",
+                tags: ["portrait", "geometric", "silver", "delicate", "studio"],
+                usage: ["hero image", "product showcase", "social media"]
+            },
+            {
+                filename: "photo_2025-09-10 23.57.48.jpeg",
+                category: "lifestyle_shots",
+                style: "bohemian",
+                description: "Full-body shot of model in bohemian setting wearing facechain with flowing chains",
+                tags: ["lifestyle", "bohemian", "flowing", "full_body", "natural"],
+                usage: ["website banner", "lifestyle marketing", "instagram"]
+            },
+            {
+                filename: "photo_2025-09-10 23.57.51.jpeg",
+                category: "detail_shots",
+                style: "geometric",
+                description: "Macro shot of facechain nosepiece with intricate geometric design",
+                tags: ["macro", "geometric", "intricate", "craftsmanship", "detail"],
+                usage: ["product detail page", "craftsmanship showcase"]
+            },
+            {
+                filename: "photo_2025-09-10 23.58.00.jpeg",
+                category: "portrait_shots",
+                style: "minimalist",
+                description: "Side profile of model wearing minimalist facechain",
+                tags: ["portrait", "minimalist", "profile", "clean", "elegant"],
+                usage: ["product gallery", "minimalist aesthetic showcase"]
+            },
+            {
+                filename: "photo_2025-09-10 23.58.06.jpeg",
+                category: "lifestyle_shots",
+                style: "ornate",
+                description: "Model in natural outdoor setting wearing ornate facechain",
+                tags: ["lifestyle", "ornate", "outdoor", "natural", "organic"],
+                usage: ["nature-themed marketing", "outdoor lifestyle"]
+            },
+            {
+                filename: "photo_2025-09-10 23.58.15.jpeg",
+                category: "portrait_shots",
+                style: "sacred_geometry",
+                description: "Front-facing portrait with dramatic facechain featuring sacred geometry",
+                tags: ["portrait", "sacred_geometry", "dramatic", "artistic", "front_facing"],
+                usage: ["main product showcase", "artistic presentation"]
+            }
+            // Add more photos as needed
+        ];
+        
+        let filteredPhotos = [...photoData];
+        
+        function renderGallery(photos) {
+            const gallery = document.getElementById('photoGallery');
+            const noResults = document.getElementById('noResults');
+            
+            if (photos.length === 0) {
+                gallery.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            gallery.innerHTML = photos.map(photo => `
+                <div class="gallery-item" data-category="${photo.category}" data-style="${photo.style}">
+                    <img src="photos/${photo.filename}" alt="${photo.description}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4='">
+                    <div class="photo-info">
+                        <h3>${photo.style.replace('_', ' ').toUpperCase()} ${photo.category.replace('_', ' ').toUpperCase()}</h3>
+                        <p>${photo.description}</p>
+                        <div class="tags">
+                            ${photo.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function filterPhotos() {
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const styleFilter = document.getElementById('styleFilter').value;
+            const usageFilter = document.getElementById('usageFilter').value;
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            
+            filteredPhotos = photoData.filter(photo => {
+                const matchesCategory = !categoryFilter || photo.category === categoryFilter;
+                const matchesStyle = !styleFilter || photo.style === styleFilter;
+                const matchesUsage = !usageFilter || photo.usage.some(u => u.includes(usageFilter));
+                const matchesSearch = !searchTerm || 
+                    photo.description.toLowerCase().includes(searchTerm) ||
+                    photo.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+                
+                return matchesCategory && matchesStyle && matchesUsage && matchesSearch;
+            });
+            
+            renderGallery(filteredPhotos);
+        }
+        
+        // Event listeners
+        document.getElementById('categoryFilter').addEventListener('change', filterPhotos);
+        document.getElementById('styleFilter').addEventListener('change', filterPhotos);
+        document.getElementById('usageFilter').addEventListener('change', filterPhotos);
+        document.getElementById('searchBox').addEventListener('input', filterPhotos);
+        
+        // Initial render
+        renderGallery(filteredPhotos);
+    </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowdfunding — Support Rediant's Vision</title>
+    <meta name="description" content="Support Rediant's revolutionary jewelry vision through crypto crowdfunding. Contribute to Project Aurora, Solstice, and Phoenix. Transparent BTC funding for artistic innovation.">
+    <meta name="keywords" content="crypto crowdfunding, BTC jewelry funding, blockchain jewelry, community funding, artistic jewelry support, 3D printing funding">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Rediant</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="collections.html" class="nav-link">Collections</a>
+                <a href="3d-printing.html" class="nav-link">3D Printing</a>
+                <a href="journal.html" class="nav-link">Journal</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="crowdfunding.html" class="nav-link active">Crowdfunding</a>
+                <a href="ru/crowdfunding.html" class="nav-link lang-btn">🇺🇸 EN</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Crowdfunding</h1>
+            <p class="hero-subtitle">Empowering creation through community</p>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="crowdfunding-intro">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Empowering Creation Through Community</h2>
+                <p>At Rediant, we believe in the power of collective dreams. Our crypto crowdfunding initiative isn't just about raising funds—it's about building a community of supporters who believe in the future of artistic jewelry and want to be part of our journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BTC Wallet -->
+    <section class="wallet-section">
+        <div class="container">
+            <h2>The Rediant BTC Wallet</h2>
+            <div class="wallet-info">
+                <div class="wallet-address">
+                    <h3>Wallet Address</h3>
+                    <div class="address-box">
+                        <code id="wallet-address">bc1qrediantartfuture2024</code>
+                        <button class="copy-btn" onclick="copyWalletAddress()">Copy</button>
+                    </div>
+                    <p class="wallet-note">*Placeholder address - actual address to be generated</p>
+                </div>
+                <div class="wallet-purpose">
+                    <h3>Purpose</h3>
+                    <p>Transparent funding for specific creative projects and brand development goals. All transactions and fund allocations will be publicly visible and regularly updated on our website.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Projects -->
+    <section class="projects-section">
+        <div class="container">
+            <h2>Current Funding Campaigns</h2>
+            <div class="projects-grid">
+                <!-- Project Aurora -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Context/photos/photo_2025-09-11 00.03.16.jpeg" alt="Close-up low-angle portrait of woman with vibrant red hair, looking directly at viewer with confident expression, adorned with elaborate silver-toned facechain with raised hand pose" class="project-img">
+                    </div>
+                    <div class="project-header">
+                        <h3>🎨 Project Aurora: Advanced 3D Printing Studio</h3>
+                        <div class="project-status">65% Funded</div>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-goal">
+                            <span class="goal-label">Goal:</span>
+                            <span class="goal-amount">2.5 BTC (~$100,000 USD)</span>
+                        </div>
+                        <div class="project-timeline">
+                            <span class="timeline-label">Timeline:</span>
+                            <span class="timeline-amount">6 months</span>
+                        </div>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <div class="progress-text">1.6 / 2.5 BTC (65% funded)</div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h4>What This Enables:</h4>
+                        <ul>
+                            <li>Industrial-grade metal 3D printers for titanium and precious metals</li>
+                            <li>Advanced resin printing for ultra-detailed prototypes</li>
+                            <li>Custom software development for jewelry design algorithms</li>
+                            <li>Material research and development lab</li>
+                            <li>Training and certification for our team</li>
+                        </ul>
+                    </div>
+                    <div class="project-benefits">
+                        <h4>Community Benefits:</h4>
+                        <ul>
+                            <li>Exclusive access to limited edition 3D-printed pieces</li>
+                            <li>Behind-the-scenes content from the studio</li>
+                            <li>Early access to new collections</li>
+                            <li>Input on future designs and materials</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project Solstice -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🌟 Project Solstice: Sacred Geometry Collection</h3>
+                        <div class="project-status">45% Funded</div>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-goal">
+                            <span class="goal-label">Goal:</span>
+                            <span class="goal-amount">1.8 BTC (~$72,000 USD)</span>
+                        </div>
+                        <div class="project-timeline">
+                            <span class="timeline-label">Timeline:</span>
+                            <span class="timeline-amount">4 months</span>
+                        </div>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%"></div>
+                            </div>
+                            <div class="progress-text">0.8 / 1.8 BTC (45% funded)</div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h4>What This Enables:</h4>
+                        <ul>
+                            <li>Mathematically perfect sacred geometry designs</li>
+                            <li>Golden ratio and Fibonacci spiral patterns</li>
+                            <li>Mandala-inspired facechains and headchains</li>
+                            <li>Collaboration with mathematicians and artists</li>
+                            <li>Limited edition numbered pieces</li>
+                        </ul>
+                    </div>
+                    <div class="project-benefits">
+                        <h4>Community Benefits:</h4>
+                        <ul>
+                            <li>First access to sacred geometry collection</li>
+                            <li>Educational content about mathematical beauty</li>
+                            <li>Special packaging with geometric explanations</li>
+                            <li>Community voting on design variations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project Phoenix -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🔥 Project Phoenix: Sustainable Materials Lab</h3>
+                        <div class="project-status">30% Funded</div>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-goal">
+                            <span class="goal-label">Goal:</span>
+                            <span class="goal-amount">3.2 BTC (~$128,000 USD)</span>
+                        </div>
+                        <div class="project-timeline">
+                            <span class="timeline-label">Timeline:</span>
+                            <span class="timeline-amount">8 months</span>
+                        </div>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 30%"></div>
+                            </div>
+                            <div class="progress-text">1.0 / 3.2 BTC (30% funded)</div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h4>What This Enables:</h4>
+                        <ul>
+                            <li>Research into lab-grown precious materials</li>
+                            <li>Recycled metal processing and refinement</li>
+                            <li>Biodegradable packaging and shipping materials</li>
+                            <li>Carbon-neutral production processes</li>
+                            <li>Partnerships with sustainable material suppliers</li>
+                        </ul>
+                    </div>
+                    <div class="project-benefits">
+                        <h4>Community Benefits:</h4>
+                        <ul>
+                            <li>Eco-friendly jewelry options</li>
+                            <li>Transparency in material sourcing</li>
+                            <li>Environmental impact reports</li>
+                            <li>Tree planting for each piece sold</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How Crypto Crowdfunding Works</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Choose Your Project</h3>
+                        <p>Select which project resonates with your vision for the future of jewelry.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Send BTC</h3>
+                        <p>Transfer Bitcoin to our transparent wallet address. All transactions are publicly verifiable.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Track Progress</h3>
+                        <p>Follow real-time updates on project development and fund allocation.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Receive Benefits</h3>
+                        <p>Enjoy exclusive access, early releases, and behind-the-scenes content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency -->
+    <section class="transparency-section">
+        <div class="container">
+            <h2>Complete Transparency</h2>
+            <div class="transparency-image">
+                <img src="Context/photos/2025-09-10 23.56.36.jpg" alt="Stunning close-up portrait of woman with long straight dark hair, wearing delicate silver facechain with sophisticated minimalist geometric design" class="transparency-img">
+            </div>
+            <div class="transparency-content">
+                <div class="transparency-point">
+                    <h3>Public Ledger</h3>
+                    <p>All Bitcoin transactions are recorded on the blockchain and publicly verifiable.</p>
+                </div>
+                <div class="transparency-point">
+                    <h3>Regular Updates</h3>
+                    <p>Weekly progress reports with photos, videos, and detailed fund allocation.</p>
+                </div>
+                <div class="transparency-point">
+                    <h3>Community Input</h3>
+                    <p>Vote on design decisions and provide feedback throughout the process.</p>
+                </div>
+                <div class="transparency-point">
+                    <h3>Open Communication</h3>
+                    <p>Direct access to our team through Discord, Telegram, and regular AMAs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join the Revolution</h2>
+            <p>Be part of the future of artistic jewelry. Your support directly enables innovation, creativity, and the creation of pieces that will define the next generation of adornment.</p>
+            <div class="cta-buttons">
+                <a href="#wallet-address" class="btn btn-primary">Contribute Now</a>
+                <a href="contact.html" class="btn btn-secondary">Ask Questions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Rediant</h3>
+                    <p>Where modern soul meets timeless adornment</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">TikTok</a>
+                        <a href="#" class="social-link">Pinterest</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="collections.html#facechains">Facechains</a></li>
+                        <li><a href="collections.html#headchains">Headchains</a></li>
+                        <li><a href="collections.html#bodychains">Bodychains</a></li>
+                        <li><a href="collections.html#earrings">Earrings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="crowdfunding.html">Crowdfunding</a></li>
+                        <li><a href="3d-printing.html">3D Printing</a></li>
+                        <li><a href="journal.html">Journal</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support Our Vision</h4>
+                    <p>BTC Wallet: <code>bc1qrediantartfuture2024</code></p>
+                    <a href="crowdfunding.html" class="btn btn-outline">Contribute</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rediant. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

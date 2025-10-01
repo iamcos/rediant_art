@@ -1,0 +1,124 @@
+# Rediant Art Website - Cursor Rules
+
+## Project Overview
+This is a bilingual (English/Russian) jewelry brand website for Rediant, featuring facechains, headchains, bodychains, and earrings. The site showcases 3D printing technology, crypto crowdfunding, and artistic jewelry design.
+
+## File Structure
+```
+/
+├── index.html (English homepage)
+├── about.html (English about page)
+├── collections.html (English collections)
+├── 3d-printing.html (English 3D printing)
+├── crowdfunding.html (English crowdfunding)
+├── journal.html (English journal)
+├── contact.html (English contact)
+├── ru/ (Russian version folder)
+│   ├── index.html
+│   ├── about.html
+│   ├── collections.html
+│   ├── 3d-printing.html
+│   ├── crowdfunding.html
+│   ├── journal.html
+│   └── contact.html
+├── styles.css (Main stylesheet)
+├── script.js (Main JavaScript)
+├── Context/ (Content source files)
+└── deploy.sh (Deployment script)
+```
+
+## Key Features
+- **Bilingual Support**: Complete English and Russian versions
+- **Responsive Design**: Mobile-first approach with breakpoints at 1024px, 768px, 480px
+- **Language Switcher**: Integrated into navigation menu
+- **3D Printing Focus**: Technology and innovation showcase
+- **Crypto Crowdfunding**: Bitcoin-based funding system
+- **SEO Optimized**: Meta tags, structured data, optimized keywords
+
+## Design System
+- **Colors**: 
+  - Primary: #D4AF37 (gold)
+  - Secondary: #2C2C2C (charcoal)
+  - Accent: #F5F5F5 (warm neutral)
+- **Typography**: 
+  - Headings: Playfair Display (serif)
+  - Body: Inter (sans-serif)
+- **Spacing**: CSS custom properties for consistent spacing
+- **Shadows**: Subtle shadows for depth
+
+## Content Guidelines
+- **Brand Voice**: Artistic, innovative, community-focused
+- **Target Audience**: Creative individuals, jewelry enthusiasts, tech-savvy consumers
+- **Key Messages**: Ancient traditions meet modern technology, community-driven innovation
+- **Products**: Facechains, headchains, bodychains, earrings, merchandise
+
+## Technical Standards
+- **HTML5**: Semantic markup, accessibility features
+- **CSS3**: Custom properties, flexbox, grid, responsive design
+- **JavaScript**: Vanilla JS for interactions, mobile navigation
+- **Performance**: Optimized images, minimal dependencies
+- **SEO**: Meta tags, structured data, semantic HTML
+
+## Language Switcher Implementation
+- Integrated into navigation menu (not floating)
+- Links between English and Russian versions
+- Active state styling
+- Mobile-responsive design
+- Consistent across all pages
+
+## Deployment
+- **Platform**: GitHub Pages
+- **URL**: https://iamcos.github.io/rediant_art/
+- **Script**: Use `./deploy.sh` for deployment
+- **Branch**: main branch, root folder
+
+## Content Sources
+- **Context Folder**: Contains all source markdown files
+- **Photos**: Product images and brand assets
+- **SEO**: Optimized from nextjs.md specifications
+- **Brand**: Complete brand identity and philosophy
+
+## Development Guidelines
+1. **Always maintain bilingual consistency**
+2. **Test responsive design on all breakpoints**
+3. **Ensure language switcher works on all pages**
+4. **Keep SEO optimization in mind**
+5. **Maintain brand voice and aesthetic**
+6. **Test deployment before pushing**
+
+## Common Tasks
+- Adding new content: Update both English and Russian versions
+- Styling changes: Update styles.css, test responsive design
+- Navigation updates: Update all pages consistently
+- SEO updates: Update meta tags and structured data
+- Deployment: Use deploy.sh script
+
+## Brand Keywords
+- facechain, headchain, bodychain, earrings
+- 3D printing, laser cutting, sacred geometry
+- tribal inspiration, modern jewelry
+- crypto crowdfunding, Bitcoin, blockchain
+- artistic jewelry, bohemian style
+- unisex jewelry, contemporary design
+
+## File Naming Conventions
+- HTML files: lowercase with hyphens
+- CSS classes: kebab-case
+- Images: descriptive names with dates
+- Folders: lowercase (ru/ for Russian)
+
+## Accessibility
+- Semantic HTML structure
+- Alt text for images
+- Keyboard navigation support
+- Screen reader compatibility
+- Color contrast compliance
+
+## Performance
+- Optimized images
+- Minimal JavaScript
+- Efficient CSS
+- Fast loading times
+- Mobile optimization
+
+Remember: This is a premium jewelry brand website that should reflect quality, innovation, and artistic excellence in every detail.
