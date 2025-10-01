@@ -1,0 +1,260 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Journal - Rediant Art Stories & Innovation"
+  description="Read the latest stories from Rediant Art. Behind-the-scenes content, 3D printing innovation updates, community spotlights, and artistic inspiration from our jewelry journey."
+  lang="en"
+  heroImage="/images/photo_2025-09-10 23.58.27.jpeg"
+  heroAlt="Rediant Art Journal"
+>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0">
+          <a href="/" class="text-2xl font-bold text-neutral-900">
+            <span class="text-[var(--color-gold)]">Rediant</span> Art
+          </a>
+        </div>
+        
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="/" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Home</a>
+            <a href="/collections" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Collections</a>
+            <a href="/about" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">About</a>
+            <a href="/3d-printing" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">3D Printing</a>
+            <a href="/crowdfunding" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Crowdfunding</a>
+            <a href="/journal" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Journal</a>
+            <a href="/contact" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Contact</a>
+          </div>
+        </div>
+        
+        <div class="language-switcher">
+          <a href="/" class="active">EN</a>
+          <a href="/ru/">RU</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section 
+    class="bg-image-section min-h-screen flex items-center justify-center"
+    style="background-image: url('/images/photo_2025-09-10 23.58.27.jpeg')"
+  >
+    <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
+          Our Journal
+        </h1>
+        <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
+          Stories from the Heart of Innovation
+        </p>
+        <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
+          Behind-the-scenes content, community spotlights, and the stories that shape our artistic journey.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Stories -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Featured Stories
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+          The latest updates from our creative journey and community.
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Story 1 -->
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="h-64 bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] flex items-center justify-center">
+            <span class="text-6xl">🎨</span>
+          </div>
+          <div class="p-6">
+            <div class="text-sm text-[var(--color-gold)] font-semibold mb-2">3D Printing Innovation</div>
+            <h3 class="text-xl font-bold text-neutral-900 mb-3">The Future of Sacred Geometry</h3>
+            <p class="text-neutral-600 mb-4">
+              How 3D printing is revolutionizing the way we create mathematically perfect jewelry designs, 
+              enabling intricate sacred geometry patterns that were impossible with traditional methods.
+            </p>
+            <a href="#" class="text-[var(--color-gold)] font-semibold hover:text-[var(--color-charcoal)] transition-colors">
+              Read More →
+            </a>
+          </div>
+        </article>
+        
+        <!-- Story 2 -->
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="h-64 bg-gradient-to-br from-[var(--color-charcoal)] to-[var(--color-gold)] flex items-center justify-center">
+            <span class="text-6xl">🌍</span>
+          </div>
+          <div class="p-6">
+            <div class="text-sm text-[var(--color-gold)] font-semibold mb-2">Community Spotlight</div>
+            <h3 class="text-xl font-bold text-neutral-900 mb-3">Meet Our Global Supporters</h3>
+            <p class="text-neutral-600 mb-4">
+              From Tokyo to New York, our community of supporters shares their stories of how Rediant jewelry 
+              has transformed their self-expression and connected them to ancient traditions.
+            </p>
+            <a href="#" class="text-[var(--color-gold)] font-semibold hover:text-[var(--color-charcoal)] transition-colors">
+              Read More →
+            </a>
+          </div>
+        </article>
+        
+        <!-- Story 3 -->
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="h-64 bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] flex items-center justify-center">
+            <span class="text-6xl">⚡</span>
+          </div>
+          <div class="p-6">
+            <div class="text-sm text-[var(--color-gold)] font-semibold mb-2">Technology Update</div>
+            <h3 class="text-xl font-bold text-neutral-900 mb-3">Project Aurora Progress</h3>
+            <p class="text-neutral-600 mb-4">
+              An inside look at our advanced 3D printing studio development, featuring new equipment, 
+              sustainable materials research, and the team behind our innovation.
+            </p>
+            <a href="#" class="text-[var(--color-gold)] font-semibold hover:text-[var(--color-charcoal)] transition-colors">
+              Read More →
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story Categories -->
+  <section 
+    class="bg-image-section py-20"
+    style="background-image: url('/images/photo_2025-09-10 23.58.18.jpeg')"
+  >
+    <div class="bg-image-content">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+            Story Categories
+          </h2>
+          <p class="text-xl text-neutral-200 max-w-3xl mx-auto">
+            Explore different aspects of our creative journey and community.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">🎨</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-4">Artistic Process</h3>
+            <p class="text-neutral-300 mb-4">
+              Behind-the-scenes content showing how we create our jewelry from concept to completion.
+            </p>
+            <a href="#" class="text-[var(--color-gold)] font-semibold hover:text-white transition-colors">
+              Explore →
+            </a>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">⚡</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-4">Technology</h3>
+            <p class="text-neutral-300 mb-4">
+              Updates on our 3D printing innovation, new materials, and technological breakthroughs.
+            </p>
+            <a href="#" class="text-[var(--color-gold)] font-semibold hover:text-white transition-colors">
+              Explore →
+            </a>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">🌍</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-4">Community</h3>
+            <p class="text-neutral-300 mb-4">
+              Stories from our global community of supporters, artists, and jewelry enthusiasts.
+            </p>
+            <a href="#" class="text-[var(--color-gold)] font-semibold hover:text-white transition-colors">
+              Explore →
+            </a>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">💎</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-4">Collections</h3>
+            <p class="text-neutral-300 mb-4">
+              Deep dives into our jewelry collections, design philosophy, and the stories behind each piece.
+            </p>
+            <a href="#" class="text-[var(--color-gold)] font-semibold hover:text-white transition-colors">
+              Explore →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup -->
+  <section class="py-20 bg-neutral-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+        Stay Connected
+      </h2>
+      <p class="text-xl text-neutral-600 max-w-2xl mx-auto mb-12">
+        Get the latest stories, behind-the-scenes content, and exclusive updates delivered to your inbox.
+      </p>
+      
+      <form class="max-w-md mx-auto">
+        <div class="flex gap-4">
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            class="flex-1 px-4 py-3 rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)] focus:border-transparent"
+          />
+          <button 
+            type="submit" 
+            class="bg-[var(--color-gold)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors"
+          >
+            Subscribe
+          </button>
+        </div>
+        <p class="text-sm text-neutral-500 mt-4">
+          No spam, just meaningful content about our artistic journey.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+        Share Your Story
+      </h2>
+      <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
+        Have a story about how Rediant jewelry has impacted your life? 
+        We'd love to feature it in our journal.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+          Share Your Story
+        </a>
+        <a href="/collections" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
+          Explore Collections
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+
+
+

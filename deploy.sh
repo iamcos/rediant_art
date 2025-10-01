@@ -1,43 +1,43 @@
 #!/bin/bash
 
-# Rediant Website Deployment Script
-echo "🚀 Deploying Rediant website to GitHub Pages..."
+# Rediant Art - Astro Website Deployment Script
+# This script builds the Astro website and prepares it for GitHub Pages deployment
 
-# Check if git is initialized
-if [ ! -d ".git" ]; then
-    echo "📦 Initializing git repository..."
-    git init
-fi
+echo "🚀 Starting Rediant Art website deployment..."
 
-# Add all files
-echo "📁 Adding files to git..."
-git add .
+# Build the Astro website
+echo "📦 Building Astro website..."
+npm run build
 
-# Commit changes
-echo "💾 Committing changes..."
-git commit -m "Update Rediant website - $(date '+%Y-%m-%d %H:%M:%S')"
-
-# Check if remote exists
-if ! git remote | grep -q origin; then
-    echo "🔗 Please add your GitHub repository as origin:"
-    echo "git remote add origin https://github.com/YOUR_USERNAME/rediant_art.git"
-    echo "Then run this script again."
+# Check if build was successful
+if [ $? -eq 0 ]; then
+    echo "✅ Build completed successfully!"
+    
+    # Copy built files to the root directory for GitHub Pages
+    echo "📁 Copying built files to root directory..."
+    cp -r dist/* ./
+    
+    # Create a simple index.html redirect if needed
+    echo "🔗 Creating deployment redirects..."
+    
+    echo "✅ Deployment files ready!"
+    echo "📝 Next steps:"
+    echo "   1. Commit and push changes to GitHub"
+    echo "   2. Enable GitHub Pages in repository settings"
+    echo "   3. Set source to 'Deploy from a branch' -> 'main' -> '/ (root)'"
+    echo "   4. Set custom domain to 'rediant.art' in GitHub Pages settings"
+    echo "   5. Configure DNS records at your domain registrar"
+    echo "   6. Your site will be available at: https://rediant.art"
+    echo ""
+    echo "📋 DNS Records needed:"
+    echo "   A records: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153"
+    echo "   CNAME: www -> iamcos.github.io"
+    
+else
+    echo "❌ Build failed! Please check the errors above."
     exit 1
 fi
 
-# Push to GitHub
-echo "⬆️  Pushing to GitHub..."
-git push origin main
 
-echo "✅ Deployment complete!"
-echo "🌐 Your website will be available at: https://YOUR_USERNAME.github.io/rediant_art/"
-echo ""
-echo "📋 Next steps:"
-echo "1. Go to your GitHub repository"
-echo "2. Click Settings > Pages"
-echo "3. Select 'Deploy from a branch'"
-echo "4. Choose 'main' branch and '/ (root)' folder"
-echo "5. Click Save"
-echo ""
-echo "🎉 Your Rediant website is now live!"
+
 
