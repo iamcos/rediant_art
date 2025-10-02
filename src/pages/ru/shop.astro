@@ -1,0 +1,163 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { fetchTributeProducts } from '../../config/tribute';
+
+// Fetch products from Tribute API
+let products = [];
+try {
+  products = await fetchTributeProducts();
+} catch (error) {
+  console.error('Error fetching products:', error);
+  // Fallback to sample products for development
+  products = [
+    {
+      id: 'sample-1',
+      name: 'Золотая цепочка для лица',
+      description: 'Элегантная золотая цепочка для лица, вдохновленная древними племенными дизайнами',
+      price: 89,
+      currency: 'USD',
+      image: '/images/photo_2025-09-10 23.58.23.jpeg',
+      category: 'facechain',
+      tags: ['золото', 'цепочка для лица', 'племенной'],
+      available: true,
+      stock: 5
+    },
+    {
+      id: 'sample-2',
+      name: 'Серебряная цепочка для головы',
+      description: 'Современная серебряная цепочка для головы с геометрическими узорами',
+      price: 75,
+      currency: 'USD',
+      image: '/images/photo_2025-09-10 23.58.18.jpeg',
+      category: 'headchain',
+      tags: ['серебро', 'цепочка для головы', 'геометрический'],
+      available: true,
+      stock: 3
+    },
+    {
+      id: 'sample-3',
+      name: 'Медная цепочка для тела',
+      description: 'Художественная медная цепочка для тела для современного стиля',
+      price: 120,
+      currency: 'USD',
+      image: '/images/photo_2025-09-10 23.58.25.jpeg',
+      category: 'bodychain',
+      tags: ['медь', 'цепочка для тела', 'художественный'],
+      available: false,
+      stock: 0
+    }
+  ];
+}
+---
+
+<Layout 
+  title="Магазин - Коллекция украшений Rediant Art"
+  description="Откройте для себя нашу эксклюзивную коллекцию художественных украшений. Цепочки для лица, головы, тела и серьги, созданные с инновациями 3D печати."
+  lang="ru"
+  heroImage="/images/photo_2025-09-10 23.58.23.jpeg"
+  heroAlt="Коллекция украшений Rediant Art"
+>
+  <!-- Hero Section -->
+  <section 
+    class="bg-image-section min-h-screen flex items-center justify-center"
+    style="background-image: url('/images/photo_2025-09-10 23.58.23.jpeg')"
+  >
+    <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
+          Коллекция
+        </h1>
+        <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
+          Эксклюзивные художественные украшения
+        </p>
+        <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
+          Откройте для себя нашу уникальную коллекцию цепочек для лица, головы, тела и серег. 
+          Каждое изделие создано с точностью и художественным видением.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="py-20 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Наша коллекция
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+          Каждое изделие рассказывает историю древней мудрости, встречающейся с современными инновациями. 
+          Просмотрите нашу эксклюзивную коллекцию художественных украшений.
+        </p>
+      </div>
+      
+      {products.length > 0 ? (
+        <div class="products-grid">
+          {products.map((product) => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-20">
+          <h3 class="text-2xl font-bold text-neutral-900 mb-4">
+            Товары недоступны
+          </h3>
+          <p class="text-neutral-600 mb-8">
+            Мы в настоящее время обновляем нашу коллекцию. Пожалуйста, заходите позже!
+          </p>
+          <a 
+            href="/ru/contact" 
+            class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors"
+          >
+            Связаться с нами
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+        Доступны индивидуальные заказы
+      </h2>
+      <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
+        Не видите именно то, что ищете? Мы создаем индивидуальные изделия, 
+        адаптированные под ваше видение. Свяжитесь с нами, чтобы обсудить ваши уникальные потребности в украшениях.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ru/contact" 
+          class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors"
+        >
+          Заказать индивидуальное изделие
+        </a>
+        <a 
+          href="/ru/about" 
+          class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors"
+        >
+          Узнать о нашем процессе
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .products-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>
+

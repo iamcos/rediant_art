@@ -37,7 +37,7 @@ const { title, description = "Rediant Art - Contemporary Jewelry & 3D Printing I
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Rediant Art",
-        "url": "https://iamcos.github.io/rediant_art/",
+        "url": "https://www.rediant.art/",
         "logo": "https://iamcos.github.io/rediant_art/logo.svg",
         "description": "Contemporary artistic jewelry featuring facechains, headchains, bodychains, and earrings. 3D printing innovation meets ancient tribal inspiration.",
         "sameAs": [
@@ -51,76 +51,43 @@ const { title, description = "Rediant Art - Contemporary Jewelry & 3D Printing I
   </head>
   <body class="bg-neutral-50 text-neutral-900 font-sans antialiased">
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-          <!-- Logo -->
-          <div class="flex-shrink-0">
-            <a href={lang === 'ru' ? '/ru/' : '/'} class="text-2xl font-bold text-neutral-900">
-              <span class="text-[var(--color-gold)]">Rediant</span> Art
-            </a>
-          </div>
-          
-          <!-- Desktop Navigation -->
-          <div class="hidden md:flex items-center space-x-8">
-            <!-- Navigation Links -->
-            <div class="flex items-baseline space-x-8">
-              <a href={lang === 'ru' ? '/ru/' : '/'} class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">{lang === 'ru' ? 'Главная' : 'Home'}</a>
-              <a href={lang === 'ru' ? '/ru/collections' : '/collections'} class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">{lang === 'ru' ? 'Коллекции' : 'Collections'}</a>
-              <a href={lang === 'ru' ? '/ru/about' : '/about'} class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">{lang === 'ru' ? 'О нас' : 'About'}</a>
-              <a href={lang === 'ru' ? '/ru/3d-printing' : '/3d-printing'} class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">{lang === 'ru' ? '3D Печать' : '3D Printing'}</a>
-              <a href={lang === 'ru' ? '/ru/crowdfunding' : '/crowdfunding'} class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">{lang === 'ru' ? 'Краудфандинг' : 'Crowdfunding'}</a>
-              <a href={lang === 'ru' ? '/ru/subscription' : '/subscription'} class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">{lang === 'ru' ? 'Подписка' : 'Subscription'}</a>
-              <a href={lang === 'ru' ? '/ru/order' : '/order'} class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">{lang === 'ru' ? 'Заказ' : 'Order'}</a>
-              <a href={lang === 'ru' ? '/ru/journal' : '/journal'} class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">{lang === 'ru' ? 'Журнал' : 'Journal'}</a>
-              <a href={lang === 'ru' ? '/ru/contact' : '/contact'} class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">{lang === 'ru' ? 'Контакты' : 'Contact'}</a>
-            </div>
-            
-            <!-- Language Switcher (Desktop) -->
-            <div class="language-switcher ml-8">
-              {lang === 'ru' ? (
-                <a href="/" class="text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">EN</a>
-              ) : (
-                <a href="/ru/" class="text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">RU</a>
-              )}
-            </div>
-          </div>
-          
-          <!-- Mobile Menu Button -->
-          <button 
-            id="mobile-menu-button" 
-            class="mobile-menu-button md:hidden"
-            onclick="toggleMobileMenu()"
-            aria-label="Toggle mobile menu"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+    <nav class="navbar">
+      <div class="nav-container">
+        <!-- Logo -->
+        <div class="nav-logo">
+          <a href={lang === 'ru' ? '/ru/' : '/'}>
+            <span class="logo-text">Rediant</span> Art
+          </a>
         </div>
-      </div>
-      
-      <!-- Mobile Menu -->
-      <div id="mobile-menu" class="mobile-menu hidden">
-        <div class="mobile-menu-content">
-          <a href={lang === 'ru' ? '/ru/' : '/'} class="mobile-menu-link">{lang === 'ru' ? 'Главная' : 'Home'}</a>
-          <a href={lang === 'ru' ? '/ru/collections' : '/collections'} class="mobile-menu-link">{lang === 'ru' ? 'Коллекции' : 'Collections'}</a>
-          <a href={lang === 'ru' ? '/ru/about' : '/about'} class="mobile-menu-link">{lang === 'ru' ? 'О нас' : 'About'}</a>
-          <a href={lang === 'ru' ? '/ru/3d-printing' : '/3d-printing'} class="mobile-menu-link">{lang === 'ru' ? '3D Печать' : '3D Printing'}</a>
-          <a href={lang === 'ru' ? '/ru/crowdfunding' : '/crowdfunding'} class="mobile-menu-link">{lang === 'ru' ? 'Краудфандинг' : 'Crowdfunding'}</a>
-          <a href={lang === 'ru' ? '/ru/subscription' : '/subscription'} class="mobile-menu-link">{lang === 'ru' ? 'Подписка' : 'Subscription'}</a>
-          <a href={lang === 'ru' ? '/ru/order' : '/order'} class="mobile-menu-link">{lang === 'ru' ? 'Заказ' : 'Order'}</a>
-          <a href={lang === 'ru' ? '/ru/journal' : '/journal'} class="mobile-menu-link">{lang === 'ru' ? 'Журнал' : 'Journal'}</a>
-          <a href={lang === 'ru' ? '/ru/contact' : '/contact'} class="mobile-menu-link">{lang === 'ru' ? 'Контакты' : 'Contact'}</a>
+        
+         <!-- Desktop Menu -->
+         <div class="nav-menu">
+           <a href={lang === 'ru' ? '/ru/' : '/'} class="nav-item">{lang === 'ru' ? 'Главная' : 'Home'}</a>
+           <a href={lang === 'ru' ? '/ru/shop' : '/shop'} class="nav-item">{lang === 'ru' ? 'Магазин' : 'Shop'}</a>
+           <a href={lang === 'ru' ? '/ru/collections' : '/collections'} class="nav-item">{lang === 'ru' ? 'Коллекции' : 'Collections'}</a>
+           <a href={lang === 'ru' ? '/ru/about' : '/about'} class="nav-item">{lang === 'ru' ? 'О нас' : 'About'}</a>
+           <a href={lang === 'ru' ? '/ru/3d-printing' : '/3d-printing'} class="nav-item">{lang === 'ru' ? '3D Печать' : '3D Printing'}</a>
+           <a href={lang === 'ru' ? '/ru/crowdfunding' : '/crowdfunding'} class="nav-item">{lang === 'ru' ? 'Краудфандинг' : 'Crowdfunding'}</a>
+           <a href={lang === 'ru' ? '/ru/subscription' : '/subscription'} class="nav-item">{lang === 'ru' ? 'Подписка' : 'Subscription'}</a>
+           <a href={lang === 'ru' ? '/ru/order' : '/order'} class="nav-item">{lang === 'ru' ? 'Заказ' : 'Order'}</a>
+           <a href={lang === 'ru' ? '/ru/journal' : '/journal'} class="nav-item">{lang === 'ru' ? 'Журнал' : 'Journal'}</a>
+           <a href={lang === 'ru' ? '/ru/contact' : '/contact'} class="nav-item">{lang === 'ru' ? 'Контакты' : 'Contact'}</a>
           
-          <!-- Language Switcher (Mobile) -->
-          <div class="mobile-language-switcher">
+          <!-- Language Switcher -->
+          <div class="nav-language">
             {lang === 'ru' ? (
-              <a href="/" class="mobile-language-link">English</a>
+              <a href="/" class="lang-link">EN</a>
             ) : (
-              <a href="/ru/" class="mobile-language-link">Русский</a>
+              <a href="/ru/" class="lang-link">RU</a>
             )}
           </div>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <div class="nav-toggle" id="mobile-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
       </div>
     </nav>
@@ -132,59 +99,27 @@ const { title, description = "Rediant Art - Contemporary Jewelry & 3D Printing I
     
     <!-- Mobile Menu Script -->
     <script>
-      function toggleMobileMenu() {
-        const menu = document.getElementById('mobile-menu');
-        const button = document.getElementById('mobile-menu-button');
-        
-        if (menu.classList.contains('hidden')) {
-          menu.classList.remove('hidden');
-          button.classList.add('open');
-          document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        } else {
-          menu.classList.add('hidden');
-          button.classList.remove('open');
-          document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-      }
+      const mobileToggle = document.getElementById('mobile-toggle');
+      const navMenu = document.querySelector('.nav-menu');
       
-      // Close menu when clicking outside
-      document.addEventListener('click', function(event) {
-        const menu = document.getElementById('mobile-menu');
-        const button = document.getElementById('mobile-menu-button');
-        
-        if (menu && button && !menu.contains(event.target) && !button.contains(event.target)) {
-          menu.classList.add('hidden');
-          button.classList.remove('open');
-          document.body.style.overflow = 'auto';
-        }
+      mobileToggle.addEventListener('click', function() {
+        mobileToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
       });
       
       // Close menu when clicking on a link
-      document.addEventListener('DOMContentLoaded', function() {
-        const menuLinks = document.querySelectorAll('.mobile-menu-link, .mobile-language-link');
-        menuLinks.forEach(link => {
-          link.addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            const button = document.getElementById('mobile-menu-button');
-            if (menu && button) {
-              menu.classList.add('hidden');
-              button.classList.remove('open');
-              document.body.style.overflow = 'auto';
-            }
-          });
+      document.querySelectorAll('.nav-item').forEach(link => {
+        link.addEventListener('click', function() {
+          mobileToggle.classList.remove('active');
+          navMenu.classList.remove('active');
         });
       });
       
-      // Close menu on escape key
-      document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-          const menu = document.getElementById('mobile-menu');
-          const button = document.getElementById('mobile-menu-button');
-          if (menu && button && !menu.classList.contains('hidden')) {
-            menu.classList.add('hidden');
-            button.classList.remove('open');
-            document.body.style.overflow = 'auto';
-          }
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
+          mobileToggle.classList.remove('active');
+          navMenu.classList.remove('active');
         }
       });
     </script>

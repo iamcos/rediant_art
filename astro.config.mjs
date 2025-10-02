@@ -6,7 +6,7 @@ import partytown from '@astrojs/partytown';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://rediant.art',
+  site: 'https://www.rediant.art',
   base: '/',
   output: 'static',
   integrations: [

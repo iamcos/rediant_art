@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { fetchTributeProducts } from '../config/tribute';
+
+// Fetch products from Tribute API
+let products = [];
+try {
+  products = await fetchTributeProducts();
+} catch (error) {
+  console.error('Error fetching products:', error);
+  // Fallback to sample products for development
+  products = [
+    {
+      id: 'sample-1',
+      name: 'Golden Facechain',
+      description: 'Elegant golden facechain inspired by ancient tribal designs',
+      price: 89,
+      currency: 'USD',
+      image: '/images/photo_2025-09-10 23.58.23.jpeg',
+      category: 'facechain',
+      tags: ['gold', 'facechain', 'tribal'],
+      available: true,
+      stock: 5
+    },
+    {
+      id: 'sample-2',
+      name: 'Silver Headchain',
+      description: 'Modern silver headchain with geometric patterns',
+      price: 75,
+      currency: 'USD',
+      image: '/images/photo_2025-09-10 23.58.18.jpeg',
+      category: 'headchain',
+      tags: ['silver', 'headchain', 'geometric'],
+      available: true,
+      stock: 3
+    },
+    {
+      id: 'sample-3',
+      name: 'Copper Bodychain',
+      description: 'Artistic copper bodychain for contemporary styling',
+      price: 120,
+      currency: 'USD',
+      image: '/images/photo_2025-09-10 23.58.25.jpeg',
+      category: 'bodychain',
+      tags: ['copper', 'bodychain', 'artistic'],
+      available: false,
+      stock: 0
+    }
+  ];
+}
+---
+
+<Layout 
+  title="Shop - Rediant Art Jewelry Collection"
+  description="Discover our exclusive collection of artistic jewelry. Facechains, headchains, bodychains, and earrings crafted with 3D printing innovation."
+  lang="en"
+  heroImage="/images/photo_2025-09-10 23.58.23.jpeg"
+  heroAlt="Rediant Art jewelry collection"
+>
+  <!-- Hero Section -->
+  <section 
+    class="bg-image-section min-h-screen flex items-center justify-center"
+    style="background-image: url('/images/photo_2025-09-10 23.58.23.jpeg')"
+  >
+    <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
+          Shop Collection
+        </h1>
+        <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
+          Exclusive Artistic Jewelry
+        </p>
+        <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
+          Discover our unique collection of facechains, headchains, bodychains, and earrings. 
+          Each piece is crafted with precision and artistic vision.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="py-20 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Our Collection
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+          Each piece tells a story of ancient wisdom meeting modern innovation. 
+          Browse our exclusive collection of artistic jewelry.
+        </p>
+      </div>
+      
+      {products.length > 0 ? (
+        <div class="products-grid">
+          {products.map((product) => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-20">
+          <h3 class="text-2xl font-bold text-neutral-900 mb-4">
+            No Products Available
+          </h3>
+          <p class="text-neutral-600 mb-8">
+            We're currently updating our collection. Please check back soon!
+          </p>
+          <a 
+            href="/contact" 
+            class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors"
+          >
+            Contact Us
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+        Custom Orders Available
+      </h2>
+      <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
+        Don't see exactly what you're looking for? We create custom pieces tailored to your vision. 
+        Contact us to discuss your unique jewelry needs.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/contact" 
+          class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors"
+        >
+          Request Custom Piece
+        </a>
+        <a 
+          href="/about" 
+          class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors"
+        >
+          Learn About Our Process
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .products-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>
+

@@ -1,0 +1,46 @@
+// Tribute API Configuration
+export const TRIBUTE_CONFIG = {
+  API_KEY: 'b437eef4-b475-4d9d-8624-53154116',
+  BASE_URL: 'https://api.tribute.app', // Update with actual Tribute API URL
+  ENDPOINTS: {
+    PRODUCTS: '/products',
+    ORDERS: '/orders',
+    WEBHOOK: '/webhook'
+  }
+};
+
+// API Helper Functions
+export async function fetchTributeProducts() {
+  try {
+    const response = await fetch(`${TRIBUTE_CONFIG.BASE_URL}${TRIBUTE_CONFIG.ENDPOINTS.PRODUCTS}`, {
+      headers: {
+        'Authorization': `Bearer ${TRIBUTE_CONFIG.API_KEY}`,
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    if (!response.ok) {
+      throw new Error(`API Error: ${response.status}`);
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching Tribute products:', error);
+    return [];
+  }
+}
+
+// Product Interface
+export interface TributeProduct {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  currency: string;
+  image: string;
+  category: string;
+  tags: string[];
+  available: boolean;
+  stock?: number;
+}
+
