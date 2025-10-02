@@ -400,3 +400,4 @@ npm run dev
 ---
 
 **Result**: A modern, maintainable, and performant website architecture that scales with the business needs while providing an excellent developer experience.
+

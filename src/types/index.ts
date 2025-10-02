@@ -128,3 +128,4 @@ export interface ContentCollectionItem {
   };
   body: string;
 }
+

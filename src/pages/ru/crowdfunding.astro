@@ -1,10 +1,20 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { fetchTributeProducts } from '../../utils/index';
+
+// Fetch real data from Tribute API
+const products = await fetchTributeProducts();
+const digitalProducts = products.filter(p => p.type === 'digital');
+const physicalProducts = products.filter(p => p.type === 'physical');
+
+// Calculate totals for display
+const totalDigitalValue = digitalProducts.reduce((sum, p) => sum + (p.amount / 100), 0);
+const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.amount / 100), 0);
 ---
 
 <Layout 
   title="Крипто Краудфандинг - Поддержите Инновации Rediant Art"
-  description="Присоединяйтесь к крипто краудфандинг кампаниям Rediant и поддержите будущее художественных украшений. Внесите вклад в проекты Aurora, Solstice и Phoenix с помощью Bitcoin и станьте частью нашего инновационного пути."
+  description="Присоединяйтесь к крипто краудфандинг кампаниям Rediant и поддержите будущее художественных украшений. Внесите вклад в нашу инновацию через цифровую поддержку и физические награды."
   lang="ru"
   heroImage="/images/photo_2025-09-11 00.03.32.jpeg"
   heroAlt="Крипто краудфандинг для Rediant Art"
@@ -17,247 +27,166 @@ import Layout from '../../layouts/Layout.astro';
     <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
-          Крипто Краудфандинг
+          Поддержите Rediant Art
         </h1>
         <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
-          Поддержите Будущее Художественных Украшений
+          Помогите Нам Построить Будущее Художественных Украшений
         </p>
         <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
-          Присоединяйтесь к нашей инновации, управляемой сообществом, через прозрачный Bitcoin краудфандинг. 
+          Присоединяйтесь к нашей инновации, управляемой сообществом, через цифровую поддержку и физические награды. 
           Станьте частью создания самой вовлеченной художественной ювелирной общины в мире.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
-          <a href="#campaigns" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
-            Посмотреть Кампании
+          <a href="#support" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            Варианты Поддержки
           </a>
-          <a href="#wallet" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
-            Пожертвовать Bitcoin
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Active Campaigns -->
-  <section id="campaigns" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-          Активные Кампании
-        </h2>
-        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-          Три амбициозных проекта, которые революционизируют художественные украшения и построят наше глобальное сообщество.
-        </p>
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Project Aurora -->
-        <div class="campaign-card">
-          <div class="campaign-header">
-            <h3 class="text-2xl font-bold text-neutral-900 mb-2">Проект Aurora</h3>
-            <p class="text-neutral-600">3D Печатная Лаборатория</p>
-          </div>
-          
-          <div class="campaign-progress">
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 45%"></div>
-            </div>
-            <div class="progress-text">
-              <span class="text-sm text-neutral-600">₿2.7 / ₿6.0 собрано</span>
-              <span class="text-sm font-semibold text-neutral-900">45%</span>
-            </div>
-          </div>
-          
-          <p class="campaign-description">
-            Создание передовой 3D печатной лаборатории для производства инновационных художественных украшений. 
-            Включает профессиональные 3D принтеры, лазерные резаки и оборудование для финишной обработки.
-          </p>
-          
-          <div class="campaign-details">
-            <div class="detail-item">
-              <span class="label">Цель:</span>
-              <span class="value">₿6.0 BTC</span>
-            </div>
-            <div class="detail-item">
-              <span class="label">Собрано:</span>
-              <span class="value">₿2.7 BTC</span>
-            </div>
-            <div class="detail-item">
-              <span class="label">Участников:</span>
-              <span class="value">127</span>
-            </div>
-          </div>
-          
-          <a href="#wallet" class="campaign-button">
-            Поддержать Проект
-          </a>
-        </div>
-
-        <!-- Project Solstice -->
-        <div class="campaign-card">
-          <div class="campaign-header">
-            <h3 class="text-2xl font-bold text-neutral-900 mb-2">Проект Solstice</h3>
-            <p class="text-neutral-600">Глобальное Сообщество</p>
-          </div>
-          
-          <div class="campaign-progress">
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 78%"></div>
-            </div>
-            <div class="progress-text">
-              <span class="text-sm text-neutral-600">₿3.9 / ₿5.0 собрано</span>
-              <span class="text-sm font-semibold text-neutral-900">78%</span>
-            </div>
-          </div>
-          
-          <p class="campaign-description">
-            Развитие глобального сообщества Rediant с платформами для художников, выставками и образовательными программами. 
-            Создание экосистемы для поддержки талантливых дизайнеров по всему миру.
-          </p>
-          
-          <div class="campaign-details">
-            <div class="detail-item">
-              <span class="label">Цель:</span>
-              <span class="value">₿5.0 BTC</span>
-            </div>
-            <div class="detail-item">
-              <span class="label">Собрано:</span>
-              <span class="value">₿3.9 BTC</span>
-            </div>
-            <div class="detail-item">
-              <span class="label">Участников:</span>
-              <span class="value">89</span>
-            </div>
-          </div>
-          
-          <a href="#wallet" class="campaign-button">
-            Поддержать Проект
-          </a>
-        </div>
-
-        <!-- Project Phoenix -->
-        <div class="campaign-card">
-          <div class="campaign-header">
-            <h3 class="text-2xl font-bold text-neutral-900 mb-2">Проект Phoenix</h3>
-            <p class="text-neutral-600">Устойчивое Производство</p>
-          </div>
-          
-          <div class="campaign-progress">
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 23%"></div>
-            </div>
-            <div class="progress-text">
-              <span class="text-sm text-neutral-600">₿1.2 / ₿8.0 собрано</span>
-              <span class="text-sm font-semibold text-neutral-900">23%</span>
-            </div>
-          </div>
-          
-          <p class="campaign-description">
-            Внедрение экологически устойчивых методов производства с использованием переработанных материалов 
-            и возобновляемых источников энергии. Создание углеродно-нейтральной производственной линии.
-          </p>
-          
-          <div class="campaign-details">
-            <div class="detail-item">
-              <span class="label">Цель:</span>
-              <span class="value">₿8.0 BTC</span>
-            </div>
-            <div class="detail-item">
-              <span class="label">Собрано:</span>
-              <span class="value">₿1.2 BTC</span>
-            </div>
-            <div class="detail-item">
-              <span class="label">Участников:</span>
-              <span class="value">45</span>
-            </div>
-          </div>
-          
-          <a href="#wallet" class="campaign-button">
-            Поддержать Проект
+          <a href="#rewards" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
+            Посмотреть Награды
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Bitcoin Wallet Section -->
-  <section id="wallet" class="py-20 bg-neutral-50">
+  <!-- Digital Support Tiers -->
+  <section id="support" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-          Bitcoin Кошелек
+          Цифровые Уровни Поддержки
         </h2>
         <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-          Пожертвования в Bitcoin помогают нам оставаться независимыми и прозрачными. 
-          Каждая транзакция записывается в блокчейн навсегда.
+          Выберите свой уровень поддержки и помогите нам построить будущее художественных украшений.
         </p>
       </div>
       
-      <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl mx-auto">
-        <div class="text-center mb-8">
-          <h3 class="text-2xl font-bold text-neutral-900 mb-4">
-            Адрес Bitcoin Кошелька
-          </h3>
-          <div class="bg-neutral-100 rounded-lg p-4 mb-4">
-            <code class="text-sm font-mono text-neutral-800 break-all">
-              bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh
-            </code>
-          </div>
-          <button 
-            onclick="copyToClipboard('bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh')"
-            class="bg-[var(--color-gold)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors"
-          >
-            Скопировать Адрес
-          </button>
+      {digitalProducts.length > 0 ? (
+        <div class="grid lg:grid-cols-3 gap-8 mb-16">
+          {digitalProducts.map((product, index) => (
+            <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] rounded-lg p-8 text-white">
+              <div class="text-center mb-6">
+                <div class="text-4xl mb-4">💎</div>
+                <h3 class="text-2xl font-bold mb-2">{product.name}</h3>
+                <p class="text-neutral-200">{product.description}</p>
+              </div>
+              
+              <div class="space-y-4 mb-6">
+                <div class="flex justify-between">
+                  <span>Цена:</span>
+                  <span class="font-semibold">{(product.amount / 100).toFixed(2)} {product.currency.toUpperCase()}</span>
+                </div>
+                {product.starsAmountEnabled && (
+                  <div class="flex justify-between">
+                    <span>Звезды:</span>
+                    <span class="font-semibold">{product.starsAmount}</span>
+                  </div>
+                )}
+                <div class="flex justify-between">
+                  <span>Тип:</span>
+                  <span class="font-semibold">Цифровая Поддержка</span>
+                </div>
+              </div>
+              
+              <p class="text-sm text-neutral-200 mb-6">
+                Поддержите нашу инновацию с помощью этого цифрового вклада. 
+                Помогите нам построить будущее художественных украшений.
+              </p>
+              
+              <a href={product.link} target="_blank" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
+                Поддержать Сейчас
+              </a>
+            </div>
+          ))}
         </div>
-        
-        <div class="space-y-4">
-          <div class="flex justify-between items-center py-3 border-b border-neutral-200">
-            <span class="text-neutral-600">Минимальное пожертвование:</span>
-            <span class="font-semibold text-neutral-900">₿0.001 BTC</span>
-          </div>
-          <div class="flex justify-between items-center py-3 border-b border-neutral-200">
-            <span class="text-neutral-600">Рекомендуемое:</span>
-            <span class="font-semibold text-neutral-900">₿0.01 BTC</span>
-          </div>
-          <div class="flex justify-between items-center py-3">
-            <span class="text-neutral-600">Максимальное:</span>
-            <span class="font-semibold text-neutral-900">₿1.0 BTC</span>
-          </div>
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-xl text-neutral-600">В данный момент цифровые уровни поддержки недоступны.</p>
         </div>
+      )}
+      
+      <!-- Physical Rewards -->
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Физические Награды
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+          Красивые рукотворные ювелирные изделия в качестве наград за вашу поддержку.
+        </p>
       </div>
+      
+      {physicalProducts.length > 0 ? (
+        <div class="grid lg:grid-cols-2 gap-8">
+          {physicalProducts.map((product, index) => (
+            <div class="bg-gradient-to-br from-[var(--color-charcoal)] to-[var(--color-gold)] rounded-lg p-8 text-white">
+              <div class="text-center mb-6">
+                <div class="text-4xl mb-4">💎</div>
+                <h3 class="text-2xl font-bold mb-2">{product.name}</h3>
+                <p class="text-neutral-200">{product.description}</p>
+              </div>
+              
+              <div class="space-y-4 mb-6">
+                <div class="flex justify-between">
+                  <span>Цена:</span>
+                  <span class="font-semibold">{(product.amount / 100).toFixed(2)} {product.currency.toUpperCase()}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Тип:</span>
+                  <span class="font-semibold">Физическая Награда</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Статус:</span>
+                  <span class="font-semibold capitalize">{product.status}</span>
+                </div>
+              </div>
+              
+              <p class="text-sm text-neutral-200 mb-6">
+                Красивое рукотворное ювелирное изделие в качестве награды за вашу поддержку. 
+                Каждое изделие уникально и сделано с любовью.
+              </p>
+              
+              <a href={product.link} target="_blank" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
+                Получить Награду
+              </a>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-xl text-neutral-600">В данный момент физические награды недоступны.</p>
+        </div>
+      )}
     </div>
   </section>
 
   <!-- Community Impact -->
-  <section class="py-20 bg-white">
+  <section class="py-20 bg-neutral-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
           Влияние на Сообщество
         </h2>
         <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-          Ваши пожертвования напрямую поддерживают инновации в художественных украшениях и создание глобального сообщества.
+          Ваша поддержка напрямую способствует инновациям в художественных украшениях и созданию нашего глобального сообщества.
         </p>
       </div>
       
       <div class="grid md:grid-cols-3 gap-8">
         <div class="text-center">
-          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">₿7.8</div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Всего Собрано</h3>
-          <p class="text-neutral-600">От 261 участника по всему миру</p>
+          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">{digitalProducts.length}</div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Цифровые Уровни Поддержки</h3>
+          <p class="text-neutral-600">Доступны для поддержки сообщества</p>
         </div>
         
         <div class="text-center">
-          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">3</div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Активных Проекта</h3>
-          <p class="text-neutral-600">Aurora, Solstice и Phoenix</p>
+          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">{physicalProducts.length}</div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Физические Награды</h3>
+          <p class="text-neutral-600">Рукотворные ювелирные изделия</p>
         </div>
         
         <div class="text-center">
-          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">127</div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Участников</h3>
-          <p class="text-neutral-600">В проекте Aurora</p>
+          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">∞</div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Участников Сообщества</h3>
+          <p class="text-neutral-600">Растущее глобальное сообщество</p>
         </div>
       </div>
     </div>
@@ -265,105 +194,18 @@ import Layout from '../../layouts/Layout.astro';
 </Layout>
 
 <style>
-  .campaign-card {
-    background: white;
-    border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
   }
 
-  .campaign-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  }
-
-  .campaign-header {
-    margin-bottom: 1.5rem;
-  }
-
-  .campaign-progress {
-    margin-bottom: 1.5rem;
-  }
-
-  .progress-bar {
-    width: 100%;
-    height: 8px;
-    background: #e5e7eb;
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 0.5rem;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: var(--color-gold);
-    transition: width 0.3s ease;
-  }
-
-  .progress-text {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .campaign-description {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
-
-  .campaign-details {
-    margin-bottom: 1.5rem;
-  }
-
-  .detail-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #f3f4f6;
-  }
-
-  .detail-item:last-child {
-    border-bottom: none;
-  }
-
-  .label {
-    color: #666;
-    font-weight: 500;
-  }
-
-  .value {
-    font-weight: 600;
-    color: var(--color-charcoal);
-  }
-
-  .campaign-button {
-    display: block;
-    width: 100%;
-    background: var(--color-gold);
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    font-weight: 600;
-    text-align: center;
-    transition: all 0.3s ease;
-  }
-
-  .campaign-button:hover {
-    background: var(--color-charcoal);
-    transform: translateY(-2px);
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
-
-<script>
-  function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(function() {
-      alert('Адрес Bitcoin скопирован в буфер обмена!');
-    }, function(err) {
-      console.error('Ошибка копирования: ', err);
-    });
-  }
-</script>

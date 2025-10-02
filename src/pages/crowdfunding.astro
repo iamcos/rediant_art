@@ -1,10 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { fetchTributeProducts } from '../utils/index';
+
+// Fetch real data from Tribute API
+const products = await fetchTributeProducts();
+const digitalProducts = products.filter(p => p.type === 'digital');
+const physicalProducts = products.filter(p => p.type === 'physical');
+
+// Calculate totals for display
+const totalDigitalValue = digitalProducts.reduce((sum, p) => sum + (p.amount / 100), 0);
+const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.amount / 100), 0);
 ---
 
 <Layout 
   title="Crypto Crowdfunding - Support Rediant Art Innovation"
-  description="Join Rediant's crypto crowdfunding campaigns and support the future of artistic jewelry. Contribute to Project Aurora, Solstice, and Phoenix with Bitcoin and be part of our innovation journey."
+  description="Join Rediant's crypto crowdfunding campaigns and support the future of artistic jewelry. Contribute to our innovation through digital support and physical rewards."
   lang="en"
   heroImage="/images/photo_2025-09-11 00.03.32.jpeg"
   heroAlt="Crypto crowdfunding for Rediant Art"
@@ -17,341 +27,185 @@ import Layout from '../layouts/Layout.astro';
     <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
-          Crypto Crowdfunding
+          Support Rediant Art
         </h1>
         <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
-          Support the Future of Artistic Jewelry
+          Help Us Build the Future of Artistic Jewelry
         </p>
         <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
-          Join our community-driven innovation through transparent Bitcoin crowdfunding. 
+          Join our community-driven innovation through digital support and physical rewards. 
           Be part of building the most engaged artistic jewelry community worldwide.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
-          <a href="#campaigns" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
-            View Campaigns
+          <a href="#support" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            View Support Options
           </a>
-          <a href="#wallet" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
-            Donate Bitcoin
+          <a href="#rewards" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
+            See Rewards
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Active Campaigns -->
-  <section id="campaigns" class="py-20 bg-white">
+  <!-- Digital Support Tiers -->
+  <section id="support" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-          Active Campaigns
+          Digital Support Tiers
         </h2>
         <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-          Three ambitious projects that will revolutionize artistic jewelry and build our global community.
+          Choose your level of support and help us build the future of artistic jewelry.
         </p>
       </div>
       
-      <div class="grid lg:grid-cols-3 gap-8">
-        <!-- Project Aurora -->
-        <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] rounded-lg p-8 text-white">
-          <div class="text-center mb-6">
-            <div class="text-4xl mb-4">🖨️</div>
-            <h3 class="text-2xl font-bold mb-2">Project Aurora</h3>
-            <p class="text-neutral-200">3D Printing & Casting Studio</p>
-          </div>
-          
-          <div class="space-y-4 mb-6">
-            <div class="flex justify-between">
-              <span>Goal:</span>
-              <span class="font-semibold">0.15 BTC</span>
+      {digitalProducts.length > 0 ? (
+        <div class="grid lg:grid-cols-3 gap-8 mb-16">
+          {digitalProducts.map((product, index) => (
+            <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] rounded-lg p-8 text-white">
+              <div class="text-center mb-6">
+                <div class="text-4xl mb-4">💎</div>
+                <h3 class="text-2xl font-bold mb-2">{product.name}</h3>
+                <p class="text-neutral-200">{product.description}</p>
+              </div>
+              
+              <div class="space-y-4 mb-6">
+                <div class="flex justify-between">
+                  <span>Price:</span>
+                  <span class="font-semibold">{(product.amount / 100).toFixed(2)} {product.currency.toUpperCase()}</span>
+                </div>
+                {product.starsAmountEnabled && (
+                  <div class="flex justify-between">
+                    <span>Stars:</span>
+                    <span class="font-semibold">{product.starsAmount}</span>
+                  </div>
+                )}
+                <div class="flex justify-between">
+                  <span>Type:</span>
+                  <span class="font-semibold">Digital Support</span>
+                </div>
+              </div>
+              
+              <p class="text-sm text-neutral-200 mb-6">
+                Support our innovation with this digital contribution. 
+                Help us build the future of artistic jewelry.
+              </p>
+              
+              <a href={product.link} target="_blank" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
+                Support Now
+              </a>
             </div>
-            <div class="flex justify-between">
-              <span>Raised:</span>
-              <span class="font-semibold">0.00 BTC</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Progress:</span>
-              <span class="font-semibold">0%</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Timeline:</span>
-              <span class="font-semibold">3 months</span>
-            </div>
-          </div>
-          
-          <div class="bg-white/20 rounded-full h-3 mb-6">
-            <div class="bg-white h-3 rounded-full" style="width: 0%"></div>
-          </div>
-          
-          <p class="text-sm text-neutral-200 mb-6">
-            High-precision resin 3D printer for jewelry prototypes, casting kiln, 
-            and vacuum casting machine for silver and gold pieces.
-          </p>
-          
-          <a href="#wallet" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
-            Support Aurora
-          </a>
+          ))}
         </div>
-        
-        <!-- Project Solstice -->
-        <div class="bg-gradient-to-br from-[var(--color-charcoal)] to-[var(--color-gold)] rounded-lg p-8 text-white">
-          <div class="text-center mb-6">
-            <div class="text-4xl mb-4">💻</div>
-            <h3 class="text-2xl font-bold mb-2">Project Solstice</h3>
-            <p class="text-neutral-200">Custom Jewelry Design Software</p>
-          </div>
-          
-          <div class="space-y-4 mb-6">
-            <div class="flex justify-between">
-              <span>Goal:</span>
-              <span class="font-semibold">0.12 BTC</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Raised:</span>
-              <span class="font-semibold">0.00 BTC</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Progress:</span>
-              <span class="font-semibold">0%</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Timeline:</span>
-              <span class="font-semibold">4 months</span>
-            </div>
-          </div>
-          
-          <div class="bg-white/20 rounded-full h-3 mb-6">
-            <div class="bg-white h-3 rounded-full" style="width: 0%"></div>
-          </div>
-          
-          <p class="text-sm text-neutral-200 mb-6">
-            Easy-to-use software for designing custom jewelry with sacred geometry templates, 
-            allowing customers to create personalized pieces.
-          </p>
-          
-          <a href="#wallet" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
-            Support Solstice
-          </a>
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-xl text-neutral-600">No digital support tiers available at the moment.</p>
         </div>
-        
-        <!-- Project Phoenix -->
-        <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] rounded-lg p-8 text-white">
-          <div class="text-center mb-6">
-            <div class="text-4xl mb-4">🏛️</div>
-            <h3 class="text-2xl font-bold mb-2">Project Phoenix</h3>
-            <p class="text-neutral-200">Exclusive Gallery Network</p>
-          </div>
-          
-          <div class="space-y-4 mb-6">
-            <div class="flex justify-between">
-              <span>Goal:</span>
-              <span class="font-semibold">0.08 BTC</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Raised:</span>
-              <span class="font-semibold">0.00 BTC</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Progress:</span>
-              <span class="font-semibold">0%</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Timeline:</span>
-              <span class="font-semibold">6 months</span>
-            </div>
-          </div>
-          
-          <div class="bg-white/20 rounded-full h-3 mb-6">
-            <div class="bg-white h-3 rounded-full" style="width: 0%"></div>
-          </div>
-          
-          <p class="text-sm text-neutral-200 mb-6">
-            Portable exhibit displays for exclusive gallery placements at luxury resorts, 
-            retreats, and high-end boutiques where wealthy clientele gather.
-          </p>
-          
-          <a href="#wallet" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
-            Support Phoenix
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reward Tiers -->
-  <section class="py-20 bg-neutral-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      )}
+      
+      <!-- Physical Rewards -->
       <div class="text-center mb-16">
         <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-          Supporter Rewards
+          Physical Rewards
         </h2>
         <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-          Choose your level of support and receive exclusive rewards that grow with your contribution.
+          Beautiful handcrafted jewelry pieces as rewards for your support.
         </p>
       </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-        <div class="bg-white rounded-lg p-6 shadow-lg text-center">
-          <div class="text-2xl mb-4">🌱</div>
-          <h3 class="text-lg font-semibold text-neutral-900 mb-2">Seed Supporter</h3>
-          <div class="text-[var(--color-gold)] font-bold text-xl mb-4">0.01 BTC</div>
-          <ul class="text-sm text-neutral-600 space-y-2">
-            <li>• Digital certificate</li>
-            <li>• Early access</li>
-            <li>• Newsletter</li>
-          </ul>
+      {physicalProducts.length > 0 ? (
+        <div class="grid lg:grid-cols-2 gap-8">
+          {physicalProducts.map((product, index) => (
+            <div class="bg-gradient-to-br from-[var(--color-charcoal)] to-[var(--color-gold)] rounded-lg p-8 text-white">
+              <div class="text-center mb-6">
+                <div class="text-4xl mb-4">💎</div>
+                <h3 class="text-2xl font-bold mb-2">{product.name}</h3>
+                <p class="text-neutral-200">{product.description}</p>
+              </div>
+              
+              <div class="space-y-4 mb-6">
+                <div class="flex justify-between">
+                  <span>Price:</span>
+                  <span class="font-semibold">{(product.amount / 100).toFixed(2)} {product.currency.toUpperCase()}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Type:</span>
+                  <span class="font-semibold">Physical Reward</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Status:</span>
+                  <span class="font-semibold capitalize">{product.status}</span>
+                </div>
+              </div>
+              
+              <p class="text-sm text-neutral-200 mb-6">
+                Beautiful handcrafted jewelry piece as a reward for your support. 
+                Each piece is unique and made with love.
+              </p>
+              
+              <a href={product.link} target="_blank" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
+                Get Reward
+              </a>
+            </div>
+          ))}
         </div>
-        
-        <div class="bg-white rounded-lg p-6 shadow-lg text-center">
-          <div class="text-2xl mb-4">🌿</div>
-          <h3 class="text-lg font-semibold text-neutral-900 mb-2">Growth Supporter</h3>
-          <div class="text-[var(--color-gold)] font-bold text-xl mb-4">0.05 BTC</div>
-          <ul class="text-sm text-neutral-600 space-y-2">
-            <li>• Digital art print</li>
-            <li>• 10% discount</li>
-            <li>• Virtual meetups</li>
-          </ul>
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-xl text-neutral-600">No physical rewards available at the moment.</p>
         </div>
-        
-        <div class="bg-white rounded-lg p-6 shadow-lg text-center">
-          <div class="text-2xl mb-4">🌳</div>
-          <h3 class="text-lg font-semibold text-neutral-900 mb-2">Bloom Supporter</h3>
-          <div class="text-[var(--color-gold)] font-bold text-xl mb-4">0.1 BTC</div>
-          <ul class="text-sm text-neutral-600 space-y-2">
-            <li>• 3D-printed prototype</li>
-            <li>• Personal consultation</li>
-            <li>• Behind-the-scenes access</li>
-          </ul>
-        </div>
-        
-        <div class="bg-white rounded-lg p-6 shadow-lg text-center border-2 border-[var(--color-gold)]">
-          <div class="text-2xl mb-4">🌟</div>
-          <h3 class="text-lg font-semibold text-neutral-900 mb-2">Radiant Supporter</h3>
-          <div class="text-[var(--color-gold)] font-bold text-xl mb-4">0.5 BTC</div>
-          <ul class="text-sm text-neutral-600 space-y-2">
-            <li>• Custom facechain</li>
-            <li>• Lifetime 20% discount</li>
-            <li>• Co-design opportunity</li>
-          </ul>
-        </div>
-        
-        <div class="bg-white rounded-lg p-6 shadow-lg text-center">
-          <div class="text-2xl mb-4">💫</div>
-          <h3 class="text-lg font-semibold text-neutral-900 mb-2">Legacy Supporter</h3>
-          <div class="text-[var(--color-gold)] font-bold text-xl mb-4">1+ BTC</div>
-          <ul class="text-sm text-neutral-600 space-y-2">
-            <li>• Named collection piece</li>
-            <li>• Executive producer credit</li>
-            <li>• VIP access to all events</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bitcoin Wallet -->
-  <section id="wallet" class="py-20 bg-neutral-900 text-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
-        Donate Bitcoin
-      </h2>
-      <p class="text-xl text-neutral-300 max-w-2xl mx-auto mb-12">
-        Support our vision with Bitcoin. All transactions are transparent and tracked on the blockchain.
-      </p>
-      
-      <div class="bg-neutral-800 rounded-lg p-8 mb-8">
-        <h3 class="text-xl font-semibold mb-4">Rediant Art Bitcoin Wallet</h3>
-        <div class="bg-neutral-700 rounded-lg p-4 mb-4">
-          <code class="text-[var(--color-gold)] text-lg break-all">
-            bc1qrediantartfuture2024
-          </code>
-        </div>
-        <p class="text-neutral-400 text-sm">
-          Send Bitcoin to this address to support our crowdfunding campaigns. 
-          All contributions are tracked transparently.
-        </p>
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="text-center">
-          <div class="text-3xl font-bold text-[var(--color-gold)] mb-2">100%</div>
-          <div class="text-neutral-300">Transparent</div>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl font-bold text-[var(--color-gold)] mb-2">24/7</div>
-          <div class="text-neutral-300">Trackable</div>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl font-bold text-[var(--color-gold)] mb-2">Global</div>
-          <div class="text-neutral-300">Accessible</div>
-        </div>
-      </div>
+      )}
     </div>
   </section>
 
   <!-- Community Impact -->
-  <section 
-    class="bg-image-section py-20"
-    style="background-image: url('/images/photo_2025-09-10 23.58.15.jpeg')"
-  >
-    <div class="bg-image-content">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl sm:text-5xl font-bold mb-6">
-            Community Impact
-          </h2>
-          <p class="text-xl text-neutral-200 max-w-3xl mx-auto">
-            Your support helps us build the most engaged artistic jewelry community worldwide.
-          </p>
+  <section class="py-20 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Community Impact
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+          Your support directly contributes to innovation in artistic jewelry and the creation of our global community.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">{digitalProducts.length}</div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Digital Support Tiers</h3>
+          <p class="text-neutral-600">Available for community support</p>
         </div>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="text-center">
-            <div class="text-4xl font-bold text-[var(--color-gold)] mb-2">1,000+</div>
-            <div class="text-neutral-200">Community Members</div>
-          </div>
-          
-          <div class="text-center">
-            <div class="text-4xl font-bold text-[var(--color-gold)] mb-2">$1M+</div>
-            <div class="text-neutral-200">Annual Revenue Goal</div>
-          </div>
-          
-          <div class="text-center">
-            <div class="text-4xl font-bold text-[var(--color-gold)] mb-2">50+</div>
-            <div class="text-neutral-200">Countries</div>
-          </div>
-          
-          <div class="text-center">
-            <div class="text-4xl font-bold text-[var(--color-gold)] mb-2">100%</div>
-            <div class="text-neutral-200">Community Driven</div>
-          </div>
+        <div class="text-center">
+          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">{physicalProducts.length}</div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Physical Rewards</h3>
+          <p class="text-neutral-600">Handcrafted jewelry pieces</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Call to Action -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-        Ready to Support Innovation?
-      </h2>
-      <p class="text-xl text-neutral-600 max-w-3xl mx-auto mb-12">
-        Join thousands of supporters who believe in the future of artistic jewelry. 
-        Your contribution makes a real difference.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#wallet" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
-          Donate Bitcoin
-        </a>
-        <a href="/contact" class="border-2 border-[var(--color-gold)] text-[var(--color-gold)] px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-gold)] hover:text-white transition-colors">
-          Learn More
-        </a>
+        
+        <div class="text-center">
+          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">∞</div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Community Members</h3>
+          <p class="text-neutral-600">Growing global community</p>
+        </div>
       </div>
     </div>
   </section>
 </Layout>
 
+<style>
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
 
-
-
-
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
