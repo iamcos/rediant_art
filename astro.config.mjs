@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
 
@@ -9,10 +9,8 @@ export default defineConfig({
   site: 'https://rediant.art',
   base: '/',
   output: 'static',
-  vite: {
-    plugins: [tailwindcss()]
-  },
   integrations: [
+    tailwind(),
     sitemap(),
     partytown({
       config: {
