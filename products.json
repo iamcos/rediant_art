@@ -26,7 +26,7 @@
     "amount": 10000,
     "currency": "rub",
     "starsAmountEnabled": false,
-    "status": "retry",
+    "status": "approved",
     "isCustom": false,
     "acceptCards": false,
     "acceptWalletPay": false,

@@ -25,19 +25,25 @@ export async function fetchProducts(): Promise<Product[]> {
     const { rows: tributeProducts } = await response.json();
     
     // Transform Tribute products to our format
-    const products = tributeProducts.map(product => ({
-      id: product.id,
-      name: product.name,
-      description: product.description || 'Beautiful artistic jewelry piece',
-      price: product.amount, // Use raw amount - Tribute API already provides correct prices
-      currency: product.currency.toUpperCase(),
-      image: product.imageUrl || '/images/photo_2025-09-10 23.58.23.jpeg',
-      category: 'jewelry',
-      tags: ['tribute', 'artistic', 'jewelry'],
-      available: true,
-      stock: 1,
-      link: product.link
-    }));
+    const products = tributeProducts.map(product => {
+      // Convert from minor units to major units
+      // EUR, USD, RUB use 100 minor units per major unit
+      const price = product.amount / 100;
+      
+      return {
+        id: product.id,
+        name: product.name,
+        description: product.description || 'Beautiful artistic jewelry piece',
+        price: price,
+        currency: product.currency.toUpperCase(),
+        image: product.imageUrl || '/images/photo_2025-09-10 23.58.23.jpeg',
+        category: 'jewelry',
+        tags: ['tribute', 'artistic', 'jewelry'],
+        available: true,
+        stock: 1,
+        link: product.link
+      };
+    });
     
     console.log(`Successfully fetched ${products.length} real products from Tribute API`);
     return products;
