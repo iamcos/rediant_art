@@ -3,13 +3,25 @@ import Layout from '../layouts/Layout.astro';
 import { fetchProducts } from '../utils/index';
 
 // Fetch real data from Tribute API
-const products = await fetchProducts();
-const digitalProducts = products.filter(p => p.type === 'digital');
-const physicalProducts = products.filter(p => p.type === 'physical');
+let products = [];
+let digitalProducts = [];
+let physicalProducts = [];
+
+try {
+  products = await fetchProducts();
+  digitalProducts = products.filter(p => p.type === 'digital');
+  physicalProducts = products.filter(p => p.type === 'physical');
+} catch (error) {
+  console.error('Failed to fetch products:', error);
+  // Fallback to empty arrays if API fails
+  products = [];
+  digitalProducts = [];
+  physicalProducts = [];
+}
 
 // Calculate totals for display
-const totalDigitalValue = digitalProducts.reduce((sum, p) => sum + (p.amount / 100), 0);
-const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.amount / 100), 0);
+const totalDigitalValue = digitalProducts.reduce((sum, p) => sum + (p.price || 0), 0);
+const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price || 0), 0);
 ---
 
 <Layout 
@@ -73,7 +85,7 @@ const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.amount /
               <div class="space-y-4 mb-6">
                 <div class="flex justify-between">
                   <span>Price:</span>
-                  <span class="font-semibold">{(product.amount / 100).toFixed(2)} {product.currency.toUpperCase()}</span>
+                  <span class="font-semibold">{product.price?.toFixed(2) || '0.00'} {product.currency?.toUpperCase() || 'EUR'}</span>
                 </div>
                 {product.starsAmountEnabled && (
                   <div class="flex justify-between">
@@ -127,7 +139,7 @@ const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.amount /
               <div class="space-y-4 mb-6">
                 <div class="flex justify-between">
                   <span>Price:</span>
-                  <span class="font-semibold">{(product.amount / 100).toFixed(2)} {product.currency.toUpperCase()}</span>
+                  <span class="font-semibold">{product.price?.toFixed(2) || '0.00'} {product.currency?.toUpperCase() || 'EUR'}</span>
                 </div>
                 <div class="flex justify-between">
                   <span>Type:</span>
