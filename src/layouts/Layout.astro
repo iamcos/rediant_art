@@ -51,6 +51,33 @@ const { title, description = "Rediant Art - Contemporary Jewelry & 3D Printing I
   </head>
   <body class="bg-neutral-50 text-neutral-900 font-sans antialiased">
     <slot />
+    
+    <!-- Mobile Menu Script -->
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const button = document.getElementById('mobile-menu-button');
+        
+        if (menu.classList.contains('hidden')) {
+          menu.classList.remove('hidden');
+          button.classList.add('open');
+        } else {
+          menu.classList.add('hidden');
+          button.classList.remove('open');
+        }
+      }
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const menu = document.getElementById('mobile-menu');
+        const button = document.getElementById('mobile-menu-button');
+        
+        if (!menu.contains(event.target) && !button.contains(event.target)) {
+          menu.classList.add('hidden');
+          button.classList.remove('open');
+        }
+      });
+    </script>
   </body>
 </html>
 

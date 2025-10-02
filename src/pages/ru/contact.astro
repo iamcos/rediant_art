@@ -1,0 +1,167 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Контакты - Rediant Art"
+  description="Свяжитесь с Rediant Art для заказа украшений или получения дополнительной информации. Мы всегда рады новым клиентам и творческим проектам."
+  lang="ru"
+  heroImage="/images/photo_2025-09-10 23.58.27.jpeg"
+  heroAlt="Контакты Rediant Art"
+>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0">
+          <a href="/ru/" class="text-2xl font-bold text-neutral-900">
+            <span class="text-[var(--color-gold)]">Rediant</span> Art
+          </a>
+        </div>
+        
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="/ru/" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Главная</a>
+            <a href="/ru/collections" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Коллекции</a>
+            <a href="/ru/about" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">О нас</a>
+            <a href="/ru/3d-printing" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">3D Печать</a>
+            <a href="/ru/crowdfunding" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Краудфандинг</a>
+            <a href="/ru/subscription" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Подписка</a>
+            <a href="/ru/order" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Заказ</a>
+            <a href="/ru/journal" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Журнал</a>
+            <a href="/ru/contact" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Контакты</a>
+          </div>
+        </div>
+        
+        <div class="hidden md:flex language-switcher">
+          <a href="/">EN</a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <button 
+          id="mobile-menu-button" 
+          class="mobile-menu-button"
+          onclick="toggleMobileMenu()"
+          aria-label="Открыть мобильное меню"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <a href="/ru/" onclick="toggleMobileMenu()">Главная</a>
+      <a href="/ru/collections" onclick="toggleMobileMenu()">Коллекции</a>
+      <a href="/ru/about" onclick="toggleMobileMenu()">О нас</a>
+      <a href="/ru/3d-printing" onclick="toggleMobileMenu()">3D Печать</a>
+      <a href="/ru/crowdfunding" onclick="toggleMobileMenu()">Краудфандинг</a>
+      <a href="/ru/subscription" onclick="toggleMobileMenu()">Подписка</a>
+      <a href="/ru/order" onclick="toggleMobileMenu()">Заказ</a>
+      <a href="/ru/journal" onclick="toggleMobileMenu()">Журнал</a>
+      <a href="/ru/contact" onclick="toggleMobileMenu()">Контакты</a>
+      
+      <div class="language-switcher">
+        <a href="/">EN</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section 
+    class="bg-image-section min-h-screen flex items-center justify-center"
+    style="background-image: url('/images/photo_2025-09-10 23.58.27.jpeg')"
+  >
+    <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
+          Контакты
+        </h1>
+        <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
+          Свяжитесь с нами
+        </p>
+        <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
+          Мы всегда рады новым клиентам и творческим проектам. Свяжитесь с нами 
+          для заказа украшений или получения дополнительной информации.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Information -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Свяжитесь с нами
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+          Выберите удобный для вас способ связи. Мы ответим в течение 24 часов.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl">📱</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-4">Telegram</h3>
+          <p class="text-neutral-600 mb-4">
+            Быстрое и безопасное общение с возможностью обмена файлами.
+          </p>
+          <a href="https://t.me/rediant_art" class="text-[var(--color-gold)] font-semibold hover:text-[var(--color-charcoal)] transition-colors">
+            @rediant_art
+          </a>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl">💬</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-4">WhatsApp</h3>
+          <p class="text-neutral-600 mb-4">
+            Знакомый мессенджер с сквозным шифрованием для международных клиентов.
+          </p>
+          <a href="https://wa.me/1234567890" class="text-[var(--color-gold)] font-semibold hover:text-[var(--color-charcoal)] transition-colors">
+            +1 (234) 567-890
+          </a>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl">📧</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-4">Email</h3>
+          <p class="text-neutral-600 mb-4">
+            Для подробных запросов и официальной переписки.
+          </p>
+          <a href="mailto:info@rediant.art" class="text-[var(--color-gold)] font-semibold hover:text-[var(--color-charcoal)] transition-colors">
+            info@rediant.art
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+        Готовы начать?
+      </h2>
+      <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
+        Свяжитесь с нами сегодня, чтобы обсудить ваш уникальный проект украшений.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/ru/order" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+          Заказать украшение
+        </a>
+        <a href="/ru/subscription" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
+          Подписаться на обновления
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

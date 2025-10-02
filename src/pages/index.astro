@@ -39,10 +39,38 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
           </div>
         </div>
         
-        <div class="language-switcher">
-          <a href="/" class="active">EN</a>
+        <div class="hidden md:flex language-switcher">
           <a href="/ru/">RU</a>
         </div>
+        
+        <!-- Mobile menu button -->
+        <button 
+          id="mobile-menu-button" 
+          class="mobile-menu-button"
+          onclick="toggleMobileMenu()"
+          aria-label="Toggle mobile menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <a href="/" onclick="toggleMobileMenu()">Home</a>
+      <a href="/collections" onclick="toggleMobileMenu()">Collections</a>
+      <a href="/about" onclick="toggleMobileMenu()">About</a>
+      <a href="/3d-printing" onclick="toggleMobileMenu()">3D Printing</a>
+      <a href="/crowdfunding" onclick="toggleMobileMenu()">Crowdfunding</a>
+      <a href="/subscription" onclick="toggleMobileMenu()">Subscription</a>
+      <a href="/order" onclick="toggleMobileMenu()">Order</a>
+      <a href="/journal" onclick="toggleMobileMenu()">Journal</a>
+      <a href="/contact" onclick="toggleMobileMenu()">Contact</a>
+      
+      <div class="language-switcher">
+        <a href="/ru/">RU</a>
       </div>
     </div>
   </nav>

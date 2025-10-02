@@ -1,14 +1,14 @@
 SEO & AI Search Pack
 
-Primary keywords: facechain, face chain jewelry, nose chain, bridge-of-nose jewelry, bohemian chain jewelry, head chain, body chain, laser-cut jewelry, modern tribal jewelry, unisex jewelry India, 3D printed jewelry, crypto crowdfunding jewelry, blockchain jewelry funding, sustainable jewelry technology.
+Primary keywords: facechain, face chain jewelry, nose chain, bridge-of-nose jewelry, bohemian chain jewelry, head chain, body chain, laser-cut jewelry, modern tribal jewelry, unisex jewelry India, 3D printed jewelry, sustainable jewelry technology.
 
-Secondary keywords: sacred geometry jewelry, calligraphic logo jewelry, conversation-starter jewelry, festival jewelry, metal 3D printing, additive manufacturing jewelry, community-funded art, BTC jewelry projects.
+Secondary keywords: sacred geometry jewelry, calligraphic logo jewelry, conversation-starter jewelry, festival jewelry, metal 3D printing, additive manufacturing jewelry, artistic jewelry design.
 
 Meta examples:
 
-Home Title: Rediant — Facechains & Chain-Born Adornment | 3D Printed & Community Funded
+Home Title: Rediant — Facechains & Chain-Born Adornment | 3D Printed Artistic Jewelry
 
-Home Description: Unisex facechains, headchains, bodychains, and ear assemblies. Ancient signs reimagined with modern 3D printing technology. Community-funded artistic jewelry designed to spark conversation.
+Home Description: Unisex facechains, headchains, bodychains, and ear assemblies. Ancient signs reimagined with modern 3D printing technology. Artistic jewelry designed to spark conversation.
 
 Alt-text patterns:
 
@@ -103,12 +103,12 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Rediant — Facechains & Chain-Born Adornment | 3D Printed & Community Funded</title>
+        <title>Rediant — Facechains & Chain-Born Adornment | 3D Printed Artistic Jewelry</title>
         <meta
           name="description"
-          content="Unisex facechains, headchains, bodychains, and ear assemblies. Ancient signs reimagined with modern 3D printing technology. Community-funded artistic jewelry designed to spark conversation."
+          content="Unisex facechains, headchains, bodychains, and ear assemblies. Ancient signs reimagined with modern 3D printing technology. Artistic jewelry designed to spark conversation."
         />
-        <meta name="keywords" content="facechain, face chain jewelry, nose chain, bridge-of-nose jewelry, bohemian chain jewelry, head chain, body chain, laser-cut jewelry, modern tribal jewelry, unisex jewelry, 3D printed jewelry, crypto crowdfunding jewelry, blockchain jewelry funding, sustainable jewelry technology" />
+        <meta name="keywords" content="facechain, face chain jewelry, nose chain, bridge-of-nose jewelry, bohemian chain jewelry, head chain, body chain, laser-cut jewelry, modern tribal jewelry, unisex jewelry, 3D printed jewelry, sustainable jewelry technology" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -142,7 +142,7 @@ export default function Home() {
             <Link href="/collections">Collections</Link>
             <Link href="/about">About</Link>
             <Link href="/journal">Journal</Link>
-            <Link href="/crowdfunding">Crowdfunding</Link>
+            <Link href="/3d-printing">3D Printing</Link>
             <Link href="/contact">Contact</Link>
           </nav>
         </header>
@@ -163,10 +163,10 @@ export default function Home() {
               Explore Facechains
             </Link>
             <Link
-              href="/crowdfunding"
+              href="/order"
               className="bg-red-600 text-white px-6 py-3 rounded-xl"
             >
-              Support Our Vision
+              Order Custom Jewelry
             </Link>
           </div>
         </section>
@@ -219,10 +219,10 @@ export default function Home() {
             </div>
           </div>
           <Link
-            href="/crowdfunding"
+            href="/subscription"
             className="inline-block mt-6 bg-black text-white px-8 py-3 rounded-xl"
           >
-            Join the Revolution
+            Subscribe to Updates
           </Link>
         </section>
 

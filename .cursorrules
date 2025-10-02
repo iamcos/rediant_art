@@ -1,38 +1,55 @@
 # Rediant Art Website - Cursor Rules
 
 ## Project Overview
-This is a bilingual (English/Russian) jewelry brand website for Rediant, featuring facechains, headchains, bodychains, and earrings. The site showcases 3D printing technology, crypto crowdfunding, and artistic jewelry design.
+This is a bilingual (English/Russian) jewelry brand website for Rediant, featuring facechains, headchains, bodychains, and earrings. The site showcases 3D printing technology and artistic jewelry design, hosted on Vercel.
+
+## Current Hosting & URLs
+- **Production URL**: https://rediant-art2.vercel.app (temporary)
+- **Future URL**: https://rediant.art (once DNS updates)
+- **Platform**: Vercel
+- **Framework**: Astro 4.x with Tailwind CSS
 
 ## File Structure
 ```
 /
-├── index.html (English homepage)
-├── about.html (English about page)
-├── collections.html (English collections)
-├── 3d-printing.html (English 3D printing)
-├── crowdfunding.html (English crowdfunding)
-├── journal.html (English journal)
-├── contact.html (English contact)
-├── ru/ (Russian version folder)
-│   ├── index.html
-│   ├── about.html
-│   ├── collections.html
-│   ├── 3d-printing.html
-│   ├── crowdfunding.html
-│   ├── journal.html
-│   └── contact.html
-├── styles.css (Main stylesheet)
-├── script.js (Main JavaScript)
-├── Context/ (Content source files)
-└── deploy.sh (Deployment script)
+├── src/
+│   ├── pages/ (English pages)
+│   │   ├── index.astro
+│   │   ├── about.astro
+│   │   ├── collections.astro
+│   │   ├── 3d-printing.astro
+│   │   ├── contact.astro
+│   │   ├── journal.astro
+│   │   ├── order.astro
+│   │   └── subscription.astro
+│   ├── pages/ru/ (Russian pages)
+│   │   ├── index.astro
+│   │   ├── about.astro
+│   │   ├── collections.astro
+│   │   ├── 3d-printing.astro
+│   │   ├── contact.astro
+│   │   ├── journal.astro
+│   │   ├── order.astro
+│   │   └── subscription.astro
+│   ├── layouts/
+│   │   └── Layout.astro
+│   ├── styles/
+│   │   └── global.css
+│   └── content/
+│       └── photos/ (content collections)
+├── public/
+│   └── images/ (product photos)
+├── astro.config.mjs
+├── vercel.json
+└── package.json
 ```
 
 ## Key Features
 - **Bilingual Support**: Complete English and Russian versions
-- **Responsive Design**: Mobile-first approach with breakpoints at 1024px, 768px, 480px
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
 - **Language Switcher**: Integrated into navigation menu
 - **3D Printing Focus**: Technology and innovation showcase
-- **Crypto Crowdfunding**: Bitcoin-based funding system
+- **Content Collections**: Photo gallery with Astro content collections
 - **SEO Optimized**: Meta tags, structured data, optimized keywords
 
 ## Design System
@@ -50,12 +67,13 @@ This is a bilingual (English/Russian) jewelry brand website for Rediant, featuri
 - **Brand Voice**: Artistic, innovative, community-focused
 - **Target Audience**: Creative individuals, jewelry enthusiasts, tech-savvy consumers
 - **Key Messages**: Ancient traditions meet modern technology, community-driven innovation
-- **Products**: Facechains, headchains, bodychains, earrings, merchandise
+- **Products**: Facechains, headchains, bodychains, earrings
 
 ## Technical Standards
-- **HTML5**: Semantic markup, accessibility features
-- **CSS3**: Custom properties, flexbox, grid, responsive design
-- **JavaScript**: Vanilla JS for interactions, mobile navigation
+- **Astro 4.x**: Modern static site generation
+- **Tailwind CSS**: Utility-first styling
+- **TypeScript**: Type safety and better development experience
+- **Vercel**: Deployment and hosting platform
 - **Performance**: Optimized images, minimal dependencies
 - **SEO**: Meta tags, structured data, semantic HTML
 
@@ -67,20 +85,22 @@ This is a bilingual (English/Russian) jewelry brand website for Rediant, featuri
 - Consistent across all pages
 
 ## Deployment
-- **Platform**: GitHub Pages
-- **URL**: https://iamcos.github.io/rediant_art/
-- **Script**: Use `./deploy.sh` for deployment
-- **Branch**: main branch, root folder
+- **Platform**: Vercel
+- **URL**: https://rediant-art2.vercel.app (current)
+- **Future URL**: https://rediant.art (pending DNS)
+- **Branch**: main branch
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
 
 ## Content Sources
-- **Context Folder**: Contains all source markdown files
-- **Photos**: Product images and brand assets
-- **SEO**: Optimized from nextjs.md specifications
+- **Photos**: Product images in public/images/
+- **Content Collections**: Astro content collections for photos
+- **SEO**: Optimized meta tags and structured data
 - **Brand**: Complete brand identity and philosophy
 
 ## Development Guidelines
-1. **Always maintain bilingual consistency**
-2. **Test responsive design on all breakpoints**
+1. **ALWAYS maintain bilingual consistency** - Every English page must have a Russian equivalent
+2. **Test responsive design on all breakpoints** (mobile, tablet, desktop)
 3. **Ensure language switcher works on all pages**
 4. **Keep SEO optimization in mind**
 5. **Maintain brand voice and aesthetic**
@@ -88,21 +108,20 @@ This is a bilingual (English/Russian) jewelry brand website for Rediant, featuri
 
 ## Common Tasks
 - Adding new content: Update both English and Russian versions
-- Styling changes: Update styles.css, test responsive design
+- Styling changes: Update styles, test responsive design
 - Navigation updates: Update all pages consistently
 - SEO updates: Update meta tags and structured data
-- Deployment: Use deploy.sh script
+- Deployment: Automatic via Vercel on push to main
 
 ## Brand Keywords
 - facechain, headchain, bodychain, earrings
 - 3D printing, laser cutting, sacred geometry
 - tribal inspiration, modern jewelry
-- crypto crowdfunding, Bitcoin, blockchain
 - artistic jewelry, bohemian style
 - unisex jewelry, contemporary design
 
 ## File Naming Conventions
-- HTML files: lowercase with hyphens
+- Astro files: lowercase with hyphens
 - CSS classes: kebab-case
 - Images: descriptive names with dates
 - Folders: lowercase (ru/ for Russian)
@@ -121,4 +140,12 @@ This is a bilingual (English/Russian) jewelry brand website for Rediant, featuri
 - Fast loading times
 - Mobile optimization
 
-Remember: This is a premium jewelry brand website that should reflect quality, innovation, and artistic excellence in every detail.
+## CRITICAL RULES
+1. **NEVER create content in only one language** - Always create both English and Russian versions
+2. **ALWAYS test both language versions** before deploying
+3. **Maintain consistent navigation** across all pages
+4. **Keep SEO meta tags updated** for both languages
+5. **Test responsive design** on all breakpoints
+6. **Ensure all internal links work** in both languages
+
+Remember: This is a premium jewelry brand website that should reflect quality, innovation, and artistic excellence in every detail. The bilingual nature is essential for reaching both English and Russian-speaking audiences.

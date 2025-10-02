@@ -1,0 +1,286 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Подписка - Rediant Art"
+  description="Подпишитесь на обновления Rediant Art и будьте в курсе последних новостей, новых коллекций и эксклюзивных предложений."
+  lang="ru"
+  heroImage="/images/photo_2025-09-10 23.58.18.jpeg"
+  heroAlt="Подписка на обновления Rediant Art"
+>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0">
+          <a href="/ru/" class="text-2xl font-bold text-neutral-900">
+            <span class="text-[var(--color-gold)]">Rediant</span> Art
+          </a>
+        </div>
+        
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="/ru/" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Главная</a>
+            <a href="/ru/collections" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Коллекции</a>
+            <a href="/ru/about" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">О нас</a>
+            <a href="/ru/3d-printing" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">3D Печать</a>
+            <a href="/ru/subscription" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Подписка</a>
+            <a href="/ru/order" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Заказ</a>
+            <a href="/ru/journal" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Журнал</a>
+            <a href="/ru/contact" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Контакты</a>
+          </div>
+        </div>
+        
+        <div class="language-switcher">
+          <a href="/subscription">EN</a>
+          <a href="/ru/subscription" class="active">RU</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section 
+    class="bg-image-section min-h-screen flex items-center justify-center"
+    style="background-image: url('/images/photo_2025-09-10 23.58.18.jpeg')"
+  >
+    <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
+          Подписка
+        </h1>
+        <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
+          Будьте в курсе наших новостей
+        </p>
+        <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
+          Получайте эксклюзивные обновления о новых коллекциях, 
+          закулисных историях и специальных предложениях.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Benefits -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Что вы получите
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+          Присоединяйтесь к нашему сообществу и получите доступ к эксклюзивному контенту 
+          и специальным предложениям.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-12">
+        <div class="text-center">
+          <div class="bg-[var(--color-gold)] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-3xl">📧</span>
+          </div>
+          <h3 class="text-2xl font-bold text-neutral-900 mb-4">Эксклюзивные обновления</h3>
+          <p class="text-neutral-600">
+            Первыми узнавайте о новых коллекциях, закулисных историях 
+            и творческом процессе Светланы.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-[var(--color-gold)] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-3xl">🎁</span>
+          </div>
+          <h3 class="text-2xl font-bold text-neutral-900 mb-4">Специальные предложения</h3>
+          <p class="text-neutral-600">
+            Получайте доступ к эксклюзивным скидкам, ранним заказам 
+            и ограниченным коллекциям.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-[var(--color-gold)] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-3xl">🎨</span>
+          </div>
+          <h3 class="text-2xl font-bold text-neutral-900 mb-4">Творческие истории</h3>
+          <p class="text-neutral-600">
+            Узнавайте о вдохновении, стоящем за каждым украшением, 
+            и процессе создания искусства.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Form -->
+  <section class="py-20 bg-neutral-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-neutral-900 mb-4">
+            Подпишитесь на наши обновления
+          </h2>
+          <p class="text-neutral-600">
+            Присоединяйтесь к нашему сообществу и будьте в курсе всех новостей Rediant Art.
+          </p>
+        </div>
+        
+        <form class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="firstName" class="block text-sm font-medium text-neutral-700 mb-2">Имя</label>
+              <input 
+                type="text" 
+                id="firstName" 
+                name="firstName" 
+                required
+                class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-[var(--color-gold)] focus:border-transparent"
+                placeholder="Ваше имя"
+              />
+            </div>
+            
+            <div>
+              <label for="lastName" class="block text-sm font-medium text-neutral-700 mb-2">Фамилия</label>
+              <input 
+                type="text" 
+                id="lastName" 
+                name="lastName" 
+                required
+                class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-[var(--color-gold)] focus:border-transparent"
+                placeholder="Ваша фамилия"
+              />
+            </div>
+          </div>
+          
+          <div>
+            <label for="email" class="block text-sm font-medium text-neutral-700 mb-2">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required
+              class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-[var(--color-gold)] focus:border-transparent"
+              placeholder="your@email.com"
+            />
+          </div>
+          
+          <div>
+            <label for="interests" class="block text-sm font-medium text-neutral-700 mb-2">Ваши интересы</label>
+            <div class="grid md:grid-cols-2 gap-4">
+              <label class="flex items-center">
+                <input type="checkbox" name="interests" value="new-collections" class="mr-3">
+                <span class="text-neutral-700">Новые коллекции</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" name="interests" value="behind-scenes" class="mr-3">
+                <span class="text-neutral-700">Закулисные истории</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" name="interests" value="special-offers" class="mr-3">
+                <span class="text-neutral-700">Специальные предложения</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" name="interests" value="events" class="mr-3">
+                <span class="text-neutral-700">События и выставки</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="flex items-center">
+            <input 
+              type="checkbox" 
+              id="privacy" 
+              name="privacy" 
+              required
+              class="mr-3"
+            />
+            <label for="privacy" class="text-sm text-neutral-600">
+              Я согласен с <a href="#" class="text-[var(--color-gold)] hover:underline">политикой конфиденциальности</a> 
+              и хочу получать обновления от Rediant Art.
+            </label>
+          </div>
+          
+          <button 
+            type="submit"
+            class="w-full bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors"
+          >
+            Подписаться
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Присоединяйтесь к сообществу
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+          Следите за нами в социальных сетях и будьте частью нашего 
+          творческого сообщества.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="bg-gradient-to-br from-pink-500 to-purple-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-3xl">📷</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-4">Instagram</h3>
+          <p class="text-neutral-600 mb-4">@rediant.art</p>
+          <p class="text-sm text-neutral-500">Визуальные истории и закулисные кадры</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-gradient-to-br from-blue-500 to-cyan-500 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-3xl">📘</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-4">Facebook</h3>
+          <p class="text-neutral-600 mb-4">Rediant Art</p>
+          <p class="text-sm text-neutral-500">Обновления и обсуждения</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-gradient-to-br from-red-500 to-pink-500 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-3xl">🎵</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-4">TikTok</h3>
+          <p class="text-neutral-600 mb-4">@rediant.art</p>
+          <p class="text-sm text-neutral-500">Короткие видео и процесс создания</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-gradient-to-br from-gray-600 to-gray-800 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-3xl">📧</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-4">Newsletter</h3>
+          <p class="text-neutral-600 mb-4">Еженедельно</p>
+          <p class="text-sm text-neutral-500">Подробные истории и эксклюзивный контент</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+        Начните свое путешествие с Rediant
+      </h2>
+      <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
+        Присоединяйтесь к нашему сообществу и откройте для себя мир 
+        художественных украшений и творческих историй.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#subscription-form" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+          Подписаться сейчас
+        </a>
+        <a href="/ru/collections" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
+          Изучить коллекции
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

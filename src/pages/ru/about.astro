@@ -1,0 +1,200 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout 
+  title="О нас - Rediant Art"
+  description="Узнайте историю создания Rediant Art и философию Светланы. Откройте для себя мир художественных украшений, где древние традиции встречаются с современными технологиями."
+  lang="ru"
+  heroImage="/images/photo_2025-09-10 23.58.18.jpeg"
+  heroAlt="О Rediant Art и Светлане"
+>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0">
+          <a href="/ru/" class="text-2xl font-bold text-neutral-900">
+            <span class="text-[var(--color-gold)]">Rediant</span> Art
+          </a>
+        </div>
+        
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="/ru/" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Главная</a>
+            <a href="/ru/collections" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Коллекции</a>
+            <a href="/ru/about" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">О нас</a>
+            <a href="/ru/3d-printing" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">3D Печать</a>
+            <a href="/ru/crowdfunding" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Краудфандинг</a>
+            <a href="/ru/subscription" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Подписка</a>
+            <a href="/ru/order" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Заказ</a>
+            <a href="/ru/journal" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Журнал</a>
+            <a href="/ru/contact" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Контакты</a>
+          </div>
+        </div>
+        
+        <div class="hidden md:flex language-switcher">
+          <a href="/">EN</a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <button 
+          id="mobile-menu-button" 
+          class="mobile-menu-button"
+          onclick="toggleMobileMenu()"
+          aria-label="Открыть мобильное меню"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <a href="/ru/" onclick="toggleMobileMenu()">Главная</a>
+      <a href="/ru/collections" onclick="toggleMobileMenu()">Коллекции</a>
+      <a href="/ru/about" onclick="toggleMobileMenu()">О нас</a>
+      <a href="/ru/3d-printing" onclick="toggleMobileMenu()">3D Печать</a>
+      <a href="/ru/crowdfunding" onclick="toggleMobileMenu()">Краудфандинг</a>
+      <a href="/ru/subscription" onclick="toggleMobileMenu()">Подписка</a>
+      <a href="/ru/order" onclick="toggleMobileMenu()">Заказ</a>
+      <a href="/ru/journal" onclick="toggleMobileMenu()">Журнал</a>
+      <a href="/ru/contact" onclick="toggleMobileMenu()">Контакты</a>
+      
+      <div class="language-switcher">
+        <a href="/">EN</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section 
+    class="bg-image-section min-h-screen flex items-center justify-center"
+    style="background-image: url('/images/photo_2025-09-10 23.58.18.jpeg')"
+  >
+    <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
+          О нас
+        </h1>
+        <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
+          История Rediant Art
+        </p>
+        <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
+          Откройте для себя историю создания Rediant Art и философию, которая движет 
+          нашим стремлением создавать уникальные художественные украшения.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder Story -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+            История Светланы
+          </h2>
+          <p class="text-xl text-neutral-600 mb-8">
+            Светлана — основательница Rediant Art, художница и мастер, чья страсть к 
+            созданию уникальных украшений началась с глубокого изучения древних традиций 
+            и современных технологий.
+          </p>
+          <div class="space-y-6">
+            <p class="text-neutral-700">
+              Ее путешествие началось в пустынях Индии, где она изучала древние техники 
+              украшения лица у племенных мастеров. Эти традиции, передаваемые из поколения 
+              в поколение, вдохновили ее на создание современной интерпретации.
+            </p>
+            <p class="text-neutral-700">
+              Вернувшись домой, Светлана начала экспериментировать с современными 
+              технологиями 3D печати, чтобы воссоздать красоту и смысл древних узоров 
+              в формах, подходящих для современной жизни.
+            </p>
+            <p class="text-neutral-700">
+              Каждое украшение Rediant Art несет в себе частичку этой истории — 
+              соединение древней мудрости с современными возможностями.
+            </p>
+          </div>
+        </div>
+        <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] rounded-lg h-96 flex items-center justify-center">
+          <span class="text-8xl">👩‍🎨</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="py-20 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Наша философия
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+          Мы верим, что украшения — это не просто аксессуары, а способ выражения 
+          индивидуальности и связи с древними традициями.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl">🎨</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-4">Художественность</h3>
+          <p class="text-neutral-600">
+            Каждое украшение создается как произведение искусства, с вниманием к деталям 
+            и стремлением к совершенству.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl">🌱</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-4">Устойчивость</h3>
+          <p class="text-neutral-600">
+            Мы используем экологически чистые материалы и технологии, которые минимизируют 
+            воздействие на окружающую среду.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl">🤝</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-4">Сообщество</h3>
+          <p class="text-neutral-600">
+            Мы строим сообщество людей, которые ценят уникальность, творчество и 
+            самовыражение через украшения.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+        Присоединяйтесь к нашему сообществу
+      </h2>
+      <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
+        Станьте частью сообщества Rediant Art и откройте для себя мир уникальных 
+        художественных украшений.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/ru/order" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+          Заказать украшение
+        </a>
+        <a href="/ru/subscription" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
+          Подписаться на обновления
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

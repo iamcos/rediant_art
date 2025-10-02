@@ -1,0 +1,388 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Журнал - Истории и идеи Rediant Art"
+  description="Откройте для себя истории, стоящие за художественными украшениями Rediant. Читайте о нашем творческом процессе, вдохновении и философии, которая движет нашими уникальными дизайнами."
+  lang="ru"
+  heroImage="/images/photo_2025-09-10 23.58.18.jpeg"
+  heroAlt="Журнал и истории Rediant Art"
+>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0">
+          <a href="/ru/" class="text-2xl font-bold text-neutral-900">
+            <span class="text-[var(--color-gold)]">Rediant</span> Art
+          </a>
+        </div>
+        
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="/ru/" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Главная</a>
+            <a href="/ru/collections" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Коллекции</a>
+            <a href="/ru/about" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">О нас</a>
+            <a href="/ru/3d-printing" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">3D Печать</a>
+            <a href="/ru/crowdfunding" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Краудфандинг</a>
+            <a href="/ru/subscription" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Подписка</a>
+            <a href="/ru/order" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Заказ</a>
+            <a href="/ru/journal" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Журнал</a>
+            <a href="/ru/contact" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Контакты</a>
+          </div>
+        </div>
+        
+        <div class="hidden md:flex language-switcher">
+          <a href="/">EN</a>
+          <a href="/ru/" class="active">RU</a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <button 
+          id="mobile-menu-button" 
+          class="mobile-menu-button"
+          onclick="toggleMobileMenu()"
+          aria-label="Открыть мобильное меню"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <a href="/ru/" onclick="toggleMobileMenu()">Главная</a>
+      <a href="/ru/collections" onclick="toggleMobileMenu()">Коллекции</a>
+      <a href="/ru/about" onclick="toggleMobileMenu()">О нас</a>
+      <a href="/ru/3d-printing" onclick="toggleMobileMenu()">3D Печать</a>
+      <a href="/ru/crowdfunding" onclick="toggleMobileMenu()">Краудфандинг</a>
+      <a href="/ru/subscription" onclick="toggleMobileMenu()">Подписка</a>
+      <a href="/ru/order" onclick="toggleMobileMenu()">Заказ</a>
+      <a href="/ru/journal" onclick="toggleMobileMenu()">Журнал</a>
+      <a href="/ru/contact" onclick="toggleMobileMenu()">Контакты</a>
+      
+      <div class="language-switcher">
+        <a href="/">EN</a>
+        <a href="/ru/" class="active">RU</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section 
+    class="bg-image-section min-h-screen flex items-center justify-center"
+    style="background-image: url('/images/photo_2025-09-10 23.58.18.jpeg')"
+  >
+    <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
+          Журнал
+        </h1>
+        <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
+          Истории творческого процесса
+        </p>
+        <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
+          Погрузитесь в философию, вдохновение и техники, стоящие за 
+          художественными украшениями Rediant. Откройте истории, которые формируют наши дизайны.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Articles -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Избранные истории
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+          Исследуйте творческий путь, стоящий за уникальными украшениями Rediant 
+          и философией, которая движет нашим художественным видением.
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Article 1 -->
+        <article class="bg-neutral-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="h-64 bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] flex items-center justify-center">
+            <span class="text-6xl">👤</span>
+          </div>
+          <div class="p-8">
+            <div class="flex items-center mb-4">
+              <span class="bg-[var(--color-gold)] text-white px-3 py-1 rounded-full text-sm font-semibold">Философия</span>
+              <span class="text-neutral-500 text-sm ml-4">Декабрь 2024</span>
+            </div>
+            <h3 class="text-2xl font-bold text-neutral-900 mb-4">
+              Скрытый язык цепочек для лица
+            </h3>
+            <p class="text-neutral-600 mb-6">
+              На протяжении всей истории люди искали способы отметить идентичность, статус и красоту на своих лицах. 
+              От племен пустыни, рисующих священные узоры, до золотых масок древних культур, лицо всегда было холстом смысла...
+            </p>
+            <a href="#article-1" class="text-[var(--color-gold)] font-semibold hover:text-[var(--color-charcoal)] transition-colors">
+              Читать полностью →
+            </a>
+          </div>
+        </article>
+        
+        <!-- Article 2 -->
+        <article class="bg-neutral-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="h-64 bg-gradient-to-br from-[var(--color-charcoal)] to-[var(--color-gold)] flex items-center justify-center">
+            <span class="text-6xl">💬</span>
+          </div>
+          <div class="p-8">
+            <div class="flex items-center mb-4">
+              <span class="bg-[var(--color-gold)] text-white px-3 py-1 rounded-full text-sm font-semibold">Дизайн</span>
+              <span class="text-neutral-500 text-sm ml-4">Ноябрь 2024</span>
+            </div>
+            <h3 class="text-2xl font-bold text-neutral-900 mb-4">
+              Почему украшения должны начинать разговоры
+            </h3>
+            <p class="text-neutral-600 mb-6">
+              Большинство украшений тихо прячутся в фоне. Но украшения Rediant другие. 
+              Они созданы, чтобы вызывать любопытство. В тот момент, когда вы входите в комнату с цепочкой для лица, 
+              кто-то обязательно спросит: "Что это? Где вы это взяли?"...
+            </p>
+            <a href="#article-2" class="text-[var(--color-gold)] font-semibold hover:text-[var(--color-charcoal)] transition-colors">
+              Читать полностью →
+            </a>
+          </div>
+        </article>
+        
+        <!-- Article 3 -->
+        <article class="bg-neutral-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="h-64 bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] flex items-center justify-center">
+            <span class="text-6xl">🏺</span>
+          </div>
+          <div class="p-8">
+            <div class="flex items-center mb-4">
+              <span class="bg-[var(--color-gold)] text-white px-3 py-1 rounded-full text-sm font-semibold">Ремесло</span>
+              <span class="text-neutral-500 text-sm ml-4">Октябрь 2024</span>
+            </div>
+            <h3 class="text-2xl font-bold text-neutral-900 mb-4">
+              От племенных лиц к современным цепочкам
+            </h3>
+            <p class="text-neutral-600 mb-6">
+              Вдохновение для Rediant началось в пустынях Индии, где племена рисовали на лицах 
+              узоры защиты, празднования и красоты. Эти узоры не были случайными. 
+              Каждый нес в себе смысл: историю принадлежности, любви, мужества...
+            </p>
+            <a href="#article-3" class="text-[var(--color-gold)] font-semibold hover:text-[var(--color-charcoal)] transition-colors">
+              Читать полностью →
+            </a>
+          </div>
+        </article>
+        
+        <!-- Article 4 -->
+        <article class="bg-neutral-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="h-64 bg-gradient-to-br from-[var(--color-charcoal)] to-[var(--color-gold)] flex items-center justify-center">
+            <span class="text-6xl">⚡</span>
+          </div>
+          <div class="p-8">
+            <div class="flex items-center mb-4">
+              <span class="bg-[var(--color-gold)] text-white px-3 py-1 rounded-full text-sm font-semibold">Технологии</span>
+              <span class="text-neutral-500 text-sm ml-4">Сентябрь 2024</span>
+            </div>
+            <h3 class="text-2xl font-bold text-neutral-900 mb-4">
+              Древнее ремесло литья по выплавляемым моделям
+            </h3>
+            <p class="text-neutral-600 mb-6">
+              Задолго до 3D принтеров и ЧПУ станков ювелиры формировали металл с помощью одной из самых древних 
+              известных техник: литья по выплавляемым моделям. Этот процесс, открытый более 6000 лет назад, 
+              все еще жив сегодня...
+            </p>
+            <a href="#article-4" class="text-[var(--color-gold)] font-semibold hover:text-[var(--color-charcoal)] transition-colors">
+              Читать полностью →
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full Articles Section -->
+  <section class="py-20 bg-neutral-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Article 1 -->
+      <article id="article-1" class="mb-16">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <div class="flex items-center mb-6">
+            <span class="bg-[var(--color-gold)] text-white px-3 py-1 rounded-full text-sm font-semibold">Философия</span>
+            <span class="text-neutral-500 text-sm ml-4">Декабрь 2024</span>
+          </div>
+          <h2 class="text-3xl font-bold text-neutral-900 mb-6">
+            Скрытый язык цепочек для лица
+          </h2>
+          <div class="prose prose-lg max-w-none">
+            <p class="text-neutral-600 mb-6">
+              На протяжении всей истории люди искали способы отметить идентичность, статус и красоту на своих лицах. 
+              От племен пустыни, рисующих священные узоры, до золотых масок древних культур, лицо всегда было холстом смысла.
+            </p>
+            <p class="text-neutral-600 mb-6">
+              Цепочки для лица — это современное продолжение этой истории. Каждая цепочка — это не просто украшение, 
+              это символическая нить.
+            </p>
+            <ul class="list-disc list-inside text-neutral-600 mb-6 space-y-2">
+              <li>Центральная часть на носу напоминает о отметках древних племен.</li>
+              <li>Симметрия цепочек отражает баланс и двойственность.</li>
+              <li>Движение металла отражает свободу и свет.</li>
+            </ul>
+            <p class="text-neutral-600 mb-6">
+              Когда вы носите цепочку для лица, вы несете этот скрытый язык в настоящее. Это способ сказать: 
+              "Я часть родословной самовыражения, которая простирается сквозь время, но я живу этим по-своему."
+            </p>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Article 2 -->
+      <article id="article-2" class="mb-16">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <div class="flex items-center mb-6">
+            <span class="bg-[var(--color-gold)] text-white px-3 py-1 rounded-full text-sm font-semibold">Дизайн</span>
+            <span class="text-neutral-500 text-sm ml-4">Ноябрь 2024</span>
+          </div>
+          <h2 class="text-3xl font-bold text-neutral-900 mb-6">
+            Почему украшения должны начинать разговоры
+          </h2>
+          <div class="prose prose-lg max-w-none">
+            <p class="text-neutral-600 mb-6">
+              Большинство украшений тихо прячутся в фоне. Ожерелье, спрятанное под рубашкой. Кольцо, незамеченное на руке.
+            </p>
+            <p class="text-neutral-600 mb-6">
+              Но украшения Rediant другие. Они созданы, чтобы вызывать любопытство. В тот момент, когда вы входите в комнату 
+              с цепочкой для лица, кто-то обязательно спросит: "Что это? Где вы это взяли?"
+            </p>
+            <p class="text-neutral-600 mb-6">
+              Это не случайность — это философия дизайна. Украшения — это не просто декорация. Это мост. 
+              Способ соединиться, зажечь разговор, создать воспоминание.
+            </p>
+            <p class="text-neutral-600 mb-6">
+              Наши клиенты рассказывают нам, что люди чаще подходят к ним, когда они носят Rediant. Внезапно знакомства 
+              становятся легче, дружба начинается естественно, и даже незнакомцы хотят узнать вашу историю.
+            </p>
+            <p class="text-neutral-600 mb-6">
+              В мире, где все движется слишком быстро, разве не это нам больше всего нужно?
+            </p>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Article 3 -->
+      <article id="article-3" class="mb-16">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <div class="flex items-center mb-6">
+            <span class="bg-[var(--color-gold)] text-white px-3 py-1 rounded-full text-sm font-semibold">Ремесло</span>
+            <span class="text-neutral-500 text-sm ml-4">Октябрь 2024</span>
+          </div>
+          <h2 class="text-3xl font-bold text-neutral-900 mb-6">
+            От племенных лиц к современным цепочкам
+          </h2>
+          <div class="prose prose-lg max-w-none">
+            <p class="text-neutral-600 mb-6">
+              Вдохновение для Rediant началось в пустынях Индии, где племена рисовали на лицах узоры защиты, 
+              празднования и красоты. Эти узоры не были случайными. Каждый нес в себе смысл: историю принадлежности, 
+              любви, мужества.
+            </p>
+            <p class="text-neutral-600 mb-6">
+              Когда эти узоры переведены в цепочки, они стали носимые для нашего времени.
+            </p>
+            <ul class="list-disc list-inside text-neutral-600 mb-6 space-y-2">
+              <li>Центральная часть на носу повторяет центр племенных рисунков.</li>
+              <li>Цепочки, тянущиеся к ушам, напоминают нам о ритуальных серьгах и священной симметрии.</li>
+              <li>Деликатные прикрепления (перья, листья, кристаллы, геометрические формы) соединяют тело с природой.</li>
+            </ul>
+            <p class="text-neutral-600 mb-6">
+              Это не ностальгия — это возрождение. Украшения Rediant оживляют древние образы и дают им 
+              современный пульс, живой в городском ритме настоящего.
+            </p>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Article 4 -->
+      <article id="article-4" class="mb-16">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <div class="flex items-center mb-6">
+            <span class="bg-[var(--color-gold)] text-white px-3 py-1 rounded-full text-sm font-semibold">Технологии</span>
+            <span class="text-neutral-500 text-sm ml-4">Сентябрь 2024</span>
+          </div>
+          <h2 class="text-3xl font-bold text-neutral-900 mb-6">
+            Древнее ремесло литья по выплавляемым моделям
+          </h2>
+          <div class="prose prose-lg max-w-none">
+            <p class="text-neutral-600 mb-6">
+              Задолго до 3D принтеров и ЧПУ станков ювелиры формировали металл с помощью одной из самых древних 
+              известных техник: литья по выплавляемым моделям. Этот процесс, открытый более 6000 лет назад, 
+              все еще жив сегодня — и он продолжает вдохновлять то, как Rediant думает об украшениях.
+            </p>
+            <h3 class="text-xl font-semibold text-neutral-900 mb-4">Шаг первый: Восковая мечта</h3>
+            <p class="text-neutral-600 mb-6">
+              Каждое изделие начинается не в металле, а в воске. Блок мягкого воска вырезается вручную в точную 
+              форму финального дизайна. На этом этапе течет воображение — деликатные детали, плавные кривые 
+              и священные геометрии оживают в среде, достаточно мягкой для лепки, но достаточно точной, 
+              чтобы запечатлеть каждую линию.
+            </p>
+            <p class="text-neutral-600 mb-6">
+              Воск — это душа украшения, прежде чем оно станет плотью.
+            </p>
+            <h3 class="text-xl font-semibold text-neutral-900 mb-4">Шаг второй: Форма</h3>
+            <p class="text-neutral-600 mb-6">
+              Восковая модель затем окружается глиной или гипсом, чтобы сформировать форму. После затвердевания 
+              эта форма заключает в себе каждую деталь воскового дизайна. Форма становится сосудом трансформации.
+            </p>
+            <h3 class="text-xl font-semibold text-neutral-900 mb-4">Шаг третий: Огонь и трансформация</h3>
+            <p class="text-neutral-600 mb-6">
+              Форма нагревается, и воск внутри тает — оставляя после себя пустую полость, призрак того, что когда-то было. 
+              Это происхождение названия "литье по выплавляемым моделям."
+            </p>
+            <p class="text-neutral-600 mb-6">
+              В эту пустоту заливается расплавленный металл. Серебро, латунь или даже сталь, светящиеся огнем, 
+              устремляются заполнить пустоту. Металл занимает место воска — захватывая его тонкие детали в сияющей постоянности.
+            </p>
+            <h3 class="text-xl font-semibold text-neutral-900 mb-4">Почему это важно для Rediant</h3>
+            <p class="text-neutral-600 mb-6">
+              В Rediant мы смотрим на эти древние методы не как на ностальгию, а как на живое доказательство того, 
+              что украшения — это больше, чем мода — это ремесло, ритуал и трансформация.
+            </p>
+            <p class="text-neutral-600 mb-6">
+              Когда вы держите украшение, созданное через этот процесс, вы держите огонь, терпение и столетия традиции. 
+              Это напоминание о том, что красота требует времени, и что то, что потеряно (воск), дает рождение тому, 
+              что вечно (металл).
+            </p>
+            <p class="text-neutral-600 mb-6">
+              Даже когда мы исследуем ЧПУ резку и современный дизайн, дух литья по выплавляемым моделям остается 
+              в философии Rediant: каждое изделие начинается как идея, хрупкая и податливая — затем трансформируется 
+              в постоянный символ идентичности.
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+        Оставайтесь на связи с нашими историями
+      </h2>
+      <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
+        Подпишитесь на наш журнал, чтобы получать последние истории, идеи и 
+        контент из-за кулис творческого процесса Светланы.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/ru/subscription" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+          Подписаться на журнал
+        </a>
+        <a href="/ru/order" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
+          Заказать украшения
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
