@@ -13,8 +13,8 @@ export async function fetchProducts(): Promise<Product[]> {
   }
 
   try {
-    // Fetch physical products from Tribute API
-    const response = await fetch('https://tribute.tg/api/v1/products?type=physical&page=1&size=100', {
+    // Fetch all products (physical and digital) from Tribute API
+    const response = await fetch('https://tribute.tg/api/v1/products?page=1&size=100', {
       headers: { 'Api-Key': apiKey }
     });
 
@@ -30,18 +30,27 @@ export async function fetchProducts(): Promise<Product[]> {
       // EUR, USD, RUB use 100 minor units per major unit
       const price = product.amount / 100;
       
+      // Determine category based on product type
+      const category = product.type === 'physical' ? 'jewelry' : 'digital';
+      const tags = product.type === 'physical' 
+        ? ['tribute', 'artistic', 'jewelry', 'physical']
+        : ['tribute', 'digital', 'art', 'custom'];
+      
       return {
         id: product.id,
         name: product.name,
-        description: product.description || 'Beautiful artistic jewelry piece',
+        description: product.description || 'Beautiful artistic piece',
         price: price,
         currency: product.currency.toUpperCase(),
         image: product.imageUrl || '/images/photo_2025-09-10 23.58.23.jpeg',
-        category: 'jewelry',
-        tags: ['tribute', 'artistic', 'jewelry'],
+        category: category,
+        type: product.type,
+        tags: tags,
         available: true,
         stock: 1,
-        link: product.link
+        link: product.link,
+        starsAmount: product.starsAmount || null,
+        starsAmountEnabled: product.starsAmountEnabled || false
       };
     });
     

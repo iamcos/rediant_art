@@ -8,10 +8,13 @@ export interface Props {
     currency: string;
     image: string;
     category: string;
+    type?: string;
     tags: string[];
     available: boolean;
     stock?: number;
     link?: string;
+    starsAmount?: number;
+    starsAmountEnabled?: boolean;
   };
 }
 
@@ -46,6 +49,17 @@ const { product } = Astro.props;
       <div class="product-price">
         <span class="price">{product.price}</span>
         <span class="currency">{product.currency}</span>
+        {product.starsAmountEnabled && product.starsAmount && (
+          <span class="stars-price">
+            or {product.starsAmount} ⭐
+          </span>
+        )}
+      </div>
+      
+      <div class="product-type">
+        <span class="type-badge type-{product.type}">
+          {product.type === 'physical' ? 'Physical' : 'Digital'}
+        </span>
       </div>
       
       <a 
@@ -199,6 +213,36 @@ const { product } = Astro.props;
     background: #ccc;
     cursor: not-allowed;
     transform: none;
+  }
+
+  .stars-price {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.25rem;
+  }
+
+  .product-type {
+    margin: 0.5rem 0;
+  }
+
+  .type-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .type-physical {
+    background: var(--color-gold);
+    color: white;
+  }
+
+  .type-digital {
+    background: #4F46E5;
+    color: white;
   }
 </style>
 
