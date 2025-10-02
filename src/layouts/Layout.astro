@@ -1,19 +1,13 @@
 ---
-import type { LayoutProps } from '../types';
-import Navigation from '../components/Navigation.astro';
-
-export interface Props extends LayoutProps {
-  currentPath?: string;
+export interface Props {
+  title: string;
+  description?: string;
+  lang?: string;
+  heroImage?: string;
+  heroAlt?: string;
 }
 
-const { 
-  title, 
-  description = "Rediant Art - Contemporary Jewelry & 3D Printing Innovation", 
-  lang = "en", 
-  heroImage, 
-  heroAlt,
-  currentPath = '/'
-} = Astro.props;
+const { title, description = "Rediant Art - Contemporary Jewelry & 3D Printing Innovation", lang = "en", heroImage, heroAlt } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -57,46 +51,76 @@ const {
   </head>
   <body class="bg-neutral-50 text-neutral-900 font-sans antialiased">
     <!-- Navigation -->
-    <Navigation lang={lang} currentPath={currentPath} />
+    <nav class="navbar">
+      <div class="nav-container">
+        <!-- Logo -->
+        <div class="nav-logo">
+          <a href={lang === 'ru' ? '/ru/' : '/'}>
+            <span class="logo-text">Rediant</span> Art
+          </a>
+        </div>
+        
+        <!-- Desktop Menu -->
+        <div class="nav-menu">
+          <a href={lang === 'ru' ? '/ru/' : '/'} class="nav-item">{lang === 'ru' ? 'Главная' : 'Home'}</a>
+          <a href={lang === 'ru' ? '/ru/shop' : '/shop'} class="nav-item">{lang === 'ru' ? 'Магазин' : 'Shop'}</a>
+          <a href={lang === 'ru' ? '/ru/collections' : '/collections'} class="nav-item">{lang === 'ru' ? 'Коллекции' : 'Collections'}</a>
+          <a href={lang === 'ru' ? '/ru/about' : '/about'} class="nav-item">{lang === 'ru' ? 'О нас' : 'About'}</a>
+          <a href={lang === 'ru' ? '/ru/3d-printing' : '/3d-printing'} class="nav-item">{lang === 'ru' ? '3D Печать' : '3D Printing'}</a>
+          <a href={lang === 'ru' ? '/ru/crowdfunding' : '/crowdfunding'} class="nav-item">{lang === 'ru' ? 'Краудфандинг' : 'Crowdfunding'}</a>
+          <a href={lang === 'ru' ? '/ru/subscription' : '/subscription'} class="nav-item">{lang === 'ru' ? 'Подписка' : 'Subscription'}</a>
+          <a href={lang === 'ru' ? '/ru/order' : '/order'} class="nav-item">{lang === 'ru' ? 'Заказ' : 'Order'}</a>
+          <a href={lang === 'ru' ? '/ru/journal' : '/journal'} class="nav-item">{lang === 'ru' ? 'Журнал' : 'Journal'}</a>
+          <a href={lang === 'ru' ? '/ru/contact' : '/contact'} class="nav-item">{lang === 'ru' ? 'Контакты' : 'Contact'}</a>
+          
+          <!-- Language Switcher -->
+          <div class="nav-language">
+            {lang === 'ru' ? (
+              <a href="/" class="lang-link">EN</a>
+            ) : (
+              <a href="/ru/" class="lang-link">RU</a>
+            )}
+          </div>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <div class="nav-toggle" id="mobile-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
     
     <!-- Main Content -->
-    <main class="rediant-main-content">
+    <main>
       <slot />
     </main>
     
-    <!-- Performance Scripts -->
+    <!-- Mobile Menu Script -->
     <script>
-      // Initialize performance optimizations
-      document.addEventListener('DOMContentLoaded', () => {
-        // Lazy load images
-        const images = document.querySelectorAll('img[data-src]');
-        if ('IntersectionObserver' in window) {
-          const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                observer.unobserve(img);
-              }
-            });
-          });
-          images.forEach(img => imageObserver.observe(img));
-        }
-        
-        // Preload critical resources
-        const criticalImages = [
-          '/images/photo_2025-09-10 23.56.36.jpg',
-          '/images/photo_2025-09-10 23.58.23.jpeg'
-        ];
-        
-        criticalImages.forEach(src => {
-          const link = document.createElement('link');
-          link.rel = 'preload';
-          link.as = 'image';
-          link.href = src;
-          document.head.appendChild(link);
+      const mobileToggle = document.getElementById('mobile-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+      
+      mobileToggle.addEventListener('click', function() {
+        mobileToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+      
+      // Close menu when clicking on a link
+      document.querySelectorAll('.nav-item').forEach(link => {
+        link.addEventListener('click', function() {
+          mobileToggle.classList.remove('active');
+          navMenu.classList.remove('active');
         });
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
+          mobileToggle.classList.remove('active');
+          navMenu.classList.remove('active');
+        }
       });
     </script>
   </body>
