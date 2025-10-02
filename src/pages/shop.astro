@@ -1,15 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
-import { fetchTributeProducts } from '../config/tribute';
 
 // Fetch products from Tribute API
+const apiKey = import.meta.env.TRIBUTE_API_KEY;
 let products = [];
-try {
-  products = await fetchTributeProducts();
-} catch (error) {
-  console.error('Error fetching products:', error);
-  // Fallback to sample products for development
+
+if (!apiKey) {
+  console.error('TRIBUTE_API_KEY env var missing');
+  // Fallback to sample products
   products = [
     {
       id: 'sample-1',
@@ -22,32 +21,55 @@ try {
       tags: ['gold', 'facechain', 'tribal'],
       available: true,
       stock: 5
-    },
-    {
-      id: 'sample-2',
-      name: 'Silver Headchain',
-      description: 'Modern silver headchain with geometric patterns',
-      price: 75,
-      currency: 'USD',
-      image: '/images/photo_2025-09-10 23.58.18.jpeg',
-      category: 'headchain',
-      tags: ['silver', 'headchain', 'geometric'],
-      available: true,
-      stock: 3
-    },
-    {
-      id: 'sample-3',
-      name: 'Copper Bodychain',
-      description: 'Artistic copper bodychain for contemporary styling',
-      price: 120,
-      currency: 'USD',
-      image: '/images/photo_2025-09-10 23.58.25.jpeg',
-      category: 'bodychain',
-      tags: ['copper', 'bodychain', 'artistic'],
-      available: false,
-      stock: 0
     }
   ];
+} else {
+  try {
+    // Fetch physical products from Tribute
+    const response = await fetch('https://tribute.tg/api/v1/products?type=physical&page=1&size=100', {
+      headers: { 'Api-Key': apiKey }
+    });
+
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`);
+    }
+
+    const { rows: tributeProducts } = await response.json();
+    
+    // Transform Tribute products to our format
+    products = tributeProducts.map(product => ({
+      id: product.id,
+      name: product.name,
+      description: product.description || 'Beautiful artistic jewelry piece',
+      price: product.amount / 100, // Convert from cents
+      currency: product.currency.toUpperCase(),
+      image: product.imageUrl || '/images/photo_2025-09-10 23.58.23.jpeg',
+      category: 'jewelry',
+      tags: ['tribute', 'artistic', 'jewelry'],
+      available: true,
+      stock: 1,
+      link: product.link
+    }));
+    
+    console.log(`Fetched ${products.length} products from Tribute`);
+  } catch (error) {
+    console.error('Error fetching Tribute products:', error);
+    // Fallback to sample products
+    products = [
+      {
+        id: 'sample-1',
+        name: 'Golden Facechain',
+        description: 'Elegant golden facechain inspired by ancient tribal designs',
+        price: 89,
+        currency: 'USD',
+        image: '/images/photo_2025-09-10 23.58.23.jpeg',
+        category: 'facechain',
+        tags: ['gold', 'facechain', 'tribal'],
+        available: true,
+        stock: 5
+      }
+    ];
+  }
 }
 ---
 

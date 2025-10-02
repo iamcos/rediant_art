@@ -48,7 +48,7 @@ const { product } = Astro.props;
       </div>
       
       <a 
-        href={`https://t.me/rediant_art?start=product_${product.id}`}
+        href={product.link || `https://t.me/rediant_art?start=product_${product.id}`}
         class="buy-button"
         target="_blank"
         rel="noopener noreferrer"

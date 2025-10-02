@@ -1,6 +1,6 @@
 // Tribute API Configuration
 export const TRIBUTE_CONFIG = {
-  API_KEY: 'b437eef4-b475-4d9d-8624-53154116',
+  API_KEY: import.meta.env.TRIBUTE_API_KEY || 'b437eef4-b475-4d9d-8624-53154116',
   BASE_URL: 'https://tribute.tg/api/v1',
   ENDPOINTS: {
     PRODUCTS: '/products',
