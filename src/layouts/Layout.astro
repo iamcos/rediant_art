@@ -50,7 +50,78 @@ const { title, description = "Rediant Art - Contemporary Jewelry & 3D Printing I
     <title>{title}</title>
   </head>
   <body class="bg-neutral-50 text-neutral-900 font-sans antialiased">
-    <slot />
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex-shrink-0">
+            <a href="/" class="text-2xl font-bold text-neutral-900">
+              <span class="text-[var(--color-gold)]">Rediant</span> Art
+            </a>
+          </div>
+          
+          <!-- Desktop Navigation -->
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-8">
+              <a href="/" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Home</a>
+              <a href="/collections" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Collections</a>
+              <a href="/about" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">About</a>
+              <a href="/3d-printing" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">3D Printing</a>
+              <a href="/crowdfunding" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Crowdfunding</a>
+              <a href="/subscription" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Subscription</a>
+              <a href="/order" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Order</a>
+              <a href="/journal" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Journal</a>
+              <a href="/contact" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Contact</a>
+            </div>
+          </div>
+          
+          <!-- Language Switcher & Mobile Menu Button -->
+          <div class="flex items-center space-x-4">
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+              <a href="/" class="active">EN</a>
+              <a href="/ru/">RU</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button 
+              id="mobile-menu-button" 
+              class="mobile-menu-button md:hidden"
+              onclick="toggleMobileMenu()"
+              aria-label="Toggle mobile menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="mobile-menu hidden">
+        <a href="/" class="mobile-menu-link">Home</a>
+        <a href="/collections" class="mobile-menu-link">Collections</a>
+        <a href="/about" class="mobile-menu-link">About</a>
+        <a href="/3d-printing" class="mobile-menu-link">3D Printing</a>
+        <a href="/crowdfunding" class="mobile-menu-link">Crowdfunding</a>
+        <a href="/subscription" class="mobile-menu-link">Subscription</a>
+        <a href="/order" class="mobile-menu-link">Order</a>
+        <a href="/journal" class="mobile-menu-link">Journal</a>
+        <a href="/contact" class="mobile-menu-link">Contact</a>
+        
+        <div class="language-switcher">
+          <a href="/" class="active">EN</a>
+          <a href="/ru/">RU</a>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main>
+      <slot />
+    </main>
     
     <!-- Mobile Menu Script -->
     <script>
@@ -76,6 +147,16 @@ const { title, description = "Rediant Art - Contemporary Jewelry & 3D Printing I
           menu.classList.add('hidden');
           button.classList.remove('open');
         }
+      });
+      
+      // Close menu when clicking on a link
+      document.querySelectorAll('.mobile-menu-link').forEach(link => {
+        link.addEventListener('click', function() {
+          const menu = document.getElementById('mobile-menu');
+          const button = document.getElementById('mobile-menu-button');
+          menu.classList.add('hidden');
+          button.classList.remove('open');
+        });
       });
     </script>
   </body>
