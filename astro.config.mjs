@@ -6,7 +6,7 @@ import partytown from '@astrojs/partytown';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.rediant.art',
+  site: 'https://rediant-art2.vercel.app',
   base: '/',
   output: 'static',
   integrations: [
@@ -19,6 +19,6 @@ export default defineConfig({
     }),
   ],
   image: {
-    domains: ['iamcos.github.io'],
+    domains: ['rediant-art2.vercel.app'],
   },
 });

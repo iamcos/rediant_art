@@ -1,15 +1,35 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ProductCard from '../../components/ProductCard.astro';
-import { fetchTributeProducts } from '../../config/tribute';
 
-// Fetch products from Tribute API
+// Fetch available products from our API
 let products = [];
 try {
-  products = await fetchTributeProducts();
+  const response = await fetch(`${import.meta.env.SITE || 'https://rediant-art2.vercel.app'}/api/products`);
+  if (response.ok) {
+    const englishProducts = await response.json();
+    // Translate products to Russian
+    products = englishProducts.map((product: any) => ({
+      ...product,
+      name: product.name === 'Golden Facechain' ? 'Золотая цепочка для лица' : 
+            product.name === 'Silver Headchain' ? 'Серебряная цепочка для головы' : product.name,
+      description: product.description === 'Elegant golden facechain inspired by ancient tribal designs' ? 
+                  'Элегантная золотая цепочка для лица, вдохновленная древними племенными дизайнами' :
+                  product.description === 'Modern silver headchain with geometric patterns' ?
+                  'Современная серебряная цепочка для головы с геометрическими узорами' : product.description,
+      tags: product.tags.map((tag: any) => 
+        tag === 'gold' ? 'золото' :
+        tag === 'facechain' ? 'цепочка для лица' :
+        tag === 'tribal' ? 'племенной' :
+        tag === 'silver' ? 'серебро' :
+        tag === 'headchain' ? 'цепочка для головы' :
+        tag === 'geometric' ? 'геометрический' : tag
+      )
+    }));
+  }
 } catch (error) {
-  console.error('Error fetching products:', error);
-  // Fallback to sample products for development
+  console.error('Failed to fetch products:', error);
+  // Fallback to sample data in Russian
   products = [
     {
       id: 'sample-1',
@@ -34,18 +54,6 @@ try {
       tags: ['серебро', 'цепочка для головы', 'геометрический'],
       available: true,
       stock: 3
-    },
-    {
-      id: 'sample-3',
-      name: 'Медная цепочка для тела',
-      description: 'Художественная медная цепочка для тела для современного стиля',
-      price: 120,
-      currency: 'USD',
-      image: '/images/photo_2025-09-10 23.58.25.jpeg',
-      category: 'bodychain',
-      tags: ['медь', 'цепочка для тела', 'художественный'],
-      available: false,
-      stock: 0
     }
   ];
 }
@@ -94,7 +102,7 @@ try {
       
       {products.length > 0 ? (
         <div class="products-grid">
-          {products.map((product) => (
+          {products.map((product: any) => (
             <ProductCard product={product} />
           ))}
         </div>

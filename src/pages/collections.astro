@@ -1,10 +1,49 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import ProductCard from '../components/ProductCard.astro';
 
 const photos = await getCollection('photos');
 const portraitPhotos = photos.filter(photo => photo.data.category === 'portrait').slice(0, 8);
 const lifestylePhotos = photos.filter(photo => photo.data.category === 'lifestyle').slice(0, 6);
+
+// Fetch available products
+let products = [];
+try {
+  const response = await fetch(`${import.meta.env.SITE || 'https://rediant-art2.vercel.app'}/api/products`);
+  if (response.ok) {
+    products = await response.json();
+  }
+} catch (error) {
+  console.error('Failed to fetch products:', error);
+  // Fallback to sample data
+  products = [
+    {
+      id: 'sample-1',
+      name: 'Golden Facechain',
+      description: 'Elegant golden facechain inspired by ancient tribal designs',
+      price: 89,
+      currency: 'USD',
+      image: '/images/photo_2025-09-10 23.58.23.jpeg',
+      category: 'facechain',
+      tags: ['gold', 'facechain', 'tribal'],
+      available: true,
+      stock: 5
+    },
+    {
+      id: 'sample-2',
+      name: 'Silver Headchain',
+      description: 'Modern silver headchain with geometric patterns',
+      price: 75,
+      currency: 'USD',
+      image: '/images/photo_2025-09-10 23.58.18.jpeg',
+      category: 'headchain',
+      tags: ['silver', 'headchain', 'geometric'],
+      available: true,
+      stock: 3
+    }
+  ];
+}
 ---
 
 <Layout 
@@ -31,6 +70,38 @@ const lifestylePhotos = photos.filter(photo => photo.data.category === 'lifestyl
       </div>
     </div>
   </section>
+
+  <!-- Available Products Section -->
+  {products.length > 0 && (
+    <section class="py-20 bg-neutral-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+            Currently Available
+          </h2>
+          <p class="text-xl text-neutral-600 max-w-3xl mx-auto mb-8">
+            Discover our latest pieces, each one a unique expression of ancient wisdom and modern artistry.
+          </p>
+          <div class="bg-gradient-to-r from-[var(--color-gold)] to-[var(--color-charcoal)] h-1 w-24 mx-auto"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {products.map((product: any) => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+        
+        <div class="text-center mt-12">
+          <a 
+            href="/contact" 
+            class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors inline-block"
+          >
+            Custom Order Available
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- Facechains Collection -->
   <section id="facechains" class="py-20 bg-white">
