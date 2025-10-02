@@ -1,12 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import HeroSection from '../components/HeroSection.astro';
-import ProductGrid from '../components/ProductGrid.astro';
 import CallToAction from '../components/CallToAction.astro';
-import { fetchProducts } from '../utils';
-
-// Fetch products using utility function
-const products = await fetchProducts();
 ---
 
 <Layout 
@@ -34,38 +29,292 @@ const products = await fetchProducts();
           Our Collection
         </h2>
         <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-          Each piece tells a story of ancient wisdom meeting modern innovation. 
-          Browse our exclusive collection of artistic jewelry.
+          Handcrafted jewelry pieces that blend ancient traditions with modern innovation.
         </p>
       </div>
-      
-      <ProductGrid 
-        products={products}
-        columns={3}
-        showEmpty={true}
-        emptyMessage="We're currently updating our collection. Please check back soon!"
-        emptyAction={{
-          text: "Contact Us",
-          href: "/contact"
-        }}
-      />
+
+      <!-- Loading State -->
+      <div id="loading" class="text-center py-12">
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-gold)]"></div>
+        <p class="mt-4 text-neutral-600">Loading latest products...</p>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="products-grid" class="products-grid hidden">
+        <!-- Products will be loaded here dynamically -->
+      </div>
+
+      <!-- No Products State -->
+      <div id="no-products" class="text-center py-12 hidden">
+        <p class="text-xl text-neutral-600">No products available at the moment.</p>
+        <p class="text-neutral-500 mt-2">Please check back later or contact us for more information.</p>
+      </div>
+
+      <!-- Error State -->
+      <div id="error-state" class="text-center py-12 hidden">
+        <p class="text-xl text-red-600">Failed to load products.</p>
+        <p class="text-neutral-500 mt-2">Please refresh the page or try again later.</p>
+        <button onclick="loadProducts()" class="mt-4 bg-[var(--color-gold)] text-white px-6 py-2 rounded-lg hover:bg-[var(--color-charcoal)] transition-colors">
+          Try Again
+        </button>
+      </div>
     </div>
   </section>
 
   <!-- Call to Action -->
   <CallToAction
-    title="Custom Orders Available"
-    description="Don't see exactly what you're looking for? We create custom pieces tailored to your vision. Contact us to discuss your unique jewelry needs."
-    primaryButton={{
-      text: "Request Custom Piece",
-      href: "/contact"
-    }}
-    secondaryButton={{
-      text: "Learn About Our Process",
-      href: "/about"
-    }}
-    variant="dark"
+    title="Ready to Start Your Journey?"
+    description="Join our community of jewelry enthusiasts and discover the art of wearable expression."
+    buttonText="Explore Collection"
+    buttonLink="#products"
+    backgroundImage="/images/photo_2025-09-10 23.58.23.jpeg"
+    backgroundAlt="Rediant Art jewelry collection"
+    lang="en"
   />
 </Layout>
 
+<script>
+// Function to fetch products from Tribute API
+async function loadProducts() {
+  const loadingEl = document.getElementById('loading');
+  const productsGridEl = document.getElementById('products-grid');
+  const noProductsEl = document.getElementById('no-products');
+  const errorEl = document.getElementById('error-state');
 
+  // Show loading state
+  loadingEl.classList.remove('hidden');
+  productsGridEl.classList.add('hidden');
+  noProductsEl.classList.add('hidden');
+  errorEl.classList.add('hidden');
+
+  try {
+    // Fetch products from our API endpoint
+    const response = await fetch('/api/products');
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const products = await response.json();
+    
+    // Hide loading state
+    loadingEl.classList.add('hidden');
+    
+    if (products.length === 0) {
+      // Show no products state
+      noProductsEl.classList.remove('hidden');
+    } else {
+      // Render products
+      renderProducts(products);
+      productsGridEl.classList.remove('hidden');
+    }
+    
+  } catch (error) {
+    console.error('Error loading products:', error);
+    
+    // Hide loading state and show error
+    loadingEl.classList.add('hidden');
+    errorEl.classList.remove('hidden');
+  }
+}
+
+// Function to render products
+function renderProducts(products) {
+  const productsGridEl = document.getElementById('products-grid');
+  
+  const productsHTML = products.map(product => `
+    <div class="product-card">
+      <div class="product-image">
+        ${product.imageUrl ? 
+          `<img src="${product.imageUrl}" alt="${product.name}" loading="lazy">` : 
+          '<div class="w-full h-64 bg-neutral-200 flex items-center justify-center"><span class="text-neutral-500">No Image</span></div>'
+        }
+        ${!product.available ? '<div class="product-overlay"><div class="sold-out">Sold Out</div></div>' : ''}
+      </div>
+      
+      <div class="product-info">
+        <h3 class="product-name">${product.name}</h3>
+        <p class="product-description">${product.description || 'Beautiful handcrafted jewelry piece.'}</p>
+        
+        ${product.tags && product.tags.length > 0 ? `
+          <div class="product-tags">
+            ${product.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+          </div>
+        ` : ''}
+        
+        <div class="product-footer">
+          <div class="product-price">
+            <span class="price">${(product.price || 0).toFixed(2)}</span>
+            <span class="currency">${product.currency?.toUpperCase() || 'EUR'}</span>
+          </div>
+          
+          <a href="${product.link}" target="_blank" class="buy-button ${!product.available ? 'disabled' : ''}" ${!product.available ? 'onclick="return false;"' : ''}>
+            ${product.available ? 'Buy Now' : 'Sold Out'}
+          </a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  
+  productsGridEl.innerHTML = productsHTML;
+}
+
+// Load products when page loads
+document.addEventListener('DOMContentLoaded', loadProducts);
+
+// Auto-refresh products every 5 minutes
+setInterval(loadProducts, 5 * 60 * 1000);
+</script>
+
+<style>
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.product-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sold-out {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  background: var(--color-charcoal);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.product-info {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-charcoal);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.product-description {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  background: var(--color-gold);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.product-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-charcoal);
+}
+
+.currency {
+  font-size: 1rem;
+  color: #666;
+}
+
+.buy-button {
+  background: var(--color-gold);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.buy-button:hover {
+  background: var(--color-charcoal);
+  transform: translateY(-2px);
+}
+
+.buy-button.disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+</style>
