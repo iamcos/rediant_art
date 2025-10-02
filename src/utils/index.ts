@@ -9,20 +9,24 @@ export async function fetchProducts(): Promise<Product[]> {
   const apiKey = import.meta.env.TRIBUTE_API_KEY;
   
   if (!apiKey) {
-    throw new Error('TRIBUTE_API_KEY environment variable is required');
+    console.warn('TRIBUTE_API_KEY environment variable is not set, returning empty products array');
+    return [];
   }
 
   try {
+    console.log('Fetching products from Tribute API...');
     // Fetch all products (physical and digital) from Tribute API
     const response = await fetch('https://tribute.tg/api/v1/products?page=1&size=100', {
       headers: { 'Api-Key': apiKey }
     });
 
     if (!response.ok) {
-      throw new Error(`Tribute API error: ${response.status} ${response.statusText}`);
+      console.error(`Tribute API error: ${response.status} ${response.statusText}`);
+      return [];
     }
 
     const { rows: tributeProducts } = await response.json();
+    console.log(`Fetched ${tributeProducts.length} products from Tribute API`);
     
     // Transform Tribute products to our format
     const products = tributeProducts.map(product => {
@@ -59,7 +63,7 @@ export async function fetchProducts(): Promise<Product[]> {
     
   } catch (error) {
     console.error('Failed to fetch products from Tribute API:', error);
-    throw new Error(`Product fetch failed: ${error.message}`);
+    return [];
   }
 }
 
