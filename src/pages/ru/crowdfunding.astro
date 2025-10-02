@@ -1,9 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { fetchTributeProducts } from '../../utils/index';
+import { fetchProducts } from '../../utils/index';
 
 // Fetch real data from Tribute API
-const products = await fetchTributeProducts();
+const products = await fetchProducts();
 const digitalProducts = products.filter(p => p.type === 'digital');
 const physicalProducts = products.filter(p => p.type === 'physical');
 
