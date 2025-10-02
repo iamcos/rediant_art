@@ -2,34 +2,30 @@
 import Layout from '../../layouts/Layout.astro';
 import { fetchProducts } from '../../utils/index';
 
-// Fetch real data from Tribute API
+// Fetch products from Tribute API
 let products = [];
-let digitalProducts = [];
-let physicalProducts = [];
-
 try {
   products = await fetchProducts();
-  digitalProducts = products.filter(p => p.type === 'digital');
-  physicalProducts = products.filter(p => p.type === 'physical');
 } catch (error) {
   console.error('Failed to fetch products:', error);
-  // Fallback to empty arrays if API fails
   products = [];
-  digitalProducts = [];
-  physicalProducts = [];
 }
 
-// Calculate totals for display
-const totalDigitalValue = digitalProducts.reduce((sum, p) => sum + (p.price || 0), 0);
-const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price || 0), 0);
+// For crowdfunding, we'll use digital products as "support tiers" and physical as "rewards"
+const supportTiers = products.filter(p => p.type === 'digital');
+const rewards = products.filter(p => p.type === 'physical');
+
+// Calculate totals
+const totalSupport = supportTiers.reduce((sum, p) => sum + (p.price || 0), 0);
+const totalRewards = rewards.reduce((sum, p) => sum + (p.price || 0), 0);
 ---
 
 <Layout 
-  title="Крипто Краудфандинг - Поддержите Инновации Rediant Art"
-  description="Присоединяйтесь к крипто краудфандинг кампаниям Rediant и поддержите будущее художественных украшений. Внесите вклад в нашу инновацию через цифровую поддержку и физические награды."
+  title="Краудфандинг - Поддержите Инновации Rediant Art"
+  description="Поддержите инновации Rediant Art через пожертвования, помогите нам достичь целей и присоединяйтесь к нашему сообществу через членство. Станьте частью будущего художественных украшений."
   lang="ru"
   heroImage="/images/photo_2025-09-11 00.03.32.jpeg"
-  heroAlt="Крипто краудфандинг для Rediant Art"
+  heroAlt="Краудфандинг для Rediant Art"
 >
   <!-- Hero Section -->
   <section 
@@ -45,7 +41,7 @@ const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price ||
           Помогите Нам Построить Будущее Художественных Украшений
         </p>
         <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
-          Присоединяйтесь к нашей инновации, управляемой сообществом, через цифровую поддержку и физические награды. 
+          Присоединяйтесь к нашей инновации, управляемой сообществом, через уровни поддержки и награды. 
           Станьте частью создания самой вовлеченной художественной ювелирной общины в мире.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
@@ -60,37 +56,37 @@ const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price ||
     </div>
   </section>
 
-  <!-- Digital Support Tiers -->
+  <!-- Support Tiers (Digital Products as Donation Levels) -->
   <section id="support" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-          Цифровые Уровни Поддержки
+          Уровни Поддержки
         </h2>
         <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
           Выберите свой уровень поддержки и помогите нам построить будущее художественных украшений.
         </p>
       </div>
-      
-      {digitalProducts.length > 0 ? (
+
+      {supportTiers.length > 0 ? (
         <div class="grid lg:grid-cols-3 gap-8 mb-16">
-          {digitalProducts.map((product, index) => (
+          {supportTiers.map((tier, index) => (
             <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] rounded-lg p-8 text-white">
               <div class="text-center mb-6">
                 <div class="text-4xl mb-4">💎</div>
-                <h3 class="text-2xl font-bold mb-2">{product.name}</h3>
-                <p class="text-neutral-200">{product.description}</p>
+                <h3 class="text-2xl font-bold mb-2">{tier.name}</h3>
+                <p class="text-neutral-200">{tier.description}</p>
               </div>
-              
+
               <div class="space-y-4 mb-6">
                 <div class="flex justify-between">
-                  <span>Цена:</span>
-                  <span class="font-semibold">{product.price?.toFixed(2) || '0.00'} {product.currency?.toUpperCase() || 'EUR'}</span>
+                  <span>Уровень Поддержки:</span>
+                  <span class="font-semibold">{tier.price?.toFixed(2) || '0.00'} {tier.currency?.toUpperCase() || 'EUR'}</span>
                 </div>
-                {product.starsAmountEnabled && (
+                {tier.starsAmountEnabled && (
                   <div class="flex justify-between">
                     <span>Звезды:</span>
-                    <span class="font-semibold">{product.starsAmount}</span>
+                    <span class="font-semibold">{tier.starsAmount}</span>
                   </div>
                 )}
                 <div class="flex justify-between">
@@ -98,13 +94,13 @@ const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price ||
                   <span class="font-semibold">Цифровая Поддержка</span>
                 </div>
               </div>
-              
+
               <p class="text-sm text-neutral-200 mb-6">
                 Поддержите нашу инновацию с помощью этого цифрового вклада. 
                 Помогите нам построить будущее художественных украшений.
               </p>
-              
-              <a href={product.link} target="_blank" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
+
+              <a href={tier.link} target="_blank" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
                 Поддержать Сейчас
               </a>
             </div>
@@ -112,10 +108,10 @@ const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price ||
         </div>
       ) : (
         <div class="text-center py-12">
-          <p class="text-xl text-neutral-600">В данный момент цифровые уровни поддержки недоступны.</p>
+          <p class="text-xl text-neutral-600">В настоящее время нет доступных уровней поддержки.</p>
         </div>
       )}
-      
+
       <!-- Physical Rewards -->
       <div class="text-center mb-16">
         <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
@@ -125,38 +121,33 @@ const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price ||
           Красивые рукотворные ювелирные изделия в качестве наград за вашу поддержку.
         </p>
       </div>
-      
-      {physicalProducts.length > 0 ? (
+
+      {rewards.length > 0 ? (
         <div class="grid lg:grid-cols-2 gap-8">
-          {physicalProducts.map((product, index) => (
+          {rewards.map((reward, index) => (
             <div class="bg-gradient-to-br from-[var(--color-charcoal)] to-[var(--color-gold)] rounded-lg p-8 text-white">
               <div class="text-center mb-6">
-                <div class="text-4xl mb-4">💎</div>
-                <h3 class="text-2xl font-bold mb-2">{product.name}</h3>
-                <p class="text-neutral-200">{product.description}</p>
+                <div class="text-4xl mb-4">🎁</div>
+                <h3 class="text-2xl font-bold mb-2">{reward.name}</h3>
+                <p class="text-neutral-200">{reward.description}</p>
               </div>
-              
+
               <div class="space-y-4 mb-6">
                 <div class="flex justify-between">
-                  <span>Цена:</span>
-                  <span class="font-semibold">{product.price?.toFixed(2) || '0.00'} {product.currency?.toUpperCase() || 'EUR'}</span>
+                  <span>Ценность Награды:</span>
+                  <span class="font-semibold">{reward.price?.toFixed(2) || '0.00'} {reward.currency?.toUpperCase() || 'EUR'}</span>
                 </div>
                 <div class="flex justify-between">
                   <span>Тип:</span>
                   <span class="font-semibold">Физическая Награда</span>
                 </div>
-                <div class="flex justify-between">
-                  <span>Статус:</span>
-                  <span class="font-semibold capitalize">{product.status}</span>
-                </div>
               </div>
-              
+
               <p class="text-sm text-neutral-200 mb-6">
-                Красивое рукотворное ювелирное изделие в качестве награды за вашу поддержку. 
-                Каждое изделие уникально и сделано с любовью.
+                Получите это уникальное ювелирное изделие в качестве благодарности за вашу поддержку.
               </p>
-              
-              <a href={product.link} target="_blank" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
+
+              <a href={reward.link} target="_blank" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
                 Получить Награду
               </a>
             </div>
@@ -164,60 +155,57 @@ const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price ||
         </div>
       ) : (
         <div class="text-center py-12">
-          <p class="text-xl text-neutral-600">В данный момент физические награды недоступны.</p>
+          <p class="text-xl text-neutral-600">В настоящее время нет доступных физических наград.</p>
         </div>
       )}
     </div>
   </section>
 
   <!-- Community Impact -->
-  <section class="py-20 bg-neutral-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-          Влияние на Сообщество
-        </h2>
-        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-          Ваша поддержка напрямую способствует инновациям в художественных украшениях и созданию нашего глобального сообщества.
-        </p>
-      </div>
-      
+  <section class="py-20 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+        Влияние Сообщества
+      </h2>
+      <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
+        Ваша поддержка напрямую способствует нашему росту и инновациям.
+      </p>
+
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">{digitalProducts.length}</div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Цифровые Уровни Поддержки</h3>
-          <p class="text-neutral-600">Доступны для поддержки сообщества</p>
+        <div class="bg-neutral-800 rounded-lg p-8">
+          <div class="text-5xl mb-4">🌟</div>
+          <h3 class="text-2xl font-bold mb-2">Общая Поддержка</h3>
+          <p class="text-xl text-[var(--color-gold)]">{(totalSupport + totalRewards).toFixed(2)} EUR</p>
+          <p class="text-neutral-400">Общая ценность уровней поддержки и наград.</p>
         </div>
-        
-        <div class="text-center">
-          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">{physicalProducts.length}</div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Физические Награды</h3>
-          <p class="text-neutral-600">Рукотворные ювелирные изделия</p>
+        <div class="bg-neutral-800 rounded-lg p-8">
+          <div class="text-5xl mb-4">🎁</div>
+          <h3 class="text-2xl font-bold mb-2">Физические Награды</h3>
+          <p class="text-xl text-[var(--color-gold)]">{rewards.length}</p>
+          <p class="text-neutral-400">Количество доступных физических наград.</p>
         </div>
-        
-        <div class="text-center">
-          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">∞</div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Участников Сообщества</h3>
-          <p class="text-neutral-600">Растущее глобальное сообщество</p>
+        <div class="bg-neutral-800 rounded-lg p-8">
+          <div class="text-5xl mb-4">💎</div>
+          <h3 class="text-2xl font-bold mb-2">Уровни Поддержки</h3>
+          <p class="text-xl text-[var(--color-gold)]">{supportTiers.length}</p>
+          <p class="text-neutral-400">Количество доступных уровней поддержки.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+        Готовы Поддержать?
+      </h2>
+      <p class="text-xl text-neutral-600 max-w-3xl mx-auto mb-12">
+        Ваш вклад помогает нам продолжать создавать уникальные художественные украшения и развивать наше сообщество.
+      </p>
+      <a href="#support" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+        Начать Поддержку
+      </a>
+    </div>
+  </section>
 </Layout>
-
-<style>
-  .fade-in-up {
-    animation: fadeInUp 0.8s ease-out;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>

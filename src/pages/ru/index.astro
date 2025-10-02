@@ -53,20 +53,20 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
         <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
           Каждое изделие рассказывает историю древней мудрости, встречающейся с современными инновациями. 
           Наши украшения превращают тело в холст для самовыражения.
-        </p>
-      </div>
-      
-      <div class="photo-gallery">
+          </p>
+        </div>
+        
+        <div class="photo-gallery">
         {featuredPhotos.map((photo, index) => (
           <div class="photo-item group">
-            <img 
-              src={`/images/${photo.data.filename}`} 
-              alt={photo.data.alt}
-              loading="lazy"
+              <img 
+                src={`/images/${photo.data.filename}`} 
+                alt={photo.data.alt}
+                loading="lazy"
               class="w-full h-full object-cover"
-            />
-            <div class="photo-overlay">
-              <h3 class="text-lg font-semibold mb-2">{photo.data.title}</h3>
+              />
+              <div class="photo-overlay">
+                <h3 class="text-lg font-semibold mb-2">{photo.data.title}</h3>
               <p class="text-sm opacity-90">{photo.data.description}</p>
               <div class="flex flex-wrap gap-2 mt-3">
                 {photo.data.tags.map(tag => (

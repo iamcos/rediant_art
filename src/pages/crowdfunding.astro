@@ -2,34 +2,30 @@
 import Layout from '../layouts/Layout.astro';
 import { fetchProducts } from '../utils/index';
 
-// Fetch real data from Tribute API
+// Fetch products from Tribute API
 let products = [];
-let digitalProducts = [];
-let physicalProducts = [];
-
 try {
   products = await fetchProducts();
-  digitalProducts = products.filter(p => p.type === 'digital');
-  physicalProducts = products.filter(p => p.type === 'physical');
 } catch (error) {
   console.error('Failed to fetch products:', error);
-  // Fallback to empty arrays if API fails
   products = [];
-  digitalProducts = [];
-  physicalProducts = [];
 }
 
-// Calculate totals for display
-const totalDigitalValue = digitalProducts.reduce((sum, p) => sum + (p.price || 0), 0);
-const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price || 0), 0);
+// For crowdfunding, we'll use digital products as "support tiers" and physical as "rewards"
+const supportTiers = products.filter(p => p.type === 'digital');
+const rewards = products.filter(p => p.type === 'physical');
+
+// Calculate totals
+const totalSupport = supportTiers.reduce((sum, p) => sum + (p.price || 0), 0);
+const totalRewards = rewards.reduce((sum, p) => sum + (p.price || 0), 0);
 ---
 
 <Layout 
-  title="Crypto Crowdfunding - Support Rediant Art Innovation"
-  description="Join Rediant's crypto crowdfunding campaigns and support the future of artistic jewelry. Contribute to our innovation through digital support and physical rewards."
+  title="Crowdfunding - Support Rediant Art Innovation"
+  description="Support Rediant Art's innovation through donations, help us reach our goals, and join our community through memberships. Be part of the future of artistic jewelry."
   lang="en"
   heroImage="/images/photo_2025-09-11 00.03.32.jpeg"
-  heroAlt="Crypto crowdfunding for Rediant Art"
+  heroAlt="Crowdfunding for Rediant Art"
 >
   <!-- Hero Section -->
   <section 
@@ -45,52 +41,52 @@ const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price ||
           Help Us Build the Future of Artistic Jewelry
         </p>
         <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
-          Join our community-driven innovation through digital support and physical rewards. 
+          Join our community-driven innovation through support tiers and rewards. 
           Be part of building the most engaged artistic jewelry community worldwide.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
           <a href="#support" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
-            View Support Options
+            Support Options
           </a>
           <a href="#rewards" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
-            See Rewards
+            View Rewards
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Digital Support Tiers -->
+  <!-- Support Tiers (Digital Products as Donation Levels) -->
   <section id="support" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-          Digital Support Tiers
+          Support Tiers
         </h2>
         <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
           Choose your level of support and help us build the future of artistic jewelry.
         </p>
       </div>
-      
-      {digitalProducts.length > 0 ? (
+
+      {supportTiers.length > 0 ? (
         <div class="grid lg:grid-cols-3 gap-8 mb-16">
-          {digitalProducts.map((product, index) => (
+          {supportTiers.map((tier, index) => (
             <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] rounded-lg p-8 text-white">
               <div class="text-center mb-6">
                 <div class="text-4xl mb-4">💎</div>
-                <h3 class="text-2xl font-bold mb-2">{product.name}</h3>
-                <p class="text-neutral-200">{product.description}</p>
+                <h3 class="text-2xl font-bold mb-2">{tier.name}</h3>
+                <p class="text-neutral-200">{tier.description}</p>
               </div>
-              
+
               <div class="space-y-4 mb-6">
                 <div class="flex justify-between">
-                  <span>Price:</span>
-                  <span class="font-semibold">{product.price?.toFixed(2) || '0.00'} {product.currency?.toUpperCase() || 'EUR'}</span>
+                  <span>Support Level:</span>
+                  <span class="font-semibold">{tier.price?.toFixed(2) || '0.00'} {tier.currency?.toUpperCase() || 'EUR'}</span>
                 </div>
-                {product.starsAmountEnabled && (
+                {tier.starsAmountEnabled && (
                   <div class="flex justify-between">
                     <span>Stars:</span>
-                    <span class="font-semibold">{product.starsAmount}</span>
+                    <span class="font-semibold">{tier.starsAmount}</span>
                   </div>
                 )}
                 <div class="flex justify-between">
@@ -98,13 +94,13 @@ const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price ||
                   <span class="font-semibold">Digital Support</span>
                 </div>
               </div>
-              
+
               <p class="text-sm text-neutral-200 mb-6">
                 Support our innovation with this digital contribution. 
                 Help us build the future of artistic jewelry.
               </p>
-              
-              <a href={product.link} target="_blank" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
+
+              <a href={tier.link} target="_blank" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
                 Support Now
               </a>
             </div>
@@ -112,10 +108,10 @@ const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price ||
         </div>
       ) : (
         <div class="text-center py-12">
-          <p class="text-xl text-neutral-600">No digital support tiers available at the moment.</p>
+          <p class="text-xl text-neutral-600">No support tiers available at the moment.</p>
         </div>
       )}
-      
+
       <!-- Physical Rewards -->
       <div class="text-center mb-16">
         <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
@@ -125,38 +121,33 @@ const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price ||
           Beautiful handcrafted jewelry pieces as rewards for your support.
         </p>
       </div>
-      
-      {physicalProducts.length > 0 ? (
+
+      {rewards.length > 0 ? (
         <div class="grid lg:grid-cols-2 gap-8">
-          {physicalProducts.map((product, index) => (
+          {rewards.map((reward, index) => (
             <div class="bg-gradient-to-br from-[var(--color-charcoal)] to-[var(--color-gold)] rounded-lg p-8 text-white">
               <div class="text-center mb-6">
-                <div class="text-4xl mb-4">💎</div>
-                <h3 class="text-2xl font-bold mb-2">{product.name}</h3>
-                <p class="text-neutral-200">{product.description}</p>
+                <div class="text-4xl mb-4">🎁</div>
+                <h3 class="text-2xl font-bold mb-2">{reward.name}</h3>
+                <p class="text-neutral-200">{reward.description}</p>
               </div>
-              
+
               <div class="space-y-4 mb-6">
                 <div class="flex justify-between">
-                  <span>Price:</span>
-                  <span class="font-semibold">{product.price?.toFixed(2) || '0.00'} {product.currency?.toUpperCase() || 'EUR'}</span>
+                  <span>Reward Value:</span>
+                  <span class="font-semibold">{reward.price?.toFixed(2) || '0.00'} {reward.currency?.toUpperCase() || 'EUR'}</span>
                 </div>
                 <div class="flex justify-between">
                   <span>Type:</span>
                   <span class="font-semibold">Physical Reward</span>
                 </div>
-                <div class="flex justify-between">
-                  <span>Status:</span>
-                  <span class="font-semibold capitalize">{product.status}</span>
-                </div>
               </div>
-              
+
               <p class="text-sm text-neutral-200 mb-6">
-                Beautiful handcrafted jewelry piece as a reward for your support. 
-                Each piece is unique and made with love.
+                Receive this unique jewelry piece as a thank you for your support.
               </p>
-              
-              <a href={product.link} target="_blank" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
+
+              <a href={reward.link} target="_blank" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
                 Get Reward
               </a>
             </div>
@@ -171,53 +162,50 @@ const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price ||
   </section>
 
   <!-- Community Impact -->
-  <section class="py-20 bg-neutral-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-          Community Impact
-        </h2>
-        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-          Your support directly contributes to innovation in artistic jewelry and the creation of our global community.
-        </p>
-      </div>
-      
+  <section class="py-20 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+        Community Impact
+      </h2>
+      <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
+        Your support directly contributes to our growth and innovation.
+      </p>
+
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">{digitalProducts.length}</div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Digital Support Tiers</h3>
-          <p class="text-neutral-600">Available for community support</p>
+        <div class="bg-neutral-800 rounded-lg p-8">
+          <div class="text-5xl mb-4">🌟</div>
+          <h3 class="text-2xl font-bold mb-2">Total Support</h3>
+          <p class="text-xl text-[var(--color-gold)]">{(totalSupport + totalRewards).toFixed(2)} EUR</p>
+          <p class="text-neutral-400">Overall value of support tiers and rewards.</p>
         </div>
-        
-        <div class="text-center">
-          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">{physicalProducts.length}</div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Physical Rewards</h3>
-          <p class="text-neutral-600">Handcrafted jewelry pieces</p>
+        <div class="bg-neutral-800 rounded-lg p-8">
+          <div class="text-5xl mb-4">🎁</div>
+          <h3 class="text-2xl font-bold mb-2">Physical Rewards</h3>
+          <p class="text-xl text-[var(--color-gold)]">{rewards.length}</p>
+          <p class="text-neutral-400">Number of physical rewards available.</p>
         </div>
-        
-        <div class="text-center">
-          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">∞</div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Community Members</h3>
-          <p class="text-neutral-600">Growing global community</p>
+        <div class="bg-neutral-800 rounded-lg p-8">
+          <div class="text-5xl mb-4">💎</div>
+          <h3 class="text-2xl font-bold mb-2">Support Tiers</h3>
+          <p class="text-xl text-[var(--color-gold)]">{supportTiers.length}</p>
+          <p class="text-neutral-400">Number of support tiers available.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+        Ready to Support?
+      </h2>
+      <p class="text-xl text-neutral-600 max-w-3xl mx-auto mb-12">
+        Your contribution helps us continue creating unique artistic jewelry and growing our community.
+      </p>
+      <a href="#support" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+        Start Supporting
+      </a>
+    </div>
+  </section>
 </Layout>
-
-<style>
-  .fade-in-up {
-    animation: fadeInUp 0.8s ease-out;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>
