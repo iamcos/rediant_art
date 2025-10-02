@@ -17,5 +17,24 @@
     "imageUrl": "https://s3.tribute.tg/tribute/images/43/8c951874-e16f-47d3-af9a-0c2bc23c98db.jpeg",
     "link": "https://t.me/tribute/app?startapp=hleZ",
     "webLink": "https://web.tribute.tg/p/leZ"
+  },
+  {
+    "id": 81665,
+    "type": "physical",
+    "name": "Necklace",
+    "description": "Custom made neclkaces",
+    "amount": 10000,
+    "currency": "rub",
+    "starsAmountEnabled": false,
+    "status": "retry",
+    "isCustom": false,
+    "acceptCards": false,
+    "acceptWalletPay": false,
+    "protectContent": true,
+    "created": "2025-10-02T07:01:02.768947Z",
+    "updated": "2025-10-02T07:01:02.771802Z",
+    "imageUrl": "https://s3.tribute.tg/tribute/images/208/e4e6b865-a584-4feb-9d59-64e07cd7caab.jpeg",
+    "link": "https://t.me/tribute/app?startapp=hlfb",
+    "webLink": "https://web.tribute.tg/p/lfb"
   }
 ]

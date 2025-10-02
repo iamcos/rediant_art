@@ -46,15 +46,17 @@ async function fetchTributeProducts() {
     // Display products
     if (products.length > 0) {
       console.log('\n📦 PRODUCTS:');
-      products.forEach((product, index) => {
-        console.log(`\n${index + 1}. ${product.name}`);
-        console.log(`   ID: ${product.id}`);
-        console.log(`   Price: ${product.amount / 100} ${product.currency.toUpperCase()}`);
-        console.log(`   Description: ${product.description || 'No description'}`);
-        console.log(`   Image: ${product.imageUrl || 'No image'}`);
-        console.log(`   Link: ${product.link || 'No link'}`);
-        console.log(`   Available: ${product.available !== false ? 'Yes' : 'No'}`);
-      });
+         products.forEach((product, index) => {
+           console.log(`\n${index + 1}. ${product.name}`);
+           console.log(`   ID: ${product.id}`);
+           console.log(`   Raw Amount: ${product.amount} ${product.currency.toUpperCase()}`);
+           console.log(`   Price (cents): ${product.amount / 100} ${product.currency.toUpperCase()}`);
+           console.log(`   Price (no conversion): ${product.amount} ${product.currency.toUpperCase()}`);
+           console.log(`   Description: ${product.description || 'No description'}`);
+           console.log(`   Image: ${product.imageUrl || 'No image'}`);
+           console.log(`   Link: ${product.link || 'No link'}`);
+           console.log(`   Available: ${product.available !== false ? 'Yes' : 'No'}`);
+         });
     } else {
       console.log('📭 No products found in your Tribute account');
     }

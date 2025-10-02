@@ -29,7 +29,7 @@ export async function fetchProducts(): Promise<Product[]> {
       id: product.id,
       name: product.name,
       description: product.description || 'Beautiful artistic jewelry piece',
-      price: product.amount / 100, // Convert from cents
+      price: product.amount, // Use raw amount - Tribute API already provides correct prices
       currency: product.currency.toUpperCase(),
       image: product.imageUrl || '/images/photo_2025-09-10 23.58.23.jpeg',
       category: 'jewelry',
