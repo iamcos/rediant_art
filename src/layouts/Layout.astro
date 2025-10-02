@@ -1,13 +1,19 @@
 ---
-export interface Props {
-  title: string;
-  description?: string;
-  lang?: string;
-  heroImage?: string;
-  heroAlt?: string;
+import type { LayoutProps } from '../types';
+import Navigation from '../components/Navigation.astro';
+
+export interface Props extends LayoutProps {
+  currentPath?: string;
 }
 
-const { title, description = "Rediant Art - Contemporary Jewelry & 3D Printing Innovation", lang = "en", heroImage, heroAlt } = Astro.props;
+const { 
+  title, 
+  description = "Rediant Art - Contemporary Jewelry & 3D Printing Innovation", 
+  lang = "en", 
+  heroImage, 
+  heroAlt,
+  currentPath = '/'
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -51,93 +57,46 @@ const { title, description = "Rediant Art - Contemporary Jewelry & 3D Printing I
   </head>
   <body class="bg-neutral-50 text-neutral-900 font-sans antialiased">
     <!-- Navigation -->
-    <nav class="rediant-navbar">
-      <div class="rediant-nav-container">
-        <!-- Logo -->
-        <div class="rediant-nav-logo">
-          <a href={lang === 'ru' ? '/ru/' : '/'} class="rediant-logo-link">
-            <span class="rediant-logo-text">Rediant</span> Art
-          </a>
-        </div>
-        
-        <!-- Desktop Menu -->
-        <div class="rediant-nav-menu" id="rediant-nav-menu">
-          <a href={lang === 'ru' ? '/ru/' : '/'} class="rediant-nav-item">{lang === 'ru' ? 'Главная' : 'Home'}</a>
-          <a href={lang === 'ru' ? '/ru/shop' : '/shop'} class="rediant-nav-item">{lang === 'ru' ? 'Магазин' : 'Shop'}</a>
-          <a href={lang === 'ru' ? '/ru/collections' : '/collections'} class="rediant-nav-item">{lang === 'ru' ? 'Коллекции' : 'Collections'}</a>
-          <a href={lang === 'ru' ? '/ru/about' : '/about'} class="rediant-nav-item">{lang === 'ru' ? 'О нас' : 'About'}</a>
-          <a href={lang === 'ru' ? '/ru/3d-printing' : '/3d-printing'} class="rediant-nav-item">{lang === 'ru' ? '3D Печать' : '3D Printing'}</a>
-          <a href={lang === 'ru' ? '/ru/crowdfunding' : '/crowdfunding'} class="rediant-nav-item">{lang === 'ru' ? 'Краудфандинг' : 'Crowdfunding'}</a>
-          <a href={lang === 'ru' ? '/ru/subscription' : '/subscription'} class="rediant-nav-item">{lang === 'ru' ? 'Подписка' : 'Subscription'}</a>
-          <a href={lang === 'ru' ? '/ru/order' : '/order'} class="rediant-nav-item">{lang === 'ru' ? 'Заказ' : 'Order'}</a>
-          <a href={lang === 'ru' ? '/ru/journal' : '/journal'} class="rediant-nav-item">{lang === 'ru' ? 'Журнал' : 'Journal'}</a>
-          <a href={lang === 'ru' ? '/ru/contact' : '/contact'} class="rediant-nav-item">{lang === 'ru' ? 'Контакты' : 'Contact'}</a>
-          
-          <!-- Language Switcher -->
-          <div class="rediant-nav-language">
-            {lang === 'ru' ? (
-              <a href="/" class="rediant-lang-link">EN</a>
-            ) : (
-              <a href="/ru/" class="rediant-lang-link">RU</a>
-            )}
-          </div>
-        </div>
-        
-        <!-- Mobile Menu Button -->
-        <button class="rediant-nav-toggle" id="rediant-mobile-toggle" aria-label="Toggle mobile menu">
-          <span class="rediant-hamburger-line"></span>
-          <span class="rediant-hamburger-line"></span>
-          <span class="rediant-hamburger-line"></span>
-        </button>
-      </div>
-    </nav>
+    <Navigation lang={lang} currentPath={currentPath} />
     
     <!-- Main Content -->
-    <main>
+    <main class="rediant-main-content">
       <slot />
     </main>
     
-    <!-- Rediant Navigation Script -->
+    <!-- Performance Scripts -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const mobileToggle = document.getElementById('rediant-mobile-toggle');
-        const navMenu = document.getElementById('rediant-nav-menu');
-        
-        if (mobileToggle && navMenu) {
-          // Toggle mobile menu
-          mobileToggle.addEventListener('click', function() {
-            mobileToggle.classList.toggle('rediant-active');
-            navMenu.classList.toggle('rediant-active');
-            document.body.classList.toggle('rediant-menu-open');
-          });
-          
-          // Close menu when clicking on a link
-          document.querySelectorAll('.rediant-nav-item').forEach(link => {
-            link.addEventListener('click', function() {
-              mobileToggle.classList.remove('rediant-active');
-              navMenu.classList.remove('rediant-active');
-              document.body.classList.remove('rediant-menu-open');
+      // Initialize performance optimizations
+      document.addEventListener('DOMContentLoaded', () => {
+        // Lazy load images
+        const images = document.querySelectorAll('img[data-src]');
+        if ('IntersectionObserver' in window) {
+          const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                observer.unobserve(img);
+              }
             });
           });
-          
-          // Close menu when clicking outside
-          document.addEventListener('click', function(event) {
-            if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
-              mobileToggle.classList.remove('rediant-active');
-              navMenu.classList.remove('rediant-active');
-              document.body.classList.remove('rediant-menu-open');
-            }
-          });
-          
-          // Close menu on escape key
-          document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-              mobileToggle.classList.remove('rediant-active');
-              navMenu.classList.remove('rediant-active');
-              document.body.classList.remove('rediant-menu-open');
-            }
-          });
+          images.forEach(img => imageObserver.observe(img));
         }
+        
+        // Preload critical resources
+        const criticalImages = [
+          '/images/photo_2025-09-10 23.56.36.jpg',
+          '/images/photo_2025-09-10 23.58.23.jpeg'
+        ];
+        
+        criticalImages.forEach(src => {
+          const link = document.createElement('link');
+          link.rel = 'preload';
+          link.as = 'image';
+          link.href = src;
+          document.head.appendChild(link);
+        });
       });
     </script>
   </body>

@@ -147,5 +147,16 @@ This is a bilingual (English/Russian) jewelry brand website for Rediant, featuri
 4. **Keep SEO meta tags updated** for both languages
 5. **Test responsive design** on all breakpoints
 6. **Ensure all internal links work** in both languages
+7. **NEVER USE MOCK DATA** - Always work with real data from live APIs and servers
+8. **REAL DATA ONLY** - Data is always available, servers are running, APIs are working
+9. **NO FALLBACKS TO SAMPLE DATA** - If API fails, fix the integration, don't use mock data
 
-Remember: This is a premium jewelry brand website that should reflect quality, innovation, and artistic excellence in every detail. The bilingual nature is essential for reaching both English and Russian-speaking audiences.
+## DATA INTEGRATION RULES
+- **Tribute API**: Always fetch real products from Tribute API
+- **Product Data**: Use actual product information, images, prices
+- **No Sample Data**: Never use placeholder or sample products
+- **Real Images**: Use actual product photos from Tribute
+- **Live Prices**: Display real pricing from Tribute
+- **Working Links**: All buy buttons must link to real Tribute purchase flows
+
+Remember: This is a premium jewelry brand website that should reflect quality, innovation, and artistic excellence in every detail. The bilingual nature is essential for reaching both English and Russian-speaking audiences. ALWAYS use real data - mock data is not acceptable for this project.

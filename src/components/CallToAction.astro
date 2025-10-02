@@ -1,0 +1,216 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  primaryButton?: {
+    text: string;
+    href: string;
+  };
+  secondaryButton?: {
+    text: string;
+    href: string;
+  };
+  backgroundImage?: string;
+  variant?: 'light' | 'dark';
+}
+
+const {
+  title,
+  description,
+  primaryButton,
+  secondaryButton,
+  backgroundImage,
+  variant = 'dark'
+} = Astro.props;
+---
+
+<section 
+  class={`rediant-cta rediant-cta-${variant}`}
+  style={backgroundImage ? `background-image: url('${backgroundImage}')` : undefined}
+>
+  <div class="rediant-cta-content">
+    <div class="rediant-cta-container">
+      <h2 class="rediant-cta-title">{title}</h2>
+      {description && (
+        <p class="rediant-cta-description">{description}</p>
+      )}
+      {(primaryButton || secondaryButton) && (
+        <div class="rediant-cta-actions">
+          {primaryButton && (
+            <a href={primaryButton.href} class="rediant-cta-btn rediant-cta-btn-primary">
+              {primaryButton.text}
+            </a>
+          )}
+          {secondaryButton && (
+            <a href={secondaryButton.href} class="rediant-cta-btn rediant-cta-btn-secondary">
+              {secondaryButton.text}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .rediant-cta {
+    padding: 5rem 0;
+    position: relative;
+  }
+
+  .rediant-cta[style*="background-image"] {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .rediant-cta[style*="background-image"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+
+  .rediant-cta-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .rediant-cta-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .rediant-cta-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+
+  .rediant-cta-description {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .rediant-cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .rediant-cta-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  /* Light variant */
+  .rediant-cta-light {
+    background: #f5f5f5;
+    color: #2c2c2c;
+  }
+
+  .rediant-cta-light .rediant-cta-title {
+    color: #2c2c2c;
+  }
+
+  .rediant-cta-light .rediant-cta-description {
+    color: #666;
+  }
+
+  .rediant-cta-light .rediant-cta-btn-primary {
+    background: var(--color-gold);
+    color: white;
+  }
+
+  .rediant-cta-light .rediant-cta-btn-primary:hover {
+    background: var(--color-charcoal);
+    transform: translateY(-2px);
+  }
+
+  .rediant-cta-light .rediant-cta-btn-secondary {
+    border: 2px solid var(--color-charcoal);
+    color: var(--color-charcoal);
+  }
+
+  .rediant-cta-light .rediant-cta-btn-secondary:hover {
+    background: var(--color-charcoal);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  /* Dark variant */
+  .rediant-cta-dark {
+    background: #2c2c2c;
+    color: white;
+  }
+
+  .rediant-cta-dark .rediant-cta-title {
+    color: white;
+  }
+
+  .rediant-cta-dark .rediant-cta-description {
+    color: #d1d5db;
+  }
+
+  .rediant-cta-dark .rediant-cta-btn-primary {
+    background: var(--color-gold);
+    color: white;
+  }
+
+  .rediant-cta-dark .rediant-cta-btn-primary:hover {
+    background: var(--color-charcoal);
+    transform: translateY(-2px);
+  }
+
+  .rediant-cta-dark .rediant-cta-btn-secondary {
+    border: 2px solid white;
+    color: white;
+  }
+
+  .rediant-cta-dark .rediant-cta-btn-secondary:hover {
+    background: white;
+    color: var(--color-charcoal);
+    transform: translateY(-2px);
+  }
+
+  @media (min-width: 640px) {
+    .rediant-cta-title {
+      font-size: 3.75rem;
+    }
+    
+    .rediant-cta-description {
+      font-size: 1.5rem;
+    }
+    
+    .rediant-cta-actions {
+      flex-direction: row;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .rediant-cta-title {
+      font-size: 4.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .rediant-cta[style*="background-image"] {
+      background-attachment: scroll;
+    }
+  }
+</style>

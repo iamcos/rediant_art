@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rediant Menu Test</title>
+    <style>
+        /* Rediant Navigation System - Clean & Adaptable */
+        .rediant-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .rediant-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 5rem;
+        }
+
+        .rediant-nav-logo {
+            flex-shrink: 0;
+        }
+
+        .rediant-logo-link {
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #2C2C2C;
+            transition: all 0.3s ease;
+        }
+
+        .rediant-logo-link:hover {
+            transform: scale(1.05);
+        }
+
+        .rediant-logo-text {
+            color: #D4AF37;
+        }
+
+        .rediant-nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rediant-nav-item {
+            text-decoration: none;
+            color: #2C2C2C;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.75rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .rediant-nav-item:hover {
+            color: #D4AF37;
+            transform: translateY(-1px);
+        }
+
+        .rediant-nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .rediant-nav-item:hover::after {
+            width: 100%;
+        }
+
+        .rediant-nav-language {
+            margin-left: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .rediant-lang-link {
+            text-decoration: none;
+            color: #2C2C2C;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .rediant-lang-link:hover {
+            background: #D4AF37;
+            color: white;
+            border-color: #D4AF37;
+            transform: scale(1.05);
+        }
+
+        .rediant-nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            gap: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .rediant-nav-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .rediant-hamburger-line {
+            width: 1.5rem;
+            height: 2px;
+            background: #2C2C2C;
+            transition: all 0.3s ease;
+            border-radius: 1px;
+        }
+
+        .rediant-nav-toggle.rediant-active .rediant-hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(0.4rem, 0.4rem);
+        }
+
+        .rediant-nav-toggle.rediant-active .rediant-hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .rediant-nav-toggle.rediant-active .rediant-hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(0.4rem, -0.4rem);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 1024px) {
+            .rediant-nav-menu {
+                gap: 2rem;
+            }
+            
+            .rediant-nav-item {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .rediant-nav-container {
+                padding: 0 1rem;
+                height: 4.5rem;
+            }
+            
+            .rediant-nav-toggle {
+                display: flex;
+            }
+            
+            .rediant-nav-menu {
+                position: fixed;
+                top: 4.5rem;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 4.5rem);
+                background: rgba(0, 0, 0, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 3rem 2rem;
+                gap: 2rem;
+                transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                overflow-y: auto;
+            }
+            
+            .rediant-nav-menu.rediant-active {
+                left: 0;
+            }
+            
+            .rediant-nav-item {
+                color: white;
+                font-size: 1.25rem;
+                padding: 1rem 0;
+                text-align: center;
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .rediant-nav-item:hover {
+                color: #D4AF37;
+                transform: translateX(0.5rem);
+            }
+            
+            .rediant-nav-item::after {
+                display: none;
+            }
+            
+            .rediant-nav-language {
+                margin-left: 0;
+                margin-top: 2rem;
+                padding: 2rem 0 0 0;
+                border-left: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                width: 100%;
+                text-align: center;
+            }
+            
+            .rediant-lang-link {
+                color: white;
+                border: 2px solid #D4AF37;
+                padding: 1rem 2rem;
+                border-radius: 0.75rem;
+                display: inline-block;
+                font-size: 1.1rem;
+            }
+            
+            .rediant-lang-link:hover {
+                background: #D4AF37;
+                color: #2C2C2C;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Body scroll lock when menu is open */
+        .rediant-menu-open {
+            overflow: hidden;
+        }
+
+        /* Main content padding for fixed navigation */
+        .rediant-main-content {
+            padding-top: 5rem;
+        }
+
+        @media (max-width: 768px) {
+            .rediant-main-content {
+                padding-top: 4.5rem;
+            }
+        }
+
+        /* Test content */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .test-content {
+            padding: 2rem;
+            background: white;
+            margin: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="rediant-navbar">
+        <div class="rediant-nav-container">
+            <!-- Logo -->
+            <div class="rediant-nav-logo">
+                <a href="/" class="rediant-logo-link">
+                    <span class="rediant-logo-text">Rediant</span> Art
+                </a>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="rediant-nav-menu" id="rediant-nav-menu">
+                <a href="/" class="rediant-nav-item">Home</a>
+                <a href="/shop" class="rediant-nav-item">Shop</a>
+                <a href="/collections" class="rediant-nav-item">Collections</a>
+                <a href="/about" class="rediant-nav-item">About</a>
+                <a href="/3d-printing" class="rediant-nav-item">3D Printing</a>
+                <a href="/crowdfunding" class="rediant-nav-item">Crowdfunding</a>
+                <a href="/subscription" class="rediant-nav-item">Subscription</a>
+                <a href="/order" class="rediant-nav-item">Order</a>
+                <a href="/journal" class="rediant-nav-item">Journal</a>
+                <a href="/contact" class="rediant-nav-item">Contact</a>
+                
+                <!-- Language Switcher -->
+                <div class="rediant-nav-language">
+                    <a href="/ru/" class="rediant-lang-link">RU</a>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="rediant-nav-toggle" id="rediant-mobile-toggle" aria-label="Toggle mobile menu">
+                <span class="rediant-hamburger-line"></span>
+                <span class="rediant-hamburger-line"></span>
+                <span class="rediant-hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="rediant-main-content">
+        <div class="test-content">
+            <h1>Rediant Menu Test</h1>
+            <p>This is a test page to verify the new menu system works correctly.</p>
+            <p>Try resizing the browser window to test the responsive behavior.</p>
+            <p>The menu should:</p>
+            <ul>
+                <li>Show all navigation items on desktop</li>
+                <li>Collapse to a hamburger menu on mobile</li>
+                <li>Have smooth animations</li>
+                <li>Close when clicking outside or pressing Escape</li>
+                <li>Have proper hover effects</li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Rediant Navigation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.getElementById('rediant-mobile-toggle');
+            const navMenu = document.getElementById('rediant-nav-menu');
+            
+            if (mobileToggle && navMenu) {
+                // Toggle mobile menu
+                mobileToggle.addEventListener('click', function() {
+                    mobileToggle.classList.toggle('rediant-active');
+                    navMenu.classList.toggle('rediant-active');
+                    document.body.classList.toggle('rediant-menu-open');
+                });
+                
+                // Close menu when clicking on a link
+                document.querySelectorAll('.rediant-nav-item').forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileToggle.classList.remove('rediant-active');
+                        navMenu.classList.remove('rediant-active');
+                        document.body.classList.remove('rediant-menu-open');
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (event.target instanceof Element) {
+                        const target = event.target;
+                        if (!navMenu.contains(target) && !mobileToggle.contains(target)) {
+                            mobileToggle.classList.remove('rediant-active');
+                            navMenu.classList.remove('rediant-active');
+                            document.body.classList.remove('rediant-menu-open');
+                        }
+                    }
+                });
+                
+                // Close menu on escape key
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape') {
+                        mobileToggle.classList.remove('rediant-active');
+                        navMenu.classList.remove('rediant-active');
+                        document.body.classList.remove('rediant-menu-open');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

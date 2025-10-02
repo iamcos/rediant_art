@@ -32,8 +32,14 @@ npm run preview
 ### Deployment
 
 ```bash
-# Deploy to GitHub Pages
-./deploy.sh
+# Deploy to Vercel (production)
+npm run deploy
+
+# Deploy preview to Vercel
+npm run deploy:preview
+
+# Check deployment status
+npm run deploy:check
 ```
 
 ## 📁 Project Structure
@@ -84,18 +90,26 @@ src/
 
 ## 🚀 Deployment
 
-The website is configured for GitHub Pages deployment with the following settings:
+The website is configured for Vercel deployment with the following settings:
 
-- **Base URL**: `/rediant_art/`
-- **Site URL**: `https://iamcos.github.io/rediant_art/`
+- **Production URL**: `https://rediant-art2.vercel.app`
+- **Framework**: Astro
 - **Output**: Static files
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
 
-### GitHub Pages Setup
+### Vercel CLI Setup
 
-1. Enable GitHub Pages in repository settings
-2. Set source to "Deploy from a branch" → "main" → "/ (root)"
-3. Run `./deploy.sh` to build and prepare files
-4. Commit and push changes
+1. Install Vercel CLI globally: `npm i -g vercel`
+2. Login to Vercel: `vercel login`
+3. Link project: `vercel link` (first time only)
+4. Deploy: `npm run deploy`
+
+### Deployment Commands
+
+- **Production Deploy**: `npm run deploy` (deploys to production)
+- **Preview Deploy**: `npm run deploy:preview` (deploys preview)
+- **Check Status**: `npm run deploy:check` (list deployments)
 
 ## 📸 Image Optimization
 
@@ -150,7 +164,7 @@ Language switcher is integrated into the navigation menu.
 
 ## 🔗 Links
 
-- **Website**: https://iamcos.github.io/rediant_art/
+- **Website**: https://rediant-art2.vercel.app
 - **Instagram**: @rediant.art
 - **TikTok**: @rediant.art
 - **Email**: hello@rediant.art

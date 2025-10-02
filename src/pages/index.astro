@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import PhotoGallery from '../components/PhotoGallery.astro';
+import CallToAction from '../components/CallToAction.astro';
 import { getCollection } from 'astro:content';
 
 // Get featured photos for the gallery
@@ -15,33 +18,23 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
   heroImage={heroPhoto ? `/images/${heroPhoto.data.filename}` : undefined}
   heroAlt={heroPhoto?.data.alt}
 >
-  <!-- Hero Section with Background Image -->
-  <section 
-    class="bg-image-section min-h-screen flex items-center justify-center"
-    style={`background-image: url('${heroPhoto ? `/images/${heroPhoto.data.filename}` : '/images/photo_2025-09-10 23.56.36.jpg'}')`}
-  >
-    <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
-          <span class="text-[var(--color-gold)]">Rediant</span> Art
-        </h1>
-        <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
-          Contemporary Jewelry & 3D Printing Innovation
-        </p>
-        <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
-          Where ancient tribal inspiration meets modern technology. Discover facechains, headchains, bodychains, and earrings that transform your presence into living art.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
-          <a href="/collections" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
-            Explore Collections
-          </a>
-          <a href="/about" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
-            Our Story
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Hero Section -->
+  <HeroSection
+    title="Rediant Art"
+    subtitle="Contemporary Jewelry & 3D Printing Innovation"
+    description="Where ancient tribal inspiration meets modern technology. Discover facechains, headchains, bodychains, and earrings that transform your presence into living art."
+    backgroundImage={heroPhoto ? `/images/${heroPhoto.data.filename}` : '/images/photo_2025-09-10 23.56.36.jpg'}
+    backgroundAlt={heroPhoto?.data.alt}
+    ctaPrimary={{
+      text: "Explore Collections",
+      href: "/collections"
+    }}
+    ctaSecondary={{
+      text: "Our Story",
+      href: "/about"
+    }}
+    lang="en"
+  />
 
   <!-- Photo Gallery Section -->
   <section class="py-20 bg-neutral-50">
@@ -56,27 +49,12 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
         </p>
       </div>
       
-      <div class="photo-gallery">
-        {featuredPhotos.map((photo, index) => (
-          <div class="photo-item group">
-            <img 
-              src={`/images/${photo.data.filename}`} 
-              alt={photo.data.alt}
-              loading="lazy"
-              class="w-full h-full object-cover"
-            />
-            <div class="photo-overlay">
-              <h3 class="text-lg font-semibold mb-2">{photo.data.title}</h3>
-              <p class="text-sm opacity-90">{photo.data.description}</p>
-              <div class="flex flex-wrap gap-2 mt-3">
-                {photo.data.tags.map(tag => (
-                  <span class="text-xs bg-white/20 px-2 py-1 rounded">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <PhotoGallery 
+        featured={true}
+        limit={12}
+        columns={3}
+        showOverlay={true}
+      />
     </div>
   </section>
 </Layout>

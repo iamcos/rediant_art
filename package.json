@@ -7,7 +7,10 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "vercel --prod",
+    "deploy:preview": "vercel",
+    "deploy:check": "vercel ls"
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.4",
