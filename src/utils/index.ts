@@ -47,6 +47,7 @@ export async function fetchProducts(): Promise<Product[]> {
         price: price,
         currency: product.currency.toUpperCase(),
         image: product.imageUrl || '/images/photo_2025-09-10 23.58.23.jpeg',
+        imageUrl: product.imageUrl || '/images/photo_2025-09-10 23.58.23.jpeg',
         category: category,
         type: product.type,
         tags: tags,
