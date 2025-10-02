@@ -1,7 +1,7 @@
 // Tribute API Configuration
 export const TRIBUTE_CONFIG = {
   API_KEY: 'b437eef4-b475-4d9d-8624-53154116',
-  BASE_URL: 'https://api.tribute.app', // Update with actual Tribute API URL
+  BASE_URL: 'https://tribute.tg/api/v1',
   ENDPOINTS: {
     PRODUCTS: '/products',
     ORDERS: '/orders',
@@ -14,7 +14,7 @@ export async function fetchTributeProducts() {
   try {
     const response = await fetch(`${TRIBUTE_CONFIG.BASE_URL}${TRIBUTE_CONFIG.ENDPOINTS.PRODUCTS}`, {
       headers: {
-        'Authorization': `Bearer ${TRIBUTE_CONFIG.API_KEY}`,
+        'Api-Key': TRIBUTE_CONFIG.API_KEY,
         'Content-Type': 'application/json'
       }
     });
