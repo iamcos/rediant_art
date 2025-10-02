@@ -47,7 +47,7 @@ When prompted, choose:
 ```bash
 npm run deploy
 ```
-This deploys to your production domain (e.g., `rediant-art2.vercel.app`).
+This deploys to your production domain (e.g., `rediant.art`).
 
 ### Preview Deployment
 ```bash
@@ -102,7 +102,7 @@ Contains Vercel-specific configuration:
 
 ### `astro.config.mjs`
 Updated for Vercel deployment:
-- Site URL: `https://rediant-art2.vercel.app`
+- Site URL: `https://rediant.art`
 - Static output
 - Image domain configuration
 

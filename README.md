@@ -92,7 +92,7 @@ src/
 
 The website is configured for Vercel deployment with the following settings:
 
-- **Production URL**: `https://rediant-art2.vercel.app`
+- **Production URL**: `https://rediant.art`
 - **Framework**: Astro
 - **Output**: Static files
 - **Build Command**: `npm run build`
@@ -164,7 +164,7 @@ Language switcher is integrated into the navigation menu.
 
 ## 🔗 Links
 
-- **Website**: https://rediant-art2.vercel.app
+- **Website**: https://rediant.art
 - **Instagram**: @rediant.art
 - **TikTok**: @rediant.art
 - **Email**: hello@rediant.art

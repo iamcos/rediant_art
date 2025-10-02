@@ -5,7 +5,7 @@ import ProductCard from '../../components/ProductCard.astro';
 // Fetch available products from our API
 let products = [];
 try {
-  const response = await fetch(`${import.meta.env.SITE || 'https://rediant-art2.vercel.app'}/api/products`);
+  const response = await fetch(`${import.meta.env.SITE || 'https://rediant.art'}/api/products`);
   if (response.ok) {
     const englishProducts = await response.json();
     // Translate products to Russian

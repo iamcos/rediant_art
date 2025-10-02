@@ -10,7 +10,7 @@ const lifestylePhotos = photos.filter(photo => photo.data.category === 'lifestyl
 // Fetch available products
 let products = [];
 try {
-  const response = await fetch(`${import.meta.env.SITE || 'https://rediant-art2.vercel.app'}/api/products`);
+  const response = await fetch(`${import.meta.env.SITE || 'https://rediant.art'}/api/products`);
   if (response.ok) {
     products = await response.json();
   }
