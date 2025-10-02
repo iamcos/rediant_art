@@ -15,66 +15,6 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
   heroImage={heroPhoto ? `/images/${heroPhoto.data.filename}` : undefined}
   heroAlt={heroPhoto?.data.alt}
 >
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <div class="flex-shrink-0">
-          <a href="/ru/" class="text-2xl font-bold text-neutral-900">
-            <span class="text-[var(--color-gold)]">Rediant</span> Art
-          </a>
-        </div>
-        
-        <div class="hidden md:block">
-          <div class="ml-10 flex items-baseline space-x-8">
-            <a href="/ru/" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Главная</a>
-            <a href="/ru/collections" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Коллекции</a>
-            <a href="/ru/about" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">О нас</a>
-            <a href="/ru/3d-printing" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">3D Печать</a>
-            <a href="/ru/crowdfunding" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Краудфандинг</a>
-            <a href="/ru/subscription" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Подписка</a>
-            <a href="/ru/order" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Заказ</a>
-            <a href="/ru/journal" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Журнал</a>
-            <a href="/ru/contact" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Контакты</a>
-          </div>
-        </div>
-        
-        <div class="hidden md:flex language-switcher">
-          <a href="/">EN</a>
-        </div>
-        
-        <!-- Mobile menu button -->
-        <button 
-          id="mobile-menu-button" 
-          class="mobile-menu-button"
-          onclick="toggleMobileMenu()"
-          aria-label="Открыть мобильное меню"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </div>
-    
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu hidden">
-      <a href="/ru/" onclick="toggleMobileMenu()">Главная</a>
-      <a href="/ru/collections" onclick="toggleMobileMenu()">Коллекции</a>
-      <a href="/ru/about" onclick="toggleMobileMenu()">О нас</a>
-      <a href="/ru/3d-printing" onclick="toggleMobileMenu()">3D Печать</a>
-      <a href="/ru/crowdfunding" onclick="toggleMobileMenu()">Краудфандинг</a>
-      <a href="/ru/subscription" onclick="toggleMobileMenu()">Подписка</a>
-      <a href="/ru/order" onclick="toggleMobileMenu()">Заказ</a>
-      <a href="/ru/journal" onclick="toggleMobileMenu()">Журнал</a>
-      <a href="/ru/contact" onclick="toggleMobileMenu()">Контакты</a>
-      
-      <div class="language-switcher">
-        <a href="/">EN</a>
-      </div>
-    </div>
-  </nav>
-
   <!-- Hero Section with Background Image -->
   <section 
     class="bg-image-section min-h-screen flex items-center justify-center"
@@ -83,185 +23,59 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
     <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
-          Rediant Art
+          <span class="text-[var(--color-gold)]">Rediant</span> Art
         </h1>
         <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
-          Современные украшения с древней душой
+          Современные украшения и инновации 3D печати
         </p>
         <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
-          Откройте для себя мир художественных украшений, где древние племенные традиции 
-          встречаются с инновационными технологиями 3D печати. Каждое изделие рассказывает 
-          историю и несет в себе энергию современного искусства.
+          Где древние племенные традиции встречаются с современными технологиями. Откройте для себя цепочки для лица, головы, тела и серьги, которые превращают ваше присутствие в живое искусство.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
           <a href="/ru/collections" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
             Изучить коллекции
           </a>
           <a href="/ru/about" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
-            Узнать больше
+            Наша история
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Featured Collections -->
-  <section class="py-20 bg-white">
+  <!-- Photo Gallery Section -->
+  <section class="py-20 bg-neutral-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-          Наши коллекции
+          Искусство в движении
         </h2>
         <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-          Каждая коллекция представляет собой уникальное сочетание традиционных техник 
-          и современных технологий, создавая украшения, которые говорят с душой.
+          Каждое изделие рассказывает историю древней мудрости, встречающейся с современными инновациями. 
+          Наши украшения превращают тело в холст для самовыражения.
         </p>
       </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="text-center group">
-          <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-            <span class="text-3xl">👤</span>
-          </div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-4">Цепочки для лица</h3>
-          <p class="text-neutral-600 mb-6">
-            Современная интерпретация древних традиций украшения лица с использованием 
-            священной геометрии и плавных линий.
-          </p>
-          <a href="/ru/collections#facechains" class="text-[var(--color-gold)] font-semibold hover:text-[var(--color-charcoal)] transition-colors">
-            Подробнее →
-          </a>
-        </div>
-        
-        <div class="text-center group">
-          <div class="bg-gradient-to-br from-[var(--color-charcoal)] to-[var(--color-gold)] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-            <span class="text-3xl">👑</span>
-          </div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-4">Цепочки для головы</h3>
-          <p class="text-neutral-600 mb-6">
-            Корона для современной души, сочетающая элегантность с мистической энергией 
-            древних символов.
-          </p>
-          <a href="/ru/collections#headchains" class="text-[var(--color-gold)] font-semibold hover:text-[var(--color-charcoal)] transition-colors">
-            Подробнее →
-          </a>
-        </div>
-        
-        <div class="text-center group">
-          <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-            <span class="text-3xl">🔗</span>
-          </div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-4">Цепочки для тела</h3>
-          <p class="text-neutral-600 mb-6">
-            Украшения в движении, которые следуют за изгибами тела и создают 
-            динамичные, живые композиции.
-          </p>
-          <a href="/ru/collections#bodychains" class="text-[var(--color-gold)] font-semibold hover:text-[var(--color-charcoal)] transition-colors">
-            Подробнее →
-          </a>
-        </div>
-        
-        <div class="text-center group">
-          <div class="bg-gradient-to-br from-[var(--color-charcoal)] to-[var(--color-gold)] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-            <span class="text-3xl">💎</span>
-          </div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-4">Серьги</h3>
-          <p class="text-neutral-600 mb-6">
-            Тонкие и изысканные серьги, которые дополняют любой образ и подчеркивают 
-            индивидуальность.
-          </p>
-          <a href="/ru/collections#earrings" class="text-[var(--color-gold)] font-semibold hover:text-[var(--color-charcoal)] transition-colors">
-            Подробнее →
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Photo Gallery -->
-  {featuredPhotos.length > 0 && (
-    <section class="py-20 bg-neutral-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-            Галерея работ
-          </h2>
-          <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-            Погрузитесь в мир художественных украшений и откройте для себя 
-            красоту каждого уникального изделия.
-          </p>
-        </div>
-        
-        <div class="photo-gallery">
-          {featuredPhotos.map((photo) => (
-            <div class="photo-item">
-              <img 
-                src={`/images/${photo.data.filename}`} 
-                alt={photo.data.alt}
-                loading="lazy"
-              />
-              <div class="photo-overlay">
-                <h3 class="text-lg font-semibold mb-2">{photo.data.title}</h3>
-                <p class="text-sm text-neutral-200">{photo.data.description}</p>
+      <div class="photo-gallery">
+        {featuredPhotos.map((photo, index) => (
+          <div class="photo-item group">
+            <img 
+              src={`/images/${photo.data.filename}`} 
+              alt={photo.data.alt}
+              loading="lazy"
+              class="w-full h-full object-cover"
+            />
+            <div class="photo-overlay">
+              <h3 class="text-lg font-semibold mb-2">{photo.data.title}</h3>
+              <p class="text-sm opacity-90">{photo.data.description}</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                {photo.data.tags.map(tag => (
+                  <span class="text-xs bg-white/20 px-2 py-1 rounded">{tag}</span>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- 3D Printing Innovation -->
-  <section 
-    class="bg-image-section py-20"
-    style="background-image: url('/images/photo_2025-09-10 23.58.15.jpeg')"
-  >
-    <div class="bg-image-content">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl sm:text-5xl font-bold mb-6">
-            Инновации 3D печати
-          </h2>
-          <p class="text-xl text-neutral-200 max-w-3xl mx-auto">
-            Мы используем передовые технологии 3D печати для создания украшений 
-            с невероятной точностью и детализацией.
-          </p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="text-center">
-            <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-              <span class="text-2xl">🎯</span>
-            </div>
-            <h3 class="text-xl font-semibold text-white mb-4">Точность</h3>
-            <p class="text-neutral-300">
-              Каждое украшение создается с точностью до микрона, обеспечивая 
-              идеальное качество и долговечность.
-            </p>
           </div>
-          
-          <div class="text-center">
-            <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-              <span class="text-2xl">⚡</span>
-            </div>
-            <h3 class="text-xl font-semibold text-white mb-4">Скорость</h3>
-            <p class="text-neutral-300">
-              Современные технологии позволяют создавать прототипы и готовые изделия 
-              в рекордно короткие сроки.
-            </p>
-          </div>
-          
-          <div class="text-center">
-            <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-              <span class="text-2xl">🌱</span>
-            </div>
-            <h3 class="text-xl font-semibold text-white mb-4">Устойчивость</h3>
-            <p class="text-neutral-300">
-              Минимальные отходы и экологически чистые материалы делают наши 
-              украшения дружелюбными к окружающей среде.
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -270,18 +84,17 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
   <section class="py-20 bg-neutral-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-4xl sm:text-5xl font-bold mb-6">
-        Создайте свое уникальное украшение
+        Готовы начать свое путешествие?
       </h2>
       <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
-        Свяжитесь с нами для создания индивидуального украшения, которое отражает 
-        вашу уникальную личность и стиль.
+        Откройте для себя мир Rediant и найдите украшения, которые расскажут вашу уникальную историю.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/ru/order" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
-          Заказать украшение
+        <a href="/ru/collections" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+          Изучить коллекции
         </a>
-        <a href="/ru/subscription" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
-          Подписаться на обновления
+        <a href="/ru/contact" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
+          Связаться с нами
         </a>
       </div>
     </div>

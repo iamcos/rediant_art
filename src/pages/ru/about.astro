@@ -9,65 +9,6 @@ import Layout from '../../layouts/Layout.astro';
   heroImage="/images/photo_2025-09-10 23.58.18.jpeg"
   heroAlt="О Rediant Art и Светлане"
 >
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <div class="flex-shrink-0">
-          <a href="/ru/" class="text-2xl font-bold text-neutral-900">
-            <span class="text-[var(--color-gold)]">Rediant</span> Art
-          </a>
-        </div>
-        
-        <div class="hidden md:block">
-          <div class="ml-10 flex items-baseline space-x-8">
-            <a href="/ru/" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Главная</a>
-            <a href="/ru/collections" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Коллекции</a>
-            <a href="/ru/about" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">О нас</a>
-            <a href="/ru/3d-printing" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">3D Печать</a>
-            <a href="/ru/crowdfunding" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Краудфандинг</a>
-            <a href="/ru/subscription" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Подписка</a>
-            <a href="/ru/order" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Заказ</a>
-            <a href="/ru/journal" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Журнал</a>
-            <a href="/ru/contact" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Контакты</a>
-          </div>
-        </div>
-        
-        <div class="hidden md:flex language-switcher">
-          <a href="/">EN</a>
-        </div>
-        
-        <!-- Mobile menu button -->
-        <button 
-          id="mobile-menu-button" 
-          class="mobile-menu-button"
-          onclick="toggleMobileMenu()"
-          aria-label="Открыть мобильное меню"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </div>
-    
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu hidden">
-      <a href="/ru/" onclick="toggleMobileMenu()">Главная</a>
-      <a href="/ru/collections" onclick="toggleMobileMenu()">Коллекции</a>
-      <a href="/ru/about" onclick="toggleMobileMenu()">О нас</a>
-      <a href="/ru/3d-printing" onclick="toggleMobileMenu()">3D Печать</a>
-      <a href="/ru/crowdfunding" onclick="toggleMobileMenu()">Краудфандинг</a>
-      <a href="/ru/subscription" onclick="toggleMobileMenu()">Подписка</a>
-      <a href="/ru/order" onclick="toggleMobileMenu()">Заказ</a>
-      <a href="/ru/journal" onclick="toggleMobileMenu()">Журнал</a>
-      <a href="/ru/contact" onclick="toggleMobileMenu()">Контакты</a>
-      
-      <div class="language-switcher">
-        <a href="/">EN</a>
-      </div>
-    </div>
-  </nav>
 
   <!-- Hero Section -->
   <section 

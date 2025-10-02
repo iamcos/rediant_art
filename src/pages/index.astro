@@ -15,66 +15,6 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
   heroImage={heroPhoto ? `/images/${heroPhoto.data.filename}` : undefined}
   heroAlt={heroPhoto?.data.alt}
 >
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <div class="flex-shrink-0">
-          <a href="/" class="text-2xl font-bold text-neutral-900">
-            <span class="text-[var(--color-gold)]">Rediant</span> Art
-          </a>
-        </div>
-        
-        <div class="hidden md:block">
-          <div class="ml-10 flex items-baseline space-x-8">
-            <a href="/" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Home</a>
-            <a href="/collections" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Collections</a>
-            <a href="/about" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">About</a>
-            <a href="/3d-printing" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">3D Printing</a>
-            <a href="/crowdfunding" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Crowdfunding</a>
-            <a href="/subscription" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Subscription</a>
-            <a href="/order" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Order</a>
-            <a href="/journal" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Journal</a>
-            <a href="/contact" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Contact</a>
-          </div>
-        </div>
-        
-        <div class="hidden md:flex language-switcher">
-          <a href="/ru/">RU</a>
-        </div>
-        
-        <!-- Mobile menu button -->
-        <button 
-          id="mobile-menu-button" 
-          class="mobile-menu-button"
-          onclick="toggleMobileMenu()"
-          aria-label="Toggle mobile menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </div>
-    
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu hidden">
-      <a href="/" onclick="toggleMobileMenu()">Home</a>
-      <a href="/collections" onclick="toggleMobileMenu()">Collections</a>
-      <a href="/about" onclick="toggleMobileMenu()">About</a>
-      <a href="/3d-printing" onclick="toggleMobileMenu()">3D Printing</a>
-      <a href="/crowdfunding" onclick="toggleMobileMenu()">Crowdfunding</a>
-      <a href="/subscription" onclick="toggleMobileMenu()">Subscription</a>
-      <a href="/order" onclick="toggleMobileMenu()">Order</a>
-      <a href="/journal" onclick="toggleMobileMenu()">Journal</a>
-      <a href="/contact" onclick="toggleMobileMenu()">Contact</a>
-      
-      <div class="language-switcher">
-        <a href="/ru/">RU</a>
-      </div>
-    </div>
-  </nav>
-
   <!-- Hero Section with Background Image -->
   <section 
     class="bg-image-section min-h-screen flex items-center justify-center"
