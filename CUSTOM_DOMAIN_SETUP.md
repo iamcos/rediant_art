@@ -134,3 +134,4 @@ If you encounter issues:
 ---
 
 **Note**: The custom domain setup is now complete in the code. You just need to configure DNS at your domain registrar and update GitHub Pages settings.
+

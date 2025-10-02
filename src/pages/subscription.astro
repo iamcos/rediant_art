@@ -1,0 +1,370 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Subscription Service - Rediant Art Behind the Scenes"
+  description="Join Svetlana's exclusive behind-the-scenes content. Access private Telegram channels, early previews, and intimate insights into the jewelry creation process."
+  lang="en"
+  heroImage="/images/photo_2025-09-10 23.58.18.jpeg"
+  heroAlt="Rediant Art subscription service"
+>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0">
+          <a href="/" class="text-2xl font-bold text-neutral-900">
+            <span class="text-[var(--color-gold)]">Rediant</span> Art
+          </a>
+        </div>
+        
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="/" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Home</a>
+            <a href="/collections" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Collections</a>
+            <a href="/about" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">About</a>
+            <a href="/3d-printing" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">3D Printing</a>
+            <a href="/crowdfunding" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Crowdfunding</a>
+            <a href="/subscription" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Subscription</a>
+            <a href="/order" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Order</a>
+            <a href="/contact" class="nav-link text-neutral-900 hover:text-[var(--color-gold)] px-3 py-2 text-sm font-medium">Contact</a>
+          </div>
+        </div>
+        
+        <div class="language-switcher">
+          <a href="/" class="active">EN</a>
+          <a href="/ru/">RU</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section 
+    class="bg-image-section min-h-screen flex items-center justify-center"
+    style="background-image: url('/images/photo_2025-09-10 23.58.18.jpeg')"
+  >
+    <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
+          Behind the Scenes
+        </h1>
+        <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
+          Join Svetlana's Creative Journey
+        </p>
+        <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
+          Get exclusive access to the intimate process of jewelry creation, 
+          from initial sketches to final pieces, through private Telegram channels.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Tiers -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Choose Your Access Level
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+          Support Svetlana's artistic journey and get exclusive behind-the-scenes content 
+          delivered directly to your Telegram.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Explorer Tier -->
+        <div class="bg-white rounded-lg shadow-lg border border-neutral-200 p-8">
+          <div class="text-center mb-8">
+            <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">🔍</span>
+            </div>
+            <h3 class="text-2xl font-bold text-neutral-900 mb-2">Explorer</h3>
+            <div class="text-3xl font-bold text-[var(--color-gold)] mb-2">0.001 BTC/month</div>
+            <p class="text-neutral-600">Perfect for curious supporters</p>
+          </div>
+          
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>Weekly behind-the-scenes photos</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>Process videos (3D printing, casting)</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>Design inspiration posts</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>Public Telegram channel access</span>
+            </li>
+          </ul>
+          
+          <a href="#subscribe" class="block w-full bg-[var(--color-gold)] text-white text-center py-3 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            Start Exploring
+          </a>
+        </div>
+        
+        <!-- Creator Tier -->
+        <div class="bg-white rounded-lg shadow-lg border-2 border-[var(--color-gold)] p-8 relative">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+            <span class="bg-[var(--color-gold)] text-white px-4 py-2 rounded-full text-sm font-semibold">Most Popular</span>
+          </div>
+          
+          <div class="text-center mb-8">
+            <div class="bg-gradient-to-br from-[var(--color-charcoal)] to-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">🎨</span>
+            </div>
+            <h3 class="text-2xl font-bold text-neutral-900 mb-2">Creator</h3>
+            <div class="text-3xl font-bold text-[var(--color-gold)] mb-2">0.005 BTC/month</div>
+            <p class="text-neutral-600">For dedicated art enthusiasts</p>
+          </div>
+          
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>Everything in Explorer</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>Daily studio updates</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>Private Telegram group access</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>Early previews of new designs</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>Monthly Q&A sessions with Svetlana</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>10% discount on all jewelry</span>
+            </li>
+          </ul>
+          
+          <a href="#subscribe" class="block w-full bg-[var(--color-gold)] text-white text-center py-3 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            Join Creators
+          </a>
+        </div>
+        
+        <!-- Patron Tier -->
+        <div class="bg-white rounded-lg shadow-lg border border-neutral-200 p-8">
+          <div class="text-center mb-8">
+            <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">👑</span>
+            </div>
+            <h3 class="text-2xl font-bold text-neutral-900 mb-2">Patron</h3>
+            <div class="text-3xl font-bold text-[var(--color-gold)] mb-2">0.01 BTC/month</div>
+            <p class="text-neutral-600">Ultimate supporter experience</p>
+          </div>
+          
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>Everything in Creator</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>VIP Telegram channel with Svetlana</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>Personal design consultations</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>Exclusive access to limited editions</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>Behind-the-scenes video calls</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>20% discount on all jewelry</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[var(--color-gold)] mr-3">✓</span>
+              <span>Priority custom design requests</span>
+            </li>
+          </ul>
+          
+          <a href="#subscribe" class="block w-full bg-[var(--color-gold)] text-white text-center py-3 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            Become a Patron
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Telegram Integration -->
+  <section 
+    class="bg-image-section py-20"
+    style="background-image: url('/images/photo_2025-09-10 23.58.15.jpeg')"
+  >
+    <div class="bg-image-content">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+            Private Telegram Channels
+          </h2>
+          <p class="text-xl text-neutral-200 max-w-3xl mx-auto">
+            Get exclusive content delivered directly to your Telegram with different access levels 
+            based on your subscription tier.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">📱</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-4">Public Channel</h3>
+            <p class="text-neutral-300 mb-4">
+              Free access to general updates, new releases, and community announcements.
+            </p>
+            <a href="https://t.me/rediant_art" class="text-[var(--color-gold)] font-semibold hover:text-white transition-colors">
+              Join Public Channel →
+            </a>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">🔒</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-4">Private Group</h3>
+            <p class="text-neutral-300 mb-4">
+              Creator and Patron subscribers get access to exclusive behind-the-scenes content.
+            </p>
+            <a href="#subscribe" class="text-[var(--color-gold)] font-semibold hover:text-white transition-colors">
+              Subscribe to Access →
+            </a>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">💎</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-4">VIP Channel</h3>
+            <p class="text-neutral-300 mb-4">
+              Patron subscribers get direct access to Svetlana's personal creative process.
+            </p>
+            <a href="#subscribe" class="text-[var(--color-gold)] font-semibold hover:text-white transition-colors">
+              Become a Patron →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Form -->
+  <section id="subscribe" class="py-20 bg-neutral-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Start Your Subscription
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-2xl mx-auto">
+          Choose your tier and get instant access to exclusive content and private Telegram channels.
+        </p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <form class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-neutral-900 font-semibold mb-2">Full Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required
+                class="w-full px-4 py-3 rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)] focus:border-transparent"
+                placeholder="Your full name"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-neutral-900 font-semibold mb-2">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required
+                class="w-full px-4 py-3 rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)] focus:border-transparent"
+                placeholder="your@email.com"
+              />
+            </div>
+          </div>
+          
+          <div>
+            <label for="telegram" class="block text-neutral-900 font-semibold mb-2">Telegram Username</label>
+            <input 
+              type="text" 
+              id="telegram" 
+              name="telegram" 
+              required
+              class="w-full px-4 py-3 rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)] focus:border-transparent"
+              placeholder="@your_telegram_username"
+            />
+          </div>
+          
+          <div>
+            <label for="tier" class="block text-neutral-900 font-semibold mb-2">Subscription Tier</label>
+            <select 
+              id="tier" 
+              name="tier" 
+              required
+              class="w-full px-4 py-3 rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)] focus:border-transparent"
+            >
+              <option value="">Select your tier</option>
+              <option value="explorer">Explorer - 0.001 BTC/month</option>
+              <option value="creator">Creator - 0.005 BTC/month</option>
+              <option value="patron">Patron - 0.01 BTC/month</option>
+            </select>
+          </div>
+          
+          <div class="text-center">
+            <button 
+              type="submit" 
+              class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)] focus:ring-offset-2"
+            >
+              Subscribe Now
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+        Join the Creative Journey
+      </h2>
+      <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
+        Support Svetlana's artistic vision and get exclusive access to the intimate process 
+        of creating beautiful jewelry. Your subscription helps fund new equipment and materials.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#subscribe" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+          Start Subscription
+        </a>
+        <a href="/order" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
+          Order Custom Jewelry
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
