@@ -16,10 +16,12 @@
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/sitemap": "^3.0.0",
     "@astrojs/tailwind": "^5.1.0",
-    "@astrojs/vercel": "^4.0.5",
+    "@astrojs/vercel": "^7.8.2",
     "astro": "^4.15.0",
     "sharp": "^0.33.5",
-    "tailwindcss": "^3.4.0"
+    "tailwindcss": "^3.4.0",
+    "telegraf": "^4.15.6",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^22.0.0"
