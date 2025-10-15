@@ -336,10 +336,18 @@
 - **Designer**: [To be assigned] - Visual design and UX
 - **Community Manager**: [To be assigned] - Community building and engagement
 
+### Current Contact Channels
+- **Telegram Blog**: https://t.me/mizyre (Mizyre Rainbow Corner - Svetlana's public blog)
+- **Personal Instagram**: https://www.instagram.com/mizyre
+- **Personal Telegram**: @mizyre_keyer (for direct chats and custom orders)
+- **WhatsApp**: +7 901 315-75-53
+
+### Future Contact Channels
+- **Future Instagram**: https://www.instagram.com/rediant.jewellery (not yet active - for future use)
+
 ### Important Links
 - **Domain**: rediant.art
 - **BTC Wallet**: bc1qrediantartfuture2024 (placeholder)
-- **Social Media**: @rediant.art (Instagram, TikTok, Pinterest)
 - **Development Repository**: [To be created]
 
 ### Documentation
