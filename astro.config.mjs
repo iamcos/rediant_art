@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel/nodejs';
 
 // https://astro.build/config
 export default defineConfig({
