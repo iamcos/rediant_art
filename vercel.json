@@ -2,6 +2,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "astro",
+  "functions": {
+    "runtime": "nodejs20.x"
+  },
   "regions": ["iad1"],
   "crons": [
     {
