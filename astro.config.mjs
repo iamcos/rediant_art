@@ -8,7 +8,7 @@ import partytown from '@astrojs/partytown';
 export default defineConfig({
   site: 'https://rediant.art',
   base: '/',
-  output: 'static',
+  output: 'hybrid',
   integrations: [
     tailwind(),
     sitemap(),
