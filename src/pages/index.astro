@@ -2,6 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import PhotoGallery from '../components/PhotoGallery.astro';
+import FeaturedProducts from '../components/FeaturedProducts.astro';
+import BrandStory from '../components/BrandStory.astro';
+import Testimonials from '../components/Testimonials.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
+import ContactFooter from '../components/ContactFooter.astro';
 import CallToAction from '../components/CallToAction.astro';
 import { getCollection } from 'astro:content';
 
@@ -26,14 +31,24 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
     backgroundImage={heroPhoto ? `/images/${heroPhoto.data.filename}` : '/images/photo_2025-09-10 23.56.36.jpg'}
     backgroundAlt={heroPhoto?.data.alt}
     ctaPrimary={{
-      text: "Explore Collections",
-      href: "/collections"
+      text: "Shop Now",
+      href: "/shop"
     }}
     ctaSecondary={{
-      text: "Our Story",
+      text: "Discover Our Story",
       href: "/about"
     }}
     lang="en"
+  />
+
+  <!-- Featured Products Section -->
+  <FeaturedProducts 
+    title="Featured Collection"
+    description="Discover our most popular pieces, each crafted with precision and artistic vision."
+    limit={4}
+    columns={4}
+    showViewAll={true}
+    viewAllHref="/shop"
   />
 
   <!-- Photo Gallery Section -->
@@ -58,4 +73,48 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
     </div>
     <div class="hidden">светочка</div>
   </section>
+
+  <!-- Brand Story Section -->
+  <BrandStory 
+    title="Our Story"
+    subtitle="Ancient Wisdom Meets Modern Innovation"
+    description="Founded on the belief that jewelry should be more than adornment—it should be a form of self-expression and artistic statement. Rediant Art bridges the gap between ancient tribal traditions and cutting-edge 3D printing technology, creating pieces that honor the past while embracing the future."
+    founderName="Svetlana"
+    founderTitle="Founder & Creative Director"
+    founderImage="/images/photo_2025-09-10 23.56.36.jpg"
+    backgroundImage="/images/photo_2025-09-10 23.58.23.jpeg"
+    lang="en"
+  />
+
+  <!-- Testimonials Section -->
+  <Testimonials 
+    title="What Our Community Says"
+    description="Discover how our jewelry transforms the way people express themselves."
+    lang="en"
+  />
+
+  <!-- Newsletter Signup Section -->
+  <NewsletterSignup 
+    title="Join Our Community"
+    description="Get exclusive access to new collections, behind-the-scenes content, and special offers. Be the first to know about our latest artistic creations."
+    placeholder="Enter your email address"
+    buttonText="Subscribe"
+    lang="en"
+  />
+
+  <!-- Contact Footer Section -->
+  <ContactFooter 
+    title="Get in Touch"
+    description="Ready to start your artistic journey? We'd love to hear from you."
+    email="hello@rediant.art"
+    phone="+1 (555) 123-4567"
+    address="Creative Studio, Art District"
+    socialLinks={{
+      instagram: "https://instagram.com/rediant.art",
+      tiktok: "https://tiktok.com/@rediant.art",
+      telegram: "https://t.me/rediant_art",
+      email: "mailto:hello@rediant.art"
+    }}
+    lang="en"
+  />
 </Layout>

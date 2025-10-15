@@ -1,0 +1,244 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  placeholder?: string;
+  buttonText?: string;
+  successMessage?: string;
+  backgroundImage?: string;
+  lang?: string;
+}
+
+const {
+  title = "Join Our Community",
+  description = "Get exclusive access to new collections, behind-the-scenes content, and special offers. Be the first to know about our latest artistic creations.",
+  placeholder = "Enter your email address",
+  buttonText = "Subscribe",
+  successMessage = "Thank you for subscribing! Check your email for confirmation.",
+  backgroundImage,
+  lang = "en"
+} = Astro.props;
+---
+
+<section 
+  class="rediant-newsletter"
+  style={backgroundImage ? `background-image: url('${backgroundImage}')` : undefined}
+>
+  <div class="rediant-newsletter-content">
+    <div class="rediant-newsletter-container">
+      <div class="rediant-newsletter-text">
+        <h2 class="rediant-newsletter-title">{title}</h2>
+        <p class="rediant-newsletter-description">{description}</p>
+      </div>
+      
+      <form class="rediant-newsletter-form" id="newsletter-form">
+        <div class="rediant-newsletter-input-group">
+          <input 
+            type="email" 
+            name="email" 
+            placeholder={placeholder}
+            required
+            class="rediant-newsletter-input"
+            aria-label="Email address"
+          />
+          <button type="submit" class="rediant-newsletter-button">
+            {buttonText}
+          </button>
+        </div>
+        <div class="rediant-newsletter-message" id="newsletter-message"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('newsletter-form') as HTMLFormElement;
+    const messageDiv = document.getElementById('newsletter-message');
+    
+    if (form && messageDiv) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const email = formData.get('email') as string;
+        
+        // Show loading state
+        const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+        const originalText = button.textContent;
+        button.textContent = 'Subscribing...';
+        button.disabled = true;
+        
+        try {
+          // Here you would typically send to your email service
+          // For now, we'll simulate a successful subscription
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          
+          messageDiv.textContent = 'Thank you for subscribing! Check your email for confirmation.';
+          messageDiv.className = 'rediant-newsletter-message rediant-newsletter-success';
+          form.reset();
+          
+        } catch (error) {
+          messageDiv.textContent = 'Something went wrong. Please try again.';
+          messageDiv.className = 'rediant-newsletter-message rediant-newsletter-error';
+        } finally {
+          button.textContent = originalText;
+          button.disabled = false;
+        }
+      });
+    }
+  });
+</script>
+
+<style>
+  .rediant-newsletter {
+    padding: 5rem 0;
+    position: relative;
+    background: linear-gradient(135deg, var(--color-charcoal) 0%, #1a1a1a 100%);
+    color: white;
+  }
+
+  .rediant-newsletter[style*="background-image"] {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .rediant-newsletter[style*="background-image"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+
+  .rediant-newsletter-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .rediant-newsletter-container {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .rediant-newsletter-text {
+    margin-bottom: 3rem;
+  }
+
+  .rediant-newsletter-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--color-gold);
+  }
+
+  .rediant-newsletter-description {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #d1d5db;
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .rediant-newsletter-form {
+    max-width: 32rem;
+    margin: 0 auto;
+  }
+
+  .rediant-newsletter-input-group {
+    display: flex;
+    gap: 0;
+    background: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .rediant-newsletter-input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: transparent;
+  }
+
+  .rediant-newsletter-input::placeholder {
+    color: #9ca3af;
+  }
+
+  .rediant-newsletter-button {
+    padding: 1rem 2rem;
+    background: var(--color-gold);
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .rediant-newsletter-button:hover:not(:disabled) {
+    background: #b8941f;
+  }
+
+  .rediant-newsletter-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .rediant-newsletter-message {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    display: none;
+  }
+
+  .rediant-newsletter-message.rediant-newsletter-success {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    display: block;
+  }
+
+  .rediant-newsletter-message.rediant-newsletter-error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .rediant-newsletter {
+      padding: 3rem 0;
+    }
+
+    .rediant-newsletter-title {
+      font-size: 2.5rem;
+    }
+
+    .rediant-newsletter-description {
+      font-size: 1.125rem;
+    }
+
+    .rediant-newsletter-input-group {
+      flex-direction: column;
+    }
+
+    .rediant-newsletter-button {
+      border-radius: 0 0 0.5rem 0.5rem;
+    }
+
+    .rediant-newsletter[style*="background-image"] {
+      background-attachment: scroll;
+    }
+  }
+</style>

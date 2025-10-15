@@ -1,0 +1,191 @@
+---
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  founderName?: string;
+  founderTitle?: string;
+  founderImage?: string;
+  backgroundImage?: string;
+  lang?: string;
+}
+
+const {
+  title = "Our Story",
+  subtitle = "Ancient Wisdom Meets Modern Innovation",
+  description = "Founded on the belief that jewelry should be more than adornment—it should be a form of self-expression and artistic statement. Rediant Art bridges the gap between ancient tribal traditions and cutting-edge 3D printing technology, creating pieces that honor the past while embracing the future.",
+  founderName = "Svetlana",
+  founderTitle = "Founder & Creative Director",
+  founderImage = "/images/photo_2025-09-10 23.56.36.jpg",
+  backgroundImage,
+  lang = "en"
+} = Astro.props;
+---
+
+<section 
+  class="rediant-brand-story"
+  style={backgroundImage ? `background-image: url('${backgroundImage}')` : undefined}
+>
+  <div class="rediant-brand-content">
+    <div class="rediant-brand-container">
+      <div class="rediant-brand-text">
+        <h2 class="rediant-brand-title">{title}</h2>
+        <h3 class="rediant-brand-subtitle">{subtitle}</h3>
+        <p class="rediant-brand-description">{description}</p>
+        
+        <div class="rediant-brand-founder">
+          <div class="rediant-founder-image">
+            <img 
+              src={founderImage} 
+              alt={founderName}
+              loading="lazy"
+            />
+          </div>
+          <div class="rediant-founder-info">
+            <h4 class="rediant-founder-name">{founderName}</h4>
+            <p class="rediant-founder-title">{founderTitle}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .rediant-brand-story {
+    padding: 6rem 0;
+    position: relative;
+    background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+    color: white;
+  }
+
+  .rediant-brand-story[style*="background-image"] {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .rediant-brand-story[style*="background-image"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+
+  .rediant-brand-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .rediant-brand-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .rediant-brand-text {
+    max-width: 48rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .rediant-brand-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--color-gold);
+  }
+
+  .rediant-brand-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #d1d5db;
+    font-weight: 300;
+  }
+
+  .rediant-brand-description {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    color: #e5e5e5;
+  }
+
+  .rediant-brand-founder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .rediant-founder-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--color-gold);
+  }
+
+  .rediant-founder-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .rediant-founder-info {
+    text-align: left;
+  }
+
+  .rediant-founder-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--color-gold);
+  }
+
+  .rediant-founder-title {
+    font-size: 1rem;
+    color: #d1d5db;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .rediant-brand-story {
+      padding: 4rem 0;
+    }
+
+    .rediant-brand-title {
+      font-size: 2.5rem;
+    }
+
+    .rediant-brand-subtitle {
+      font-size: 1.25rem;
+    }
+
+    .rediant-brand-description {
+      font-size: 1.125rem;
+    }
+
+    .rediant-brand-founder {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .rediant-founder-info {
+      text-align: center;
+    }
+
+    .rediant-brand-story[style*="background-image"] {
+      background-attachment: scroll;
+    }
+  }
+</style>

@@ -1,5 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import PhotoGallery from '../../components/PhotoGallery.astro';
+import FeaturedProducts from '../../components/FeaturedProducts.astro';
+import BrandStory from '../../components/BrandStory.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import ContactFooter from '../../components/ContactFooter.astro';
+import CallToAction from '../../components/CallToAction.astro';
 import { getCollection } from 'astro:content';
 
 // Get featured photos for the gallery
@@ -15,33 +23,33 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
   heroImage={heroPhoto ? `/images/${heroPhoto.data.filename}` : undefined}
   heroAlt={heroPhoto?.data.alt}
 >
-  <!-- Hero Section with Background Image -->
-  <section 
-    class="bg-image-section min-h-screen flex items-center justify-center"
-    style={`background-image: url('${heroPhoto ? `/images/${heroPhoto.data.filename}` : '/images/photo_2025-09-10 23.56.36.jpg'}')`}
-  >
-    <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
-          <span class="text-[var(--color-gold)]">Rediant</span> Art
-        </h1>
-        <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
-          Современные украшения и художественные инновации
-        </p>
-        <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
-          Где древние племенные традиции встречаются с современным мастерством. Откройте для себя цепочки для лица, головы, тела и серьги, которые превращают ваше присутствие в живое искусство.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
-          <a href="/ru/collections" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
-            Изучить коллекции
-          </a>
-          <a href="/ru/about" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
-            Наша история
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Hero Section -->
+  <HeroSection
+    title="Rediant Art"
+    subtitle="Современные украшения и художественные инновации"
+    description="Где древние племенные традиции встречаются с современным мастерством. Откройте для себя цепочки для лица, головы, тела и серьги, которые превращают ваше присутствие в живое искусство."
+    backgroundImage={heroPhoto ? `/images/${heroPhoto.data.filename}` : '/images/photo_2025-09-10 23.56.36.jpg'}
+    backgroundAlt={heroPhoto?.data.alt}
+    ctaPrimary={{
+      text: "Магазин",
+      href: "/ru/shop"
+    }}
+    ctaSecondary={{
+      text: "Наша история",
+      href: "/ru/about"
+    }}
+    lang="ru"
+  />
+
+  <!-- Featured Products Section -->
+  <FeaturedProducts 
+    title="Избранная коллекция"
+    description="Откройте для себя наши самые популярные изделия, каждое из которых создано с точностью и художественным видением."
+    limit={4}
+    columns={4}
+    showViewAll={true}
+    viewAllHref="/ru/shop"
+  />
 
   <!-- Photo Gallery Section -->
   <section class="py-20 bg-neutral-50">
@@ -56,47 +64,79 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
           </p>
         </div>
         
-        <div class="photo-gallery">
-        {featuredPhotos.map((photo, index) => (
-          <div class="photo-item group">
-              <img 
-                src={`/images/${photo.data.filename}`} 
-                alt={photo.data.alt}
-                loading="lazy"
-              class="w-full h-full object-cover"
-              />
-              <div class="photo-overlay">
-                <h3 class="text-lg font-semibold mb-2">{photo.data.title}</h3>
-              <p class="text-sm opacity-90">{photo.data.description}</p>
-              <div class="flex flex-wrap gap-2 mt-3">
-                {photo.data.tags.map(tag => (
-                  <span class="text-xs bg-white/20 px-2 py-1 rounded">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <PhotoGallery 
+        featured={true}
+        limit={12}
+        columns={3}
+        showOverlay={true}
+      />
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section class="py-20 bg-neutral-900 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
-        Готовы начать свое путешествие?
-      </h2>
-      <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
-        Откройте для себя мир Rediant и найдите украшения, которые расскажут вашу уникальную историю.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/ru/collections" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
-          Изучить коллекции
-        </a>
-        <a href="/ru/contact" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
-          Связаться с нами
-        </a>
-      </div>
-    </div>
-  </section>
+  <!-- Brand Story Section -->
+  <BrandStory 
+    title="Наша история"
+    subtitle="Древняя мудрость встречается с современными инновациями"
+    description="Основанная на убеждении, что украшения должны быть больше, чем просто украшения — они должны быть формой самовыражения и художественного высказывания. Rediant Art соединяет древние племенные традиции с передовыми технологиями 3D-печати, создавая изделия, которые чтут прошлое, принимая будущее."
+    founderName="Светлана"
+    founderTitle="Основатель и креативный директор"
+    founderImage="/images/photo_2025-09-10 23.56.36.jpg"
+    backgroundImage="/images/photo_2025-09-10 23.58.23.jpeg"
+    lang="ru"
+  />
+
+  <!-- Testimonials Section -->
+  <Testimonials 
+    title="Что говорит наше сообщество"
+    description="Узнайте, как наши украшения меняют способ самовыражения людей."
+    testimonials={[
+      {
+        id: "1",
+        text: "Эта цепочка для тела превратила мой наряд в произведение искусства! Качество изготовления невероятное, и она стала моей визитной карточкой.",
+        author: "Мария К.",
+        role: "Любитель моды",
+        rating: 5
+      },
+      {
+        id: "2", 
+        text: "Цепочка для лица просто потрясающая. Я никогда не чувствовала себя так связанной со своей художественной стороной. Это как носить кусочек истории.",
+        author: "Алекс Р.",
+        role: "Художник",
+        rating: 5
+      },
+      {
+        id: "3",
+        text: "Украшения Rediant — это больше, чем аксессуары, они завязывают разговоры. Каждое изделие рассказывает историю.",
+        author: "София М.",
+        role: "Дизайнер",
+        rating: 5
+      }
+    ]}
+    lang="ru"
+  />
+
+  <!-- Newsletter Signup Section -->
+  <NewsletterSignup 
+    title="Присоединяйтесь к нашему сообществу"
+    description="Получите эксклюзивный доступ к новым коллекциям, закулисному контенту и специальным предложениям. Будьте первыми, кто узнает о наших последних художественных творениях."
+    placeholder="Введите ваш email"
+    buttonText="Подписаться"
+    lang="ru"
+  />
+
+  <!-- Contact Footer Section -->
+  <ContactFooter 
+    title="Свяжитесь с нами"
+    description="Готовы начать свое художественное путешествие? Мы будем рады услышать от вас."
+    email="hello@rediant.art"
+    phone="+1 (555) 123-4567"
+    address="Творческая студия, Арт-район"
+    socialLinks={{
+      instagram: "https://instagram.com/rediant.art",
+      tiktok: "https://tiktok.com/@rediant.art",
+      telegram: "https://t.me/rediant_art",
+      email: "mailto:hello@rediant.art"
+    }}
+    lang="ru"
+  />
 </Layout>

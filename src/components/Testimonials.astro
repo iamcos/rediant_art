@@ -1,0 +1,238 @@
+---
+export interface Testimonial {
+  id: string;
+  text: string;
+  author: string;
+  role?: string;
+  avatar?: string;
+  rating?: number;
+}
+
+export interface Props {
+  title?: string;
+  description?: string;
+  testimonials?: Testimonial[];
+  lang?: string;
+}
+
+const {
+  title = "What Our Community Says",
+  description = "Discover how our jewelry transforms the way people express themselves.",
+  testimonials = [
+    {
+      id: "1",
+      text: "This bodychain turned my outfit into art! The craftsmanship is incredible and it's become my signature piece.",
+      author: "Maria K.",
+      role: "Fashion Enthusiast",
+      rating: 5
+    },
+    {
+      id: "2", 
+      text: "The facechain is absolutely stunning. I've never felt more connected to my artistic side. It's like wearing a piece of history.",
+      author: "Alex R.",
+      role: "Artist",
+      rating: 5
+    },
+    {
+      id: "3",
+      text: "Rediant's jewelry is more than accessories—they're conversation starters. Every piece tells a story.",
+      author: "Sofia M.",
+      role: "Designer",
+      rating: 5
+    }
+  ],
+  lang = "en"
+} = Astro.props;
+---
+
+<section class="rediant-testimonials">
+  <div class="rediant-testimonials-container">
+    <div class="rediant-testimonials-header">
+      <h2 class="rediant-testimonials-title">{title}</h2>
+      <p class="rediant-testimonials-description">{description}</p>
+    </div>
+    
+    <div class="rediant-testimonials-grid">
+      {testimonials.map((testimonial) => (
+        <div class="rediant-testimonial-card">
+          <div class="rediant-testimonial-content">
+            {testimonial.rating && (
+              <div class="rediant-testimonial-rating">
+                {Array.from({ length: testimonial.rating }, (_, i) => (
+                  <span class="rediant-star">⭐</span>
+                ))}
+              </div>
+            )}
+            <blockquote class="rediant-testimonial-text">
+              "{testimonial.text}"
+            </blockquote>
+          </div>
+          
+          <div class="rediant-testimonial-author">
+            {testimonial.avatar && (
+              <div class="rediant-testimonial-avatar">
+                <img 
+                  src={testimonial.avatar} 
+                  alt={testimonial.author}
+                  loading="lazy"
+                />
+              </div>
+            )}
+            <div class="rediant-testimonial-info">
+              <h4 class="rediant-testimonial-name">{testimonial.author}</h4>
+              {testimonial.role && (
+                <p class="rediant-testimonial-role">{testimonial.role}</p>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .rediant-testimonials {
+    padding: 5rem 0;
+    background: white;
+  }
+
+  .rediant-testimonials-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .rediant-testimonials-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .rediant-testimonials-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--color-charcoal);
+    margin-bottom: 1.5rem;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .rediant-testimonials-description {
+    font-size: 1.25rem;
+    color: #666;
+    max-width: 48rem;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .rediant-testimonials-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .rediant-testimonial-card {
+    background: #f8f9fa;
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 1px solid #e9ecef;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+
+  .rediant-testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .rediant-testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 4rem;
+    color: var(--color-gold);
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+  }
+
+  .rediant-testimonial-content {
+    margin-bottom: 1.5rem;
+  }
+
+  .rediant-testimonial-rating {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .rediant-star {
+    font-size: 1.125rem;
+  }
+
+  .rediant-testimonial-text {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-charcoal);
+    margin: 0;
+    font-style: italic;
+  }
+
+  .rediant-testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .rediant-testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--color-gold);
+  }
+
+  .rediant-testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .rediant-testimonial-info {
+    flex: 1;
+  }
+
+  .rediant-testimonial-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-charcoal);
+    margin: 0 0 0.25rem 0;
+  }
+
+  .rediant-testimonial-role {
+    font-size: 0.875rem;
+    color: #666;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .rediant-testimonials {
+      padding: 3rem 0;
+    }
+
+    .rediant-testimonials-title {
+      font-size: 2.5rem;
+    }
+
+    .rediant-testimonials-description {
+      font-size: 1.125rem;
+    }
+
+    .rediant-testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .rediant-testimonial-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
