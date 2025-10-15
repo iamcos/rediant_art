@@ -159,4 +159,38 @@ This is a bilingual (English/Russian) jewelry brand website for Rediant, featuri
 - **Live Prices**: Display real pricing from Tribute
 - **Working Links**: All buy buttons must link to real Tribute purchase flows
 
+## TRIBUTE API INTEGRATION
+- **API Key**: `fa40da4f-b3de-4008-9601-1c065735` (stored in Vercel environment)
+- **Endpoint**: `https://tribute.tg/api/v1/products`
+- **Server-side Rendering**: Products fetched during build time for SEO
+- **ISR (Incremental Static Regeneration)**: Site regenerates daily at midnight UTC
+- **API Routes**: 
+  - `/api/products` - Fetches products from Tribute API
+  - `/api/revalidate` - Triggers manual regeneration
+- **Environment Variables**: 
+  - `TRIBUTE_API_KEY` - Stored in Vercel dashboard
+  - `REVALIDATE_SECRET` - For secure revalidation triggers
+
+## VERCEL DEPLOYMENT & ENVIRONMENT
+- **Automatic Deployment**: Pushes to main branch trigger Vercel deployment
+- **Environment Variables**: Set in Vercel dashboard under Project Settings > Environment Variables
+- **API Key Updates**: Use `vercel env add TRIBUTE_API_KEY production` to update
+- **Manual Redeploy**: Use `vercel --prod` to force new deployment
+- **Cron Jobs**: Daily regeneration at `0 0 * * *` (midnight UTC)
+- **Build Logs**: Check deployment status with `vercel ls` and `vercel inspect <deployment-url>`
+
+## PRODUCT REGENERATION WORKFLOW
+1. **Automatic**: Daily cron job regenerates shop pages
+2. **Manual**: Call `/api/revalidate` endpoint with secret
+3. **Tribute Webhook**: Can trigger regeneration when products change
+4. **Build Time**: Products fetched server-side during Astro build
+5. **SEO**: All product data embedded in HTML for search engines
+
+## TROUBLESHOOTING TRIBUTE INTEGRATION
+- **API Key Issues**: Check Vercel environment variables with `vercel env ls`
+- **Build Failures**: Verify API key is correct and Tribute API is accessible
+- **No Products**: Check API response in build logs
+- **Stale Data**: Force regeneration with `vercel --prod`
+- **Environment**: Ensure `TRIBUTE_API_KEY` is set for Production environment
+
 Remember: This is a premium jewelry brand website that should reflect quality, innovation, and artistic excellence in every detail. The bilingual nature is essential for reaching both English and Russian-speaking audiences. ALWAYS use real data - mock data is not acceptable for this project.
