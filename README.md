@@ -165,8 +165,8 @@ Language switcher is integrated into the navigation menu.
 ## 🔗 Links
 
 - **Website**: https://rediant.art
-- **Instagram**: @rediant.art
-- **TikTok**: @rediant.art
+- **Instagram**: @mizyre
+- **Telegram**: @mizyre
 - **Contact**: Via Telegram (@mizyre) or WhatsApp (+7 901 315-75-53)
 
 ---
