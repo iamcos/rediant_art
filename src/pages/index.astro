@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import PhotoGallery from '../components/PhotoGallery.astro';
-import FeaturedProducts from '../components/FeaturedProducts.astro';
 import BrandStory from '../components/BrandStory.astro';
 import Testimonials from '../components/Testimonials.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
@@ -30,10 +29,6 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
     description="Where ancient tribal inspiration meets modern craftsmanship. Discover facechains, headchains, bodychains, and earrings that transform your presence into living art."
     backgroundImage={heroPhoto ? `/images/${heroPhoto.data.filename}` : '/images/photo_2025-09-10 23.56.36.jpg'}
     backgroundAlt={heroPhoto?.data.alt}
-    ctaPrimary={{
-      text: "Shop Now",
-      href: "/shop"
-    }}
     ctaSecondary={{
       text: "Discover Our Story",
       href: "/about"
@@ -41,15 +36,7 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
     lang="en"
   />
 
-  <!-- Featured Products Section -->
-  <FeaturedProducts 
-    title="Featured Collection"
-    description="Discover our most popular pieces, each crafted with precision and artistic vision."
-    limit={4}
-    columns={4}
-    showViewAll={true}
-    viewAllHref="/shop"
-  />
+  
 
   <!-- Photo Gallery Section -->
   <section class="py-20 bg-neutral-50">

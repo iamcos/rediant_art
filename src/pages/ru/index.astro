@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/HeroSection.astro';
 import PhotoGallery from '../../components/PhotoGallery.astro';
-import FeaturedProducts from '../../components/FeaturedProducts.astro';
 import BrandStory from '../../components/BrandStory.astro';
 import Testimonials from '../../components/Testimonials.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
@@ -30,25 +29,12 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
     description="Где древние племенные традиции встречаются с современным мастерством. Откройте для себя цепочки для лица, головы, тела и серьги, которые превращают ваше присутствие в живое искусство."
     backgroundImage={heroPhoto ? `/images/${heroPhoto.data.filename}` : '/images/photo_2025-09-10 23.56.36.jpg'}
     backgroundAlt={heroPhoto?.data.alt}
-    ctaPrimary={{
-      text: "Магазин",
-      href: "/ru/shop"
-    }}
+    
     ctaSecondary={{
       text: "Наша история",
       href: "/ru/about"
     }}
     lang="ru"
-  />
-
-  <!-- Featured Products Section -->
-  <FeaturedProducts 
-    title="Избранная коллекция"
-    description="Откройте для себя наши самые популярные изделия, каждое из которых создано с точностью и художественным видением."
-    limit={4}
-    columns={4}
-    showViewAll={true}
-    viewAllHref="/ru/shop"
   />
 
   <!-- Photo Gallery Section -->
