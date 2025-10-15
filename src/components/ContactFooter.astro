@@ -2,13 +2,11 @@
 export interface Props {
   title?: string;
   description?: string;
-  email?: string;
   phone?: string;
   address?: string;
   socialLinks?: {
     instagram?: string;
     telegram?: string;
-    email?: string;
   };
   lang?: string;
 }
@@ -16,13 +14,11 @@ export interface Props {
 const {
   title = "Get in Touch",
   description = "Ready to start your artistic journey? We'd love to hear from you.",
-  email = "",
   phone = "+1 (555) 123-4567",
   address = "Creative Studio, Art District",
   socialLinks = {
     instagram: "https://instagram.com/mizyre",
-    telegram: "https://t.me/mizyre",
-    email: ""
+    telegram: "https://t.me/mizyre"
   },
   lang = "en"
 } = Astro.props;
@@ -37,20 +33,6 @@ const {
     
     <div class="rediant-contact-content">
       <div class="rediant-contact-info">
-        {email && (
-          <div class="rediant-contact-item">
-            <div class="rediant-contact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
-            </div>
-            <div class="rediant-contact-details">
-              <h3 class="rediant-contact-label">Email</h3>
-              <a href={`mailto:${email}`} class="rediant-contact-link">{email}</a>
-            </div>
-          </div>
-        )}
         
         <div class="rediant-contact-item">
           <div class="rediant-contact-icon">

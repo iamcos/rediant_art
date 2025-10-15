@@ -102,14 +102,13 @@ export interface ProductsResponse {
 // Form types
 export interface ContactFormData {
   name: string;
-  email: string;
+  telegram: string;
   subject: string;
   message: string;
 }
 
 export interface SubscriptionFormData {
   name: string;
-  email: string;
   telegram: string;
   tier: 'explorer' | 'creator' | 'patron';
 }
