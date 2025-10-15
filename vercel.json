@@ -3,7 +3,8 @@
   "outputDirectory": "dist",
   "framework": "astro",
   "functions": {
-    "runtime": "nodejs20.x"
+    "api/**/*.ts": { "runtime": "nodejs20.x" },
+    "api/**/*.js": { "runtime": "nodejs20.x" }
   },
   "regions": ["iad1"],
   "crons": [
