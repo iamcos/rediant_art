@@ -3,10 +3,10 @@
   "outputDirectory": "dist",
   "framework": "astro",
   "functions": {
-    "src/pages/api/products.ts": {
+    "api/products.ts": {
       "maxDuration": 30
     },
-    "src/pages/api/revalidate.ts": {
+    "api/revalidate.ts": {
       "maxDuration": 10
     }
   },
