@@ -62,14 +62,20 @@ const { product } = Astro.props;
         </span>
       </div>
       
-      <a 
-        href={product.link || `https://t.me/rediant_art?start=product_${product.id}`}
-        class="buy-button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {product.available ? 'Buy Now' : 'View Details'}
-      </a>
+      {product.available ? (
+        <a 
+          href={product.link || `https://t.me/rediant_art?start=product_${product.id}`}
+          class="buy-button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Buy Now
+        </a>
+      ) : (
+        <span class="buy-button disabled">
+          Sold Out
+        </span>
+      )}
     </div>
   </div>
 </div>
