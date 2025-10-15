@@ -31,14 +31,18 @@ export async function fetchProducts(): Promise<Product[]> {
     // Transform Tribute products to our format
     const products = tributeProducts.map(product => {
       // Convert from minor units to major units
-      // EUR, USD, RUB use 100 minor units per major unit
-      const price = product.amount / 100;
+      // Pricing rule: for physical goods, prefer Tribute's `price` field if present
+      const price = product.type === 'physical' && typeof product.price === 'number'
+        ? product.price
+        : (product.amount / 100);
       
       // Determine category based on product type
       const category = product.type === 'physical' ? 'jewelry' : 'digital';
-      const tags = product.type === 'physical' 
-        ? ['tribute', 'artistic', 'jewelry', 'physical']
-        : ['tribute', 'digital', 'art', 'custom'];
+      const tagsFromDescription: string[] = Array.isArray(product.tags) && product.tags.length > 0
+        ? product.tags
+        : (typeof product.description === 'string'
+            ? ((product.description.match(/#\w+/g) || []).map((t: string) => t.substring(1)))
+            : []);
       
       return {
         id: product.id,
@@ -50,7 +54,7 @@ export async function fetchProducts(): Promise<Product[]> {
         imageUrl: product.imageUrl || '/images/photo_2025-09-10 23.58.23.jpeg',
         category: category,
         type: product.type,
-        tags: tags,
+        tags: tagsFromDescription,
         available: true,
         stock: 1,
         link: product.link,

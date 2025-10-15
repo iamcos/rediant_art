@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 
-export const GET: APIRoute = async ({ request }) => {
+export const GET: APIRoute = async ({ request, url }) => {
   try {
     const apiKey = import.meta.env.TRIBUTE_API_KEY;
     
@@ -11,8 +11,13 @@ export const GET: APIRoute = async ({ request }) => {
       });
     }
 
+    const pageParam = url.searchParams.get('page') || '1';
+    const sizeParam = url.searchParams.get('size') || '100';
+    const typeParam = url.searchParams.get('type'); // 'physical' | 'digital'
+    const tagParam = url.searchParams.get('tag'); // hashtag without '#'
+
     // Fetch products from Tribute API
-    const response = await fetch('https://tribute.tg/api/v1/products?page=1&size=100', {
+    const response = await fetch(`https://tribute.tg/api/v1/products?page=${pageParam}&size=${sizeParam}`, {
       headers: { 'Api-Key': apiKey }
     });
 
@@ -23,15 +28,20 @@ export const GET: APIRoute = async ({ request }) => {
     const { rows: tributeProducts } = await response.json();
     
     // Transform Tribute products to our format
-    const products = tributeProducts.map(product => {
+    let products = tributeProducts.map(product => {
       // Convert from minor units to major units
-      const price = product.amount / 100;
+      // For physical goods, prefer .price if present (source of truth)
+      const price = product.type === 'physical' && typeof product.price === 'number'
+        ? product.price
+        : (product.amount / 100);
       
       // Determine category based on product type
       const category = product.type === 'physical' ? 'jewelry' : 'digital';
-      const tags = product.type === 'physical' 
-        ? ['tribute', 'artistic', 'jewelry', 'physical']
-        : ['tribute', 'digital', 'art', 'custom'];
+      const tagsFromDescription: string[] = Array.isArray(product.tags) && product.tags.length > 0
+        ? product.tags
+        : (typeof product.description === 'string'
+            ? ((product.description.match(/#\w+/g) || []).map((t: string) => t.substring(1)))
+            : []);
       
       return {
         id: product.id,
@@ -43,7 +53,7 @@ export const GET: APIRoute = async ({ request }) => {
         imageUrl: product.imageUrl || '/images/photo_2025-09-10 23.58.23.jpeg',
         category: category,
         type: product.type,
-        tags: tags,
+        tags: tagsFromDescription,
         available: true,
         stock: 1,
         link: product.link, // This should be the Tribute purchase link
@@ -51,6 +61,17 @@ export const GET: APIRoute = async ({ request }) => {
         starsAmountEnabled: product.starsAmountEnabled || false
       };
     });
+
+    // Optional filtering by type
+    if (typeParam) {
+      products = products.filter(p => p.type === typeParam);
+    }
+
+    // Optional filtering by hashtag/tag
+    if (tagParam) {
+      const normalized = tagParam.replace(/^#/, '');
+      products = products.filter(p => Array.isArray(p.tags) && p.tags.includes(normalized));
+    }
 
     return new Response(JSON.stringify(products), {
       status: 200,

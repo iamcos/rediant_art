@@ -167,7 +167,7 @@ Language switcher is integrated into the navigation menu.
 - **Website**: https://rediant.art
 - **Instagram**: @rediant.art
 - **TikTok**: @rediant.art
-- **Email**: hello@rediant.art
+- **Contact**: Via social media links below
 
 ---
 
