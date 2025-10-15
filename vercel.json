@@ -2,14 +2,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "astro",
-  "functions": {
-    "api/products.ts": {
-      "maxDuration": 30
-    },
-    "api/revalidate.ts": {
-      "maxDuration": 10
-    }
-  },
   "regions": ["iad1"],
   "crons": [
     {
