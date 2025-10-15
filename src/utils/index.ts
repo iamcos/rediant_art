@@ -136,7 +136,6 @@ export function getNavigationItems(lang: string) {
     { text: lang === 'ru' ? 'Магазин' : 'Shop', href: `${basePath}/shop` },
     { text: lang === 'ru' ? 'Коллекции' : 'Collections', href: `${basePath}/collections` },
     { text: lang === 'ru' ? 'О нас' : 'About', href: `${basePath}/about` },
-    { text: lang === 'ru' ? '3D Печать' : '3D Printing', href: `${basePath}/3d-printing` },
     { text: lang === 'ru' ? 'Краудфандинг' : 'Crowdfunding', href: `${basePath}/crowdfunding` },
     { text: lang === 'ru' ? 'Подписка' : 'Subscription', href: `${basePath}/subscription` },
     { text: lang === 'ru' ? 'Заказ' : 'Order', href: `${basePath}/order` },
