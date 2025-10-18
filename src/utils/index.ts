@@ -52,11 +52,9 @@ export async function fetchProducts(): Promise<Product[]> {
     
     // Transform Tribute products to our format
     const products = filteredProducts.map(product => {
-      // Convert from minor units to major units
-      // Pricing rule: for physical goods, prefer Tribute's `price` field if present
-      const price = product.type === 'physical' && typeof product.price === 'number'
-        ? product.price
-        : (product.amount / 100);
+      // Tribute API returns amount in major units (RUB, EUR, etc.)
+      // No conversion needed - use amount directly
+      const price = product.amount;
       
       // Determine category based on product type
       const category = product.type === 'physical' ? 'jewelry' : 'digital';

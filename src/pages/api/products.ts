@@ -48,11 +48,9 @@ export const GET: APIRoute = async ({ request, url }) => {
     
     // Transform Tribute products to our format
     let products = filteredProducts.map(product => {
-      // Convert from minor units to major units
-      // For physical goods, prefer .price if present (source of truth)
-      const price = product.type === 'physical' && typeof product.price === 'number'
-        ? product.price
-        : (product.amount / 100);
+      // Tribute API returns amount in major units (RUB, EUR, etc.)
+      // No conversion needed - use amount directly
+      const price = product.amount;
       
       // Determine category based on product type
       const category = product.type === 'physical' ? 'jewelry' : 'digital';
