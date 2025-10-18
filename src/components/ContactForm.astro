@@ -1,0 +1,283 @@
+---
+export interface Props {
+  lang?: string;
+}
+
+const { lang = "en" } = Astro.props;
+---
+
+<div class="rediant-contact-form">
+  <form id="contact-form" class="rediant-form">
+    <div class="rediant-form-group">
+      <label for="name" class="rediant-form-label">Name *</label>
+      <input 
+        type="text" 
+        id="name" 
+        name="name" 
+        required 
+        class="rediant-form-input"
+        placeholder="Your full name"
+      />
+      <div class="rediant-form-error" id="name-error"></div>
+    </div>
+
+    <div class="rediant-form-group">
+      <label for="email" class="rediant-form-label">Email *</label>
+      <input 
+        type="email" 
+        id="email" 
+        name="email" 
+        required 
+        class="rediant-form-input"
+        placeholder="your.email@example.com"
+      />
+      <div class="rediant-form-error" id="email-error"></div>
+    </div>
+
+    <div class="rediant-form-group">
+      <label for="subject" class="rediant-form-label">Subject *</label>
+      <input 
+        type="text" 
+        id="subject" 
+        name="subject" 
+        required 
+        class="rediant-form-input"
+        placeholder="What's this about?"
+      />
+      <div class="rediant-form-error" id="subject-error"></div>
+    </div>
+
+    <div class="rediant-form-group">
+      <label for="message" class="rediant-form-label">Message *</label>
+      <textarea 
+        id="message" 
+        name="message" 
+        required 
+        rows="5"
+        class="rediant-form-textarea"
+        placeholder="Tell us about your jewelry ideas, custom requests, or any questions you have..."
+      ></textarea>
+      <div class="rediant-form-error" id="message-error"></div>
+    </div>
+
+    <button type="submit" class="rediant-form-submit" id="submit-btn">
+      <span class="submit-text">Send Message</span>
+      <span class="submit-loading" style="display: none;">
+        <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="31.416" stroke-dashoffset="31.416">
+            <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
+            <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+        Sending...
+      </span>
+    </button>
+
+    <div class="rediant-form-message" id="form-message"></div>
+  </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const submitText = submitBtn.querySelector('.submit-text') as HTMLElement;
+    const submitLoading = submitBtn.querySelector('.submit-loading') as HTMLElement;
+    const messageDiv = document.getElementById('form-message') as HTMLElement;
+
+    function showError(field: string, message: string) {
+      const errorDiv = document.getElementById(`${field}-error`) as HTMLElement;
+      errorDiv.textContent = message;
+      errorDiv.style.display = 'block';
+    }
+
+    function clearErrors() {
+      const errorDivs = document.querySelectorAll('.rediant-form-error');
+      errorDivs.forEach(div => {
+        div.textContent = '';
+        div.style.display = 'none';
+      });
+    }
+
+    function showMessage(message: string, isError = false) {
+      messageDiv.textContent = message;
+      messageDiv.className = `rediant-form-message ${isError ? 'error' : 'success'}`;
+      messageDiv.style.display = 'block';
+    }
+
+    function setLoading(loading: boolean) {
+      if (loading) {
+        submitBtn.disabled = true;
+        submitText.style.display = 'none';
+        submitLoading.style.display = 'inline-flex';
+        submitLoading.style.alignItems = 'center';
+        submitLoading.style.gap = '8px';
+      } else {
+        submitBtn.disabled = false;
+        submitText.style.display = 'inline';
+        submitLoading.style.display = 'none';
+      }
+    }
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      clearErrors();
+      setLoading(true);
+
+      const formData = new FormData(form);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        subject: formData.get('subject'),
+        message: formData.get('message')
+      };
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          showMessage(result.message);
+          form.reset();
+        } else {
+          if (result.errors) {
+            result.errors.forEach((error: any) => {
+              showError(error.field, error.message);
+            });
+          } else {
+            showMessage(result.message, true);
+          }
+        }
+      } catch (error) {
+        console.error('Form submission error:', error);
+        showMessage('Sorry, there was an error sending your message. Please try again.', true);
+      } finally {
+        setLoading(false);
+      }
+    });
+  });
+</script>
+
+<style>
+  .rediant-contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .rediant-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .rediant-form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rediant-form-label {
+    font-weight: 600;
+    color: #2C2C2C;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .rediant-form-input,
+  .rediant-form-textarea {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+  }
+
+  .rediant-form-input:focus,
+  .rediant-form-textarea:focus {
+    outline: none;
+    border-color: #D4AF37;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+  }
+
+  .rediant-form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .rediant-form-submit {
+    background: #D4AF37;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .rediant-form-submit:hover:not(:disabled) {
+    background: #b8941f;
+    transform: translateY(-2px);
+  }
+
+  .rediant-form-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .rediant-form-error {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+  }
+
+  .rediant-form-message {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    text-align: center;
+    display: none;
+  }
+
+  .rediant-form-message.success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+  }
+
+  .rediant-form-message.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+  }
+
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @media (max-width: 768px) {
+    .rediant-contact-form {
+      padding: 1rem;
+    }
+  }
+</style>

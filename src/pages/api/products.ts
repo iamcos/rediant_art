@@ -27,8 +27,27 @@ export const GET: APIRoute = async ({ request, url }) => {
 
     const { rows: tributeProducts } = await response.json();
     
+    // Product ignore list - products to completely exclude
+    const IGNORE_PRODUCTS = [
+      'special shot',
+      'test product',
+      'draft',
+      'private'
+    ];
+    
+    // Filter out ignored products before processing
+    const filteredProducts = tributeProducts.filter(product => {
+      const name = product.name?.toLowerCase() || '';
+      const description = product.description?.toLowerCase() || '';
+      
+      return !IGNORE_PRODUCTS.some(ignoreTerm => 
+        name.includes(ignoreTerm.toLowerCase()) || 
+        description.includes(ignoreTerm.toLowerCase())
+      );
+    });
+    
     // Transform Tribute products to our format
-    let products = tributeProducts.map(product => {
+    let products = filteredProducts.map(product => {
       // Convert from minor units to major units
       // For physical goods, prefer .price if present (source of truth)
       const price = product.type === 'physical' && typeof product.price === 'number'

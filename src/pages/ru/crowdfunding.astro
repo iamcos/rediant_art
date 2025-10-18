@@ -1,35 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { fetchProducts } from '../../utils/index';
-
-// Fetch real data from Tribute API
-let products = [];
-let digitalProducts = [];
-let physicalProducts = [];
-
-try {
-  products = await fetchProducts();
-  digitalProducts = products.filter(p => p.type === 'digital');
-  physicalProducts = products.filter(p => p.type === 'physical');
-} catch (error) {
-  console.error('Failed to fetch products:', error);
-  // Fallback to empty arrays if API fails
-  products = [];
-  digitalProducts = [];
-  physicalProducts = [];
-}
-
-// Calculate totals for display
-const totalDigitalValue = digitalProducts.reduce((sum, p) => sum + (p.price || 0), 0);
-const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price || 0), 0);
 ---
 
 <Layout 
-  title="Крипто Краудфандинг - Поддержите Инновации Rediant Art"
-  description="Присоединяйтесь к крипто краудфандинг кампаниям Rediant и поддержите будущее художественных украшений. Внесите вклад в нашу инновацию через цифровую поддержку и физические награды."
+  title="Проект Аврора - Краудфандинг 3D Печатной Студии"
+  description="Поддержите Проект Аврора: Создание современной 3D печатной студии и литейного цеха для инноваций в художественных украшениях. Присоединяйтесь к нашей краудфандинг кампании."
   lang="ru"
   heroImage="/images/photo_2025-09-11 00.03.32.jpeg"
-  heroAlt="Крипто краудфандинг для Rediant Art"
+  heroAlt="Краудфандинг 3D печатной студии для Rediant Art"
 >
   <!-- Hero Section -->
   <section 
@@ -39,21 +17,21 @@ const totalPhysicalValue = physicalProducts.reduce((sum, p) => sum + (p.price ||
     <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
-          Поддержите Rediant Art
+          Проект Аврора
         </h1>
         <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
-          Помогите Нам Построить Будущее Художественных Украшений
+          3D Печатная Студия для Художественных Украшений
         </p>
         <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
-          Присоединяйтесь к нашей инновации, управляемой сообществом, через цифровую поддержку и физические награды. 
-          Станьте частью создания самой вовлеченной художественной ювелирной общины в мире.
+          Присоединяйтесь к нашей краудфандинг кампании для создания современной 3D печатной студии и литейного цеха. 
+          Революционизируйте производство художественных украшений с помощью передовых технологий и традиционного мастерства.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
-          <a href="#support" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
-            Варианты Поддержки
+          <a href="#project" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            Детали Проекта
           </a>
-          <a href="#rewards" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
-            Посмотреть Награды
+          <a href="#support" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
+            Поддержать Сейчас
           </a>
         </div>
       </div>

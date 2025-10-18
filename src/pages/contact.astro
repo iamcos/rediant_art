@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
 ---
 
 <Layout 
@@ -27,6 +28,22 @@ import Layout from '../layouts/Layout.astro';
           we'd love to hear from you.
         </p>
       </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="py-20 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+          Send Us a Message
+        </h2>
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+          Have a custom jewelry idea? Want to collaborate? We'd love to hear from you.
+        </p>
+      </div>
+      
+      <ContactForm lang="en" />
     </div>
   </section>
 

@@ -28,8 +28,30 @@ export async function fetchProducts(): Promise<Product[]> {
     const { rows: tributeProducts } = await response.json();
     console.log(`Fetched ${tributeProducts.length} products from Tribute API`);
     
+    // Product ignore list - products to completely exclude
+    const IGNORE_PRODUCTS = [
+      'special shot',
+      'special shot 🔥',
+      'test product',
+      'draft',
+      'private'
+    ];
+    
+    // Filter out ignored products before processing
+    const filteredProducts = tributeProducts.filter(product => {
+      const name = product.name?.toLowerCase() || '';
+      const description = product.description?.toLowerCase() || '';
+      
+      return !IGNORE_PRODUCTS.some(ignoreTerm => 
+        name.includes(ignoreTerm.toLowerCase()) || 
+        description.includes(ignoreTerm.toLowerCase())
+      );
+    });
+    
+    console.log(`Filtered out ${tributeProducts.length - filteredProducts.length} ignored products`);
+    
     // Transform Tribute products to our format
-    const products = tributeProducts.map(product => {
+    const products = filteredProducts.map(product => {
       // Convert from minor units to major units
       // Pricing rule: for physical goods, prefer Tribute's `price` field if present
       const price = product.type === 'physical' && typeof product.price === 'number'

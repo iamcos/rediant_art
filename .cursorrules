@@ -170,28 +170,26 @@ This is a bilingual (English/Russian) jewelry brand website for Rediant, featuri
 - **API Key**: `fa40da4f-b3de-4008-9601-1c065735` (stored in Vercel environment)
 - **Endpoint**: `https://tribute.tg/api/v1/products`
 - **Server-side Rendering**: Products fetched during build time for SEO
-- **ISR (Incremental Static Regeneration)**: Site regenerates daily at midnight UTC
+- **Static Site Generation**: Full rebuild on git push to main branch
 - **API Routes**: 
   - `/api/products` - Fetches products from Tribute API
-  - `/api/revalidate` - Triggers manual regeneration
 - **Environment Variables**: 
   - `TRIBUTE_API_KEY` - Stored in Vercel dashboard
-  - `REVALIDATE_SECRET` - For secure revalidation triggers
 
 ## VERCEL DEPLOYMENT & ENVIRONMENT
 - **Automatic Deployment**: Pushes to main branch trigger Vercel deployment
 - **Environment Variables**: Set in Vercel dashboard under Project Settings > Environment Variables
 - **API Key Updates**: Use `vercel env add TRIBUTE_API_KEY production` to update
 - **Manual Redeploy**: Use `vercel --prod` to force new deployment
-- **Cron Jobs**: Daily regeneration at `0 0 * * *` (midnight UTC)
+- **Static Generation**: Full site rebuild on every deployment
 - **Build Logs**: Check deployment status with `vercel ls` and `vercel inspect <deployment-url>`
 
 ## PRODUCT REGENERATION WORKFLOW
-1. **Automatic**: Daily cron job regenerates shop pages
-2. **Manual**: Call `/api/revalidate` endpoint with secret
-3. **Tribute Webhook**: Can trigger regeneration when products change
-4. **Build Time**: Products fetched server-side during Astro build
-5. **SEO**: All product data embedded in HTML for search engines
+1. **Automatic**: Git push to main branch triggers full site rebuild
+2. **Manual**: Use `vercel --prod` to force new deployment
+3. **Build Time**: Products fetched server-side during Astro build
+4. **SEO**: All product data embedded in HTML for search engines
+5. **Static Generation**: Complete site regeneration on every deployment
 
 ## TROUBLESHOOTING TRIBUTE INTEGRATION
 - **API Key Issues**: Check Vercel environment variables with `vercel env ls`
@@ -199,5 +197,13 @@ This is a bilingual (English/Russian) jewelry brand website for Rediant, featuri
 - **No Products**: Check API response in build logs
 - **Stale Data**: Force regeneration with `vercel --prod`
 - **Environment**: Ensure `TRIBUTE_API_KEY` is set for Production environment
+- **Product Filtering**: Check `src/utils/index.ts` for IGNORE_PRODUCTS array
+
+## COMMUNICATION STYLE
+- **Use factual language** - Avoid marketing terminology and dramatic statements
+- **Use technical terms accurately** - Describe features without exaggeration
+- **Focus on functionality** - Describe what things do, not subjective assessments
+- **Use clear, specific language** - Avoid vague marketing terms
+- **Be concise** - Get to the point without unnecessary elaboration
 
 Remember: This is a premium jewelry brand website that should reflect quality, innovation, and artistic excellence in every detail. The bilingual nature is essential for reaching both English and Russian-speaking audiences. ALWAYS use real data - mock data is not acceptable for this project.

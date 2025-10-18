@@ -3,12 +3,6 @@
   "outputDirectory": "dist",
   "framework": "astro",
   "regions": ["iad1"],
-  "crons": [
-    {
-      "path": "/api/revalidate",
-      "schedule": "0 0 * * *"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -55,12 +49,6 @@
       "source": "/ru",
       "destination": "/ru/",
       "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/((?!api/|_astro/|images/|favicon).*)",
-      "destination": "/index.html"
     }
   ]
 }

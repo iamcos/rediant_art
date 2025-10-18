@@ -3,11 +3,11 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout 
-  title="Crypto Crowdfunding - Support Rediant Art Innovation"
-  description="Join Rediant's crypto crowdfunding campaigns and support the future of artistic jewelry. Contribute to Project Aurora, Solstice, and Phoenix with Bitcoin and be part of our innovation journey."
+  title="Project Aurora - 3D Printing Studio Crowdfunding"
+  description="Support Project Aurora: Building a state-of-the-art 3D printing and lost-wax casting studio for artistic jewelry innovation. Join our community-driven crowdfunding campaign."
   lang="en"
   heroImage="/images/photo_2025-09-11 00.03.32.jpeg"
-  heroAlt="Crypto crowdfunding for Rediant Art"
+  heroAlt="3D printing studio crowdfunding for Rediant Art"
 >
   <!-- Hero Section -->
   <section 
@@ -17,56 +17,71 @@ import Layout from '../layouts/Layout.astro';
     <div class="bg-image-content text-center px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
-          Crypto Crowdfunding
+          Project Aurora
         </h1>
         <p class="text-xl sm:text-2xl lg:text-3xl mb-8 text-neutral-100 fade-in-up">
-          Support the Future of Artistic Jewelry
+          3D Printing Studio for Artistic Jewelry
         </p>
         <p class="text-lg sm:text-xl mb-12 text-neutral-200 max-w-3xl mx-auto fade-in-up">
-          Join our community-driven innovation through transparent Bitcoin crowdfunding. 
-          Be part of building the most engaged artistic jewelry community worldwide.
+          Join our community-driven crowdfunding to build a state-of-the-art 3D printing and lost-wax casting studio. 
+          Revolutionize artistic jewelry production with cutting-edge technology and traditional craftsmanship.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
-          <a href="#campaigns" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
-            View Campaigns
+          <a href="#project" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            View Project Details
           </a>
-          <a href="#wallet" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
-            Donate Bitcoin
+          <a href="#support" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
+            Support Now
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Active Campaigns -->
-  <section id="campaigns" class="py-20 bg-white">
+  <!-- Project Details -->
+  <section id="project" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-          Active Campaigns
+          Project Aurora: 3D Printing Studio
         </h2>
         <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-          Three ambitious projects that will revolutionize artistic jewelry and build our global community.
+          Building a state-of-the-art 3D printing and lost-wax casting studio to revolutionize artistic jewelry production.
         </p>
       </div>
       
-      <div class="grid lg:grid-cols-3 gap-8">
-        <!-- Project Aurora -->
-        <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] rounded-lg p-8 text-white">
-          <div class="text-center mb-6">
-            <div class="text-4xl mb-4">🖨️</div>
-            <h3 class="text-2xl font-bold mb-2">Project Aurora</h3>
-            <p class="text-neutral-200">3D Printing & Casting Studio</p>
+      <!-- Main Project Card -->
+      <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] rounded-lg p-8 text-white mb-12">
+        <div class="text-center mb-8">
+          <div class="text-6xl mb-4">🖨️</div>
+          <h3 class="text-3xl font-bold mb-4">Project Aurora</h3>
+          <p class="text-xl text-neutral-200">3D Printing & Lost-Wax Casting Studio</p>
           </div>
           
-          <div class="space-y-4 mb-6">
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="space-y-4">
             <div class="flex justify-between">
-              <span>Goal:</span>
-              <span class="font-semibold">0.15 BTC</span>
+              <span>Phase 1 Goal:</span>
+              <span class="font-semibold">$2,000-3,000</span>
             </div>
             <div class="flex justify-between">
+              <span>Phase 2 Goal:</span>
+              <span class="font-semibold">$10,000-15,000</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Phase 3 Goal:</span>
+              <span class="font-semibold">$100,000+</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Current Phase:</span>
+              <span class="font-semibold">Phase 1</span>
+            </div>
+          </div>
+          
+          <div class="space-y-4">
+            <div class="flex justify-between">
               <span>Raised:</span>
-              <span class="font-semibold">0.00 BTC</span>
+              <span class="font-semibold">$0</span>
             </div>
             <div class="flex justify-between">
               <span>Progress:</span>
@@ -74,143 +89,209 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <div class="flex justify-between">
               <span>Timeline:</span>
-              <span class="font-semibold">3 months</span>
+              <span class="font-semibold">3-6 months</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Status:</span>
+              <span class="font-semibold text-green-400">Active</span>
+            </div>
             </div>
           </div>
           
-          <div class="w-full bg-neutral-700 rounded-full h-2 mb-4">
-            <div class="bg-[var(--color-gold)] h-2 rounded-full" style="width: 0%"></div>
+        <div class="w-full bg-neutral-700 rounded-full h-3 mb-6">
+          <div class="bg-[var(--color-gold)] h-3 rounded-full" style="width: 0%"></div>
           </div>
           
-          <p class="text-sm text-neutral-200 mb-6">
-            Build a state-of-the-art 3D printing and lost-wax casting studio. 
-            This will enable us to create intricate jewelry pieces with unprecedented precision.
+        <p class="text-lg text-neutral-200 mb-8">
+          Build a state-of-the-art 3D printing and lost-wax casting studio. This will enable us to create intricate jewelry pieces with unprecedented precision, reduce production time from weeks to days, and cut costs by 75% compared to traditional methods.
           </p>
           
-          <a href="#wallet" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
-            Support Aurora
+        <a href="#support" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-4 rounded-lg font-semibold hover:bg-neutral-100 transition-colors text-lg">
+          Support Project Aurora
           </a>
         </div>
 
-        <!-- Project Solstice -->
-        <div class="bg-gradient-to-br from-[var(--color-charcoal)] to-[var(--color-gold)] rounded-lg p-8 text-white">
-          <div class="text-center mb-6">
-            <div class="text-4xl mb-4">🌱</div>
-            <h3 class="text-2xl font-bold mb-2">Project Solstice</h3>
-            <p class="text-neutral-200">Sustainable Materials Lab</p>
+      <!-- Technical Specifications -->
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Phase 1: Basic Setup -->
+        <div class="bg-neutral-50 rounded-lg p-6">
+          <h3 class="text-2xl font-bold text-neutral-900 mb-4">Phase 1: Basic SLA Setup</h3>
+          <div class="space-y-3 mb-6">
+            <div class="flex justify-between">
+              <span class="text-neutral-600">SLA Printer (Entry-level):</span>
+              <span class="font-semibold">$300-500</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Castable Resin (1L):</span>
+              <span class="font-semibold">$150-200</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Accessories & Safety:</span>
+              <span class="font-semibold">$200-300</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Shipping to Russia:</span>
+              <span class="font-semibold">$200-500</span>
+            </div>
+            <div class="flex justify-between border-t pt-2">
+              <span class="text-neutral-900 font-semibold">Total Phase 1:</span>
+              <span class="font-bold text-[var(--color-gold)]">$2,000-3,000</span>
+            </div>
           </div>
-          
-          <div class="space-y-4 mb-6">
-            <div class="flex justify-between">
-              <span>Goal:</span>
-              <span class="font-semibold">0.25 BTC</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Raised:</span>
-              <span class="font-semibold">0.00 BTC</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Progress:</span>
-              <span class="font-semibold">0%</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Timeline:</span>
-              <span class="font-semibold">6 months</span>
-            </div>
-          </div>
-          
-          <div class="w-full bg-neutral-700 rounded-full h-2 mb-4">
-            <div class="bg-[var(--color-gold)] h-2 rounded-full" style="width: 0%"></div>
-          </div>
-          
-          <p class="text-sm text-neutral-200 mb-6">
-            Develop sustainable and recycled materials for jewelry production. 
-            Create a circular economy model for artistic jewelry manufacturing.
+          <p class="text-sm text-neutral-600">
+            Entry-level SLA printer for creating burnout patterns. Perfect for small to medium jewelry pieces with high precision and smooth surfaces.
           </p>
-          
-          <a href="#wallet" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
-            Support Solstice
-          </a>
         </div>
 
-        <!-- Project Phoenix -->
-        <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] rounded-lg p-8 text-white">
-          <div class="text-center mb-6">
-            <div class="text-4xl mb-4">🔥</div>
-            <h3 class="text-2xl font-bold mb-2">Project Phoenix</h3>
-            <p class="text-neutral-200">Global Community Platform</p>
+        <!-- Phase 2: Professional Studio -->
+        <div class="bg-neutral-50 rounded-lg p-6">
+          <h3 class="text-2xl font-bold text-neutral-900 mb-4">Phase 2: Professional Studio</h3>
+          <div class="space-y-3 mb-6">
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Professional SLA Printer:</span>
+              <span class="font-semibold">$2,000-5,000</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Multiple Resin Types:</span>
+              <span class="font-semibold">$500-1,000</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Advanced Accessories:</span>
+              <span class="font-semibold">$1,000-2,000</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Studio Setup:</span>
+              <span class="font-semibold">$2,000-3,000</span>
+            </div>
+            <div class="flex justify-between border-t pt-2">
+              <span class="text-neutral-900 font-semibold">Total Phase 2:</span>
+              <span class="font-bold text-[var(--color-gold)]">$10,000-15,000</span>
+            </div>
           </div>
-          
-          <div class="space-y-4 mb-6">
-            <div class="flex justify-between">
-              <span>Goal:</span>
-              <span class="font-semibold">0.10 BTC</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Raised:</span>
-              <span class="font-semibold">0.00 BTC</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Progress:</span>
-              <span class="font-semibold">0%</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Timeline:</span>
-              <span class="font-semibold">4 months</span>
-            </div>
-          </div>
-          
-          <div class="w-full bg-neutral-700 rounded-full h-2 mb-4">
-            <div class="bg-[var(--color-gold)] h-2 rounded-full" style="width: 0%"></div>
-          </div>
-          
-          <p class="text-sm text-neutral-200 mb-6">
-            Build a global community platform connecting artists, collectors, and jewelry enthusiasts. 
-            Create the world's most engaged artistic jewelry community.
+          <p class="text-sm text-neutral-600">
+            Professional studio setup with multiple printers, advanced materials, and dedicated workspace for high-volume production.
           </p>
-          
-          <a href="#wallet" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
-            Support Phoenix
-          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Bitcoin Wallet Section -->
-  <section id="wallet" class="py-20 bg-neutral-900 text-white">
+  <!-- Support Section -->
+  <section id="support" class="py-20 bg-neutral-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-4xl sm:text-5xl font-bold mb-6">
-        Donate Bitcoin
+        Support Project Aurora
       </h2>
       <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
-        Support our innovation with Bitcoin. All donations are transparent and tracked on the blockchain.
+        Join our community-driven crowdfunding campaign. Support innovation in artistic jewelry through secure Telegram payments.
       </p>
       
-      <div class="bg-neutral-800 rounded-lg p-8 max-w-2xl mx-auto">
-        <div class="mb-6">
-          <h3 class="text-2xl font-bold mb-4">Bitcoin Wallet Address</h3>
-          <div class="bg-neutral-700 rounded-lg p-4 mb-4">
-            <code class="text-[var(--color-gold)] break-all">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</code>
-          </div>
-          <button onclick="copyToClipboard('bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh')" class="bg-[var(--color-gold)] text-white px-6 py-2 rounded-lg hover:bg-[var(--color-charcoal)] transition-colors">
-            Copy Address
-          </button>
+      <!-- Telegram Integration -->
+      <div class="bg-neutral-800 rounded-lg p-8 max-w-4xl mx-auto mb-12">
+        <div class="text-center mb-8">
+          <div class="text-6xl mb-4">📱</div>
+          <h3 class="text-3xl font-bold mb-4">Telegram Payment Integration</h3>
+          <p class="text-lg text-neutral-300">
+            Support Project Aurora through Telegram's secure payment system. Easy, fast, and secure donations.
+          </p>
         </div>
         
-        <div class="grid md:grid-cols-3 gap-6 text-center">
-          <div>
-            <div class="text-3xl font-bold text-[var(--color-gold)] mb-2">0.50 BTC</div>
-            <p class="text-neutral-400">Total Goal</p>
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="bg-neutral-700 rounded-lg p-6">
+            <h4 class="text-xl font-bold mb-4 text-[var(--color-gold)]">How to Donate</h4>
+            <div class="space-y-3 text-left">
+              <div class="flex items-start">
+                <span class="text-[var(--color-gold)] font-bold mr-3">1.</span>
+                <span>Message @mizyre_keyer on Telegram</span>
+              </div>
+              <div class="flex items-start">
+                <span class="text-[var(--color-gold)] font-bold mr-3">2.</span>
+                <span>Specify your donation amount</span>
+              </div>
+              <div class="flex items-start">
+                <span class="text-[var(--color-gold)] font-bold mr-3">3.</span>
+                <span>Use Telegram's @wallet bot for payment</span>
+              </div>
+              <div class="flex items-start">
+                <span class="text-[var(--color-gold)] font-bold mr-3">4.</span>
+                <span>Receive confirmation and rewards</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-neutral-700 rounded-lg p-6">
+            <h4 class="text-xl font-bold mb-4 text-[var(--color-gold)]">Contact Information</h4>
+            <div class="space-y-4 text-left">
+              <div>
+                <span class="font-semibold">Primary:</span>
+                <a href="https://t.me/mizyre_keyer" target="_blank" class="text-[var(--color-gold)] hover:text-white ml-2">
+                  @mizyre_keyer
+                </a>
           </div>
           <div>
-            <div class="text-3xl font-bold text-[var(--color-gold)] mb-2">0.00 BTC</div>
-            <p class="text-neutral-400">Raised</p>
+                <span class="font-semibold">Alternative:</span>
+                <a href="https://wa.me/79013157553" target="_blank" class="text-[var(--color-gold)] hover:text-white ml-2">
+                  WhatsApp +7 901 315-75-53
+                </a>
           </div>
           <div>
-            <div class="text-3xl font-bold text-[var(--color-gold)] mb-2">0%</div>
-            <p class="text-neutral-400">Progress</p>
+                <span class="font-semibold">Blog:</span>
+                <a href="https://t.me/mizyre" target="_blank" class="text-[var(--color-gold)] hover:text-white ml-2">
+                  @mizyre (Mizyre Rainbow Corner)
+                </a>
+              </div>
+            </div>
           </div>
+        </div>
+        
+        <div class="text-center">
+          <a href="https://t.me/mizyre_keyer" target="_blank" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors text-lg inline-block">
+            Start Supporting Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Reward Tiers -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-neutral-800 rounded-lg p-6">
+          <h3 class="text-2xl font-bold mb-4 text-[var(--color-gold)]">Supporter</h3>
+          <div class="text-3xl font-bold mb-4">$25-50</div>
+          <ul class="text-left space-y-2 mb-6">
+            <li>• Thank you message</li>
+            <li>• Project updates</li>
+            <li>• Community access</li>
+          </ul>
+          <a href="https://t.me/mizyre_keyer" target="_blank" class="block w-full bg-[var(--color-gold)] text-white text-center py-3 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            Support Now
+          </a>
+        </div>
+        
+        <div class="bg-neutral-800 rounded-lg p-6 border-2 border-[var(--color-gold)]">
+          <h3 class="text-2xl font-bold mb-4 text-[var(--color-gold)]">Innovator</h3>
+          <div class="text-3xl font-bold mb-4">$100-250</div>
+          <ul class="text-left space-y-2 mb-6">
+            <li>• All Supporter benefits</li>
+            <li>• Behind-the-scenes content</li>
+            <li>• 3D printing tutorial access</li>
+            <li>• Exclusive design previews</li>
+          </ul>
+          <a href="https://t.me/mizyre_keyer" target="_blank" class="block w-full bg-[var(--color-gold)] text-white text-center py-3 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            Support Now
+          </a>
+        </div>
+        
+        <div class="bg-neutral-800 rounded-lg p-6">
+          <h3 class="text-2xl font-bold mb-4 text-[var(--color-gold)]">Patron</h3>
+          <div class="text-3xl font-bold mb-4">$500+</div>
+          <ul class="text-left space-y-2 mb-6">
+            <li>• All Innovator benefits</li>
+            <li>• Custom jewelry piece</li>
+            <li>• Studio visit invitation</li>
+            <li>• Co-creation opportunities</li>
+          </ul>
+          <a href="https://t.me/mizyre_keyer" target="_blank" class="block w-full bg-[var(--color-gold)] text-white text-center py-3 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            Support Now
+          </a>
         </div>
       </div>
     </div>
@@ -230,15 +311,15 @@ import Layout from '../layouts/Layout.astro';
       
       <div class="grid md:grid-cols-3 gap-8">
         <div class="text-center">
-          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">3</div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Active Campaigns</h3>
-          <p class="text-neutral-600">Revolutionary projects in development</p>
+          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">1</div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Active Project</h3>
+          <p class="text-neutral-600">Project Aurora: 3D Printing Studio</p>
         </div>
         
         <div class="text-center">
-          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">0.50 BTC</div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Total Goal</h3>
-          <p class="text-neutral-600">Combined funding target</p>
+          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">$2,000+</div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Phase 1 Goal</h3>
+          <p class="text-neutral-600">Basic SLA printing setup</p>
         </div>
         
         <div class="text-center">
@@ -250,11 +331,3 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 </Layout>
-
-<script>
-function copyToClipboard(text) {
-  navigator.clipboard.writeText(text).then(function() {
-    alert('Bitcoin address copied to clipboard!');
-  });
-}
-</script>
