@@ -8,6 +8,10 @@ import { fetchProducts } from '../utils';
 // Fetch products server-side for SEO and ISR
 const products = await fetchProducts();
 
+// Filter products by type for better organization
+const physicalProducts = products.filter(p => p.type === 'physical');
+const digitalProducts = products.filter(p => p.type === 'digital');
+
 // Generate structured data for SEO
 const structuredProducts = products.map(product => ({
   "@type": "Product",
@@ -93,21 +97,61 @@ const collectionStructuredData = {
         <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
           Our Collection
         </h2>
-        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto mb-8">
           Handcrafted jewelry pieces that blend ancient traditions with modern innovation.
         </p>
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          <span class="bg-[var(--color-gold)] text-white px-4 py-2 rounded-full text-sm font-medium">
+            {physicalProducts.length} Physical Items
+          </span>
+          <span class="bg-[var(--color-charcoal)] text-white px-4 py-2 rounded-full text-sm font-medium">
+            {digitalProducts.length} Digital Items
+          </span>
+        </div>
       </div>
       
-      <ProductGrid 
-        products={products}
-        columns={3}
-        showEmpty={true}
-        emptyMessage="We're currently updating our collection. Please check back soon!"
-        emptyAction={{
-          text: "Contact Us",
-          href: "/contact"
-        }}
-      />
+      <!-- Physical Products -->
+      {physicalProducts.length > 0 && (
+        <div class="mb-16">
+          <h3 class="text-3xl font-bold text-neutral-900 mb-8 text-center">
+            Physical Jewelry
+          </h3>
+          <ProductGrid 
+            products={physicalProducts}
+            columns={3}
+            showEmpty={false}
+          />
+        </div>
+      )}
+      
+      <!-- Digital Products -->
+      {digitalProducts.length > 0 && (
+        <div class="mb-16">
+          <h3 class="text-3xl font-bold text-neutral-900 mb-8 text-center">
+            Digital Art & Designs
+          </h3>
+          <ProductGrid 
+            products={digitalProducts}
+            columns={3}
+            showEmpty={false}
+          />
+        </div>
+      )}
+      
+      <!-- Empty State -->
+      {products.length === 0 && (
+        <div class="text-center py-16">
+          <h3 class="text-2xl font-bold text-neutral-900 mb-4">
+            We're currently updating our collection
+          </h3>
+          <p class="text-lg text-neutral-600 mb-8">
+            Please check back soon for new artistic jewelry pieces!
+          </p>
+          <a href="/contact" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            Contact Us
+          </a>
+        </div>
+      )}
     </div>
   </section>
 
