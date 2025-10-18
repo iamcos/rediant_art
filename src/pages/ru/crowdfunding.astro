@@ -1,5 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { fetchProducts } from '../../utils';
+
+// Fetch products server-side for SEO and ISR
+const products = await fetchProducts();
+
+// Filter products by type for better organization
+const physicalProducts = products.filter(p => p.type === 'physical');
+const digitalProducts = products.filter(p => p.type === 'digital');
 ---
 
 <Layout 
