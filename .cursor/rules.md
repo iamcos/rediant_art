@@ -56,6 +56,16 @@
 - **NO FALLBACKS TO SAMPLE DATA** - If API fails, fix the integration
 - Data is always available, servers are running, APIs are working
 
+### Price Display Rules
+- **ALWAYS display prices in both EUR and RUB** when only one currency is available
+- **Format**: Show native currency first, then approximation in brackets
+- **Examples**:
+  - `10,000 RUB (≈100 EUR)` for Russian products
+  - `10,000 EUR (≈1,000,000 RUB)` for European products
+- **Currency conversion rates**: Use approximate rates (1 EUR ≈ 100 RUB)
+- **Implementation**: Update ProductCard component to show dual pricing
+- **User experience**: Helps international customers understand pricing
+
 ### Deployment
 - Changes auto-deploy to Vercel on push to main
 - Test both development and production environments

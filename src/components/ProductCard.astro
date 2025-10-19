@@ -47,8 +47,18 @@ const { product } = Astro.props;
     
     <div class="product-footer">
       <div class="product-price">
-        <span class="price">{product.price}</span>
+        <span class="price">{product.price.toLocaleString()}</span>
         <span class="currency">{product.currency}</span>
+        {product.currency === 'RUB' && (
+          <span class="price-approximation">
+            (≈{Math.round(product.price / 100)} EUR)
+          </span>
+        )}
+        {product.currency === 'EUR' && (
+          <span class="price-approximation">
+            (≈{(product.price * 100).toLocaleString()} RUB)
+          </span>
+        )}
         {product.starsAmountEnabled && product.starsAmount && (
           <span class="stars-price">
             or {product.starsAmount} ⭐
@@ -226,6 +236,14 @@ const { product } = Astro.props;
     font-size: 0.9rem;
     color: #666;
     margin-top: 0.25rem;
+  }
+
+  .price-approximation {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.25rem;
+    font-style: italic;
   }
 
   .product-type {
