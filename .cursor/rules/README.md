@@ -25,6 +25,13 @@ Bilingual (English/Russian) jewelry gallery site using Astro 4.x, TypeScript, Ta
 - Optimize for SEO and performance (Lighthouse score > 90)
 - Use Git for version control: `git add . && git commit -m "Update bilingual gallery"`
 
+## Repository Information
+- **GitHub Repository**: https://github.com/iamcos/rediant_art
+- **SSH URL**: git@github.com:iamcos/rediant_art.git
+- **Current Branch**: main
+- **Latest Commit**: b3981f2 (Add modular .cursor/rules/ directory structure)
+- **Owner**: iamcos
+
 ## Live Site URLs
 - **Production**: https://rediant.art (primary domain)
 - **Vercel**: https://rediant-art2.vercel.app (backup/deployment)

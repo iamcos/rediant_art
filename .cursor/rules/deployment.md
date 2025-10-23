@@ -6,6 +6,12 @@
 - **Vercel URL**: https://rediant-art2.vercel.app (backup/deployment)
 - **Status**: Live and functional
 
+## Repository Configuration
+- **GitHub Repository**: https://github.com/iamcos/rediant_art
+- **SSH Remote**: git@github.com:iamcos/rediant_art.git
+- **Branch**: main
+- **Auto-Deploy**: Vercel monitors main branch for changes
+
 ## Deployment Process
 
 ### 1. Git Push (Auto-Deploy)
