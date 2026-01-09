@@ -7,13 +7,15 @@
 
 import fs from 'fs/promises';
 import path from 'path';
-import { 
-  MultiPartBlogPost, 
-  BlogPostPart, 
-  TelegramPost,
+import {
   isMultiPartBlogPost,
   extractBlogPostInfo,
   processBlogPostPart
+} from './telegram-integration';
+import type {
+  MultiPartBlogPost,
+  BlogPostPart,
+  TelegramPost
 } from './telegram-integration';
 
 // In-memory storage for draft blog posts (in production, use a database)
@@ -31,7 +33,7 @@ export async function addBlogPostPart(post: TelegramPost): Promise<{
 }> {
   try {
     const text = post.text || post.caption || '';
-    
+
     if (!isMultiPartBlogPost(text)) {
       return {
         success: false,
@@ -44,15 +46,15 @@ export async function addBlogPostPart(post: TelegramPost): Promise<{
 
     const blogInfo = extractBlogPostInfo(text);
     const blogPart = await processBlogPostPart(post, blogInfo);
-    
+
     // Get or create the blog post
     let blogPost = draftBlogPosts.get(blogInfo.blogId);
-    
+
     if (!blogPost) {
       // Create new blog post
       const isRussian = /[а-яё]/i.test(text);
       const lang = isRussian ? 'ru' : 'en';
-      
+
       blogPost = {
         blogId: blogInfo.blogId,
         title: text.split('\n')[0] || 'New Blog Post',
@@ -67,34 +69,34 @@ export async function addBlogPostPart(post: TelegramPost): Promise<{
         totalParts: blogInfo.totalParts,
       };
     }
-    
+
     // Add the part
     blogPost.parts.push(blogPart);
     blogPost.parts.sort((a, b) => a.partNumber - b.partNumber);
-    
+
     // Update status
-    const isComplete = blogInfo.totalParts 
+    const isComplete = blogInfo.totalParts
       ? blogPost.parts.length >= blogInfo.totalParts
       : blogPost.parts.length >= 3; // Default minimum of 3 parts
-    
+
     if (isComplete) {
       blogPost.status = 'complete';
       await publishMultiPartBlogPost(blogPost);
     }
-    
+
     // Save the updated blog post
     draftBlogPosts.set(blogInfo.blogId, blogPost);
-    
+
     return {
       success: true,
       blogId: blogInfo.blogId,
       partNumber: blogPart.partNumber,
       isComplete,
-      message: isComplete 
+      message: isComplete
         ? `Blog post "${blogPost.title}" is complete and published!`
         : `Added part ${blogPart.partNumber} to blog post "${blogPost.title}"`
     };
-    
+
   } catch (error) {
     console.error('Error adding blog post part:', error);
     return {
@@ -114,11 +116,11 @@ async function publishMultiPartBlogPost(blogPost: MultiPartBlogPost): Promise<vo
   try {
     // Generate the combined content
     const combinedContent = generateCombinedContent(blogPost);
-    
+
     // Create the markdown file
     const filename = `${blogPost.blogId}-${blogPost.date}.md`;
     const filePath = path.join(process.cwd(), 'src', 'content', 'articles', filename);
-    
+
     const frontmatter = `---
 title: "${blogPost.title.replace(/"/g, '\\"')}"
 description: "${blogPost.description.replace(/"/g, '\\"')}"
@@ -141,12 +143,12 @@ ${combinedContent}
 *This multi-part blog post was automatically created from ${blogPost.parts.length} Telegram messages.*`;
 
     await fs.writeFile(filePath, frontmatter, 'utf-8');
-    
+
     // Remove from drafts
     draftBlogPosts.delete(blogPost.blogId);
-    
+
     console.log(`Published multi-part blog post: ${filename}`);
-    
+
   } catch (error) {
     console.error('Error publishing multi-part blog post:', error);
     throw error;
@@ -158,15 +160,15 @@ ${combinedContent}
  */
 function generateCombinedContent(blogPost: MultiPartBlogPost): string {
   let content = '';
-  
+
   for (const part of blogPost.parts) {
     content += `\n## Part ${part.partNumber}\n\n`;
-    
+
     // Add text content
     if (part.content) {
       content += `${part.content}\n\n`;
     }
-    
+
     // Add images
     if (part.images.length > 0) {
       content += '### Images\n\n';
@@ -174,7 +176,7 @@ function generateCombinedContent(blogPost: MultiPartBlogPost): string {
         content += `![Image](${image})\n\n`;
       }
     }
-    
+
     // Add videos
     if (part.videos.length > 0) {
       content += '### Videos\n\n';
@@ -182,7 +184,7 @@ function generateCombinedContent(blogPost: MultiPartBlogPost): string {
         content += `<video controls>\n  <source src="${video}" type="video/mp4">\n</video>\n\n`;
       }
     }
-    
+
     // Add Tribute products
     if (part.products.length > 0) {
       content += '### Featured Products\n\n';
@@ -191,10 +193,10 @@ function generateCombinedContent(blogPost: MultiPartBlogPost): string {
       }
       content += '\n';
     }
-    
+
     content += '---\n\n';
   }
-  
+
   return content.trim();
 }
 
@@ -209,7 +211,7 @@ export function getBlogPostStatus(blogId: string): {
   title: string;
 } {
   const blogPost = draftBlogPosts.get(blogId);
-  
+
   if (!blogPost) {
     return {
       exists: false,
@@ -218,7 +220,7 @@ export function getBlogPostStatus(blogId: string): {
       title: ''
     };
   }
-  
+
   return {
     exists: true,
     status: blogPost.status,
@@ -258,29 +260,29 @@ export async function forcePublishBlogPost(blogId: string): Promise<{
 }> {
   try {
     const blogPost = draftBlogPosts.get(blogId);
-    
+
     if (!blogPost) {
       return {
         success: false,
         message: 'Blog post not found'
       };
     }
-    
+
     if (blogPost.parts.length === 0) {
       return {
         success: false,
         message: 'No parts to publish'
       };
     }
-    
+
     blogPost.status = 'complete';
     await publishMultiPartBlogPost(blogPost);
-    
+
     return {
       success: true,
       message: `Blog post "${blogPost.title}" published successfully`
     };
-    
+
   } catch (error) {
     console.error('Error force publishing blog post:', error);
     return {
