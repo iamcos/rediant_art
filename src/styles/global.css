@@ -122,11 +122,11 @@ p {
 }
 
 .photo-item img {
-  @apply w-full h-full object-cover transition-transform duration-700 group-hover:scale-105;
+  @apply w-full h-full object-cover transition-transform duration-700;
 }
 
 .photo-overlay {
-  @apply absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6;
+  @apply absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 flex items-end p-6;
 }
 
 /* Product Grid - Minimal */
@@ -143,7 +143,7 @@ p {
 }
 
 .product-image img {
-  @apply w-full h-full object-cover transition-transform duration-700 group-hover:scale-105;
+  @apply w-full h-full object-cover transition-transform duration-700;
 }
 
 .product-info {
