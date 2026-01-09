@@ -45,43 +45,38 @@ const {
 } = Astro.props;
 ---
 
-<section class="rediant-testimonials">
-  <div class="rediant-testimonials-container">
-    <div class="rediant-testimonials-header">
-      <h2 class="rediant-testimonials-title">{title}</h2>
-      <p class="rediant-testimonials-description">{description}</p>
+<section class="py-24 bg-warm-neutral text-black">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16 space-y-4">
+      <h2 class="text-4xl font-serif">{title}</h2>
+      <p class="text-lg text-gray-500 font-light max-w-2xl mx-auto">{description}</p>
     </div>
     
-    <div class="rediant-testimonials-grid">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
       {testimonials.map((testimonial) => (
-        <div class="rediant-testimonial-card">
-          <div class="rediant-testimonial-content">
-            {testimonial.rating && (
-              <div class="rediant-testimonial-rating">
-                {Array.from({ length: testimonial.rating }, (_, i) => (
-                  <span class="rediant-star">⭐</span>
-                ))}
-              </div>
-            )}
-            <blockquote class="rediant-testimonial-text">
-              "{testimonial.text}"
-            </blockquote>
+        <div class="text-center space-y-6">
+          <div class="text-gold text-sm tracking-widest uppercase">
+            {Array.from({ length: testimonial.rating || 5 }, () => '★').join('')}
           </div>
+          <blockquote class="text-xl font-serif italic text-gray-800 leading-relaxed">
+            "{testimonial.text}"
+          </blockquote>
           
-          <div class="rediant-testimonial-author">
+          <div class="flex flex-col items-center gap-2">
             {testimonial.avatar && (
-              <div class="rediant-testimonial-avatar">
+              <div class="w-12 h-12 rounded-full overflow-hidden grayscale">
                 <img 
                   src={testimonial.avatar} 
                   alt={testimonial.author}
                   loading="lazy"
+                  class="w-full h-full object-cover"
                 />
               </div>
             )}
-            <div class="rediant-testimonial-info">
-              <h4 class="rediant-testimonial-name">{testimonial.author}</h4>
+            <div>
+              <h4 class="font-medium text-sm uppercase tracking-wider">{testimonial.author}</h4>
               {testimonial.role && (
-                <p class="rediant-testimonial-role">{testimonial.role}</p>
+                <p class="text-xs text-gray-400 mt-1">{testimonial.role}</p>
               )}
             </div>
           </div>
@@ -90,149 +85,3 @@ const {
     </div>
   </div>
 </section>
-
-<style>
-  .rediant-testimonials {
-    padding: 5rem 0;
-    background: white;
-  }
-
-  .rediant-testimonials-container {
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
-  .rediant-testimonials-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .rediant-testimonials-title {
-    font-size: 3rem;
-    font-weight: bold;
-    color: var(--color-charcoal);
-    margin-bottom: 1.5rem;
-    font-family: 'Playfair Display', serif;
-  }
-
-  .rediant-testimonials-description {
-    font-size: 1.25rem;
-    color: #666;
-    max-width: 48rem;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-
-  .rediant-testimonials-grid {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-
-  .rediant-testimonial-card {
-    background: #f8f9fa;
-    border-radius: 1rem;
-    padding: 2rem;
-    border: 1px solid #e9ecef;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-  }
-
-  .rediant-testimonial-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  }
-
-  .rediant-testimonial-card::before {
-    content: '"';
-    position: absolute;
-    top: -10px;
-    left: 20px;
-    font-size: 4rem;
-    color: var(--color-gold);
-    font-family: 'Playfair Display', serif;
-    line-height: 1;
-  }
-
-  .rediant-testimonial-content {
-    margin-bottom: 1.5rem;
-  }
-
-  .rediant-testimonial-rating {
-    display: flex;
-    gap: 0.25rem;
-    margin-bottom: 1rem;
-  }
-
-  .rediant-star {
-    font-size: 1.125rem;
-  }
-
-  .rediant-testimonial-text {
-    font-size: 1.125rem;
-    line-height: 1.6;
-    color: var(--color-charcoal);
-    margin: 0;
-    font-style: italic;
-  }
-
-  .rediant-testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .rediant-testimonial-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid var(--color-gold);
-  }
-
-  .rediant-testimonial-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .rediant-testimonial-info {
-    flex: 1;
-  }
-
-  .rediant-testimonial-name {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--color-charcoal);
-    margin: 0 0 0.25rem 0;
-  }
-
-  .rediant-testimonial-role {
-    font-size: 0.875rem;
-    color: #666;
-    margin: 0;
-  }
-
-  @media (max-width: 768px) {
-    .rediant-testimonials {
-      padding: 3rem 0;
-    }
-
-    .rediant-testimonials-title {
-      font-size: 2.5rem;
-    }
-
-    .rediant-testimonials-description {
-      font-size: 1.125rem;
-    }
-
-    .rediant-testimonials-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .rediant-testimonial-card {
-      padding: 1.5rem;
-    }
-  }
-</style>

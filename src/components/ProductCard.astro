@@ -21,252 +21,69 @@ export interface Props {
 const { product } = Astro.props;
 ---
 
-<div class="product-card">
-  <div class="product-image">
-    <img 
-      src={product.image} 
+<div class="group cursor-pointer">
+  <div class="relative aspect-[4/5] overflow-hidden bg-gray-50 mb-4">
+    <img
+      src={product.image}
       alt={product.name}
       loading="lazy"
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
     />
-    {!product.available && (
-      <div class="product-overlay">
-        <span class="sold-out">Sold Out</span>
-      </div>
-    )}
+    {
+      !product.available && (
+        <div class="absolute inset-0 bg-white/60 flex items-center justify-center">
+          <span class="bg-black text-white px-4 py-2 uppercase text-xs tracking-widest font-medium">
+            Sold Out
+          </span>
+        </div>
+      )
+    }
   </div>
-  
-  <div class="product-info">
-    <h3 class="product-name">{product.name}</h3>
-    <p class="product-description">{product.description}</p>
-    
-    <div class="product-tags">
-      {product.tags.map(tag => (
-        <span class="tag">{tag}</span>
-      ))}
+
+  <div class="text-center space-y-2">
+    <h3
+      class="text-lg font-serif text-primary group-hover:text-gold transition-colors duration-300"
+    >
+      {product.name}
+    </h3>
+
+    <div
+      class="flex items-center justify-center gap-2 text-secondary text-sm font-light"
+    >
+      <span class="font-medium">{product.price.toLocaleString()}</span>
+      <span>{product.currency}</span>
     </div>
-    
-    <div class="product-footer">
-      <div class="product-price">
-        <span class="price">{product.price.toLocaleString()}</span>
-        <span class="currency">{product.currency}</span>
-        {product.currency === 'RUB' && (
-          <span class="price-approximation">
-            (≈{Math.round(product.price / 100)} EUR)
+
+    {
+      product.type && (
+        <div class="text-xs text-gray-400 uppercase tracking-widest">
+          {product.type}
+        </div>
+      )
+    }
+
+    <div
+      class="pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0"
+    >
+      {
+        product.available ? (
+          <a
+            href={
+              product.link ||
+              `https://t.me/rediant_art?start=product_${product.id}`
+            }
+            class="inline-block px-6 py-2 border border-black text-black hover:bg-black hover:text-white transition-all duration-300 uppercase text-xs tracking-widest"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Details
+          </a>
+        ) : (
+          <span class="text-gray-400 uppercase text-xs tracking-widest cursor-not-allowed">
+            Unavailable
           </span>
-        )}
-        {product.currency === 'EUR' && (
-          <span class="price-approximation">
-            (≈{(product.price * 100).toLocaleString()} RUB)
-          </span>
-        )}
-        {product.starsAmountEnabled && product.starsAmount && (
-          <span class="stars-price">
-            or {product.starsAmount} ⭐
-          </span>
-        )}
-      </div>
-      
-      <div class="product-type">
-        <span class="type-badge type-{product.type}">
-          {product.type === 'physical' ? 'Physical' : 'Digital'}
-        </span>
-      </div>
-      
-      {product.available ? (
-        <a 
-          href={product.link || `https://t.me/rediant_art?start=product_${product.id}`}
-          class="buy-button"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Buy Now
-        </a>
-      ) : (
-        <span class="buy-button disabled">
-          Sold Out
-        </span>
-      )}
+        )
+      }
     </div>
   </div>
 </div>
-
-<style>
-  .product-card {
-    background: white;
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  }
-  
-  .product-image {
-    position: relative;
-    aspect-ratio: 4/5;
-    overflow: hidden;
-  }
-  
-  .product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  .product-card:hover .product-image img {
-    transform: scale(1.05);
-  }
-  
-  .product-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .sold-out {
-    color: white;
-    font-weight: bold;
-    font-size: 1.2rem;
-    background: var(--color-charcoal);
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-  }
-  
-  .product-info {
-    padding: 1.5rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .product-name {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-charcoal);
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-  }
-  
-  .product-description {
-    color: #666;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-    flex-grow: 1;
-  }
-  
-  .product-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .tag {
-    background: var(--color-gold);
-    color: white;
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-weight: 500;
-  }
-  
-  .product-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: auto;
-  }
-  
-  .product-price {
-    display: flex;
-    align-items: baseline;
-    gap: 0.25rem;
-  }
-  
-  .price {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-charcoal);
-  }
-  
-  .currency {
-    font-size: 1rem;
-    color: #666;
-  }
-  
-  .buy-button {
-    background: var(--color-gold);
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .buy-button:hover {
-    background: var(--color-charcoal);
-    transform: translateY(-2px);
-  }
-  
-  .buy-button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  .stars-price {
-    display: block;
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 0.25rem;
-  }
-
-  .price-approximation {
-    display: block;
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 0.25rem;
-    font-style: italic;
-  }
-
-  .product-type {
-    margin: 0.5rem 0;
-  }
-
-  .type-badge {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-
-  .type-physical {
-    background: var(--color-gold);
-    color: white;
-  }
-
-  .type-digital {
-    background: #4F46E5;
-    color: white;
-  }
-</style>
-

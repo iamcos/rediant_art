@@ -1,23 +1,26 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import HeroSection from '../components/HeroSection.astro';
-import PhotoGallery from '../components/PhotoGallery.astro';
-import BrandStory from '../components/BrandStory.astro';
-import Testimonials from '../components/Testimonials.astro';
-import NewsletterSignup from '../components/NewsletterSignup.astro';
-import ContactFooter from '../components/ContactFooter.astro';
-import CallToAction from '../components/CallToAction.astro';
-import { getCollection } from 'astro:content';
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import PhotoGallery from "../components/PhotoGallery.astro";
+import BrandStory from "../components/BrandStory.astro";
+import Testimonials from "../components/Testimonials.astro";
+import NewsletterSignup from "../components/NewsletterSignup.astro";
+import ContactFooter from "../components/ContactFooter.astro";
+import { getCollection } from "astro:content";
 
 // Get featured photos for the gallery
-const photos = await getCollection('photos');
-const featuredPhotos = photos.filter(photo => photo.data.featured).slice(0, 12);
-const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && photo.data.featured);
+const photos = await getCollection("photos");
+const featuredPhotos = photos
+  .filter((photo) => photo.data.featured)
+  .slice(0, 12);
+const heroPhoto = photos.find(
+  (photo) => photo.data.category === "portrait" && photo.data.featured,
+);
 ---
 
-<Layout 
+<Layout
   title="Rediant Art - Contemporary Jewelry & Artistic Innovation"
-  description="Discover Rediant's artistic jewelry collection featuring facechains, headchains, bodychains, and earrings. Where ancient tribal inspiration meets modern craftsmanship."
+  description="Discover Rediant's artistic jewelry collection featuring facechains, headchains, bodychains, and earrings."
   lang="en"
   heroImage={heroPhoto ? `/images/${heroPhoto.data.filename}` : undefined}
   heroAlt={heroPhoto?.data.alt}
@@ -25,79 +28,42 @@ const heroPhoto = photos.find(photo => photo.data.category === 'portrait' && pho
   <!-- Hero Section -->
   <HeroSection
     title="Rediant Art"
-    subtitle="Contemporary Jewelry & Artistic Innovation"
-    description="Where ancient tribal inspiration meets modern craftsmanship. Discover facechains, headchains, bodychains, and earrings that transform your presence into living art."
-    backgroundImage={heroPhoto ? `/images/${heroPhoto.data.filename}` : '/images/photo_2025-09-10 23.56.36.jpg'}
+    subtitle="Contemporary Jewelry"
+    description="Where ancient tribal inspiration meets modern craftsmanship. Pieces that transform your presence into living art."
+    backgroundImage={heroPhoto
+      ? `/images/${heroPhoto.data.filename}`
+      : "/images/photo_2025-09-10 23.56.36.jpg"}
     backgroundAlt={heroPhoto?.data.alt}
     ctaSecondary={{
-      text: "Discover Our Story",
-      href: "/about"
+      text: "Explore",
+      href: "/shop",
     }}
     lang="en"
   />
 
-  
-
   <!-- Photo Gallery Section -->
-  <section class="py-20 bg-neutral-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-          Art in Motion
-        </h2>
-        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-          Each piece tells a story of ancient wisdom meeting modern innovation. 
-          Our jewelry transforms the body into a canvas for self-expression.
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16 space-y-4">
+        <h2 class="text-4xl font-serif">Art in Motion</h2>
+        <p class="text-lg text-gray-500 font-light max-w-2xl mx-auto">
+          Each piece tells a story of ancient wisdom meeting modern innovation.
         </p>
       </div>
-      
-      <PhotoGallery 
-        featured={true}
-        limit={12}
-        columns={3}
-        showOverlay={true}
-      />
+
+      <PhotoGallery featured={true} limit={12} columns={3} showOverlay={true} />
     </div>
-    <div class="hidden">светочка</div>
   </section>
 
   <!-- Brand Story Section -->
-  <BrandStory 
-    title="Our Story"
-    subtitle="Ancient Wisdom Meets Modern Innovation"
-    description="Founded on the belief that jewelry should be more than adornment—it should be a form of self-expression and artistic statement. Rediant Art bridges the gap between ancient tribal traditions and cutting-edge 3D printing technology, creating pieces that honor the past while embracing the future."
-    founderName="Svetlana"
-    founderTitle="Founder & Creative Director"
-    founderImage="/images/photo_2025-09-10 23.56.36.jpg"
-    backgroundImage="/images/photo_2025-09-10 23.58.23.jpeg"
-    lang="en"
-  />
+  <BrandStory />
 
   <!-- Testimonials Section -->
-  <Testimonials 
-    title="What Our Community Says"
-    description="Discover how our jewelry transforms the way people express themselves."
-    lang="en"
-  />
+  <Testimonials />
 
   <!-- Newsletter Signup Section -->
-  <NewsletterSignup 
-    title="Join Our Community"
-    description="Get exclusive access to new collections, behind-the-scenes content, and special offers. Be the first to know about our latest artistic creations."
-    buttonText="Join Telegram"
-    lang="en"
-  />
+  <NewsletterSignup />
 
   <!-- Contact Footer Section -->
-  <ContactFooter 
-    title="Get in Touch"
-    description="Ready to start your artistic journey? We'd love to hear from you."
-    phone="+7 901 315-75-53"
-    address="Creative Studio, Art District"
-    socialLinks={{
-      instagram: "https://instagram.com/mizyre",
-      telegram: "https://t.me/mizyre"
-    }}
-    lang="en"
-  />
+  <ContactFooter />
 </Layout>

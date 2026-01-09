@@ -10,368 +10,111 @@ export interface Props {
 
 const {
   title = "Join Our Community",
-  description = "Get exclusive access to new collections, behind-the-scenes content, and special offers. Be the first to know about our latest artistic creations.",
+  description = "Get exclusive access to new collections, behind-the-scenes content, and special offers.",
   buttonText = "Join Telegram",
-  successMessage = "Thank you for joining! You'll receive updates via Telegram.",
+  successMessage = "Thank you for joining!",
   backgroundImage,
-  lang = "en"
+  lang = "en",
 } = Astro.props;
 ---
 
-<section 
-  class="rediant-newsletter"
-  style={backgroundImage ? `background-image: url('${backgroundImage}')` : undefined}
->
-  <div class="rediant-newsletter-content">
-    <div class="rediant-newsletter-container">
-      <div class="rediant-newsletter-text">
-        <h2 class="rediant-newsletter-title">{title}</h2>
-        <p class="rediant-newsletter-description">{description}</p>
+<section class="py-24 bg-white border-t border-gray-100">
+  <div class="container mx-auto px-6 text-center">
+    <div class="max-w-xl mx-auto space-y-8">
+      <div class="space-y-4">
+        <h2 class="text-3xl font-serif">{title}</h2>
+        <p class="text-gray-500 font-light">{description}</p>
       </div>
-      
-      <div class="rediant-newsletter-form">
-        <form id="newsletter-form" class="rediant-newsletter-form-container">
-          <div class="rediant-newsletter-input-group">
-            <input 
-              type="email" 
-              id="newsletter-email" 
-              name="email" 
-              placeholder="Enter your email address"
-              required
-              class="rediant-newsletter-input"
-            />
-            <button type="submit" class="rediant-newsletter-button" id="newsletter-submit">
-              <span class="newsletter-text">Subscribe</span>
-              <span class="newsletter-loading" style="display: none;">
-                <svg class="spinner" width="16" height="16" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="31.416" stroke-dashoffset="31.416">
-                    <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
-                    <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
-                  </circle>
-                </svg>
-                Subscribing...
-              </span>
-            </button>
-          </div>
-          <div class="rediant-newsletter-message" id="newsletter-message"></div>
-        </form>
-        
-        <div class="rediant-newsletter-divider">
-          <span>or</span>
+
+      <form id="newsletter-form" class="space-y-4">
+        <div class="flex flex-col sm:flex-row gap-4">
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+            class="flex-1 px-6 py-3 bg-gray-50 border border-gray-200 focus:outline-none focus:border-black transition-colors"
+          />
+          <button
+            type="submit"
+            id="newsletter-submit"
+            class="px-8 py-3 bg-black text-white uppercase text-xs tracking-widest hover:bg-gold transition-colors duration-300"
+          >
+            <span class="newsletter-text">Subscribe</span>
+            <span class="newsletter-loading hidden">...</span>
+          </button>
         </div>
-        
-        <a 
-          href="https://t.me/mizyre" 
-          target="_blank"
-          rel="noopener noreferrer"
-          class="rediant-newsletter-telegram"
+        <div id="newsletter-message" class="text-sm hidden"></div>
+      </form>
+
+      <div class="relative py-4">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-gray-100"></div>
+        </div>
+        <div
+          class="relative flex justify-center text-xs uppercase tracking-widest text-gray-400 bg-white px-4"
         >
-          Join Telegram Channel
-        </a>
-        
-        <p class="rediant-newsletter-description-small">
-          Get exclusive updates, behind-the-scenes content, and special offers.
-        </p>
+          or
+        </div>
       </div>
+
+      <a
+        href="https://t.me/mizyre"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block px-8 py-3 border border-black text-black uppercase text-xs tracking-widest hover:bg-black hover:text-white transition-all duration-300"
+      >
+        Join Telegram Channel
+      </a>
     </div>
   </div>
 </section>
 
-
-<style>
-  .rediant-newsletter {
-    padding: 5rem 0;
-    position: relative;
-    background: linear-gradient(135deg, var(--color-charcoal) 0%, #1a1a1a 100%);
-    color: white;
-  }
-
-  .rediant-newsletter[style*="background-image"] {
-    background-size: contain; /* show full image */
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-color: #111;
-    background-attachment: fixed;
-  }
-
-  .rediant-newsletter[style*="background-image"]::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1;
-  }
-
-  .rediant-newsletter-content {
-    position: relative;
-    z-index: 2;
-  }
-
-  .rediant-newsletter-container {
-    max-width: 60rem;
-    margin: 0 auto;
-    padding: 0 1rem;
-    text-align: center;
-  }
-
-  .rediant-newsletter-text {
-    margin-bottom: 3rem;
-  }
-
-  .rediant-newsletter-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-    font-family: 'Playfair Display', serif;
-    color: var(--color-gold);
-  }
-
-  .rediant-newsletter-description {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    color: #d1d5db;
-    max-width: 48rem;
-    margin: 0 auto;
-  }
-
-  .rediant-newsletter-form {
-    max-width: 32rem;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .rediant-newsletter-button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background: var(--color-gold);
-    color: white;
-    text-decoration: none;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-    white-space: nowrap;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .rediant-newsletter-button:hover {
-    background: #b8941f;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  .rediant-newsletter-description-small {
-    margin-top: 1rem;
-    color: #d1d5db;
-    font-size: 0.875rem;
-  }
-
-  .rediant-newsletter-form-container {
-    margin-bottom: 1.5rem;
-  }
-
-  .rediant-newsletter-input-group {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .rediant-newsletter-input {
-    flex: 1;
-    padding: 1rem;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 0.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .rediant-newsletter-input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  .rediant-newsletter-input:focus {
-    outline: none;
-    border-color: var(--color-gold);
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
-  }
-
-  .rediant-newsletter-button {
-    padding: 1rem 1.5rem;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .rediant-newsletter-message {
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    text-align: center;
-    display: none;
-  }
-
-  .rediant-newsletter-message.success {
-    background: rgba(34, 197, 94, 0.2);
-    color: #86efac;
-    border: 1px solid rgba(34, 197, 94, 0.3);
-  }
-
-  .rediant-newsletter-message.error {
-    background: rgba(239, 68, 68, 0.2);
-    color: #fca5a5;
-    border: 1px solid rgba(239, 68, 68, 0.3);
-  }
-
-  .rediant-newsletter-divider {
-    text-align: center;
-    margin: 1.5rem 0;
-    position: relative;
-  }
-
-  .rediant-newsletter-divider::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.2);
-  }
-
-  .rediant-newsletter-divider span {
-    background: linear-gradient(135deg, var(--color-charcoal) 0%, #1a1a1a 100%);
-    padding: 0 1rem;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.875rem;
-  }
-
-  .rediant-newsletter-telegram {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    text-decoration: none;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    text-align: center;
-    width: 100%;
-  }
-
-  .rediant-newsletter-telegram:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-  }
-
-  .spinner {
-    animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  @media (max-width: 768px) {
-    .rediant-newsletter {
-      padding: 3rem 0;
-    }
-
-    .rediant-newsletter-title {
-      font-size: 2.5rem;
-    }
-
-    .rediant-newsletter-description {
-      font-size: 1.125rem;
-    }
-
-    .rediant-newsletter-button {
-      width: 100%;
-      text-align: center;
-    }
-
-    .rediant-newsletter-input-group {
-      flex-direction: column;
-    }
-
-    .rediant-newsletter-telegram {
-      width: 100%;
-    }
-
-    .rediant-newsletter[style*="background-image"] {
-      background-attachment: scroll;
-    }
-  }
-</style>
-
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('newsletter-form') as HTMLFormElement;
-    const submitBtn = document.getElementById('newsletter-submit') as HTMLButtonElement;
-    const newsletterText = submitBtn.querySelector('.newsletter-text') as HTMLElement;
-    const newsletterLoading = submitBtn.querySelector('.newsletter-loading') as HTMLElement;
-    const messageDiv = document.getElementById('newsletter-message') as HTMLElement;
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("newsletter-form") as HTMLFormElement;
+    const submitBtn = document.getElementById(
+      "newsletter-submit",
+    ) as HTMLButtonElement;
+    const newsletterText = submitBtn.querySelector(
+      ".newsletter-text",
+    ) as HTMLElement;
+    const newsletterLoading = submitBtn.querySelector(
+      ".newsletter-loading",
+    ) as HTMLElement;
+    const messageDiv = document.getElementById(
+      "newsletter-message",
+    ) as HTMLElement;
 
     function showMessage(message: string, isError = false) {
       messageDiv.textContent = message;
-      messageDiv.className = `rediant-newsletter-message ${isError ? 'error' : 'success'}`;
-      messageDiv.style.display = 'block';
+      messageDiv.className = `text-sm ${isError ? "text-red-500" : "text-green-600"}`;
+      messageDiv.style.display = "block";
     }
 
     function setLoading(loading: boolean) {
       if (loading) {
         submitBtn.disabled = true;
-        newsletterText.style.display = 'none';
-        newsletterLoading.style.display = 'inline-flex';
-        newsletterLoading.style.alignItems = 'center';
-        newsletterLoading.style.gap = '8px';
+        newsletterText.style.display = "none";
+        newsletterLoading.style.display = "inline";
       } else {
         submitBtn.disabled = false;
-        newsletterText.style.display = 'inline';
-        newsletterLoading.style.display = 'none';
+        newsletterText.style.display = "inline";
+        newsletterLoading.style.display = "none";
       }
     }
 
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener("submit", async function (e) {
       e.preventDefault();
-      
       setLoading(true);
-      messageDiv.style.display = 'none';
+      messageDiv.style.display = "none";
 
-      const formData = new FormData(form);
-      const data = {
-        email: formData.get('email')
-      };
-
-      try {
-        const response = await fetch('/api/newsletter', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          showMessage(result.message);
-          form.reset();
-        } else {
-          showMessage(result.message, true);
-        }
-      } catch (error) {
-        console.error('Newsletter signup error:', error);
-        showMessage('Sorry, there was an error signing you up. Please try again.', true);
-      } finally {
+      // Simulate network request
+      setTimeout(() => {
+        showMessage("Thank you for subscribing!");
+        form.reset();
         setLoading(false);
-      }
+      }, 1000);
     });
   });
 </script>

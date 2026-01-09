@@ -7,10 +7,16 @@ export interface Props {
   heroAlt?: string;
 }
 
-const { title, description = "Rediant Art - Contemporary Jewelry & 3D Printing Innovation", lang = "en", heroImage, heroAlt } = Astro.props;
+const {
+  title,
+  description = "Rediant Art - Contemporary Jewelry & 3D Printing Innovation",
+  lang = "en",
+  heroImage,
+  heroAlt,
+} = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
@@ -18,19 +24,27 @@ const { title, description = "Rediant Art - Contemporary Jewelry & 3D Printing I
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    
+
     <!-- SEO Meta Tags -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
-    {heroImage && <meta property="og:image" content={new URL(heroImage, Astro.url)} />}
-    
+    {
+      heroImage && (
+        <meta property="og:image" content={new URL(heroImage, Astro.url)} />
+      )
+    }
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {heroImage && <meta name="twitter:image" content={new URL(heroImage, Astro.url)} />}
-    
+    {
+      heroImage && (
+        <meta name="twitter:image" content={new URL(heroImage, Astro.url)} />
+      )
+    }
+
     <!-- Structured Data -->
     <script type="application/ld+json">
       {
@@ -40,48 +54,66 @@ const { title, description = "Rediant Art - Contemporary Jewelry & 3D Printing I
         "url": "https://www.rediant.art/",
         "logo": "https://iamcos.github.io/rediant_art/logo.svg",
         "description": "Contemporary artistic jewelry featuring facechains, headchains, bodychains, and earrings. 3D printing innovation meets ancient tribal inspiration.",
-        "sameAs": [
-          "https://instagram.com/mizyre",
-          "https://t.me/mizyre"
-        ]
+        "sameAs": ["https://instagram.com/mizyre", "https://t.me/mizyre"]
       }
     </script>
-    
+
     <title>{title}</title>
   </head>
-  <body class="bg-neutral-50 text-neutral-900 font-sans antialiased">
+  <body
+    class="antialiased opacity-0 animate-fade-in-up"
+    style="animation-duration: 0.5s; animation-fill-mode: forwards;"
+  >
     <!-- Navigation -->
     <nav class="navbar">
       <div class="nav-container">
         <!-- Logo -->
         <div class="nav-logo">
-          <a href={lang === 'ru' ? '/ru/' : '/'}>
-            <span class="logo-text">Rediant</span> Art
+          <a
+            href={lang === "ru" ? "/ru/" : "/"}
+            class="flex items-center gap-2"
+          >
+            <span class="logo-text">Rediant</span>
           </a>
         </div>
-        
+
         <!-- Desktop Menu -->
         <div class="nav-menu">
-          <a href={lang === 'ru' ? '/ru/' : '/'} class="nav-item">{lang === 'ru' ? 'Главная' : 'Home'}</a>
-          <a href={lang === 'ru' ? '/ru/shop' : '/shop'} class="nav-item">{lang === 'ru' ? 'Магазин' : 'Shop'}</a>
-          <a href={lang === 'ru' ? '/ru/collections' : '/collections'} class="nav-item">{lang === 'ru' ? 'Коллекции' : 'Collections'}</a>
-          <a href={lang === 'ru' ? '/ru/about' : '/about'} class="nav-item">{lang === 'ru' ? 'О нас' : 'About'}</a>
-          <a href={lang === 'ru' ? '/ru/crowdfunding' : '/crowdfunding'} class="nav-item">{lang === 'ru' ? 'Краудфандинг' : 'Crowdfunding'}</a>
-          <a href={lang === 'ru' ? '/ru/subscription' : '/subscription'} class="nav-item">{lang === 'ru' ? 'Подписка' : 'Subscription'}</a>
-          <a href={lang === 'ru' ? '/ru/order' : '/order'} class="nav-item">{lang === 'ru' ? 'Заказ' : 'Order'}</a>
-          <a href={lang === 'ru' ? '/ru/journal' : '/journal'} class="nav-item">{lang === 'ru' ? 'Журнал' : 'Journal'}</a>
-          <a href={lang === 'ru' ? '/ru/contact' : '/contact'} class="nav-item">{lang === 'ru' ? 'Контакты' : 'Contact'}</a>
-          
+          <a href={lang === "ru" ? "/ru/" : "/"} class="nav-item"
+            >{lang === "ru" ? "Главная" : "Home"}</a
+          >
+          <a href={lang === "ru" ? "/ru/shop" : "/shop"} class="nav-item"
+            >{lang === "ru" ? "Магазин" : "Shop"}</a
+          >
+          <a href={lang === "ru" ? "/ru/about" : "/about"} class="nav-item"
+            >{lang === "ru" ? "О нас" : "About"}</a
+          >
+          <a href={lang === "ru" ? "/ru/contact" : "/contact"} class="nav-item"
+            >{lang === "ru" ? "Контакты" : "Contact"}</a
+          >
+
           <!-- Language Switcher -->
-          <div class="nav-language">
-            {lang === 'ru' ? (
-              <a href="/" class="lang-link">EN</a>
-            ) : (
-              <a href="/ru/" class="lang-link">RU</a>
-            )}
+          <div class="nav-language ml-4 pl-4 border-l border-gray-200">
+            {
+              lang === "ru" ? (
+                <a
+                  href="/"
+                  class="text-xs font-medium text-gray-400 hover:text-primary transition-colors"
+                >
+                  EN
+                </a>
+              ) : (
+                <a
+                  href="/ru/"
+                  class="text-xs font-medium text-gray-400 hover:text-primary transition-colors"
+                >
+                  RU
+                </a>
+              )
+            }
           </div>
         </div>
-        
+
         <!-- Mobile Menu Button -->
         <div class="nav-toggle" id="mobile-toggle">
           <span class="bar"></span>
@@ -90,42 +122,49 @@ const { title, description = "Rediant Art - Contemporary Jewelry & 3D Printing I
         </div>
       </div>
     </nav>
-    
+
     <!-- Main Content -->
-    <main>
+    <main class="pt-20">
+      <!-- Added padding-top to account for fixed navbar -->
       <slot />
     </main>
-    
+
     <!-- Mobile Menu Script -->
     <script>
-      const mobileToggle = document.getElementById('mobile-toggle');
-      const navMenu = document.querySelector('.nav-menu');
-      
-      mobileToggle.addEventListener('click', function() {
-        mobileToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-      });
-      
-      // Close menu when clicking on a link
-      document.querySelectorAll('.nav-item').forEach(link => {
-        link.addEventListener('click', function() {
-          mobileToggle.classList.remove('active');
-          navMenu.classList.remove('active');
+      const mobileToggle = document.getElementById("mobile-toggle");
+      const navMenu = document.querySelector(".nav-menu");
+
+      if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener("click", function () {
+          mobileToggle.classList.toggle("active");
+          navMenu.classList.toggle("active");
         });
-      });
-      
-      // Close menu when clicking outside
-      document.addEventListener('click', function(event) {
-        if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
-          mobileToggle.classList.remove('active');
-          navMenu.classList.remove('active');
-        }
-      });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll(".nav-item").forEach((link) => {
+          link.addEventListener("click", function () {
+            mobileToggle.classList.remove("active");
+            navMenu.classList.remove("active");
+          });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", function (event) {
+          const target = event.target as Node;
+          if (
+            navMenu &&
+            mobileToggle &&
+            !navMenu.contains(target) &&
+            !mobileToggle.contains(target)
+          ) {
+            mobileToggle.classList.remove("active");
+            navMenu.classList.remove("active");
+          }
+        });
+      }
     </script>
+    <style is:global>
+      @import "../styles/global.css";
+    </style>
   </body>
 </html>
-
-<style>
-  @import '../styles/global.css';
-</style>
-

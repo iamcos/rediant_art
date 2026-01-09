@@ -12,6 +12,7 @@ export interface Product {
   available: boolean;
   stock?: number;
   link?: string;
+  type?: string;
 }
 
 export interface Photo {

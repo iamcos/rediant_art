@@ -3,13 +3,13 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
-import vercel from '@astrojs/vercel/static';
+import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://rediant.art',
   base: '/',
-  output: 'static',
+  output: 'hybrid',
   integrations: [
     tailwind(),
     sitemap(),

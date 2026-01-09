@@ -1,84 +1,101 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import HeroSection from '../components/HeroSection.astro';
-import CallToAction from '../components/CallToAction.astro';
-import ProductGrid from '../components/ProductGrid.astro';
-import { fetchProducts } from '../utils';
+export const prerender = false;
+
+// Set Cache-Control headers for Vercel (1 hour)
+Astro.response.headers.set(
+  "Cache-Control",
+  "public, s-maxage=3600, stale-while-revalidate=600",
+);
+
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import CallToAction from "../components/CallToAction.astro";
+import ProductGrid from "../components/ProductGrid.astro";
+import { fetchProducts } from "../utils";
 
 // Fetch products server-side for SEO and ISR
 const products = await fetchProducts();
 
 // Filter products by type for better organization
-const physicalProducts = products.filter(p => p.type === 'physical');
-const digitalProducts = products.filter(p => p.type === 'digital');
+const physicalProducts = products.filter((p) => p.type === "physical");
+const digitalProducts = products.filter((p) => p.type === "digital");
 
 // Generate structured data for SEO
-const structuredProducts = products.map(product => ({
+const structuredProducts = products.map((product) => ({
   "@type": "Product",
-  "name": product.name,
-  "description": product.description,
-  "image": product.image,
-  "offers": {
+  name: product.name,
+  description: product.description,
+  image: product.image,
+  offers: {
     "@type": "Offer",
-    "price": product.price,
-    "priceCurrency": product.currency,
-    "availability": product.available ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-    "url": product.link
+    price: product.price,
+    priceCurrency: product.currency,
+    availability: product.available
+      ? "https://schema.org/InStock"
+      : "https://schema.org/OutOfStock",
+    url: product.link,
   },
-  "category": product.category,
-  "brand": {
+  category: product.category,
+  brand: {
     "@type": "Brand",
-    "name": "Rediant Art"
-  }
+    name: "Rediant Art",
+  },
 }));
 
 // Breadcrumb structured data
 const breadcrumbStructuredData = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [
+  itemListElement: [
     {
       "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://rediant.art/"
+      position: 1,
+      name: "Home",
+      item: "https://rediant.art/",
     },
     {
       "@type": "ListItem",
-      "position": 2,
-      "name": "Shop",
-      "item": "https://rediant.art/shop"
-    }
-  ]
+      position: 2,
+      name: "Shop",
+      item: "https://rediant.art/shop",
+    },
+  ],
 };
 
 // Collection structured data
 const collectionStructuredData = {
   "@context": "https://schema.org",
   "@type": "Collection",
-  "name": "Rediant Art Jewelry Collection",
-  "description": "Contemporary artistic jewelry featuring facechains, headchains, bodychains, and earrings crafted with 3D printing innovation.",
-  "url": "https://rediant.art/shop",
-  "mainEntity": {
+  name: "Rediant Art Jewelry Collection",
+  description:
+    "Contemporary artistic jewelry featuring facechains, headchains, bodychains, and earrings crafted with 3D printing innovation.",
+  url: "https://rediant.art/shop",
+  mainEntity: {
     "@type": "ItemList",
-    "itemListElement": structuredProducts
+    itemListElement: structuredProducts,
   },
-  "brand": {
+  brand: {
     "@type": "Brand",
-    "name": "Rediant Art"
-  }
+    name: "Rediant Art",
+  },
 };
 ---
 
-<Layout 
+<Layout
   title="Shop - Rediant Art Jewelry Collection"
   description="Discover our exclusive collection of artistic jewelry. Facechains, headchains, bodychains, and earrings crafted with 3D printing innovation. Updated with latest products."
   lang="en"
   heroImage="/images/photo_2025-09-10 23.58.23.jpeg"
   heroAlt="Rediant Art jewelry collection"
 >
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbStructuredData)} />
-  <script type="application/ld+json" set:html={JSON.stringify(collectionStructuredData)} />
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(breadcrumbStructuredData)}
+  />
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(collectionStructuredData)}
+  />
 
   <!-- Hero Section -->
   <HeroSection
@@ -98,60 +115,74 @@ const collectionStructuredData = {
           Our Collection
         </h2>
         <p class="text-xl text-neutral-600 max-w-3xl mx-auto mb-8">
-          Handcrafted jewelry pieces that blend ancient traditions with modern innovation.
+          Handcrafted jewelry pieces that blend ancient traditions with modern
+          innovation.
         </p>
         <div class="flex flex-wrap justify-center gap-4 mb-12">
-          <span class="bg-[var(--color-gold)] text-white px-4 py-2 rounded-full text-sm font-medium">
+          <span
+            class="bg-[var(--color-gold)] text-white px-4 py-2 rounded-full text-sm font-medium"
+          >
             {physicalProducts.length} Physical Items
           </span>
-          <span class="bg-[var(--color-charcoal)] text-white px-4 py-2 rounded-full text-sm font-medium">
+          <span
+            class="bg-[var(--color-charcoal)] text-white px-4 py-2 rounded-full text-sm font-medium"
+          >
             {digitalProducts.length} Digital Items
           </span>
         </div>
       </div>
-      
+
       <!-- Physical Products -->
-      {physicalProducts.length > 0 && (
-        <div class="mb-16">
-          <h3 class="text-3xl font-bold text-neutral-900 mb-8 text-center">
-            Physical Jewelry
-          </h3>
-          <ProductGrid 
-            products={physicalProducts}
-            columns={3}
-            showEmpty={false}
-          />
-        </div>
-      )}
-      
+      {
+        physicalProducts.length > 0 && (
+          <div class="mb-16">
+            <h3 class="text-3xl font-bold text-neutral-900 mb-8 text-center">
+              Physical Jewelry
+            </h3>
+            <ProductGrid
+              products={physicalProducts}
+              columns={3}
+              showEmpty={false}
+            />
+          </div>
+        )
+      }
+
       <!-- Digital Products -->
-      {digitalProducts.length > 0 && (
-        <div class="mb-16">
-          <h3 class="text-3xl font-bold text-neutral-900 mb-8 text-center">
-            Digital Art & Designs
-          </h3>
-          <ProductGrid 
-            products={digitalProducts}
-            columns={3}
-            showEmpty={false}
-          />
-        </div>
-      )}
-      
+      {
+        digitalProducts.length > 0 && (
+          <div class="mb-16">
+            <h3 class="text-3xl font-bold text-neutral-900 mb-8 text-center">
+              Digital Art & Designs
+            </h3>
+            <ProductGrid
+              products={digitalProducts}
+              columns={3}
+              showEmpty={false}
+            />
+          </div>
+        )
+      }
+
       <!-- Empty State -->
-      {products.length === 0 && (
-        <div class="text-center py-16">
-          <h3 class="text-2xl font-bold text-neutral-900 mb-4">
-            We're currently updating our collection
-          </h3>
-          <p class="text-lg text-neutral-600 mb-8">
-            Please check back soon for new artistic jewelry pieces!
-          </p>
-          <a href="/contact" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
-            Contact Us
-          </a>
-        </div>
-      )}
+      {
+        products.length === 0 && (
+          <div class="text-center py-16">
+            <h3 class="text-2xl font-bold text-neutral-900 mb-4">
+              We're currently updating our collection
+            </h3>
+            <p class="text-lg text-neutral-600 mb-8">
+              Please check back soon for new artistic jewelry pieces!
+            </p>
+            <a
+              href="/contact"
+              class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors"
+            >
+              Contact Us
+            </a>
+          </div>
+        )
+      }
     </div>
   </section>
 
@@ -161,11 +192,11 @@ const collectionStructuredData = {
     description="Don't see exactly what you're looking for? We create custom pieces tailored to your vision. Contact us to discuss your unique jewelry needs."
     primaryButton={{
       text: "Request Custom Piece",
-      href: "/contact"
+      href: "/contact",
     }}
     secondaryButton={{
       text: "Learn About Our Process",
-      href: "/about"
+      href: "/about",
     }}
     variant="dark"
   />

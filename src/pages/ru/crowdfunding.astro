@@ -46,109 +46,270 @@ const digitalProducts = products.filter(p => p.type === 'digital');
     </div>
   </section>
 
-  <!-- Digital Support Tiers -->
-  <section id="support" class="py-20 bg-white">
+  <!-- Project Details -->
+  <section id="project" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-          Цифровые Уровни Поддержки
+          Проект Аврора: 3D Печатная Студия
         </h2>
         <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-          Выберите свой уровень поддержки и помогите нам построить будущее художественных украшений.
+          Создание современной 3D печатной студии и литейного цеха для революции в производстве художественных украшений.
         </p>
       </div>
       
-      {digitalProducts.length > 0 ? (
-        <div class="grid lg:grid-cols-3 gap-8 mb-16">
-          {digitalProducts.map((product, index) => (
-            <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] rounded-lg p-8 text-white">
-              <div class="text-center mb-6">
-                <div class="text-4xl mb-4">💎</div>
-                <h3 class="text-2xl font-bold mb-2">{product.name}</h3>
-                <p class="text-neutral-200">{product.description}</p>
-              </div>
-              
-              <div class="space-y-4 mb-6">
-                <div class="flex justify-between">
-                  <span>Цена:</span>
-                  <span class="font-semibold">{product.price?.toFixed(2) || '0.00'} {product.currency?.toUpperCase() || 'EUR'}</span>
-                </div>
-                {product.starsAmountEnabled && (
-                  <div class="flex justify-between">
-                    <span>Звезды:</span>
-                    <span class="font-semibold">{product.starsAmount}</span>
-                  </div>
-                )}
-                <div class="flex justify-between">
-                  <span>Тип:</span>
-                  <span class="font-semibold">Цифровая Поддержка</span>
-                </div>
-              </div>
-              
-              <p class="text-sm text-neutral-200 mb-6">
-                Поддержите нашу инновацию с помощью этого цифрового вклада. 
-                Помогите нам построить будущее художественных украшений.
-              </p>
-              
-              <a href={product.link} target="_blank" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
-                Поддержать Сейчас
-              </a>
+      <!-- Main Project Card -->
+      <div class="bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-charcoal)] rounded-lg p-8 text-white mb-12">
+        <div class="text-center mb-8">
+          <div class="text-6xl mb-4">🖨️</div>
+          <h3 class="text-3xl font-bold mb-4">Проект Аврора</h3>
+          <p class="text-xl text-neutral-200">3D Печатная Студия и Литейный Цех</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="space-y-4">
+            <div class="flex justify-between">
+              <span>Цель Фазы 1:</span>
+              <span class="font-semibold">$2,000-3,000</span>
             </div>
-          ))}
+            <div class="flex justify-between">
+              <span>Цель Фазы 2:</span>
+              <span class="font-semibold">$10,000-15,000</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Цель Фазы 3:</span>
+              <span class="font-semibold">$100,000+</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Текущая Фаза:</span>
+              <span class="font-semibold">Фаза 1</span>
+            </div>
+          </div>
+          
+          <div class="space-y-4">
+            <div class="flex justify-between">
+              <span>Собрано:</span>
+              <span class="font-semibold">$0</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Прогресс:</span>
+              <span class="font-semibold">0%</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Сроки:</span>
+              <span class="font-semibold">3-6 месяцев</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Статус:</span>
+              <span class="font-semibold text-green-400">Активен</span>
+            </div>
+          </div>
         </div>
-      ) : (
-        <div class="text-center py-12">
-          <p class="text-xl text-neutral-600">В настоящее время нет доступных цифровых уровней поддержки.</p>
+        
+        <div class="w-full bg-neutral-700 rounded-full h-3 mb-6">
+          <div class="bg-[var(--color-gold)] h-3 rounded-full" style="width: 0%"></div>
         </div>
-      )}
-
-      <!-- Physical Rewards -->
-      <div class="text-center mb-16">
-        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-          Физические Награды
-        </h2>
-        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-          Красивые рукотворные ювелирные изделия в качестве наград за вашу поддержку.
+        
+        <p class="text-lg text-neutral-200 mb-8">
+          Создание современной 3D печатной студии и литейного цеха. Это позволит нам создавать сложные украшения с беспрецедентной точностью, сократить время производства с недель до дней и снизить затраты на 75% по сравнению с традиционными методами.
         </p>
+        
+        <a href="#support" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-4 rounded-lg font-semibold hover:bg-neutral-100 transition-colors text-lg">
+          Поддержать Проект Аврора
+        </a>
       </div>
 
-      {physicalProducts.length > 0 ? (
-        <div class="grid lg:grid-cols-2 gap-8">
-          {physicalProducts.map((product, index) => (
-            <div class="bg-gradient-to-br from-[var(--color-charcoal)] to-[var(--color-gold)] rounded-lg p-8 text-white">
-              <div class="text-center mb-6">
-                <div class="text-4xl mb-4">🎁</div>
-                <h3 class="text-2xl font-bold mb-2">{product.name}</h3>
-                <p class="text-neutral-200">{product.description}</p>
-              </div>
-
-              <div class="space-y-4 mb-6">
-                <div class="flex justify-between">
-                  <span>Цена:</span>
-                  <span class="font-semibold">{product.price?.toFixed(2) || '0.00'} {product.currency?.toUpperCase() || 'EUR'}</span>
-                </div>
-                <div class="flex justify-between">
-                  <span>Тип:</span>
-                  <span class="font-semibold">Физическая Награда</span>
-                </div>
-              </div>
-
-              <p class="text-sm text-neutral-200 mb-6">
-                Красивое рукотворное ювелирное изделие в качестве награды за вашу поддержку. 
-                Каждое изделие уникально и сделано с любовью.
-              </p>
-
-              <a href={product.link} target="_blank" class="block w-full bg-white text-[var(--color-charcoal)] text-center py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
-                Получить Награду
-              </a>
+      <!-- Technical Specifications -->
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Phase 1: Basic Setup -->
+        <div class="bg-neutral-50 rounded-lg p-6">
+          <h3 class="text-2xl font-bold text-neutral-900 mb-4">Фаза 1: Базовая SLA Настройка</h3>
+          <div class="space-y-3 mb-6">
+            <div class="flex justify-between">
+              <span class="text-neutral-600">SLA Принтер (Начальный):</span>
+              <span class="font-semibold">$300-500</span>
             </div>
-          ))}
+            <div class="flex justify-between">
+              <span class="text-neutral-600">3D Редактирующий Mac (M2/M3):</span>
+              <span class="font-semibold">$1,200-2,000</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Литьевая Смола (1Л):</span>
+              <span class="font-semibold">$150-200</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Аксессуары и Безопасность:</span>
+              <span class="font-semibold">$200-300</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Доставка в Россию:</span>
+              <span class="font-semibold">$200-500</span>
+            </div>
+            <div class="flex justify-between border-t pt-2">
+              <span class="text-neutral-900 font-semibold">Итого Фаза 1:</span>
+              <span class="font-bold text-[var(--color-gold)]">$2,000-3,000</span>
+            </div>
+          </div>
+          <p class="text-sm text-neutral-600">
+            Начальный SLA принтер с выделенным Mac для 3D редактирования для создания выжигаемых моделей. Идеально подходит для небольших и средних украшений с высокой точностью и гладкими поверхностями.
+          </p>
         </div>
-      ) : (
-        <div class="text-center py-12">
-          <p class="text-xl text-neutral-600">В настоящее время нет доступных физических наград.</p>
+
+        <!-- Phase 2: Professional Studio -->
+        <div class="bg-neutral-50 rounded-lg p-6">
+          <h3 class="text-2xl font-bold text-neutral-900 mb-4">Фаза 2: Профессиональная Студия</h3>
+          <div class="space-y-3 mb-6">
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Профессиональный SLA Принтер:</span>
+              <span class="font-semibold">$2,000-5,000</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Высокопроизводительный Mac (M3 Pro/Max):</span>
+              <span class="font-semibold">$2,500-4,000</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Множественные Типы Смол:</span>
+              <span class="font-semibold">$500-1,000</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Продвинутые Аксессуары:</span>
+              <span class="font-semibold">$1,000-2,000</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-600">Настройка Студии:</span>
+              <span class="font-semibold">$2,000-3,000</span>
+            </div>
+            <div class="flex justify-between border-t pt-2">
+              <span class="text-neutral-900 font-semibold">Итого Фаза 2:</span>
+              <span class="font-bold text-[var(--color-gold)]">$10,000-15,000</span>
+            </div>
+          </div>
+          <p class="text-sm text-neutral-600">
+            Профессиональная настройка студии с несколькими принтерами, высокопроизводительной рабочей станцией для 3D редактирования, продвинутыми материалами и выделенным рабочим пространством для высокообъемного производства.
+          </p>
         </div>
-      )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Support Section -->
+  <section id="support" class="py-20 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+        Поддержать Проект Аврора
+      </h2>
+      <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
+        Присоединяйтесь к нашей краудфандинг кампании. Поддержите инновации в художественных украшениях через безопасные платежи в Telegram.
+      </p>
+      
+      <!-- Telegram Integration -->
+      <div class="bg-neutral-800 rounded-lg p-8 max-w-4xl mx-auto mb-12">
+        <div class="text-center mb-8">
+          <div class="text-6xl mb-4">📱</div>
+          <h3 class="text-3xl font-bold mb-4">Интеграция Платежей Telegram</h3>
+          <p class="text-lg text-neutral-300">
+            Поддержите Проект Аврора через безопасную платежную систему Telegram. Простые, быстрые и безопасные пожертвования.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="bg-neutral-700 rounded-lg p-6">
+            <h4 class="text-xl font-bold mb-4 text-[var(--color-gold)]">Как Пожертвовать</h4>
+            <div class="space-y-3 text-left">
+              <div class="flex items-start">
+                <span class="text-[var(--color-gold)] font-bold mr-3">1.</span>
+                <span>Напишите @mizyre_keyer в Telegram</span>
+              </div>
+              <div class="flex items-start">
+                <span class="text-[var(--color-gold)] font-bold mr-3">2.</span>
+                <span>Укажите сумму вашего пожертвования</span>
+              </div>
+              <div class="flex items-start">
+                <span class="text-[var(--color-gold)] font-bold mr-3">3.</span>
+                <span>Используйте бота @wallet для платежа</span>
+              </div>
+              <div class="flex items-start">
+                <span class="text-[var(--color-gold)] font-bold mr-3">4.</span>
+                <span>Получите подтверждение и награды</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-neutral-700 rounded-lg p-6">
+            <h4 class="text-xl font-bold mb-4 text-[var(--color-gold)]">Контактная Информация</h4>
+            <div class="space-y-4 text-left">
+              <div>
+                <span class="font-semibold">Основной:</span>
+                <a href="https://t.me/mizyre_keyer" target="_blank" class="text-[var(--color-gold)] hover:text-white ml-2">
+                  @mizyre_keyer
+                </a>
+              </div>
+              <div>
+                <span class="font-semibold">Альтернатива:</span>
+                <a href="https://wa.me/79013157553" target="_blank" class="text-[var(--color-gold)] hover:text-white ml-2">
+                  WhatsApp +7 901 315-75-53
+                </a>
+              </div>
+              <div>
+                <span class="font-semibold">Блог:</span>
+                <a href="https://t.me/mizyre" target="_blank" class="text-[var(--color-gold)] hover:text-white ml-2">
+                  @mizyre (Mizyre Rainbow Corner)
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center">
+          <a href="https://t.me/mizyre_keyer" target="_blank" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors text-lg inline-block">
+            Начать Поддержку Сейчас
+          </a>
+        </div>
+      </div>
+
+      <!-- Reward Tiers -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-neutral-800 rounded-lg p-6">
+          <h3 class="text-2xl font-bold mb-4 text-[var(--color-gold)]">Сторонник</h3>
+          <div class="text-3xl font-bold mb-4">$25-50</div>
+          <ul class="text-left space-y-2 mb-6">
+            <li>• Благодарственное сообщение</li>
+            <li>• Обновления проекта</li>
+            <li>• Доступ к сообществу</li>
+          </ul>
+          <a href="https://t.me/mizyre_keyer" target="_blank" class="block w-full bg-[var(--color-gold)] text-white text-center py-3 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            Поддержать Сейчас
+          </a>
+        </div>
+        
+        <div class="bg-neutral-800 rounded-lg p-6 border-2 border-[var(--color-gold)]">
+          <h3 class="text-2xl font-bold mb-4 text-[var(--color-gold)]">Инноватор</h3>
+          <div class="text-3xl font-bold mb-4">$100-250</div>
+          <ul class="text-left space-y-2 mb-6">
+            <li>• Все преимущества Сторонника</li>
+            <li>• Контент за кулисами</li>
+            <li>• Доступ к урокам 3D печати</li>
+            <li>• Эксклюзивные превью дизайнов</li>
+          </ul>
+          <a href="https://t.me/mizyre_keyer" target="_blank" class="block w-full bg-[var(--color-gold)] text-white text-center py-3 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            Поддержать Сейчас
+          </a>
+        </div>
+        
+        <div class="bg-neutral-800 rounded-lg p-6">
+          <h3 class="text-2xl font-bold mb-4 text-[var(--color-gold)]">Покровитель</h3>
+          <div class="text-3xl font-bold mb-4">$500+</div>
+          <ul class="text-left space-y-2 mb-6">
+            <li>• Все преимущества Инноватора</li>
+            <li>• Индивидуальное украшение</li>
+            <li>• Приглашение в студию</li>
+            <li>• Возможности совместного творчества</li>
+          </ul>
+          <a href="https://t.me/mizyre_keyer" target="_blank" class="block w-full bg-[var(--color-gold)] text-white text-center py-3 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+            Поддержать Сейчас
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -166,15 +327,15 @@ const digitalProducts = products.filter(p => p.type === 'digital');
       
       <div class="grid md:grid-cols-3 gap-8">
         <div class="text-center">
-          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">{digitalProducts.length}</div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Цифровые Уровни Поддержки</h3>
-          <p class="text-neutral-600">Доступны для поддержки сообщества</p>
+          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">1</div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Активный Проект</h3>
+          <p class="text-neutral-600">Проект Аврора: 3D Печатная Студия</p>
         </div>
         
         <div class="text-center">
-          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">{physicalProducts.length}</div>
-          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Физические Награды</h3>
-          <p class="text-neutral-600">Рукотворные ювелирные изделия</p>
+          <div class="text-4xl font-bold text-[var(--color-gold)] mb-4">$2,000+</div>
+          <h3 class="text-xl font-semibold text-neutral-900 mb-2">Цель Фазы 1</h3>
+          <p class="text-neutral-600">Базовая SLA печатная настройка</p>
         </div>
         
         <div class="text-center">

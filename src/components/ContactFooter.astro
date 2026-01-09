@@ -13,253 +13,92 @@ export interface Props {
 
 const {
   title = "Get in Touch",
-  description = "Ready to start your artistic journey? We'd love to hear from you.",
+  description = "Ready to start your artistic journey?",
   phone = "+7 901 315-75-53",
   address = "Creative Studio, Art District",
   socialLinks = {
     instagram: "https://instagram.com/mizyre",
-    telegram: "https://t.me/mizyre"
+    telegram: "https://t.me/mizyre",
   },
-  lang = "en"
+  lang = "en",
 } = Astro.props;
 ---
 
-<section class="rediant-contact-footer">
-  <div class="rediant-contact-container">
-    <div class="rediant-contact-header">
-      <h2 class="rediant-contact-title">{title}</h2>
-      <p class="rediant-contact-description">{description}</p>
-    </div>
-    
-    <div class="rediant-contact-content">
-      <div class="rediant-contact-info">
-        
-        <div class="rediant-contact-item">
-          <div class="rediant-contact-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-          </div>
-          <div class="rediant-contact-details">
-            <h3 class="rediant-contact-label">Phone</h3>
-            <a href={`tel:${phone}`} class="rediant-contact-link">{phone}</a>
-          </div>
-        </div>
-        
-        <div class="rediant-contact-item">
-          <div class="rediant-contact-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-          </div>
-          <div class="rediant-contact-details">
-            <h3 class="rediant-contact-label">Location</h3>
-            <p class="rediant-contact-text">{address}</p>
-          </div>
-        </div>
+<footer class="bg-black text-white pt-20 pb-10">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+      <div class="col-span-1 md:col-span-2 space-y-6">
+        <h2 class="text-3xl font-serif">Rediant Art</h2>
+        <p class="text-gray-400 font-light max-w-sm">
+          Contemporary artistic jewelry where ancient tribal inspiration meets
+          modern 3D printing innovation.
+        </p>
       </div>
-      
-      <div class="rediant-social-section">
-        <h3 class="rediant-social-title">Follow Our Journey</h3>
-        <div class="rediant-social-links">
-          {socialLinks.instagram && (
-            <a href={socialLinks.instagram} class="rediant-social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-              <span>Instagram</span>
-            </a>
-          )}
-          
-          
-          {socialLinks.telegram && (
-            <a href={socialLinks.telegram} class="rediant-social-link" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-              </svg>
-              <span>Telegram</span>
-            </a>
-          )}
-        </div>
+
+      <div class="space-y-6">
+        <h3 class="text-sm uppercase tracking-widest text-gold">{title}</h3>
+        <ul class="space-y-4 text-gray-300 font-light">
+          <li>
+            <a href={`tel:${phone}`} class="hover:text-white transition-colors"
+              >{phone}</a
+            >
+          </li>
+          <li>{address}</li>
+          <li>
+            <a
+              href="mailto:hello@rediant.art"
+              class="hover:text-white transition-colors">hello@rediant.art</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="space-y-6">
+        <h3 class="text-sm uppercase tracking-widest text-gold">Follow Us</h3>
+        <ul class="space-y-4 text-gray-300 font-light">
+          {
+            socialLinks.instagram && (
+              <li>
+                <a
+                  href={socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-white transition-colors"
+                >
+                  Instagram
+                </a>
+              </li>
+            )
+          }
+          {
+            socialLinks.telegram && (
+              <li>
+                <a
+                  href={socialLinks.telegram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-white transition-colors"
+                >
+                  Telegram
+                </a>
+              </li>
+            )
+          }
+        </ul>
       </div>
     </div>
-    
-    <div class="rediant-footer-bottom">
-      <p class="rediant-footer-copyright">
-        © 2024 Rediant Art. All rights reserved. Crafted with passion for artistic expression.
-      </p>
+
+    <div
+      class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-light"
+    >
+      <p>&copy; {new Date().getFullYear()} Rediant Art. All rights reserved.</p>
+      <div class="flex gap-6 mt-4 md:mt-0">
+        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a
+        >
+        <a href="#" class="hover:text-white transition-colors"
+          >Terms of Service</a
+        >
+      </div>
     </div>
   </div>
-</section>
-
-<style>
-  .rediant-contact-footer {
-    padding: 5rem 0 2rem;
-    background: var(--color-charcoal);
-    color: white;
-  }
-
-  .rediant-contact-container {
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
-  .rediant-contact-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .rediant-contact-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-    font-family: 'Playfair Display', serif;
-    color: var(--color-gold);
-  }
-
-  .rediant-contact-description {
-    font-size: 1.25rem;
-    color: #d1d5db;
-    max-width: 48rem;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-
-  .rediant-contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    margin-bottom: 3rem;
-  }
-
-  .rediant-contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .rediant-contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .rediant-contact-icon {
-    width: 48px;
-    height: 48px;
-    background: var(--color-gold);
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    flex-shrink: 0;
-  }
-
-  .rediant-contact-details {
-    flex: 1;
-  }
-
-  .rediant-contact-label {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--color-gold);
-  }
-
-  .rediant-contact-link {
-    color: #d1d5db;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  .rediant-contact-link:hover {
-    color: var(--color-gold);
-  }
-
-  .rediant-contact-text {
-    color: #d1d5db;
-    margin: 0;
-  }
-
-  .rediant-social-section {
-    text-align: center;
-  }
-
-  .rediant-social-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    color: var(--color-gold);
-  }
-
-  .rediant-social-links {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .rediant-social-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
-    color: #d1d5db;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .rediant-social-link:hover {
-    background: var(--color-gold);
-    color: white;
-    transform: translateX(4px);
-  }
-
-  .rediant-footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: 2rem;
-    text-align: center;
-  }
-
-  .rediant-footer-copyright {
-    color: #9ca3af;
-    margin: 0;
-    font-size: 0.875rem;
-  }
-
-  @media (max-width: 768px) {
-    .rediant-contact-footer {
-      padding: 3rem 0 2rem;
-    }
-
-    .rediant-contact-title {
-      font-size: 2.5rem;
-    }
-
-    .rediant-contact-description {
-      font-size: 1.125rem;
-    }
-
-    .rediant-contact-content {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-
-    .rediant-social-links {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .rediant-social-link {
-      flex: 1;
-      min-width: 120px;
-      justify-content: center;
-    }
-  }
-</style>
+</footer>

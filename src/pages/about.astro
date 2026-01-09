@@ -35,39 +35,39 @@ const processPhotos = photos.filter(photo => photo.data.category === 'detail' ||
   </section>
 
   <!-- Founder Story -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-8">
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div class="order-2 lg:order-1">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6 leading-tight">
             Meet Svetlana
           </h2>
-          <div class="space-y-6 text-lg text-neutral-600">
-            <p>
-              Svetlana ("Sveta") is a young woman with red hair and radiant energy who embodies friendship, joy, care, honesty, and creativity. Her journey began with inspiration from facial ornaments and tribal art discovered during travels in India.
-            </p>
-            <p>
-              As part of Saint Petersburg's vibrant Joy Tribe (Tribe of Joy, или племя Кайфа), Svetlana is surrounded by a community of artists, musicians, and creative souls who share her vision of authentic self-expression and artistic innovation.
-            </p>
-            <p>
-              Her personality is non-corporate, sincere, curious, and artistic. She believes that jewelry is sacred adornment and self-expression, creating conversation and attraction that makes the wearer unforgettable.
-            </p>
-            <p>
-              The name "Rediant" is a wordplay on "radiant" and "red," reflecting both her radiant energy and her distinctive red hair. This personal touch infuses every piece with authentic passion and artistic vision.
-            </p>
-          </div>
+          <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
+            Svetlana ("Sveta") is a young woman with red hair and radiant energy who embodies friendship, joy, care, honesty, and creativity. Her journey began with inspiration from facial ornaments and tribal art discovered during travels in India.
+          </p>
+          <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
+            As part of Saint Petersburg's vibrant Joy Tribe (Tribe of Joy, или племя Кайфа), Svetlana is surrounded by a community of artists, musicians, and creative souls who share her vision of authentic self-expression and artistic innovation.
+          </p>
+          <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
+            Her personality is non-corporate, sincere, curious, and artistic. She believes that jewelry is sacred adornment and self-expression, creating conversation and attraction that makes the wearer unforgettable.
+          </p>
+          <p class="text-lg text-neutral-700 leading-relaxed">
+            The name "Rediant" is a wordplay on "radiant" and "red," reflecting both her radiant energy and her distinctive red hair. This personal touch infuses every piece with authentic passion and artistic vision.
+          </p>
         </div>
         
-        <div class="photo-gallery grid grid-cols-2 gap-4">
-          {founderPhotos.slice(0, 4).map((photo) => (
-            <div class="photo-item">
-              <img 
-                src={`/images/${photo.data.filename}`} 
-                alt={photo.data.alt}
-                class="w-full h-80 object-cover rounded-lg"
-              />
-            </div>
-          ))}
+        <div class="order-1 lg:order-2">
+          <div class="grid grid-cols-2 gap-4">
+            {founderPhotos.slice(0, 4).map((photo) => (
+              <div class="photo-item">
+                <img 
+                  src={`/images/${photo.data.filename}`} 
+                  alt={photo.data.alt}
+                  class="w-full h-64 sm:h-80 object-cover rounded-lg shadow-lg"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -75,47 +75,47 @@ const processPhotos = photos.filter(photo => photo.data.category === 'detail' ||
 
   <!-- Brand Philosophy -->
   <section 
-    class="bg-image-section py-20"
+    class="bg-image-section py-16"
     style="background-image: url('/images/photo_2025-09-10 23.58.18.jpeg')"
   >
     <div class="bg-image-content">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-white">
             Our Philosophy
           </h2>
-          <p class="text-xl text-neutral-200 max-w-3xl mx-auto">
+          <p class="text-lg sm:text-xl text-neutral-100 max-w-3xl mx-auto leading-relaxed">
             We believe jewelry is more than adornment — it's a bridge between ancient wisdom and modern expression.
           </p>
         </div>
         
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="text-center">
+        <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+          <div class="text-center bg-white/10 backdrop-blur-sm rounded-xl p-6">
             <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
               <span class="text-2xl">🎨</span>
             </div>
             <h3 class="text-xl font-semibold text-white mb-4">Artistic Expression</h3>
-            <p class="text-neutral-300">
+            <p class="text-neutral-100 leading-relaxed">
               Every piece is designed to create conversation, draw attention, and make the wearer unforgettable through bold, soulful artistry.
             </p>
           </div>
           
-          <div class="text-center">
+          <div class="text-center bg-white/10 backdrop-blur-sm rounded-xl p-6">
             <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
               <span class="text-2xl">⚡</span>
             </div>
             <h3 class="text-xl font-semibold text-white mb-4">Innovation</h3>
-            <p class="text-neutral-300">
+            <p class="text-neutral-100 leading-relaxed">
               We pioneer the future of jewelry with advanced craftsmanship techniques, combining traditional methods with modern precision tools.
             </p>
           </div>
           
-          <div class="text-center">
+          <div class="text-center bg-white/10 backdrop-blur-sm rounded-xl p-6">
             <div class="bg-[var(--color-gold)] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
               <span class="text-2xl">🌍</span>
             </div>
             <h3 class="text-xl font-semibold text-white mb-4">Community</h3>
-            <p class="text-neutral-300">
+            <p class="text-neutral-100 leading-relaxed">
               Through the Joy Tribe community and crypto crowdfunding, we build a global network of supporters who share our vision of artistic innovation.
             </p>
           </div>
@@ -125,64 +125,66 @@ const processPhotos = photos.filter(photo => photo.data.category === 'detail' ||
   </section>
 
   <!-- Craftsmanship Process -->
-  <section class="py-20 bg-neutral-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
+  <section class="py-16 bg-neutral-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6">
           Our Craftsmanship
         </h2>
-        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+        <p class="text-lg sm:text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
           From ancient inspiration to modern craftsmanship, every piece is created using traditional techniques: wax casting, laser cutting, stamping, and engraving.
         </p>
       </div>
       
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="photo-gallery grid grid-cols-2 gap-4">
-          {processPhotos.map((photo) => (
-            <div class="photo-item">
-              <img 
-                src={`/images/${photo.data.filename}`} 
-                alt={photo.data.alt}
-                class="w-full h-64 object-cover rounded-lg"
-              />
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div class="order-2 lg:order-1">
+          <h3 class="text-2xl sm:text-3xl font-bold text-neutral-900 mb-8">The Process</h3>
+          <div class="space-y-8">
+            <div class="flex items-start">
+              <div class="bg-[var(--color-gold)] text-white w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold mr-6 flex-shrink-0">1</div>
+              <div>
+                <h4 class="text-lg font-semibold text-neutral-900 mb-3">Inspiration</h4>
+                <p class="text-neutral-600 leading-relaxed">Drawing from tribal art, sacred geometry, and contemporary artistic expression to create unique designs.</p>
+              </div>
             </div>
-          ))}
+            
+            <div class="flex items-start">
+              <div class="bg-[var(--color-gold)] text-white w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold mr-6 flex-shrink-0">2</div>
+              <div>
+                <h4 class="text-lg font-semibold text-neutral-900 mb-3">Wax Casting</h4>
+                <p class="text-neutral-600 leading-relaxed">Creating detailed wax models that capture every curve and detail, then casting them in precious metals using the ancient lost-wax technique.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-[var(--color-gold)] text-white w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold mr-6 flex-shrink-0">3</div>
+              <div>
+                <h4 class="text-lg font-semibold text-neutral-900 mb-3">Laser Cutting</h4>
+                <p class="text-neutral-600 leading-relaxed">Precision laser cutting creates intricate patterns and geometric designs with mathematical accuracy, impossible to achieve by hand.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-[var(--color-gold)] text-white w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold mr-6 flex-shrink-0">4</div>
+              <div>
+                <h4 class="text-lg font-semibold text-neutral-900 mb-3">Stamping & Engraving</h4>
+                <p class="text-neutral-600 leading-relaxed">Hand-stamping and engraving add unique textures and personal touches, ensuring each piece is one-of-a-kind.</p>
+              </div>
+            </div>
+          </div>
         </div>
         
-        <div>
-          <h3 class="text-2xl font-bold text-neutral-900 mb-6">The Process</h3>
-          <div class="space-y-6">
-            <div class="flex items-start">
-              <div class="bg-[var(--color-gold)] text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">1</div>
-              <div>
-                <h4 class="font-semibold text-neutral-900 mb-2">Inspiration</h4>
-                <p class="text-neutral-600">Drawing from tribal art, sacred geometry, and contemporary artistic expression to create unique designs.</p>
+        <div class="order-1 lg:order-2">
+          <div class="grid grid-cols-2 gap-4">
+            {processPhotos.map((photo) => (
+              <div class="photo-item">
+                <img 
+                  src={`/images/${photo.data.filename}`} 
+                  alt={photo.data.alt}
+                  class="w-full h-48 sm:h-64 object-cover rounded-lg shadow-lg"
+                />
               </div>
-            </div>
-            
-            <div class="flex items-start">
-              <div class="bg-[var(--color-gold)] text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">2</div>
-              <div>
-                <h4 class="font-semibold text-neutral-900 mb-2">Wax Casting</h4>
-                <p class="text-neutral-600">Creating detailed wax models that capture every curve and detail, then casting them in precious metals using the ancient lost-wax technique.</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start">
-              <div class="bg-[var(--color-gold)] text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">3</div>
-              <div>
-                <h4 class="font-semibold text-neutral-900 mb-2">Laser Cutting</h4>
-                <p class="text-neutral-600">Precision laser cutting creates intricate patterns and geometric designs with mathematical accuracy, impossible to achieve by hand.</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start">
-              <div class="bg-[var(--color-gold)] text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">4</div>
-              <div>
-                <h4 class="font-semibold text-neutral-900 mb-2">Stamping & Engraving</h4>
-                <p class="text-neutral-600">Hand-stamping and engraving add unique textures and personal touches, ensuring each piece is one-of-a-kind.</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -191,39 +193,39 @@ const processPhotos = photos.filter(photo => photo.data.category === 'detail' ||
 
   <!-- Vision & Goals -->
   <section 
-    class="bg-image-section py-20"
+    class="bg-image-section py-16"
     style="background-image: url('/images/photo_2025-09-11 00.03.32.jpeg')"
   >
     <div class="bg-image-content">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-white">
             Our Vision
           </h2>
-          <p class="text-xl text-neutral-200 max-w-3xl mx-auto">
+          <p class="text-lg sm:text-xl text-neutral-100 max-w-3xl mx-auto leading-relaxed">
             Building the most engaged artistic jewelry community worldwide through innovation and authentic connection.
           </p>
         </div>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="text-center">
-            <div class="text-4xl font-bold text-[var(--color-gold)] mb-2">1,000+</div>
-            <div class="text-neutral-300">Community Members</div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div class="text-center bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <div class="text-3xl sm:text-4xl font-bold text-[var(--color-gold)] mb-2">1,000+</div>
+            <div class="text-neutral-100 font-medium">Community Members</div>
           </div>
           
-          <div class="text-center">
-            <div class="text-4xl font-bold text-[var(--color-gold)] mb-2">$1M+</div>
-            <div class="text-neutral-300">Annual Revenue Goal</div>
+          <div class="text-center bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <div class="text-3xl sm:text-4xl font-bold text-[var(--color-gold)] mb-2">$1M+</div>
+            <div class="text-neutral-100 font-medium">Annual Revenue Goal</div>
           </div>
           
-          <div class="text-center">
-            <div class="text-4xl font-bold text-[var(--color-gold)] mb-2">50+</div>
-            <div class="text-neutral-300">Countries</div>
+          <div class="text-center bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <div class="text-3xl sm:text-4xl font-bold text-[var(--color-gold)] mb-2">50+</div>
+            <div class="text-neutral-100 font-medium">Countries</div>
           </div>
           
-          <div class="text-center">
-            <div class="text-4xl font-bold text-[var(--color-gold)] mb-2">100%</div>
-            <div class="text-neutral-300">Community Driven</div>
+          <div class="text-center bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <div class="text-3xl sm:text-4xl font-bold text-[var(--color-gold)] mb-2">100%</div>
+            <div class="text-neutral-100 font-medium">Community Driven</div>
           </div>
         </div>
       </div>
@@ -231,26 +233,27 @@ const processPhotos = photos.filter(photo => photo.data.category === 'detail' ||
   </section>
 
   <!-- Call to Action -->
-  <section class="py-20 bg-neutral-900 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+  <section class="py-16 bg-neutral-900 text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
         Join Our Journey
       </h2>
-      <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-12">
+      <p class="text-lg sm:text-xl text-neutral-300 max-w-3xl mx-auto mb-10 leading-relaxed">
         Be part of a community that's redefining what jewelry can be. 
         From ancient inspiration to cutting-edge innovation, your story matters.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contact" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors">
+        <a href="/contact" class="bg-[var(--color-gold)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--color-charcoal)] transition-colors text-center">
           Get in Touch
         </a>
-        <a href="/crowdfunding" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors">
+        <a href="/crowdfunding" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[var(--color-charcoal)] transition-colors text-center">
           Support Our Vision
         </a>
       </div>
     </div>
   </section>
 </Layout>
+
 
 
 
